@@ -1,3 +1,4 @@
+// import { QueryClient } from '@tanstack/react-query';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -5,13 +6,14 @@ import tw from 'twin.macro';
 import DevDropDown from './DevDropDown';
 
 export default function Navbar() {
+  // const user = QueryClient.getQueryData('getUser');
   return (
     <S.NavHeader>
       <S.LogoLink to="/">
         <h1>마르마르</h1>
       </S.LogoLink>
       <DevDropDown />
-      <div>ㅇㅇㅇㅇ</div>
+      {/* <div>{user}</div> */}
     </S.NavHeader>
   );
 }

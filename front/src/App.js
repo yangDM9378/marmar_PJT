@@ -5,6 +5,7 @@ import Navbar from './components/navbar/Navbar';
 import Footer from './components/common/Footer';
 
 const queryClient = new QueryClient();
+
 function App() {
   return (
     <QueryClientProvider QueryClientProvider client={queryClient}>
