@@ -8,11 +8,13 @@ import reportWebVitals from './reportWebVitals';
 import Home from './pages/common/Home';
 import NotFound from './pages/common/NotFound';
 import SignIn from './pages/user/SignIn';
-import SignUp from './pages/user/SignUp';
 import SpeechTherapyClass from './pages/program/SpeechTherapyClass';
 import SuffixTherapyClass from './pages/program/SuffixTherapyClass';
 import DoctorMypage from './pages/mypage/DoctorMypage';
 import UserMypage from './pages/mypage/UserMypage';
+import SignUpUser from './pages/user/SignUpUser';
+import SignUpDoc from './pages/user/SignUpDoc';
+import SignUp from './pages/user/SignUp';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +26,8 @@ const router = createBrowserRouter([
       { index: true, path: '/', element: <Home /> },
       { path: '/SignIn', element: <SignIn /> },
       { path: '/SignUp', element: <SignUp /> },
+      { path: '/SignUpUser', element: <SignUpUser /> },
+      { path: '/SignUpDoc', element: <SignUpDoc /> },
       { path: '/SpeechTherapyClass', element: <SpeechTherapyClass /> },
       { path: '/SuffixTherapyClass', element: <SuffixTherapyClass /> },
       { path: '/DoctorMypage', element: <DoctorMypage /> },
