@@ -3,10 +3,10 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import useAuth from '../../hooks/queries/useAuth';
 
-export default function ProtectedRoute({ children }) {
+export default function LoggedRoute({ children }) {
   const { useUserCheck } = useAuth();
   const { data: user } = useUserCheck();
-  if (!user) {
+  if (user) {
     return <Navigate to="/" replace />;
   }
   return children;

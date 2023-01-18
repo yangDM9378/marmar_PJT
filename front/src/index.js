@@ -13,6 +13,9 @@ import SpeechTherapyClass from './pages/program/SpeechTherapyClass';
 import SuffixTherapyClass from './pages/program/SuffixTherapyClass';
 import DoctorMypage from './pages/mypage/DoctorMypage';
 import UserMypage from './pages/mypage/UserMypage';
+import LoginRequiredPage from './pages/dev/LoginRequiredPage';
+import ProtectedRoute from './pages/common/ProtectedRoute';
+import LoggedRoute from './pages/common/LoggedRoute';
 
 const router = createBrowserRouter([
   {
@@ -22,12 +25,27 @@ const router = createBrowserRouter([
     // App이라는 부모 컴포넌트 안에 outlet을 사용하여 children을 보여준다.
     children: [
       { index: true, path: '/', element: <Home /> },
-      { path: '/SignIn', element: <SignIn /> },
+      {
+        path: '/SignIn',
+        element: (
+          <LoggedRoute>
+            <SignIn />
+          </LoggedRoute>
+        ),
+      },
       { path: '/SignUp', element: <SignUp /> },
       { path: '/SpeechTherapyClass', element: <SpeechTherapyClass /> },
       { path: '/SuffixTherapyClass', element: <SuffixTherapyClass /> },
       { path: '/DoctorMypage', element: <DoctorMypage /> },
       { path: '/UserMypage', element: <UserMypage /> },
+      {
+        path: '/LoginRequiredPage',
+        element: (
+          <ProtectedRoute>
+            <LoginRequiredPage />
+          </ProtectedRoute>
+        ),
+      },
     ],
   },
 ]);

@@ -6,11 +6,7 @@ import tw from 'twin.macro';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../hooks/queries/useAuth';
-import { getUserApi } from '../../../api/userApi';
-// import { useMutation } from '@tanstack/react-query';
-// import { signInApi } from '../../../api/userApi';
 
 const schema = yup
   .object({
@@ -19,15 +15,6 @@ const schema = yup
   })
   .required();
 export default function SignInForm() {
-  // const queryClient = useQueryClient();
-  const { userData } = useQuery({
-    queryKey: ['check'],
-    queryFn: getUserApi,
-    onSuccess: () => {
-      console.log(userData);
-      // queryClient.setQueryData('getUser', userData);
-    },
-  });
   const { useSignIn } = useAuth();
   const {
     register,

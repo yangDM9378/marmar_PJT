@@ -1,5 +1,13 @@
 import React from 'react';
+import useAuth from '../../hooks/queries/useAuth';
 
 export default function Home() {
-  return <div>Home</div>;
+  const { useUserCheck } = useAuth();
+  const { data: user } = useUserCheck();
+
+  return (
+    <div>
+      Home <div>{user && user.name}</div>
+    </div>
+  );
 }
