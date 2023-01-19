@@ -15,6 +15,7 @@ export default function Navbar() {
         <h1>마르마르</h1>
       </S.LogoLink>
       <DevDropDown />
+      {!user && <div>로그인 안 함</div>}
       {user && (
         <div>
           <button type="button" onClick={useLogOut}>
