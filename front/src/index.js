@@ -10,13 +10,13 @@ import NotFound from './pages/common/NotFound';
 import SignIn from './pages/user/SignIn';
 import SpeechTherapyClass from './pages/program/SpeechTherapyClass';
 import SuffixTherapyClass from './pages/program/SuffixTherapyClass';
-import DoctorMypage from './pages/mypage/DoctorMypage';
-import UserMypage from './pages/mypage/UserMypage';
+import TherapistMypage from './pages/mypage/TherapistMypage';
+import StudentMypage from './pages/mypage/StudentMypage';
 import LoginRequiredPage from './pages/dev/LoginRequiredPage';
 import ProtectedRoute from './pages/common/ProtectedRoute';
 import LoggedRoute from './pages/common/LoggedRoute';
-import SignUpUser from './pages/user/SignUpUser';
-import SignUpDoc from './pages/user/SignUpDoc';
+import SignUpStudent from './pages/user/SignUpStudent';
+import SignUpTherapist from './pages/user/SignUpTherapist';
 import SignUp from './pages/user/SignUp';
 
 const router = createBrowserRouter([
@@ -36,12 +36,12 @@ const router = createBrowserRouter([
         ),
       },
       { path: '/SignUp', element: <SignUp /> },
-      { path: '/SignUpUser', element: <SignUpUser /> },
-      { path: '/SignUpDoc', element: <SignUpDoc /> },
+      { path: '/SignUpStudent', element: <SignUpStudent /> },
+      { path: '/SignUpTherapist', element: <SignUpTherapist /> },
       { path: '/SpeechTherapyClass', element: <SpeechTherapyClass /> },
       { path: '/SuffixTherapyClass', element: <SuffixTherapyClass /> },
-      { path: '/DoctorMypage', element: <DoctorMypage /> },
-      { path: '/UserMypage', element: <UserMypage /> },
+      { path: '/TherapistMypage', element: <TherapistMypage /> },
+      { path: '/StudentMypage', element: <StudentMypage /> },
       {
         path: '/LoginRequiredPage',
         element: (

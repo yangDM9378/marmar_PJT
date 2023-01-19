@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
-import SignUpDocForm from '../../components/user/signup/SignUpDocForm';
+import SignUpTherapistForm from '../../components/user/signup/SignUpTherapistForm';
 
-export default function SignUpDoc() {
+export default function SignUpTherapist() {
   return (
     <S.SignUpSection>
       <S.SignUpBox>
-        <SignUpDocForm />
+        <SignUpTherapistForm />
       </S.SignUpBox>
     </S.SignUpSection>
   );
