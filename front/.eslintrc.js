@@ -23,7 +23,14 @@ module.exports = {
         endOfLine: 'auto',
       },
     ],
+    'jsx-a11y/label-has-associated-control': [
+      2,
+      {
+        labelAttributes: ['htmlFor'],
+      },
+    ],
     'no-console': 'off',
     'no-alert': 'off',
+    'import/prefer-default-export': 'off',
   },
 };

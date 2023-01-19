@@ -8,11 +8,18 @@ import reportWebVitals from './reportWebVitals';
 import Home from './pages/common/Home';
 import NotFound from './pages/common/NotFound';
 import SignIn from './pages/user/SignIn';
-import SignUp from './pages/user/SignUp';
 import SpeechTherapyClass from './pages/program/SpeechTherapyClass';
 import SuffixTherapyClass from './pages/program/SuffixTherapyClass';
-import DoctorMypage from './pages/mypage/DoctorMypage';
-import UserMypage from './pages/mypage/UserMypage';
+import TherapistMypage from './pages/mypage/TherapistMypage';
+import StudentMypage from './pages/mypage/StudentMypage';
+import LoginRequiredPage from './pages/dev/LoginRequiredPage';
+import OpenVidu from './pages/dev/OpenVidu';
+import ProtectedRoute from './pages/common/ProtectedRoute';
+import LoggedRoute from './pages/common/LoggedRoute';
+import SignUpStudent from './pages/user/SignUpStudent';
+import SignUpTherapist from './pages/user/SignUpTherapist';
+import SignUp from './pages/user/SignUp';
+import registerServiceWorker from './registerServiceWorker';
 
 const router = createBrowserRouter([
   {
@@ -22,12 +29,30 @@ const router = createBrowserRouter([
     // App이라는 부모 컴포넌트 안에 outlet을 사용하여 children을 보여준다.
     children: [
       { index: true, path: '/', element: <Home /> },
-      { path: '/SignIn', element: <SignIn /> },
+      {
+        path: '/SignIn',
+        element: (
+          <LoggedRoute>
+            <SignIn />
+          </LoggedRoute>
+        ),
+      },
       { path: '/SignUp', element: <SignUp /> },
+      { path: '/SignUpStudent', element: <SignUpStudent /> },
+      { path: '/SignUpTherapist', element: <SignUpTherapist /> },
       { path: '/SpeechTherapyClass', element: <SpeechTherapyClass /> },
       { path: '/SuffixTherapyClass', element: <SuffixTherapyClass /> },
-      { path: '/DoctorMypage', element: <DoctorMypage /> },
-      { path: '/UserMypage', element: <UserMypage /> },
+      { path: '/TherapistMypage', element: <TherapistMypage /> },
+      { path: '/StudentMypage', element: <StudentMypage /> },
+      { path: '/OpenVidu', element: <OpenVidu /> },
+      {
+        path: '/LoginRequiredPage',
+        element: (
+          <ProtectedRoute>
+            <LoginRequiredPage />
+          </ProtectedRoute>
+        ),
+      },
     ],
   },
 ]);
@@ -37,8 +62,9 @@ root.render(
     <RouterProvider router={router} />
   </React.StrictMode>,
 );
+registerServiceWorker();
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// reportWebVitals();
