@@ -9,15 +9,17 @@ export default function SignUpDocForm() {
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors },
   } = useForm();
   const onSubmit = data => console.log(data);
+
   return (
     <div>
       <S.Header>사용자 회원가입</S.Header>
       <div>
-        마르마르와 연결된 기관의 <span>치료사 정보를 기반</span>으로 치료사의
-        정보를 입력 바랍니다.
+        마르마르와 연결된 기관의 <h3>치료사 정보를 기반</h3>으로 치료사의 정보를
+        입력 바랍니다.
       </div>
       <S.SignUpForm onSubmit={handleSubmit(onSubmit)}>
         <S.Label htmlFor="name_helper">보호자 이름</S.Label>
@@ -40,44 +42,98 @@ export default function SignUpDocForm() {
 
         <S.Label htmlFor="password">비밀번호</S.Label>
         <S.Input
-          {...register('student_password', { required: true })}
           id="password"
+          type="password"
+          placeholder="특수문자, 영문, 숫자를 혼용하여 8~16자를 입력해주세요."
+          {...register('therapist_password', {
+            required: '비밀번호를 입력해주세요.',
+            pattern: {
+              value:
+                /(?=.*\d{1,50})(?=.*[~`!@#$%^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,16}$/,
+              message: '특수문자, 영문, 숫자를 혼용하여 8~16자를 입력해주세요.',
+            },
+            minLength: {
+              value: 8,
+              message: '최소 8자 이상의 비밀번호를 입력해주세요.',
+            },
+            maxLength: {
+              value: 16,
+              message: '16자 이하의 비밀번호만 사용가능합니다.',
+            },
+          })}
         />
-        {errors.student_password && <span>비밀번호를 입력해주세요.</span>}
+        {errors.therapist_password && (
+          <span>{errors.therapist_password.message}</span>
+        )}
         <br />
 
         <S.Label htmlFor="confirm_password">비밀번호 확인</S.Label>
         <S.Input
-          {...register('confirm_password', { required: true })}
           id="confirm_password"
+          type="password"
+          placeholder="비밀번호를 다시 입력해주세요."
+          {...register('confirm_password', {
+            required: '비밀번호를 입력해주세요.',
+            validate: {
+              matchsPreviousPassword: value => {
+                const { password } = getValues();
+                return password === value || '비밀번호가 일치하지 않습니다.';
+              },
+            },
+          })}
         />
-        {errors.student_password2 && <span>비밀번호를 입력해주세요.</span>}
+        {errors.confirm_password && (
+          <span>{errors.confirm_password.message}</span>
+        )}
         <br />
 
-        <S.Label htmlFor="password_helper">2차 비밀번호</S.Label>
+        <S.Label htmlFor="password_helper">비밀번호</S.Label>
         <S.Input
-          {...register('student_password_helper', { required: true })}
-          id="password_helper"
+          id="password"
+          type="password"
+          placeholder="숫자 4자리를 입력해주세요."
+          {...register('student_password_helper', {
+            required: '비밀번호를 입력해주세요.',
+            minLength: {
+              value: 4,
+              message: '최소 4자 이상의 비밀번호를 입력해주세요.',
+            },
+            maxLength: {
+              value: 4,
+              message: '4자 이하의 비밀번호만 사용가능합니다.',
+            },
+          })}
         />
         {errors.student_password_helper && (
-          <span>2차 비밀번호를 입력해주세요.</span>
+          <span>{errors.student_password_helper.message}</span>
         )}
         <br />
 
         <S.Label htmlFor="email">이메일</S.Label>
         <S.Input
-          {...register('student_email', { required: true })}
+          {...register('student_email', {
+            required: true,
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: '유효한 이메일이 아닙니다.',
+            },
+          })}
           id="email"
+          type="email"
         />
-        {errors.student_email && <span>이메일을 입력해주세요.</span>}
+        {errors.student_email && errors.student_email.message}
         <br />
 
-        <S.Label htmlFor="phone_helper">휴대폰번호</S.Label>
+        <S.Label htmlFor="phone">휴대폰번호</S.Label>
         <S.Input
-          {...register('student_phone_helper', { required: true })}
-          id="phone_helper"
+          id="phone"
+          type="tel"
+          placeholder="휴대폰 번호 11자리를 입력해주세요."
+          {...register('student_phone_helper', {
+            required: '휴대폰 번호를 입력해주세요.',
+          })}
         />
-        {errors.student_phone_helper && <span>휴대폰번호를 입력해주세요.</span>}
+        {errors.student_phone_helper && errors.student_phone_helper.message}
         <br />
 
         <S.Label htmlFor="birth">생년월일</S.Label>
@@ -88,7 +144,9 @@ export default function SignUpDocForm() {
         />
         {errors.student_birth && <span>생년월일을 입력해주세요.</span>}
 
-        <S.SignUpButton type="submit">회원가입</S.SignUpButton>
+        <S.SignUpButton type="submit" onSubmit="OnSubmit">
+          회원가입
+        </S.SignUpButton>
       </S.SignUpForm>
     </div>
   );

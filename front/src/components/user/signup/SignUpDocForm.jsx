@@ -10,7 +10,7 @@ export default function SignUpDocForm() {
   const {
     register,
     handleSubmit,
-    watch,
+    getValues,
     formState: { errors },
   } = useForm();
   const onSubmit = data => console.log(data);
@@ -36,35 +36,69 @@ export default function SignUpDocForm() {
         <br />
 
         <S.Label htmlFor="id">아이디</S.Label>
-        <S.Input {...register('therapist_id', { required: true })} id="id" />
+        <S.Input
+          {...register('therapist_id', {
+            required: '아이디를 입력해주세요',
+            minLength: {
+              value: 5,
+              message: '최소 5자 이상의 비밀번호를 입력해주세요.',
+            },
+            maxLength: {
+              value: 12,
+              message: '12자 이하의 비밀번호만 사용가능합니다.',
+            },
+          })}
+          id="id"
+        />
         {errors.therapist_id && <span>아이디를 입력해주세요.</span>}
         <S.IdButton type="submit">중복ID</S.IdButton>
         <br />
 
         <S.Label htmlFor="password">비밀번호</S.Label>
         <S.Input
-          {...register('therapist_password', { required: true })}
           id="password"
           type="password"
+          placeholder="특수문자, 영문, 숫자를 혼용하여 8~16자를 입력해주세요."
+          {...register('therapist_password', {
+            required: '비밀번호를 입력해주세요.',
+            pattern: {
+              value:
+                /(?=.*\d{1,50})(?=.*[~`!@#$%^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,16}$/,
+              message: '특수문자, 영문, 숫자를 혼용하여 8~16자를 입력해주세요.',
+            },
+            minLength: {
+              value: 8,
+              message: '최소 8자 이상의 비밀번호를 입력해주세요.',
+            },
+            maxLength: {
+              value: 16,
+              message: '16자 이하의 비밀번호만 사용가능합니다.',
+            },
+          })}
         />
-        {errors.therapist_password && <span>비밀번호를 입력해주세요.</span>}
+        {errors.therapist_password && (
+          <span>{errors.therapist_password.message}</span>
+        )}
         <br />
 
         <S.Label htmlFor="confirm_password">비밀번호 확인</S.Label>
         <S.Input
-          {...register('confirm_password', {
-            required: true,
-
-            validate: value => {
-              if (watch('therapist_password') !== value) {
-                return alert('Your passwords do no match');
-              }
-            },
-          })}
           id="confirm_password"
           type="password"
+          placeholder="비밀번호를 다시 입력해주세요."
+          {...register('confirm_password', {
+            required: '비밀번호를 입력해주세요.',
+            validate: {
+              matchsPreviousPassword: value => {
+                const { password } = getValues();
+                return password === value || '비밀번호가 일치하지 않습니다.';
+              },
+            },
+          })}
         />
-        {errors.therapist_password2 && <span>비밀번호를 입력해주세요.</span>}
+        {errors.confirm_password && (
+          <span>errors.confirm_password.message</span>
+        )}
         <br />
 
         <S.Label htmlFor="email">이메일</S.Label>
