@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -15,17 +16,16 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
+@DynamicInsert
 public class Therapist {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int num;
 
-    @Column(nullable = false, length = 100)
-    private String therapistName;
-
-    @Column(nullable = false, length = 100)
-    private String therapistDepartment;
+    // @Enumerated(EnumType.STRING)
+    @ColumnDefault("'THERAPIST'")
+    private String role;
 
     @Column(nullable = false, length = 100)
     private String therapistId;
@@ -34,20 +34,22 @@ public class Therapist {
     private String therapistPassword;
 
     @Column(nullable = false, length = 100)
-    private Date therapistEmailId;
+    private String therapistName;
+
+    @Column(nullable = false, length = 100)
+    private String therapistDepartment;
+
+    @Column(nullable = false, length = 100)
+    private String therapistEmailId;
 
     @Column(nullable = false, length = 100)
     private String therapistEmailDomain;
 
-    // @Enumerated(EnumType.STRING)
-    @ColumnDefault("'THERAPIST'")
-    private String role;
+    @Column(nullable = false, length = 100)
+    private String therapistPhone;
 
     @ColumnDefault("false")
     private boolean isOngoing;
-
-    @Column(nullable = false, length = 100)
-    private String therapistPhone;
 
 //    @OneToMany(mappedBy = "student", cascade = CascadeType.REMOVE)
 //    List<Therapist> therapists;

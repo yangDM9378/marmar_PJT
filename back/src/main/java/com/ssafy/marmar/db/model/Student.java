@@ -25,36 +25,36 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int num;
 
-    @Column(nullable = false, length = 100)
-    private String userNameHelper;
-
-    @Column(nullable = false, length = 100)
-    private String userName;
-
-    @Column(nullable = false, length = 100)
-    private String userId;
-
-    @Column(nullable = false, length = 100)
-    private String userPassword;
-
-    @Column(nullable = false, length = 100)
-    private String userPasswordHelper;
-
-    @Column(nullable = false, length = 100)
-    private Date userBirth;
-
-    @Column(nullable = false, length = 100)
-    private String userPhoneHelper;
-
     // @Enumerated(EnumType.STRING)
     @ColumnDefault("'STUDENT'")
     private String role;
 
     @Column(nullable = false, length = 100)
-    private String userEmailId;
+    private String studentId;
 
     @Column(nullable = false, length = 100)
-    private String userEmailDomain;
+    private String studentPassword;
+
+    @Column(nullable = false, length = 100)
+    private String studentPasswordHelper;
+
+    @Column(nullable = false, length = 100)
+    private String studentNameHelper;
+
+    @Column(nullable = false, length = 100)
+    private String studentName;
+
+    @Column(nullable = false, length = 100)
+    private Date studentBirth;
+
+    @Column(nullable = false, length = 100)
+    private String studentPhoneHelper;
+
+    @Column(nullable = false, length = 100)
+    private String studentEmailId;
+
+    @Column(nullable = false, length = 100)
+    private String studentEmailDomain;
 
     @ColumnDefault("false")
     private boolean isOngoing;
