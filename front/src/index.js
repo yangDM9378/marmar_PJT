@@ -13,11 +13,13 @@ import SuffixTherapyClass from './pages/program/SuffixTherapyClass';
 import TherapistMypage from './pages/mypage/TherapistMypage';
 import StudentMypage from './pages/mypage/StudentMypage';
 import LoginRequiredPage from './pages/dev/LoginRequiredPage';
+import OpenVidu from './pages/dev/OpenVidu';
 import ProtectedRoute from './pages/common/ProtectedRoute';
 import LoggedRoute from './pages/common/LoggedRoute';
 import SignUpStudent from './pages/user/SignUpStudent';
 import SignUpTherapist from './pages/user/SignUpTherapist';
 import SignUp from './pages/user/SignUp';
+import registerServiceWorker from './registerServiceWorker';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +44,7 @@ const router = createBrowserRouter([
       { path: '/SuffixTherapyClass', element: <SuffixTherapyClass /> },
       { path: '/TherapistMypage', element: <TherapistMypage /> },
       { path: '/StudentMypage', element: <StudentMypage /> },
+      { path: '/OpenVidu', element: <OpenVidu /> },
       {
         path: '/LoginRequiredPage',
         element: (
@@ -59,6 +62,7 @@ root.render(
     <RouterProvider router={router} />
   </React.StrictMode>,
 );
+registerServiceWorker();
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
