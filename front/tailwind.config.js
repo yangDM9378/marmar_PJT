@@ -5,7 +5,8 @@ module.exports = {
     extend: {
       colors: {
         // text-brand는 앞으로 이 색으로 바뀜
-        brand: '#6A79F8',
+        // '#6A79F8', '#427EF6'
+        brand: '#427EF6',
         brandHover: '#6366f1',
       },
       fontFamily: {

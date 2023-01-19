@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import styled from 'styled-components';
@@ -5,6 +6,7 @@ import tw from 'twin.macro';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import useAuth from '../../../hooks/queries/useAuth';
 
 const schema = yup
   .object({
@@ -12,8 +14,8 @@ const schema = yup
     password: yup.string().required('비밀번호를 입력해주세요.'),
   })
   .required();
-
 export default function SignInForm() {
+  const { useSignIn } = useAuth();
   const {
     register,
     handleSubmit,
@@ -21,7 +23,9 @@ export default function SignInForm() {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const onSignIn = data => console.log(data);
+  const onSignIn = data => {
+    useSignIn.mutate({ id: data.id, password: data.password });
+  };
   const onFindId = () => {
     alert('아이디 찾기');
   };
