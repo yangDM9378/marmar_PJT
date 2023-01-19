@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
-export default function SignUpDocForm() {
+export default function SignUpStudentForm() {
   const {
     register,
     handleSubmit,
@@ -24,20 +24,31 @@ export default function SignUpDocForm() {
       <S.SignUpForm onSubmit={handleSubmit(onSubmit)}>
         <S.Label htmlFor="name_helper">보호자 이름</S.Label>
         <S.Input
-          {...register('student_name_helper', { required: true })}
+          {...register('name_helper', {
+            required: '보호자 이름을 입력해주세요.',
+          })}
           id="name_helper"
         />
-        {errors.student_name_helper && <span>보호자 이름을 입력해주세요.</span>}
+        {errors.name_helper && errors.name_helper.message}
         <br />
 
         <S.Label htmlFor="name">아이 이름</S.Label>
-        <S.Input {...register('student_name', { required: true })} id="name" />
-        {errors.student_name && <span>아이 이름을 입력해주세요.</span>}
+        <S.Input
+          {...register('name', {
+            required: '아이 이름을 입력해주세요.',
+          })}
+          id="name"
+        />
+        {errors.name && errors.name.message}
         <br />
 
         <S.Label htmlFor="id">아이디</S.Label>
-        <S.Input {...register('student_id', { required: true })} id="id" />
-        {errors.student_id && <span>아이디를 입력해주세요.</span>}
+        <S.Input
+          {...register('id', { required: '아이디를 입력해주세요.' })}
+          id="id"
+        />
+        {errors.id && errors.id.message}
+        <S.IdButton type="submit">중복ID</S.IdButton>
         <br />
 
         <S.Label htmlFor="password">비밀번호</S.Label>
@@ -45,7 +56,7 @@ export default function SignUpDocForm() {
           id="password"
           type="password"
           placeholder="특수문자, 영문, 숫자를 혼용하여 8~16자를 입력해주세요."
-          {...register('therapist_password', {
+          {...register('password', {
             required: '비밀번호를 입력해주세요.',
             pattern: {
               value:
@@ -62,9 +73,7 @@ export default function SignUpDocForm() {
             },
           })}
         />
-        {errors.therapist_password && (
-          <span>{errors.therapist_password.message}</span>
-        )}
+        {errors.password && errors.password.message}
         <br />
 
         <S.Label htmlFor="confirm_password">비밀번호 확인</S.Label>
@@ -82,17 +91,15 @@ export default function SignUpDocForm() {
             },
           })}
         />
-        {errors.confirm_password && (
-          <span>{errors.confirm_password.message}</span>
-        )}
+        {errors.confirm_password && errors.confirm_password.message}
         <br />
 
-        <S.Label htmlFor="password_helper">비밀번호</S.Label>
+        <S.Label htmlFor="password_helper">2차 비밀번호</S.Label>
         <S.Input
-          id="password"
+          id="password_helper"
           type="password"
           placeholder="숫자 4자리를 입력해주세요."
-          {...register('student_password_helper', {
+          {...register('password_helper', {
             required: '비밀번호를 입력해주세요.',
             minLength: {
               value: 4,
@@ -104,45 +111,39 @@ export default function SignUpDocForm() {
             },
           })}
         />
-        {errors.student_password_helper && (
-          <span>{errors.student_password_helper.message}</span>
-        )}
+        {errors.password_helper && errors.password_helper.message}
         <br />
 
-        <S.Label htmlFor="email">이메일</S.Label>
+        <S.Label htmlFor="emailId">이메일</S.Label>
         <S.Input
-          {...register('student_email', {
+          {...register('emailId', {
             required: true,
             pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: '유효한 이메일이 아닙니다.',
+              message: 'invalid email address',
             },
           })}
-          id="email"
-          type="email"
+          id="emailId"
+          type="emailId"
         />
-        {errors.student_email && errors.student_email.message}
+        {errors.emailId && errors.emailId.message}
         <br />
 
         <S.Label htmlFor="phone">휴대폰번호</S.Label>
         <S.Input
+          {...register('phone', { required: '휴대폰번호를 입력해주세요.' })}
           id="phone"
-          type="tel"
-          placeholder="휴대폰 번호 11자리를 입력해주세요."
-          {...register('student_phone_helper', {
-            required: '휴대폰 번호를 입력해주세요.',
-          })}
         />
-        {errors.student_phone_helper && errors.student_phone_helper.message}
+        {errors.phone && errors.phone.message}
         <br />
 
         <S.Label htmlFor="birth">생년월일</S.Label>
         <S.Input
-          {...register('student_birth', { required: true })}
+          {...register('birth', { required: '생년월일을 입력해주세요.' })}
           id="birth"
           type="date"
         />
-        {errors.student_birth && <span>생년월일을 입력해주세요.</span>}
+        {errors.birth && errors.birth.message}
 
         <S.SignUpButton type="submit" onSubmit="OnSubmit">
           회원가입
@@ -170,5 +171,8 @@ const S = {
   `,
   SignUpButton: styled.button`
     ${tw`bg-brand w-full mt-10 py-2 px-4 rounded-md text-xl font-cafe24 text-white hover:bg-brandHover`}
+  `,
+  IdButton: styled.button`
+    ${tw`bg-brand text-white hover:bg-brandHover`}
   `,
 };
