@@ -452,3 +452,537 @@ org.hibernate.PropertyValueException: not-null property references a null or tra
 2023-01-19 09:59:48.906  INFO 10128 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2023-01-19 09:59:48.909  INFO 10128 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2023-01-19 09:59:48.913  INFO 10128 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-01-19 14:27:02.433  INFO 15140 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : Starting MarmarApplication using Java 1.8.0_351 on DESKTOP-DOGVPUB with PID 15140 (C:\SSAFY\[공통]-PJT marmar\S08P12C204\back\target\classes started by SSAFY in C:\SSAFY\[공통]-PJT marmar\S08P12C204\back)
+2023-01-19 14:27:02.434  INFO 15140 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-01-19 14:27:02.461  INFO 15140 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-01-19 14:27:02.461  INFO 15140 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-01-19 14:27:02.860  INFO 15140 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-19 14:27:02.896  INFO 15140 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 2 JPA repository interfaces.
+2023-01-19 14:27:03.258  INFO 15140 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-01-19 14:27:03.264  INFO 15140 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-01-19 14:27:03.264  INFO 15140 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.70]
+2023-01-19 14:27:03.427  INFO 15140 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-01-19 14:27:03.431  INFO 15140 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-01-19 14:27:03.431  INFO 15140 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 969 ms
+2023-01-19 14:27:03.525  INFO 15140 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-19 14:27:03.589  INFO 15140 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-01-19 14:27:03.665  INFO 15140 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-19 14:27:03.725  INFO 15140 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-01-19 14:27:04.027  INFO 15140 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-01-19 14:27:04.036  INFO 15140 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2023-01-19 14:27:04.437  INFO 15140 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-19 14:27:04.443  INFO 15140 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-19 14:27:04.643  WARN 15140 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: eb7b8feb-3deb-4b36-afeb-cb984edf7993
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-01-19 14:27:04.709  WARN 15140 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-19 14:27:04.749 DEBUG 15140 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 4 mappings in 'requestMappingHandlerMapping'
+2023-01-19 14:27:04.791 DEBUG 15140 --- [restartedMain] o.s.w.s.c.annotation.WebMvcConfigurer    : Default resource handling disabled
+2023-01-19 14:27:04.793  INFO 15140 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4456e945, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3b12779a, org.springframework.security.web.context.SecurityContextPersistenceFilter@6129ef82, org.springframework.security.web.header.HeaderWriterFilter@3fd4d1ea, org.springframework.web.filter.CorsFilter@4ce4b3e5, org.springframework.security.web.authentication.logout.LogoutFilter@8329822, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@277f68cb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4d4243e6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@bf17303, org.springframework.security.web.session.SessionManagementFilter@3d2f7be7, org.springframework.security.web.access.ExceptionTranslationFilter@5e0cbde7, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1be88fa9]
+2023-01-19 14:27:04.820 DEBUG 15140 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2023-01-19 14:27:04.836 DEBUG 15140 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2023-01-19 14:27:04.839  WARN 15140 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mvcViewResolver' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.servlet.ViewResolver]: Factory method 'mvcViewResolver' threw exception; nested exception is java.lang.NoClassDefFoundError: com/samskivert/mustache/Mustache
+2023-01-19 14:27:04.840  INFO 15140 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-19 14:27:04.842  INFO 15140 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-01-19 14:27:04.846  INFO 15140 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-01-19 14:27:04.847  INFO 15140 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-01-19 14:27:04.855  INFO 15140 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-01-19 14:27:04.874 ERROR 15140 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mvcViewResolver' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.servlet.ViewResolver]: Factory method 'mvcViewResolver' threw exception; nested exception is java.lang.NoClassDefFoundError: com/samskivert/mustache/Mustache
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:658) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:638) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918) ~[spring-context-5.3.24.jar:5.3.24]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.24.jar:5.3.24]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147) ~[spring-boot-2.7.7.jar:2.7.7]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731) [spring-boot-2.7.7.jar:2.7.7]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) [spring-boot-2.7.7.jar:2.7.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) [spring-boot-2.7.7.jar:2.7.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) [spring-boot-2.7.7.jar:2.7.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) [spring-boot-2.7.7.jar:2.7.7]
+	at com.ssafy.marmar.MarmarApplication.main(MarmarApplication.java:10) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_351]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_351]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_351]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_351]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.7.7.jar:2.7.7]
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.servlet.ViewResolver]: Factory method 'mvcViewResolver' threw exception; nested exception is java.lang.NoClassDefFoundError: com/samskivert/mustache/Mustache
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-5.3.24.jar:5.3.24]
+	... 24 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: com/samskivert/mustache/Mustache
+	at org.springframework.boot.web.servlet.view.MustacheViewResolver.<init>(MustacheViewResolver.java:43) ~[spring-boot-2.7.7.jar:2.7.7]
+	at com.ssafy.marmar.config.WebMvcConfig.configureViewResolvers(WebMvcConfig.java:12) ~[classes/:na]
+	at org.springframework.web.servlet.config.annotation.WebMvcConfigurerComposite.configureViewResolvers(WebMvcConfigurerComposite.java:116) ~[spring-webmvc-5.3.24.jar:5.3.24]
+	at org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.configureViewResolvers(DelegatingWebMvcConfiguration.java:103) ~[spring-webmvc-5.3.24.jar:5.3.24]
+	at org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport.mvcViewResolver(WebMvcConfigurationSupport.java:1126) ~[spring-webmvc-5.3.24.jar:5.3.24]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_351]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_351]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_351]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_351]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.3.24.jar:5.3.24]
+	... 25 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.samskivert.mustache.Mustache
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:387) ~[na:1.8.0_351]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:418) ~[na:1.8.0_351]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:355) ~[na:1.8.0_351]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:351) ~[na:1.8.0_351]
+	... 35 common frames omitted
+
+2023-01-19 14:28:31.108  INFO 18348 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : Starting MarmarApplication using Java 1.8.0_351 on DESKTOP-DOGVPUB with PID 18348 (C:\SSAFY\[공통]-PJT marmar\S08P12C204\back\target\classes started by SSAFY in C:\SSAFY\[공통]-PJT marmar\S08P12C204\back)
+2023-01-19 14:28:31.109  INFO 18348 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-01-19 14:28:31.138  INFO 18348 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-01-19 14:28:31.138  INFO 18348 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-01-19 14:28:31.545  INFO 18348 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-19 14:28:31.583  INFO 18348 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32 ms. Found 2 JPA repository interfaces.
+2023-01-19 14:28:31.928  INFO 18348 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-01-19 14:28:31.933  INFO 18348 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-01-19 14:28:31.933  INFO 18348 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.70]
+2023-01-19 14:28:32.092  INFO 18348 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-01-19 14:28:32.095  INFO 18348 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-01-19 14:28:32.095  INFO 18348 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 957 ms
+2023-01-19 14:28:32.191  INFO 18348 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-19 14:28:32.267  INFO 18348 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-01-19 14:28:32.341  INFO 18348 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-19 14:28:32.392  INFO 18348 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-01-19 14:28:32.685  INFO 18348 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-01-19 14:28:32.693  INFO 18348 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2023-01-19 14:28:33.081  INFO 18348 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-19 14:28:33.086  INFO 18348 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-19 14:28:33.288  WARN 18348 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 0f017576-7246-42c8-9354-61640db26f72
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-01-19 14:28:33.365  WARN 18348 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-19 14:28:33.406 DEBUG 18348 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 4 mappings in 'requestMappingHandlerMapping'
+2023-01-19 14:28:33.449 DEBUG 18348 --- [restartedMain] o.s.w.s.c.annotation.WebMvcConfigurer    : Default resource handling disabled
+2023-01-19 14:28:33.451  INFO 18348 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4b7a0134, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@ee6c402, org.springframework.security.web.context.SecurityContextPersistenceFilter@dbbc1e9, org.springframework.security.web.header.HeaderWriterFilter@e9245d4, org.springframework.web.filter.CorsFilter@57845489, org.springframework.security.web.authentication.logout.LogoutFilter@12533a25, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1348b61b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@630d14b1, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6e906501, org.springframework.security.web.session.SessionManagementFilter@31569b44, org.springframework.security.web.access.ExceptionTranslationFilter@2a91d1b7, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@785ffeda]
+2023-01-19 14:28:33.480 DEBUG 18348 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2023-01-19 14:28:33.502 DEBUG 18348 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2023-01-19 14:28:33.561  WARN 18348 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2023-01-19 14:28:33.577  WARN 18348 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+2023-01-19 14:28:33.579  INFO 18348 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-19 14:28:33.581  INFO 18348 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-01-19 14:28:33.585  INFO 18348 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-01-19 14:28:33.586  INFO 18348 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-01-19 14:28:33.594  INFO 18348 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-01-19 14:28:33.610 ERROR 18348 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2023-01-19 14:28:53.834  INFO 14300 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : Starting MarmarApplication using Java 1.8.0_351 on DESKTOP-DOGVPUB with PID 14300 (C:\SSAFY\[공통]-PJT marmar\S08P12C204\back\target\classes started by SSAFY in C:\SSAFY\[공통]-PJT marmar\S08P12C204\back)
+2023-01-19 14:28:53.835  INFO 14300 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-01-19 14:28:53.863  INFO 14300 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-01-19 14:28:53.863  INFO 14300 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-01-19 14:28:54.262  INFO 14300 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-19 14:28:54.302  INFO 14300 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 2 JPA repository interfaces.
+2023-01-19 14:28:54.652  INFO 14300 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-01-19 14:28:54.657  INFO 14300 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-01-19 14:28:54.662  INFO 14300 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.70]
+2023-01-19 14:28:54.816  INFO 14300 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-01-19 14:28:54.820  INFO 14300 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-01-19 14:28:54.820  INFO 14300 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 957 ms
+2023-01-19 14:28:54.926  INFO 14300 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-19 14:28:54.992  INFO 14300 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-01-19 14:28:55.066  INFO 14300 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-19 14:28:55.117  INFO 14300 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-01-19 14:28:55.407  INFO 14300 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-01-19 14:28:55.415  INFO 14300 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2023-01-19 14:28:55.791  INFO 14300 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-19 14:28:55.798  INFO 14300 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-19 14:28:55.992  WARN 14300 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: c73659d9-1c86-4783-9b8a-9435716c3831
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-01-19 14:28:56.071  WARN 14300 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-19 14:28:56.112 DEBUG 14300 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 4 mappings in 'requestMappingHandlerMapping'
+2023-01-19 14:28:56.154 DEBUG 14300 --- [restartedMain] o.s.w.s.c.annotation.WebMvcConfigurer    : Default resource handling disabled
+2023-01-19 14:28:56.156  INFO 14300 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@693d0b02, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7e7765dc, org.springframework.security.web.context.SecurityContextPersistenceFilter@65994bac, org.springframework.security.web.header.HeaderWriterFilter@2a91d1b7, org.springframework.web.filter.CorsFilter@3b2c42fd, org.springframework.security.web.authentication.logout.LogoutFilter@3b8b8715, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@31569b44, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@dbbc1e9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4a1e666e, org.springframework.security.web.session.SessionManagementFilter@7ba917f5, org.springframework.security.web.access.ExceptionTranslationFilter@480f62f0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1b744b6d]
+2023-01-19 14:28:56.184 DEBUG 14300 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2023-01-19 14:28:56.202 DEBUG 14300 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2023-01-19 14:28:56.254  INFO 14300 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-01-19 14:28:56.280  INFO 14300 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-01-19 14:28:56.287  INFO 14300 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : Started MarmarApplication in 2.694 seconds (JVM running for 3.251)
+2023-01-19 14:29:28.652  INFO 14300 --- [http-nio-127.0.0.1-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-01-19 14:29:28.653  INFO 14300 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-01-19 14:29:28.653 DEBUG 14300 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2023-01-19 14:29:28.653 DEBUG 14300 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2023-01-19 14:29:28.653 DEBUG 14300 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2023-01-19 14:29:28.653 DEBUG 14300 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@5fc888a5
+2023-01-19 14:29:28.654 DEBUG 14300 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@33f8a355
+2023-01-19 14:29:28.654 DEBUG 14300 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2023-01-19 14:29:28.654  INFO 14300 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-01-19 14:29:28.665 DEBUG 14300 --- [http-nio-127.0.0.1-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.StudentController#register(StudentRegisterPostRes)
+2023-01-19 14:29:28.684 DEBUG 14300 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for POST "/error", parameters={}
+2023-01-19 14:29:28.685 DEBUG 14300 --- [http-nio-127.0.0.1-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2023-01-19 14:29:28.712 DEBUG 14300 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-01-19 14:29:28.713 DEBUG 14300 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Thu Jan 19 14:29:28 KST 2023, status=403, error=Forbidden, message=Access Denied, path=/a (truncated)...]
+2023-01-19 14:29:28.743 DEBUG 14300 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 403
+2023-01-19 14:30:47.299  INFO 14300 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-19 14:30:47.302  INFO 14300 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-01-19 14:30:47.306  INFO 14300 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-01-19 14:30:51.311  INFO 7084 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : Starting MarmarApplication using Java 1.8.0_351 on DESKTOP-DOGVPUB with PID 7084 (C:\SSAFY\[공통]-PJT marmar\S08P12C204\back\target\classes started by SSAFY in C:\SSAFY\[공통]-PJT marmar\S08P12C204\back)
+2023-01-19 14:30:51.312  INFO 7084 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-01-19 14:30:51.340  INFO 7084 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-01-19 14:30:51.340  INFO 7084 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-01-19 14:30:51.735  INFO 7084 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-19 14:30:51.773  INFO 7084 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32 ms. Found 2 JPA repository interfaces.
+2023-01-19 14:30:52.121  INFO 7084 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-01-19 14:30:52.126  INFO 7084 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-01-19 14:30:52.126  INFO 7084 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.70]
+2023-01-19 14:30:52.290  INFO 7084 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-01-19 14:30:52.293  INFO 7084 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-01-19 14:30:52.294  INFO 7084 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 953 ms
+2023-01-19 14:30:52.401  INFO 7084 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-19 14:30:52.464  INFO 7084 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-01-19 14:30:52.540  INFO 7084 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-19 14:30:52.592  INFO 7084 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-01-19 14:30:52.885  INFO 7084 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-01-19 14:30:52.893  INFO 7084 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2023-01-19 14:30:53.284  INFO 7084 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-19 14:30:53.290  INFO 7084 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-19 14:30:53.475  WARN 7084 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 554836cb-ae86-4ba7-ac39-dbd79ad07122
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-01-19 14:30:53.553  INFO 7084 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5dbdf0b0, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4657aa43, org.springframework.security.web.context.SecurityContextPersistenceFilter@1bceb90b, org.springframework.security.web.header.HeaderWriterFilter@2ceb5a34, org.springframework.security.web.csrf.CsrfFilter@67f7292b, org.springframework.security.web.authentication.logout.LogoutFilter@525089d5, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2e82cdb2, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@975e0d0, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@7352ef78, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@20c645e0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1f5b16c2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@f6c03ca, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@9d7a5ab, org.springframework.security.web.session.SessionManagementFilter@6ec161fc, org.springframework.security.web.access.ExceptionTranslationFilter@269536ab, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2835da18]
+2023-01-19 14:30:53.582  WARN 7084 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-19 14:30:53.642 DEBUG 7084 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2023-01-19 14:30:53.682 DEBUG 7084 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 4 mappings in 'requestMappingHandlerMapping'
+2023-01-19 14:30:53.688 DEBUG 7084 --- [restartedMain] o.s.w.s.c.annotation.WebMvcConfigurer    : Default resource handling disabled
+2023-01-19 14:30:53.692 DEBUG 7084 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2023-01-19 14:30:53.744  INFO 7084 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-01-19 14:30:53.770  INFO 7084 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-01-19 14:30:53.872  INFO 7084 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : Started MarmarApplication in 2.792 seconds (JVM running for 3.297)
+2023-01-19 14:31:04.738  INFO 7084 --- [http-nio-127.0.0.1-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-01-19 14:31:04.738  INFO 7084 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-01-19 14:31:04.739 DEBUG 7084 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2023-01-19 14:31:04.739 DEBUG 7084 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2023-01-19 14:31:04.739 DEBUG 7084 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2023-01-19 14:31:04.739 DEBUG 7084 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@40c760ac
+2023-01-19 14:31:04.739 DEBUG 7084 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@1a22ce1f
+2023-01-19 14:31:04.740 DEBUG 7084 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2023-01-19 14:31:04.740  INFO 7084 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2023-01-19 14:38:29.681  INFO 7084 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-19 14:38:29.683  INFO 7084 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-01-19 14:38:29.687  INFO 7084 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-01-19 14:38:34.141  INFO 17676 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : Starting MarmarApplication using Java 1.8.0_351 on DESKTOP-DOGVPUB with PID 17676 (C:\SSAFY\[공통]-PJT marmar\S08P12C204\back\target\classes started by SSAFY in C:\SSAFY\[공통]-PJT marmar\S08P12C204\back)
+2023-01-19 14:38:34.142  INFO 17676 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-01-19 14:38:34.171  INFO 17676 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-01-19 14:38:34.171  INFO 17676 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-01-19 14:38:34.569  INFO 17676 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-19 14:38:34.606  INFO 17676 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 31 ms. Found 2 JPA repository interfaces.
+2023-01-19 14:38:34.956  INFO 17676 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-01-19 14:38:34.961  INFO 17676 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-01-19 14:38:34.962  INFO 17676 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.70]
+2023-01-19 14:38:35.120  INFO 17676 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-01-19 14:38:35.123  INFO 17676 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-01-19 14:38:35.123  INFO 17676 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 952 ms
+2023-01-19 14:38:35.231  INFO 17676 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-19 14:38:35.311  INFO 17676 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-01-19 14:38:35.386  INFO 17676 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-19 14:38:35.438  INFO 17676 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-01-19 14:38:35.736  INFO 17676 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-01-19 14:38:35.744  INFO 17676 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2023-01-19 14:38:36.122  INFO 17676 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-19 14:38:36.128  INFO 17676 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-19 14:38:36.326  WARN 17676 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 3482f7d5-4f5a-4b63-aa34-1dacde8ff5f8
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-01-19 14:38:36.394  INFO 17676 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@240f8b9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1376d566, org.springframework.security.web.context.SecurityContextPersistenceFilter@6386786f, org.springframework.security.web.header.HeaderWriterFilter@307e77a7, org.springframework.security.web.authentication.logout.LogoutFilter@34433abf, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4aaf9025, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@a26dbcf, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@57e65ba2, org.springframework.security.web.session.SessionManagementFilter@7d3d1ad2, org.springframework.security.web.access.ExceptionTranslationFilter@59734942, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7716ac3e]
+2023-01-19 14:38:36.419  WARN 17676 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-19 14:38:36.482 DEBUG 17676 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2023-01-19 14:38:36.523 DEBUG 17676 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 4 mappings in 'requestMappingHandlerMapping'
+2023-01-19 14:38:36.529 DEBUG 17676 --- [restartedMain] o.s.w.s.c.annotation.WebMvcConfigurer    : Default resource handling disabled
+2023-01-19 14:38:36.534 DEBUG 17676 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2023-01-19 14:38:36.593  INFO 17676 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-01-19 14:38:36.621  INFO 17676 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-01-19 14:38:36.628  INFO 17676 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : Started MarmarApplication in 2.719 seconds (JVM running for 3.297)
+2023-01-19 14:38:40.813  INFO 17676 --- [http-nio-127.0.0.1-8080-exec-5] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-01-19 14:38:40.813  INFO 17676 --- [http-nio-127.0.0.1-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-01-19 14:38:40.814 DEBUG 17676 --- [http-nio-127.0.0.1-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2023-01-19 14:38:40.814 DEBUG 17676 --- [http-nio-127.0.0.1-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2023-01-19 14:38:40.814 DEBUG 17676 --- [http-nio-127.0.0.1-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2023-01-19 14:38:40.814 DEBUG 17676 --- [http-nio-127.0.0.1-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@4dcc8a06
+2023-01-19 14:38:40.815 DEBUG 17676 --- [http-nio-127.0.0.1-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@19d98c85
+2023-01-19 14:38:40.815 DEBUG 17676 --- [http-nio-127.0.0.1-8080-exec-5] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2023-01-19 14:38:40.815  INFO 17676 --- [http-nio-127.0.0.1-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-01-19 14:38:40.843 DEBUG 17676 --- [http-nio-127.0.0.1-8080-exec-5] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for POST "/error", parameters={}
+2023-01-19 14:38:40.848 DEBUG 17676 --- [http-nio-127.0.0.1-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2023-01-19 14:38:40.873 DEBUG 17676 --- [http-nio-127.0.0.1-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-01-19 14:38:40.874 DEBUG 17676 --- [http-nio-127.0.0.1-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Thu Jan 19 14:38:40 KST 2023, status=403, error=Forbidden, message=Access Denied, path=/a (truncated)...]
+2023-01-19 14:38:40.905 DEBUG 17676 --- [http-nio-127.0.0.1-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 403
+2023-01-19 14:40:09.116  INFO 17676 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-19 14:40:09.118  INFO 17676 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-01-19 14:40:09.122  INFO 17676 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-01-19 14:40:11.735  INFO 16316 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : Starting MarmarApplication using Java 1.8.0_351 on DESKTOP-DOGVPUB with PID 16316 (C:\SSAFY\[공통]-PJT marmar\S08P12C204\back\target\classes started by SSAFY in C:\SSAFY\[공통]-PJT marmar\S08P12C204\back)
+2023-01-19 14:40:11.736  INFO 16316 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-01-19 14:40:11.765  INFO 16316 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-01-19 14:40:11.765  INFO 16316 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-01-19 14:40:12.181  INFO 16316 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-19 14:40:12.218  INFO 16316 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 31 ms. Found 2 JPA repository interfaces.
+2023-01-19 14:40:12.569  INFO 16316 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-01-19 14:40:12.574  INFO 16316 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-01-19 14:40:12.574  INFO 16316 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.70]
+2023-01-19 14:40:12.738  INFO 16316 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-01-19 14:40:12.742  INFO 16316 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-01-19 14:40:12.742  INFO 16316 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 976 ms
+2023-01-19 14:40:12.851  INFO 16316 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-19 14:40:12.920  INFO 16316 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-01-19 14:40:12.995  INFO 16316 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-19 14:40:13.045  INFO 16316 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-01-19 14:40:13.336  INFO 16316 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-01-19 14:40:13.344  INFO 16316 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2023-01-19 14:40:13.731  INFO 16316 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-19 14:40:13.737  INFO 16316 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-19 14:40:13.928  WARN 16316 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 8e61d990-fcc2-481b-b576-044043a6149f
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-01-19 14:40:14.001  INFO 16316 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1097027a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@c71f56c, org.springframework.security.web.context.SecurityContextPersistenceFilter@485182d5, org.springframework.security.web.header.HeaderWriterFilter@4e79b45e, org.springframework.security.web.authentication.logout.LogoutFilter@72823ce8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@59f947b9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3618582e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7a970222, org.springframework.security.web.session.SessionManagementFilter@12dc23ab, org.springframework.security.web.access.ExceptionTranslationFilter@22c5fc22, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1972ea60]
+2023-01-19 14:40:14.030  WARN 16316 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-19 14:40:14.093 DEBUG 16316 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2023-01-19 14:40:14.133 DEBUG 16316 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 4 mappings in 'requestMappingHandlerMapping'
+2023-01-19 14:40:14.139 DEBUG 16316 --- [restartedMain] o.s.w.s.c.annotation.WebMvcConfigurer    : Default resource handling disabled
+2023-01-19 14:40:14.144 DEBUG 16316 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2023-01-19 14:40:14.193  INFO 16316 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-01-19 14:40:14.217  INFO 16316 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-01-19 14:40:14.225  INFO 16316 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : Started MarmarApplication in 2.722 seconds (JVM running for 3.297)
+2023-01-19 14:40:17.341  INFO 16316 --- [http-nio-127.0.0.1-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-01-19 14:40:17.341  INFO 16316 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-01-19 14:40:17.341 DEBUG 16316 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2023-01-19 14:40:17.341 DEBUG 16316 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2023-01-19 14:40:17.341 DEBUG 16316 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2023-01-19 14:40:17.342 DEBUG 16316 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@32db73a6
+2023-01-19 14:40:17.342 DEBUG 16316 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@77175e12
+2023-01-19 14:40:17.342 DEBUG 16316 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2023-01-19 14:40:17.342  INFO 16316 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-01-19 14:40:17.365 DEBUG 16316 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for POST "/error", parameters={}
+2023-01-19 14:40:17.369 DEBUG 16316 --- [http-nio-127.0.0.1-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2023-01-19 14:40:17.386 DEBUG 16316 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-01-19 14:40:17.386 DEBUG 16316 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Thu Jan 19 14:40:17 KST 2023, status=403, error=Forbidden, message=Access Denied, path=/a (truncated)...]
+2023-01-19 14:40:17.413 DEBUG 16316 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 403
+2023-01-19 14:40:21.114 DEBUG 16316 --- [http-nio-127.0.0.1-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/api/therapist", parameters={}
+2023-01-19 14:40:21.114 DEBUG 16316 --- [http-nio-127.0.0.1-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.TherapistController#register(TherapistRegisterPostRes)
+2023-01-19 14:40:21.134 DEBUG 16316 --- [http-nio-127.0.0.1-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.ssafy.marmar.api.request.TherapistRegisterPostRes@6f4b8985]
+2023-01-19 14:40:21.218 DEBUG 16316 --- [http-nio-127.0.0.1-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-01-19 14:40:21.219 DEBUG 16316 --- [http-nio-127.0.0.1-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Writing [ResponseDto(status=200, data=1)]
+2023-01-19 14:40:21.223 DEBUG 16316 --- [http-nio-127.0.0.1-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-01-19 14:43:28.132  INFO 16316 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-19 14:43:28.134  INFO 16316 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-01-19 14:43:28.138  INFO 16316 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-01-19 14:43:32.740  INFO 1412 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : Starting MarmarApplication using Java 1.8.0_351 on DESKTOP-DOGVPUB with PID 1412 (C:\SSAFY\[공통]-PJT marmar\S08P12C204\back\target\classes started by SSAFY in C:\SSAFY\[공통]-PJT marmar\S08P12C204\back)
+2023-01-19 14:43:32.742  INFO 1412 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-01-19 14:43:32.775  INFO 1412 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-01-19 14:43:32.775  INFO 1412 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-01-19 14:43:33.276  INFO 1412 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-19 14:43:33.317  INFO 1412 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 34 ms. Found 2 JPA repository interfaces.
+2023-01-19 14:43:33.678  INFO 1412 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-01-19 14:43:33.684  INFO 1412 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-01-19 14:43:33.684  INFO 1412 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.70]
+2023-01-19 14:43:33.849  INFO 1412 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-01-19 14:43:33.852  INFO 1412 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-01-19 14:43:33.852  INFO 1412 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1076 ms
+2023-01-19 14:43:33.966  INFO 1412 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-19 14:43:34.042  INFO 1412 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-01-19 14:43:34.123  INFO 1412 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-19 14:43:34.187  INFO 1412 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-01-19 14:43:34.504  INFO 1412 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-01-19 14:43:34.512  INFO 1412 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2023-01-19 14:43:34.946  INFO 1412 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-19 14:43:34.952  INFO 1412 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-19 14:43:35.144  WARN 1412 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 8a140fbc-efc6-438e-99d2-7f7f97e0a0c5
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-01-19 14:43:35.208  INFO 1412 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7ef05e08, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3e224f3e, org.springframework.security.web.context.SecurityContextPersistenceFilter@1401aa20, org.springframework.security.web.header.HeaderWriterFilter@57a979e7, org.springframework.security.web.authentication.logout.LogoutFilter@611e898a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@176e9975, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@16e3979f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@746f699b, org.springframework.security.web.session.SessionManagementFilter@7a0676e1, org.springframework.security.web.access.ExceptionTranslationFilter@22520bf5, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@537bf5c0]
+2023-01-19 14:43:35.242  WARN 1412 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-19 14:43:35.311 DEBUG 1412 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2023-01-19 14:43:35.352 DEBUG 1412 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 4 mappings in 'requestMappingHandlerMapping'
+2023-01-19 14:43:35.359 DEBUG 1412 --- [restartedMain] o.s.w.s.c.annotation.WebMvcConfigurer    : Default resource handling disabled
+2023-01-19 14:43:35.363 DEBUG 1412 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2023-01-19 14:43:35.419  INFO 1412 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-01-19 14:43:35.447  INFO 1412 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-01-19 14:43:35.455  INFO 1412 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : Started MarmarApplication in 2.971 seconds (JVM running for 3.58)
+2023-01-19 14:43:52.630  INFO 1412 --- [http-nio-127.0.0.1-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-01-19 14:43:52.630  INFO 1412 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-01-19 14:43:52.630 DEBUG 1412 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2023-01-19 14:43:52.630 DEBUG 1412 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2023-01-19 14:43:52.630 DEBUG 1412 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2023-01-19 14:43:52.631 DEBUG 1412 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@1bfab294
+2023-01-19 14:43:52.631 DEBUG 1412 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@3d41994d
+2023-01-19 14:43:52.631 DEBUG 1412 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2023-01-19 14:43:52.631  INFO 1412 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-01-19 14:43:52.663 DEBUG 1412 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for POST "/error", parameters={}
+2023-01-19 14:43:52.668 DEBUG 1412 --- [http-nio-127.0.0.1-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2023-01-19 14:43:52.686 DEBUG 1412 --- [http-nio-127.0.0.1-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-01-19 14:43:52.686 DEBUG 1412 --- [http-nio-127.0.0.1-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Thu Jan 19 14:43:52 KST 2023, status=403, error=Forbidden, message=Access Denied, path=/a (truncated)...]
+2023-01-19 14:43:52.740 DEBUG 1412 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 403
+2023-01-19 14:43:56.831 DEBUG 1412 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/api/therapist", parameters={}
+2023-01-19 14:43:56.831 DEBUG 1412 --- [http-nio-127.0.0.1-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.TherapistController#register(TherapistRegisterPostRes)
+2023-01-19 14:43:56.854 DEBUG 1412 --- [http-nio-127.0.0.1-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.ssafy.marmar.api.request.TherapistRegisterPostRes@8344fee]
+2023-01-19 14:43:56.937 DEBUG 1412 --- [http-nio-127.0.0.1-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-01-19 14:43:56.937 DEBUG 1412 --- [http-nio-127.0.0.1-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing [ResponseDto(status=200, data=1)]
+2023-01-19 14:43:56.939 DEBUG 1412 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-01-19 14:45:23.232  INFO 1412 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-19 14:45:23.235  INFO 1412 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-01-19 14:45:23.239  INFO 1412 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-01-19 14:45:27.300  INFO 12744 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : Starting MarmarApplication using Java 1.8.0_351 on DESKTOP-DOGVPUB with PID 12744 (C:\SSAFY\[공통]-PJT marmar\S08P12C204\back\target\classes started by SSAFY in C:\SSAFY\[공통]-PJT marmar\S08P12C204\back)
+2023-01-19 14:45:27.301  INFO 12744 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-01-19 14:45:27.328  INFO 12744 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-01-19 14:45:27.328  INFO 12744 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-01-19 14:45:27.716  INFO 12744 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-19 14:45:27.752  INFO 12744 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 31 ms. Found 2 JPA repository interfaces.
+2023-01-19 14:45:28.105  INFO 12744 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-01-19 14:45:28.110  INFO 12744 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-01-19 14:45:28.111  INFO 12744 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.70]
+2023-01-19 14:45:28.268  INFO 12744 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-01-19 14:45:28.271  INFO 12744 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-01-19 14:45:28.272  INFO 12744 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 943 ms
+2023-01-19 14:45:28.377  INFO 12744 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-19 14:45:28.444  INFO 12744 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-01-19 14:45:28.518  INFO 12744 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-19 14:45:28.570  INFO 12744 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-01-19 14:45:28.864  INFO 12744 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-01-19 14:45:28.871  INFO 12744 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2023-01-19 14:45:29.268  INFO 12744 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-19 14:45:29.274  INFO 12744 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-19 14:45:29.471  WARN 12744 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: dc5add45-0bf8-4df9-a6a8-3b56b9c9ec1f
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-01-19 14:45:29.539  INFO 12744 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6e495442, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@38b717d5, org.springframework.security.web.context.SecurityContextPersistenceFilter@5f94eb51, org.springframework.security.web.header.HeaderWriterFilter@49d10c3c, org.springframework.security.web.authentication.logout.LogoutFilter@22886f57, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@44ea7d60, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1d74f9d0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@43dc9538, org.springframework.security.web.session.SessionManagementFilter@2bf4a862, org.springframework.security.web.access.ExceptionTranslationFilter@6bdd2352, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7c6a4ff0]
+2023-01-19 14:45:29.565  WARN 12744 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-19 14:45:29.625 DEBUG 12744 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2023-01-19 14:45:29.662 DEBUG 12744 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 4 mappings in 'requestMappingHandlerMapping'
+2023-01-19 14:45:29.669 DEBUG 12744 --- [restartedMain] o.s.w.s.c.annotation.WebMvcConfigurer    : Default resource handling disabled
+2023-01-19 14:45:29.673 DEBUG 12744 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2023-01-19 14:45:29.732  INFO 12744 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-01-19 14:45:29.758  INFO 12744 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-01-19 14:45:29.766  INFO 12744 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : Started MarmarApplication in 2.697 seconds (JVM running for 3.204)
+2023-01-19 14:45:32.580  INFO 12744 --- [http-nio-127.0.0.1-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-01-19 14:45:32.580  INFO 12744 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-01-19 14:45:32.580 DEBUG 12744 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2023-01-19 14:45:32.581 DEBUG 12744 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2023-01-19 14:45:32.581 DEBUG 12744 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2023-01-19 14:45:32.581 DEBUG 12744 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@3cb8a137
+2023-01-19 14:45:32.581 DEBUG 12744 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@53b573c7
+2023-01-19 14:45:32.581 DEBUG 12744 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2023-01-19 14:45:32.581  INFO 12744 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-01-19 14:45:32.608 DEBUG 12744 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/api/student", parameters={}
+2023-01-19 14:45:32.618 DEBUG 12744 --- [http-nio-127.0.0.1-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.StudentController#register(StudentRegisterPostRes)
+2023-01-19 14:45:32.667 DEBUG 12744 --- [http-nio-127.0.0.1-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.ssafy.marmar.api.request.StudentRegisterPostRes@25871a7f]
+2023-01-19 14:45:32.838 DEBUG 12744 --- [http-nio-127.0.0.1-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-01-19 14:45:32.839 DEBUG 12744 --- [http-nio-127.0.0.1-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing [ResponseDto(status=200, data=1)]
+2023-01-19 14:45:32.850 DEBUG 12744 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-01-19 14:45:35.537 DEBUG 12744 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/therapist", parameters={}
+2023-01-19 14:45:35.539 DEBUG 12744 --- [http-nio-127.0.0.1-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.TherapistController#register(TherapistRegisterPostRes)
+2023-01-19 14:45:35.546 DEBUG 12744 --- [http-nio-127.0.0.1-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.ssafy.marmar.api.request.TherapistRegisterPostRes@61e5546d]
+2023-01-19 14:45:35.556 DEBUG 12744 --- [http-nio-127.0.0.1-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-01-19 14:45:35.556 DEBUG 12744 --- [http-nio-127.0.0.1-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Writing [ResponseDto(status=200, data=1)]
+2023-01-19 14:45:35.557 DEBUG 12744 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-01-19 14:47:27.397  INFO 12744 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-19 14:47:27.399  INFO 12744 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-01-19 14:47:27.403  INFO 12744 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-01-19 14:47:31.558  INFO 14788 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : Starting MarmarApplication using Java 1.8.0_351 on DESKTOP-DOGVPUB with PID 14788 (C:\SSAFY\[공통]-PJT marmar\S08P12C204\back\target\classes started by SSAFY in C:\SSAFY\[공통]-PJT marmar\S08P12C204\back)
+2023-01-19 14:47:31.559  INFO 14788 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-01-19 14:47:31.588  INFO 14788 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-01-19 14:47:31.589  INFO 14788 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-01-19 14:47:31.991  INFO 14788 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-01-19 14:47:32.026  INFO 14788 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 2 JPA repository interfaces.
+2023-01-19 14:47:32.377  INFO 14788 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-01-19 14:47:32.382  INFO 14788 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-01-19 14:47:32.382  INFO 14788 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.70]
+2023-01-19 14:47:32.537  INFO 14788 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-01-19 14:47:32.540  INFO 14788 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-01-19 14:47:32.541  INFO 14788 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 952 ms
+2023-01-19 14:47:32.643  INFO 14788 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-01-19 14:47:32.708  INFO 14788 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-01-19 14:47:32.783  INFO 14788 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-01-19 14:47:32.834  INFO 14788 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-01-19 14:47:33.127  INFO 14788 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-01-19 14:47:33.136  INFO 14788 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2023-01-19 14:47:33.531  INFO 14788 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-01-19 14:47:33.537  INFO 14788 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-01-19 14:47:33.724  WARN 14788 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 846c933a-fb39-4c33-8aea-0b367ad162f3
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-01-19 14:47:33.794  INFO 14788 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7c6a4ff0, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5e58c74d, org.springframework.security.web.context.SecurityContextPersistenceFilter@1a9c110e, org.springframework.security.web.header.HeaderWriterFilter@32c4634d, org.springframework.security.web.authentication.logout.LogoutFilter@275ff63d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@25c6882c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@41a05fd0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1753bec6, org.springframework.security.web.session.SessionManagementFilter@47973854, org.springframework.security.web.access.ExceptionTranslationFilter@7af0f766, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@8986bd2]
+2023-01-19 14:47:33.822  WARN 14788 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-01-19 14:47:33.882 DEBUG 14788 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2023-01-19 14:47:33.924 DEBUG 14788 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 4 mappings in 'requestMappingHandlerMapping'
+2023-01-19 14:47:33.929 DEBUG 14788 --- [restartedMain] o.s.w.s.c.annotation.WebMvcConfigurer    : Default resource handling disabled
+2023-01-19 14:47:33.934 DEBUG 14788 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2023-01-19 14:47:33.984  INFO 14788 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-01-19 14:47:34.008  INFO 14788 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-01-19 14:47:34.015  INFO 14788 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : Started MarmarApplication in 2.688 seconds (JVM running for 3.203)
+2023-01-19 14:47:37.348  INFO 14788 --- [http-nio-127.0.0.1-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-01-19 14:47:37.349  INFO 14788 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-01-19 14:47:37.349 DEBUG 14788 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2023-01-19 14:47:37.349 DEBUG 14788 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2023-01-19 14:47:37.349 DEBUG 14788 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2023-01-19 14:47:37.350 DEBUG 14788 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@19bfba4e
+2023-01-19 14:47:37.350 DEBUG 14788 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@78a10688
+2023-01-19 14:47:37.350 DEBUG 14788 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2023-01-19 14:47:37.350  INFO 14788 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-01-19 14:47:37.363 DEBUG 14788 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/api/therapist", parameters={}
+2023-01-19 14:47:37.370 DEBUG 14788 --- [http-nio-127.0.0.1-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.TherapistController#register(TherapistRegisterPostRes)
+2023-01-19 14:47:37.425 DEBUG 14788 --- [http-nio-127.0.0.1-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.ssafy.marmar.api.request.TherapistRegisterPostRes@50f11490]
+2023-01-19 14:47:37.579 DEBUG 14788 --- [http-nio-127.0.0.1-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-01-19 14:47:37.580 DEBUG 14788 --- [http-nio-127.0.0.1-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing [ResponseDto(status=200, data=1)]
+2023-01-19 14:47:37.594 DEBUG 14788 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-01-19 14:47:39.520 DEBUG 14788 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/student", parameters={}
+2023-01-19 14:47:39.520 DEBUG 14788 --- [http-nio-127.0.0.1-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.StudentController#register(StudentRegisterPostRes)
+2023-01-19 14:47:39.523 DEBUG 14788 --- [http-nio-127.0.0.1-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.ssafy.marmar.api.request.StudentRegisterPostRes@24b23735]
+2023-01-19 14:47:39.622 DEBUG 14788 --- [http-nio-127.0.0.1-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-01-19 14:47:39.622 DEBUG 14788 --- [http-nio-127.0.0.1-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Writing [ResponseDto(status=200, data=1)]
+2023-01-19 14:47:39.623 DEBUG 14788 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-01-19 15:12:01.215  WARN 14788 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m57s736ms888µs500ns).
+2023-01-19 15:34:57.063  WARN 14788 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=18m25s764ms626µs600ns).
+2023-01-19 16:04:16.574  INFO 14788 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-01-19 16:04:16.577  INFO 14788 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-01-19 16:04:16.582  INFO 14788 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
