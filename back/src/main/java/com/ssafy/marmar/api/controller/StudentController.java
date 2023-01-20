@@ -1,14 +1,15 @@
 package com.ssafy.marmar.api.controller;
 
-import com.ssafy.marmar.api.request.StudentRegisterPostRes;
+import com.ssafy.marmar.api.request.StudentRegisterPostReq;
 import com.ssafy.marmar.api.service.StudentService;
+import com.ssafy.marmar.db.model.Student;
 import com.ssafy.marmar.dto.ResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("/api/student")
@@ -17,8 +18,19 @@ public class StudentController {
     @Autowired
     StudentService studentService;
 
+    @GetMapping("/{studentId}")
+    public ResponseEntity<Boolean> checkStudentId(@PathVariable String studentId) {
+        try{
+            studentService.getUserByUserId(studentId);
+        }catch(NoSuchElementException e){//아이디 중복되지 않으면 true 리턴
+            return ResponseEntity.status(200).body(true);
+        }
+        //중복되면 false 리턴
+        return	ResponseEntity.status(200).body(false);
+    }
+
     @PostMapping()
-    public ResponseDto<Integer> register(@RequestBody StudentRegisterPostRes registerInfo){
+    public ResponseDto<Integer> register(@RequestBody StudentRegisterPostReq registerInfo){
         studentService.createUser(registerInfo);
         return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
     }

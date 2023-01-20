@@ -1,6 +1,6 @@
 package com.ssafy.marmar.api.service;
 
-import com.ssafy.marmar.api.request.TherapistRegisterPostRes;
+import com.ssafy.marmar.api.request.TherapistRegisterPostReq;
 import com.ssafy.marmar.db.model.Therapist;
 import com.ssafy.marmar.db.repository.TherapistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,13 @@ public class TherapistServiceImpl implements TherapistService {
     PasswordEncoder passwordEncoder;
 
     @Override
-    public Therapist createUser(TherapistRegisterPostRes registInfo) {
+    public Therapist getUserByUserId(String userId) {
+        Therapist therapist = therapistRepository.findByTherapistId(userId).get();
+        return therapist;
+    }
+
+    @Override
+    public Therapist createUser(TherapistRegisterPostReq registInfo) {
         Therapist therapist = new Therapist();
 
         therapist.setTherapistId(registInfo.getId());

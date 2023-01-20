@@ -1,7 +1,7 @@
 package com.ssafy.marmar.api.service;
 
 
-import com.ssafy.marmar.api.request.StudentRegisterPostRes;
+import com.ssafy.marmar.api.request.StudentRegisterPostReq;
 import com.ssafy.marmar.db.model.Student;
 import com.ssafy.marmar.db.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,13 @@ public class StudentServiceImpl implements StudentService {
     PasswordEncoder passwordEncoder;
 
     @Override
-    public Student createUser(StudentRegisterPostRes registerInfo) {
+    public Student getUserByUserId(String userId) {
+        Student student = studentRepository.findByStudentId(userId).get();
+        return student;
+    }
+
+    @Override
+    public Student createUser(StudentRegisterPostReq registerInfo) {
         Student student = new Student();
 
         student.setStudentNameHelper(registerInfo.getNameHelper());
