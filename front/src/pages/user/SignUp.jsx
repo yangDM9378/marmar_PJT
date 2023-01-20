@@ -9,13 +9,13 @@ export default function SignUp() {
       <S.SignUpBox>
         <S.SignUpHeader>회원가입</S.SignUpHeader>
         <S.SignUpMiniBox>
-          <Link to="/SignUpTherapist">
+          <Link to="/SignUpStudent">
             <S.SignUpUserBox>
               <S.SignUpUserH1>사용자</S.SignUpUserH1>
               <img src="" alt="" />
             </S.SignUpUserBox>
           </Link>
-          <Link to="/SignUpStudent">
+          <Link to="/SignUpTherapist">
             <S.SignUpUserBox>
               <S.SignUpUserH1>치료사</S.SignUpUserH1>
               <img src="" alt="" />

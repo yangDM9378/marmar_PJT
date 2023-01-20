@@ -1,14 +1,9 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
-import {
-  idCheckApi,
-  signUpTherapistApi,
-  signUpStudentApi,
-} from '../../api/userApi';
+import { signUpTherapistApi, signUpStudentApi } from '../../api/userApi';
 
 export default function useSingUp() {
   const navigate = useNavigate();
-  const client = useQueryClient();
 
   const useSignUpTherapist = useMutation(signUpTherapistApi, {
     onMutate: variable => {
@@ -42,7 +37,5 @@ export default function useSingUp() {
     },
   });
 
-  const useidCheck = useQuery(idCheckApi, {});
-
-  return { useSignUpTherapist, useSignUpStudent, useidCheck };
+  return { useSignUpTherapist, useSignUpStudent };
 }

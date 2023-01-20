@@ -12,16 +12,19 @@ const userCheckApi = () =>
     return res.data;
   });
 
-const signUpTherapistApi = payload => axios.post('auth/signup', payload);
+const signUpTherapistApi = payload => axios.post('therapist', payload);
 
-const signUpStudentApi = payload => axios.post('auth/signup', payload);
+const signUpStudentApi = payload => axios.post('student', payload);
 
-const idCheckApi = payload => axios.post(`auth/signup/${payload}`);
+const idCheckTherapistApi = payload => axios.get(`users/${payload}`);
+
+const idCheckStudentApi = payload => axios.get(`users/${payload}`);
 
 export {
   signInApi,
   userCheckApi,
   signUpTherapistApi,
   signUpStudentApi,
-  idCheckApi,
+  idCheckTherapistApi,
+  idCheckStudentApi,
 };
