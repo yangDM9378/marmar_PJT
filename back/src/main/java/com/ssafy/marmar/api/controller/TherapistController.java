@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/api/therapist")
+@RequestMapping("/api/v1/therapist")
 public class TherapistController {
 
     @Autowired
