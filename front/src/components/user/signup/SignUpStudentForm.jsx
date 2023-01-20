@@ -4,15 +4,44 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import tw from 'twin.macro';
+import useSingUp from '../../../hooks/queries/useSingUp';
+import { idCheckStudentApi } from '../../../api/userApi';
 
 export default function SignUpStudentForm() {
+  const { useSignUpStudent } = useSingUp();
+
   const {
     register,
     handleSubmit,
     getValues,
     formState: { errors },
   } = useForm();
-  const onSubmit = data => console.log(data);
+
+  const onSubmit = data => {
+    console.log(data);
+    const email = data.email.split('@');
+    console.log(email);
+    useSignUpStudent.mutate({
+      id: data.id,
+      password: data.password,
+      name: data.name,
+      nameHelper: data.name_helper,
+      birth: data.birth,
+      phoneHelpler: data.phone,
+      emailId: email[0],
+      emailDomain: email[1],
+    });
+  };
+
+  const onCheckId = async id => {
+    console.log(id);
+    const response = await idCheckStudentApi(id);
+    if (response) {
+      alert('중복 아이디입니다.');
+    } else {
+      alert('사용가능한 아이디입니다.');
+    }
+  };
 
   return (
     <div>
@@ -44,11 +73,23 @@ export default function SignUpStudentForm() {
 
         <S.Label htmlFor="id">아이디</S.Label>
         <S.Input
-          {...register('id', { required: '아이디를 입력해주세요.' })}
+          {...register('id', {
+            required: '아이디를 입력해주세요',
+            minLength: {
+              value: 5,
+              message: '최소 5자 이상의 아이디를 입력해주세요.',
+            },
+            maxLength: {
+              value: 12,
+              message: '12자 이하의 아이디만 사용가능합니다.',
+            },
+          })}
           id="id"
         />
+        <S.IdButton type="button" onClick={() => onCheckId(getValues('id'))}>
+          중복ID
+        </S.IdButton>
         {errors.id && errors.id.message}
-        <S.IdButton type="submit">중복ID</S.IdButton>
         <br />
 
         <S.Label htmlFor="password">비밀번호</S.Label>
@@ -116,17 +157,17 @@ export default function SignUpStudentForm() {
 
         <S.Label htmlFor="emailId">이메일</S.Label>
         <S.Input
-          {...register('emailId', {
+          {...register('email', {
             required: true,
             pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: 'invalid email address',
+              message: '유효한 이메일이 아닙니다.',
             },
           })}
-          id="emailId"
-          type="emailId"
+          id="email"
+          type="email"
         />
-        {errors.emailId && errors.emailId.message}
+        {errors.email && errors.email.message}
         <br />
 
         <S.Label htmlFor="phone">휴대폰번호</S.Label>
@@ -145,9 +186,7 @@ export default function SignUpStudentForm() {
         />
         {errors.birth && errors.birth.message}
 
-        <S.SignUpButton type="submit" onSubmit="OnSubmit">
-          회원가입
-        </S.SignUpButton>
+        <S.SignUpButton type="submit">회원가입</S.SignUpButton>
       </S.SignUpForm>
     </div>
   );
