@@ -1,28 +1,43 @@
 package com.ssafy.marmar.config;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
-import org.springframework.boot.autoconfigure.security.ConditionalOnDefaultWebSecurity;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
+
+import com.ssafy.marmar.api.service.UserService;
+import com.ssafy.marmar.common.auth.JwtAuthenticationFilter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.SecurityFilterChain;
 
-@EnableWebSecurity
+/**
+ * 인증(authentication) 와 인가(authorization) 처리를 위한 스프링 시큐리티 설정 정의.
+ */
 @Configuration
-@ConditionalOnDefaultWebSecurity
-@ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
-public class SecurityConfig {
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+//    @Autowired
+//    private SsafyUserDetailService ssafyUserDetailService;
 
+    @Autowired
+    private UserService userService;
+
+    // Password 인코딩 방식에 BCrypt 암호화 방식 사용
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    // DAO 기반으로 Authentication Provider를 생성
+    // BCrypt Password Encoder와 UserDetailService 구현체를 설정
 //    @Bean
 //    DaoAuthenticationProvider authenticationProvider() {
 //        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
@@ -31,44 +46,27 @@ public class SecurityConfig {
 //        return daoAuthenticationProvider;
 //    }
 
-    @Bean
-    @Order(SecurityProperties.BASIC_AUTH_ORDER)
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable();
-        http.authorizeRequests()
-                //.antMatchers("/api/student").authenticated()
-                .anyRequest().permitAll();
+    // DAO 기반의 Authentication Provider가 적용되도록 설정
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) {
+//        auth.authenticationProvider(authenticationProvider());
+//    }
 
-        return http.build();
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .httpBasic().disable()
+                .csrf().disable()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // 토큰 기반 인증이므로 세션 사용 하지않음
+                .and()
+                .addFilter(new JwtAuthenticationFilter(authenticationManager(), userService)) //HTTP 요청에 JWT 토큰 인증 필터를 거치도록 필터를 추가
+                .authorizeRequests()
+                .antMatchers("/api/v1/users/me").authenticated()       //인증이 필요한 URL과 필요하지 않은 URL에 대하여 설정
+//                .antMatchers(HttpMethod.DELETE,"/api/v1/users/").authenticated()
+//                .antMatchers(HttpMethod.PATCH,"/api/v1/users/").authenticated()
+                .anyRequest().permitAll()
+//                .antMatchers(HttpMethod.DELETE,"/api/v1/users/").authenticated()
+//                .antMatchers(HttpMethod.PATCH,"/api/v1/users/").authenticated()
+                .and().cors();
     }
-
-//    @Bean
-//    @Order(SecurityProperties.BASIC_AUTH_ORDER)
-//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//        http
-//                .httpBasic().disable()
-//                .csrf().disable()
-//                .antMatchers("/api/v1/users/me").authenticated()       //인증이 필요한 URL과 필요하지 않은 URL에 대하여 설정
-//                .antMatchers(HttpMethod.PATCH,"/api/v1/users/**").authenticated()
-//                .antMatchers(HttpMethod.DELETE,"/api/v1/users/**").authenticated()
-//                .anyRequest().permitAll()
-//                .and().cors();
-//        return http.build();
-//    }
-
-//    @Bean
-//    @Order(SecurityProperties.BASIC_AUTH_ORDER)
-//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//        http
-//                .csrf().disable()
-//                .authorizeRequests()
-//                .antMatchers("/api/student").authenticated()       //인증이 필요한 URL과 필요하지 않은 URL에 대하여 설정
-////                .antMatchers(HttpMethod.PATCH,"/api/student/**").authenticated()
-////                .antMatchers(HttpMethod.DELETE,"/api/student/**").authenticated()
-//                .anyRequest().permitAll()
-//                .and().cors();
-//
-//        return http.build();
-//    }
 }
-

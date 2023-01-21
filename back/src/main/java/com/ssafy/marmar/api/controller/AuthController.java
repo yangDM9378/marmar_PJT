@@ -31,7 +31,7 @@ public class AuthController {
 
         Student student = userService.getStudentByUserId(userId);
         Therapist therapist = userService.getTherapistByUserId(userId);
-        if(student == null || therapist == null) {
+        if(student == null && therapist == null) {
             return ResponseEntity.status(404).body(UserLoginPostRes.of(404,"존재하지 않는 계정입니다.",null));
         } else if(student != null){
             if(passwordEncoder.matches(password, student.getStudentPassword())) {

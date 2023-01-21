@@ -4,6 +4,7 @@ import com.ssafy.marmar.db.model.Student;
 import com.ssafy.marmar.db.model.Therapist;
 import com.ssafy.marmar.db.repository.StudentRepository;
 import com.ssafy.marmar.db.repository.TherapistRepository;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,11 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     TherapistRepository therapistRepository;
+
+    public UserServiceImpl(StudentRepository studentRepository, TherapistRepository therapistRepository) {
+        this.studentRepository = studentRepository;
+        this.therapistRepository = therapistRepository;
+    }
 
     @Override
     public Student getStudentByUserId(String userId) {
