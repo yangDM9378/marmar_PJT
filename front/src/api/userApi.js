@@ -6,8 +6,14 @@ import { authApi } from '../libs/axiosCofing';
 
 const signInApi = payload => authApi.post('auth/login', payload);
 
-const userCheckApi = () =>
-  authApi.get('users/me').then(res => {
+const studentCheckApi = () =>
+  authApi('student/me').then(res => {
+    // console.log(res);
+    return res.data;
+  });
+
+const therapistCheckApi = () =>
+  authApi('therapist/me').then(res => {
     // console.log(res);
     return res.data;
   });
@@ -22,7 +28,8 @@ const idCheckStudentApi = payload => axios.get(`users/${payload}`);
 
 export {
   signInApi,
-  userCheckApi,
+  studentCheckApi,
+  therapistCheckApi,
   signUpTherapistApi,
   signUpStudentApi,
   idCheckTherapistApi,
