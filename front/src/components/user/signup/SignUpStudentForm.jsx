@@ -24,10 +24,11 @@ export default function SignUpStudentForm() {
     useSignUpStudent.mutate({
       id: data.id,
       password: data.password,
+      passwordHelper: data.password_helper,
       name: data.name,
       nameHelper: data.name_helper,
       birth: data.birth,
-      phoneHelpler: data.phone,
+      phoneHelper: data.phone,
       emailId: email[0],
       emailDomain: email[1],
     });
