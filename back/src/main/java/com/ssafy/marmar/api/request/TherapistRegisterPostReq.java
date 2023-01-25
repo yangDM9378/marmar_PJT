@@ -7,16 +7,14 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class StudentRegisterPostRes {
+public class TherapistRegisterPostReq {
 
     String id;
     String password;
-    String passwordHelper;
     String name;
-    String nameHelper;
-    Date birth;
-    String phoneHelper;
+    String phone;
     String emailId;
     String emailDomain;
+    String department;
 
 }
