@@ -5,25 +5,23 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 import useAuth from '../../hooks/queries/useAuth';
 import DevDropDown from './DevDropDown';
+import NavDefault from './NavDefault';
+import NavStudent from './NavStudent';
+import NavTherapist from './NavTherapist';
 
 export default function Navbar() {
-  const { useUserCheck, useLogOut } = useAuth();
-  const { data: user } = useUserCheck();
+  const { useStudentCheck, useTherapistCheck } = useAuth();
+  const { data: student } = useStudentCheck();
+  const { data: therapist } = useTherapistCheck();
   return (
     <S.NavHeader>
       <S.LogoLink to="/">
         <h1>마르마르</h1>
       </S.LogoLink>
       <DevDropDown />
-      {!user && <div>로그인 안 함</div>}
-      {user && (
-        <div>
-          <button type="button" onClick={useLogOut}>
-            로그아웃
-          </button>
-          <div>{user.name}</div>
-        </div>
-      )}
+      {!student && !therapist && <NavDefault />}
+      {student && <NavStudent />}
+      {therapist && <NavTherapist />}
     </S.NavHeader>
   );
 }

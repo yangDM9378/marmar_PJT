@@ -96,7 +96,7 @@ export default function DevDropDown() {
             <Menu.Item>
               {({ active }) => (
                 <Link
-                  to="/DoctorMypage"
+                  to="/TherapistMypage"
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'block px-4 py-2 text-sm',
@@ -109,7 +109,7 @@ export default function DevDropDown() {
             <Menu.Item>
               {({ active }) => (
                 <Link
-                  to="/UserMypage"
+                  to="/StudentMypage"
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'block px-4 py-2 text-sm',
@@ -129,6 +129,19 @@ export default function DevDropDown() {
                   )}
                 >
                   LoginRequiredPage
+                </Link>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <Link
+                  to="/OpenVidu"
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm',
+                  )}
+                >
+                  OpenVidu
                 </Link>
               )}
             </Menu.Item>

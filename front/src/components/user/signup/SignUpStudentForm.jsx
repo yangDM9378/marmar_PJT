@@ -1,57 +1,95 @@
-/* eslint-disable consistent-return */
 /* eslint-disable react/jsx-props-no-spreading */
 
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import tw from 'twin.macro';
+import useSingUp from '../../../hooks/queries/useSingUp';
+import { idCheckStudentApi } from '../../../api/userApi';
 
-export default function SignUpDocForm() {
+export default function SignUpStudentForm() {
+  const { useSignUpStudent } = useSingUp();
+
   const {
     register,
     handleSubmit,
     getValues,
     formState: { errors },
   } = useForm();
-  const onSubmit = data => console.log(data);
+
+  const onSubmit = data => {
+    console.log(data);
+    const email = data.email.split('@');
+    console.log(email);
+    useSignUpStudent.mutate({
+      id: data.id,
+      password: data.password,
+      name: data.name,
+      nameHelper: data.name_helper,
+      birth: data.birth,
+      phoneHelpler: data.phone,
+      emailId: email[0],
+      emailDomain: email[1],
+    });
+  };
+
+  const onCheckId = async id => {
+    console.log(id);
+    const response = await idCheckStudentApi(id);
+    if (response) {
+      alert('중복 아이디입니다.');
+    } else {
+      alert('사용가능한 아이디입니다.');
+    }
+  };
+
   return (
     <div>
-      <S.Header>치료사 회원가입</S.Header>
-
+      <S.Header>사용자 회원가입</S.Header>
+      <div>
+        마르마르와 연결된 기관의 <h3>치료사 정보를 기반</h3>으로 치료사의 정보를
+        입력 바랍니다.
+      </div>
       <S.SignUpForm onSubmit={handleSubmit(onSubmit)}>
-        <S.Label htmlFor="name">치료사 이름</S.Label>
+        <S.Label htmlFor="name_helper">보호자 이름</S.Label>
         <S.Input
-          {...register('therapist_name', { required: true })}
-          id="name"
+          {...register('name_helper', {
+            required: '보호자 이름을 입력해주세요.',
+          })}
+          id="name_helper"
         />
-        {errors.therapist_name && <span>치료사 이름을 입력해주세요.</span>}
+        {errors.name_helper && errors.name_helper.message}
         <br />
 
-        <S.Label htmlFor="department">소속</S.Label>
+        <S.Label htmlFor="name">아이 이름</S.Label>
         <S.Input
-          {...register('therapist_department', { required: true })}
-          id="department"
+          {...register('name', {
+            required: '아이 이름을 입력해주세요.',
+          })}
+          id="name"
         />
-        {errors.therapist_department && <span>소속을 입력해주세요.</span>}
+        {errors.name && errors.name.message}
         <br />
 
         <S.Label htmlFor="id">아이디</S.Label>
         <S.Input
-          {...register('therapist_id', {
+          {...register('id', {
             required: '아이디를 입력해주세요',
             minLength: {
               value: 5,
-              message: '최소 5자 이상의 비밀번호를 입력해주세요.',
+              message: '최소 5자 이상의 아이디를 입력해주세요.',
             },
             maxLength: {
               value: 12,
-              message: '12자 이하의 비밀번호만 사용가능합니다.',
+              message: '12자 이하의 아이디만 사용가능합니다.',
             },
           })}
           id="id"
         />
-        {errors.therapist_id && <span>아이디를 입력해주세요.</span>}
-        <S.IdButton type="submit">중복ID</S.IdButton>
+        <S.IdButton type="button" onClick={() => onCheckId(getValues('id'))}>
+          중복ID
+        </S.IdButton>
+        {errors.id && errors.id.message}
         <br />
 
         <S.Label htmlFor="password">비밀번호</S.Label>
@@ -59,7 +97,7 @@ export default function SignUpDocForm() {
           id="password"
           type="password"
           placeholder="특수문자, 영문, 숫자를 혼용하여 8~16자를 입력해주세요."
-          {...register('therapist_password', {
+          {...register('password', {
             required: '비밀번호를 입력해주세요.',
             pattern: {
               value:
@@ -76,9 +114,7 @@ export default function SignUpDocForm() {
             },
           })}
         />
-        {errors.therapist_password && (
-          <span>{errors.therapist_password.message}</span>
-        )}
+        {errors.password && errors.password.message}
         <br />
 
         <S.Label htmlFor="confirm_password">비밀번호 확인</S.Label>
@@ -96,33 +132,59 @@ export default function SignUpDocForm() {
             },
           })}
         />
-        {errors.confirm_password && (
-          <span>errors.confirm_password.message</span>
-        )}
+        {errors.confirm_password && errors.confirm_password.message}
         <br />
 
-        <S.Label htmlFor="email">이메일</S.Label>
+        <S.Label htmlFor="password_helper">2차 비밀번호</S.Label>
         <S.Input
-          {...register('therapist_emil', {
+          id="password_helper"
+          type="password"
+          placeholder="숫자 4자리를 입력해주세요."
+          {...register('password_helper', {
+            required: '비밀번호를 입력해주세요.',
+            minLength: {
+              value: 4,
+              message: '최소 4자 이상의 비밀번호를 입력해주세요.',
+            },
+            maxLength: {
+              value: 4,
+              message: '4자 이하의 비밀번호만 사용가능합니다.',
+            },
+          })}
+        />
+        {errors.password_helper && errors.password_helper.message}
+        <br />
+
+        <S.Label htmlFor="emailId">이메일</S.Label>
+        <S.Input
+          {...register('email', {
             required: true,
             pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: 'invalid email address',
+              message: '유효한 이메일이 아닙니다.',
             },
           })}
           id="email"
           type="email"
         />
-        {errors.therapist_emil && errors.email.message}
+        {errors.email && errors.email.message}
         <br />
 
         <S.Label htmlFor="phone">휴대폰번호</S.Label>
         <S.Input
-          {...register('therapist_phone', { required: true })}
+          {...register('phone', { required: '휴대폰번호를 입력해주세요.' })}
           id="phone"
         />
-        {errors.therapist_phone && <span>휴대폰번호를 입력해주세요.</span>}
+        {errors.phone && errors.phone.message}
         <br />
+
+        <S.Label htmlFor="birth">생년월일</S.Label>
+        <S.Input
+          {...register('birth', { required: '생년월일을 입력해주세요.' })}
+          id="birth"
+          type="date"
+        />
+        {errors.birth && errors.birth.message}
 
         <S.SignUpButton type="submit">회원가입</S.SignUpButton>
       </S.SignUpForm>
