@@ -7,9 +7,9 @@ const BASE_URL = 'http://localhost:8080/api/v1';
 
 axios.defaults.baseURL = BASE_URL;
 // // 리소스 접근 허용
-axios.defaults.headers['Access-Control-Allow-Origin'] = '*';
+// axios.defaults.headers['Access-Control-Allow-Origin'] = '*';
 // // 서로 다른 도메인간 쿠키 전달 허용
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 export const authApi = axios.create({
   baseURL: BASE_URL,
