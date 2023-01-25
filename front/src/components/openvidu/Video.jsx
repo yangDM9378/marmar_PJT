@@ -1,3 +1,6 @@
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable react/no-unused-class-component-methods */
+/* eslint-disable react/no-unused-state */
 /* eslint-disable no-undef */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-return-await */
@@ -13,6 +16,7 @@ import { OpenVidu } from 'openvidu-browser';
 import axios from 'axios';
 import React, { Component } from 'react';
 import UserVideoComponent from './UserVideoComponent';
+import ClassSection from './ClassSection';
 
 const APPLICATION_SERVER_URL = 'http://localhost:5000/';
 
@@ -247,22 +251,21 @@ class Video extends Component {
     const { myUserName } = this.state;
 
     return (
-      <div className="container">
+      <div className="w-full min-h-screen bg-brand flex justify-center">
         {this.state.session === undefined ? (
-          <div id="join">
-            <div id="img-div">
-              <img
-                src="resources/images/openvidu_grey_bg_transp_cropped.png"
-                alt="OpenVidu logo"
-              />
+          <div
+            id="join"
+            className="w-[70%] h-[500px] my-auto bg-white rounded-2xl p-10"
+          >
+            <div className="text-3xl font-cafe24 text-center">
+              수업 시작하기
             </div>
-            <div id="join-dialog" className="jumbotron vertical-center">
-              <h1> Join a video session </h1>
+            <div id="join-dialog" className="space-y-3">
               <form className="form-group" onSubmit={this.joinSession}>
-                <p>
+                <p className="text-center my-2">
                   <label>Participant: </label>
                   <input
-                    className="form-control"
+                    className="border-2 border-black"
                     type="text"
                     id="userName"
                     value={myUserName}
@@ -270,10 +273,10 @@ class Video extends Component {
                     required
                   />
                 </p>
-                <p>
+                <p className="text-center my-2">
                   <label> Session: </label>
                   <input
-                    className="form-control"
+                    className="border-2 border-black"
                     type="text"
                     id="sessionId"
                     value={mySessionId}
@@ -283,7 +286,7 @@ class Video extends Component {
                 </p>
                 <p className="text-center">
                   <input
-                    className="btn btn-lg btn-success"
+                    className="border-2 p-3 cursor-pointer border-black rounded-lg"
                     name="commit"
                     type="submit"
                     value="JOIN"
@@ -295,53 +298,78 @@ class Video extends Component {
         ) : null}
 
         {this.state.session !== undefined ? (
-          <div id="session">
-            <div id="session-header">
-              <h1 id="session-title">{mySessionId}</h1>
-              <input
-                className="btn btn-large btn-danger"
-                type="button"
-                id="buttonLeaveSession"
-                onClick={this.leaveSession}
-                value="Leave session"
-              />
-            </div>
-
-            {this.state.mainStreamManager !== undefined ? (
-              <div id="main-video" className="col-md-6">
-                <UserVideoComponent
-                  streamManager={this.state.mainStreamManager}
-                />
+          <div id="session" className="grid grid-cols-2 w-full bg-slate-300">
+            <div>
+              <div id="session-header">
+                <h1 id="session-title">{mySessionId}</h1>
                 <input
-                  className="btn btn-large btn-success"
+                  className="p-3 border-2 border-black rounded-xl cursor-pointer"
                   type="button"
-                  id="buttonSwitchCamera"
-                  onClick={this.switchCamera}
-                  value="Switch Camera"
+                  id="buttonLeaveSession"
+                  onClick={this.leaveSession}
+                  value="Leave session"
                 />
-              </div>
-            ) : null}
-            <div id="video-container" className="col-md-6">
-              {this.state.publisher !== undefined ? (
-                <div
-                  className="stream-container col-md-6 col-xs-6"
-                  onClick={() =>
-                    this.handleMainVideoStream(this.state.publisher)
-                  }
+                <button
+                  type="button"
+                  className={`${
+                    this.state.audiostate ? '' : 'line-through'
+                  } mx-2`}
+                  onClick={() => {
+                    this.state.publisher.publishAudio(!this.state.audiostate);
+                    this.setState({ audiostate: !this.state.audiostate });
+                  }}
                 >
-                  <UserVideoComponent streamManager={this.state.publisher} />
+                  음소거
+                </button>
+                <button
+                  type="button"
+                  className={`${this.state.videostate ? '' : 'line-through'}`}
+                  onClick={() => {
+                    this.state.publisher.publishVideo(!this.state.videostate);
+                    this.setState({ videostate: !this.state.videostate });
+                  }}
+                >
+                  비디오
+                </button>
+              </div>
+
+              {this.state.mainStreamManager !== undefined ? (
+                <div id="main-video" className="relative">
+                  <UserVideoComponent
+                    streamManager={this.state.mainStreamManager}
+                  />
+                  {/* <input
+                    className="btn btn-large btn-success"
+                    type="button"
+                    id="buttonSwitchCamera"
+                    onClick={this.switchCamera}
+                    value="Switch Camera"
+                  /> */}
                 </div>
               ) : null}
-              {this.state.subscribers.map((sub, i) => (
-                <div
-                  key={i}
-                  className="stream-container col-md-6 col-xs-6"
-                  onClick={() => this.handleMainVideoStream(sub)}
-                >
-                  <UserVideoComponent streamManager={sub} />
-                </div>
-              ))}
+              <div id="video-container">
+                {/* {this.state.publisher !== undefined ? (
+                  <div
+                    className="stream-container"
+                    onClick={() =>
+                      this.handleMainVideoStream(this.state.publisher)
+                    }
+                  >
+                    <UserVideoComponent streamManager={this.state.publisher} />
+                  </div>
+                ) : null} */}
+                {this.state.subscribers.map((sub, i) => (
+                  <div
+                    key={i}
+                    className="stream-container"
+                    onClick={() => this.handleMainVideoStream(sub)}
+                  >
+                    <UserVideoComponent streamManager={sub} />
+                  </div>
+                ))}
+              </div>
             </div>
+            <ClassSection />
           </div>
         ) : null}
       </div>

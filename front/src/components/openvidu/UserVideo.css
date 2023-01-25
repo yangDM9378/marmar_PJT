@@ -1,19 +1,28 @@
-video {
+.streamcomponent {
   width: 100%;
-  height: auto;
-  float: left;
-  cursor: pointer;
+  height: 80%;
+  border-radius: 20px !important;
+  overflow: hidden;
+  position: relative;
+  margin-top: 20px;
 }
-.streamcomponent div {
+video {
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 3;
+  padding: 0;
+  /*   */
+}
+.streamcomponent > div {
   position: absolute;
-  background: #f8f8f8;
+  top: 0;
+  z-index: 11;
+  background-color: antiquewhite;
   padding-left: 5px;
-  padding-right: 5px;
-  color: #777777;
-  font-weight: bold;
-  border-bottom-right-radius: 4px;
 }
-p{
+
+/* p{
   margin: 0;
-}
+} */
 
