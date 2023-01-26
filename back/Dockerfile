@@ -5,7 +5,7 @@ COPY mvnw.cmd .
 COPY pom.xml .
 COPY src src
 RUN chmod +x .mvn/wrapper/maven-wrapper.jar
-RUN .mvn/wrapper/maven-wrapper.jar bootJAR
+RUN .mvn/wrapper/maven-wrapper.jar spring-boot:run
 
 FROM adoptopenjdk/openjdk8
 COPY --from=builder build/libs/*.jar app.jar
