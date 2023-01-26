@@ -1,11 +1,11 @@
 FROM adoptopenjdk/openjdk8 AS builder
-COPY gradlew .
-COPY gradle gradle
-COPY build.gradle .
-COPY settings.gradle .
+COPY .mvn .mvn
+COPY mvnw .
+COPY mvnw.cmd .
+COPY pom.xml .
 COPY src src
-RUN chmod +x ./gradlew
-RUN ./gradlew bootJAR
+RUN chmod +x ./.mvn
+RUN ./.mvn/maven-wrapper.jar bootJAR
 
 FROM adoptopenjdk/openjdk8
 COPY --from=builder build/libs/*.jar app.jar
