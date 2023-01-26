@@ -12,6 +12,9 @@ module.exports = {
       fontFamily: {
         cafe24: ['Cafe24Ssurround', 'sans-serif'],
       },
+      backgroundImage: {
+        'video-bg': "url('/public/bg.jpg')",
+      },
     },
   },
   plugins: [],

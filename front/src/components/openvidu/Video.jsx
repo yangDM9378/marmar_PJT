@@ -1,3 +1,5 @@
+/* eslint-disable no-sequences */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable react/no-unused-class-component-methods */
 /* eslint-disable react/no-unused-state */
@@ -17,6 +19,7 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import UserVideoComponent from './UserVideoComponent';
 import ClassSection from './ClassSection';
+import VideoModal from './VideoModal';
 
 const APPLICATION_SERVER_URL = 'http://localhost:5000/';
 
@@ -32,16 +35,36 @@ class Video extends Component {
       mainStreamManager: undefined, // Main video of the page. Will be the 'publisher' or one of the 'subscribers'
       publisher: undefined,
       subscribers: [],
+      num: 5,
+      // 모달창 열기
+      modalOpen: false,
     };
 
     this.joinSession = this.joinSession.bind(this);
     this.leaveSession = this.leaveSession.bind(this);
-    this.switchCamera = this.switchCamera.bind(this);
     this.handleChangeSessionId = this.handleChangeSessionId.bind(this);
     this.handleChangeUserName = this.handleChangeUserName.bind(this);
     this.handleMainVideoStream = this.handleMainVideoStream.bind(this);
     this.onbeforeunload = this.onbeforeunload.bind(this);
   }
+
+  // 모달 시작
+  openModal = () => {
+    this.setState({ modalOpen: true });
+  };
+
+  closeModal = () => {
+    this.setState({ modalOpen: false });
+  };
+
+  numPlus = () => {
+    this.setState({ num: this.state.num + 1 });
+  };
+
+  numMinus = () => {
+    this.setState({ num: this.state.num - 1 });
+  };
+  // 모달 끝
 
   componentDidMount() {
     window.addEventListener('beforeunload', this.onbeforeunload);
@@ -208,50 +231,12 @@ class Video extends Component {
     });
   }
 
-  async switchCamera() {
-    try {
-      const devices = await this.OV.getDevices();
-      const videoDevices = devices.filter(
-        device => device.kind === 'videoinput',
-      );
-
-      if (videoDevices && videoDevices.length > 1) {
-        const newVideoDevice = videoDevices.filter(
-          device => device.deviceId !== this.state.currentVideoDevice.deviceId,
-        );
-
-        if (newVideoDevice.length > 0) {
-          // Creating a new publisher with specific videoSource
-          // In mobile devices the default and first camera is the front one
-          const newPublisher = this.OV.initPublisher(undefined, {
-            videoSource: newVideoDevice[0].deviceId,
-            publishAudio: true,
-            publishVideo: true,
-            mirror: true,
-          });
-
-          // newPublisher.once("accessAllowed", () => {
-          await this.state.session.unpublish(this.state.mainStreamManager);
-
-          await this.state.session.publish(newPublisher);
-          this.setState({
-            currentVideoDevice: newVideoDevice[0],
-            mainStreamManager: newPublisher,
-            publisher: newPublisher,
-          });
-        }
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  }
-
   render() {
     const { mySessionId } = this.state;
     const { myUserName } = this.state;
 
     return (
-      <div className="w-full min-h-screen bg-brand flex justify-center">
+      <div className="w-full bg-brand flex justify-center">
         {this.state.session === undefined ? (
           <div
             id="join"
@@ -290,87 +275,74 @@ class Video extends Component {
                     name="commit"
                     type="submit"
                     value="JOIN"
+                    onClick={this.openModal}
                   />
                 </p>
               </form>
             </div>
           </div>
         ) : null}
-
         {this.state.session !== undefined ? (
-          <div id="session" className="grid grid-cols-2 w-full bg-slate-300">
-            <div>
-              <div id="session-header">
-                <h1 id="session-title">{mySessionId}</h1>
-                <input
-                  className="p-3 border-2 border-black rounded-xl cursor-pointer"
-                  type="button"
-                  id="buttonLeaveSession"
-                  onClick={this.leaveSession}
-                  value="Leave session"
-                />
-                <button
-                  type="button"
-                  className={`${
-                    this.state.audiostate ? '' : 'line-through'
-                  } mx-2`}
-                  onClick={() => {
-                    this.state.publisher.publishAudio(!this.state.audiostate);
-                    this.setState({ audiostate: !this.state.audiostate });
-                  }}
-                >
-                  음소거
-                </button>
-                <button
-                  type="button"
-                  className={`${this.state.videostate ? '' : 'line-through'}`}
-                  onClick={() => {
-                    this.state.publisher.publishVideo(!this.state.videostate);
-                    this.setState({ videostate: !this.state.videostate });
-                  }}
-                >
-                  비디오
-                </button>
-              </div>
-
-              {this.state.mainStreamManager !== undefined ? (
-                <div id="main-video" className="relative">
-                  <UserVideoComponent
-                    streamManager={this.state.mainStreamManager}
-                  />
-                  {/* <input
-                    className="btn btn-large btn-success"
-                    type="button"
-                    id="buttonSwitchCamera"
-                    onClick={this.switchCamera}
-                    value="Switch Camera"
-                  /> */}
+          <VideoModal open={this.state.modalOpen}>
+            <div
+              id="session"
+              className="grid grid-cols-3 w-full h-[100vh] bg-video-bg bg-cover"
+            >
+              <div className="grid-cols-1 flex flex-col justify-around">
+                {this.state.mainStreamManager !== undefined ? (
+                  <div id="main-video" className="relative">
+                    <UserVideoComponent
+                      streamManager={this.state.mainStreamManager}
+                    />
+                    <div className="absolute top-0 right-0 space-x-3 pr-2">
+                      <button
+                        type="button"
+                        className="bg-white"
+                        onClick={() => {
+                          this.state.publisher.publishAudio(
+                            !this.state.audiostate,
+                          );
+                          this.setState({ audiostate: !this.state.audiostate });
+                        }}
+                      >
+                        음소거
+                      </button>
+                      <button
+                        type="button"
+                        className="bg-white"
+                        onClick={() => {
+                          this.state.publisher.publishVideo(
+                            !this.state.videostate,
+                          );
+                          this.setState({ videostate: !this.state.videostate });
+                        }}
+                      >
+                        비디오
+                      </button>
+                    </div>
+                  </div>
+                ) : null}
+                <div id="video-container">
+                  {this.state.subscribers.map((sub, i) => (
+                    <div
+                      key={i}
+                      className="stream-container"
+                      onClick={() => this.handleMainVideoStream(sub)}
+                    >
+                      <UserVideoComponent streamManager={sub} />
+                    </div>
+                  ))}
                 </div>
-              ) : null}
-              <div id="video-container">
-                {/* {this.state.publisher !== undefined ? (
-                  <div
-                    className="stream-container"
-                    onClick={() =>
-                      this.handleMainVideoStream(this.state.publisher)
-                    }
-                  >
-                    <UserVideoComponent streamManager={this.state.publisher} />
-                  </div>
-                ) : null} */}
-                {this.state.subscribers.map((sub, i) => (
-                  <div
-                    key={i}
-                    className="stream-container"
-                    onClick={() => this.handleMainVideoStream(sub)}
-                  >
-                    <UserVideoComponent streamManager={sub} />
-                  </div>
-                ))}
               </div>
+              <ClassSection
+                className="cols-2"
+                close={(this.closeModal, this.leaveSession)}
+                nums={this.state.num}
+                plus={this.numPlus}
+                minus={this.numMinus}
+              />
             </div>
-            <ClassSection />
-          </div>
+          </VideoModal>
         ) : null}
       </div>
     );
