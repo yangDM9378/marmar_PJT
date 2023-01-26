@@ -4,7 +4,7 @@ COPY mvnw .
 COPY mvnw.cmd .
 COPY pom.xml .
 COPY src src
-RUN chmod +x ./.mvn
+RUN chmod +x .mvn
 RUN .mvn/maven-wrapper.jar bootJAR
 
 FROM adoptopenjdk/openjdk8
