@@ -4,6 +4,7 @@ COPY mvnw .
 COPY mvnw.cmd .
 COPY pom.xml .
 COPY src src
+RUN mvn -version
 RUN mvn package
 RUN chmod +x .mvn/wrapper/maven-wrapper.jar
 RUN .mvn/wrapper/maven-wrapper.jar spring-boot:run
