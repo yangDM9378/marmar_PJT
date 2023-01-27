@@ -54,4 +54,8 @@ public class Therapist {
 //    @OneToMany(mappedBy = "student", cascade = CascadeType.REMOVE)
 //    List<Therapist> therapists;
 
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="roomNum")
+    private ClassRoom classRoom; // DB는 오브젝트를 저장할 수 없다. FK, 자바는 오브젝트를 저장할 수 있다.
+
 }
