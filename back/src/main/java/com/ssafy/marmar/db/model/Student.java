@@ -1,5 +1,6 @@
 package com.ssafy.marmar.db.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,7 +10,8 @@ import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
+
+//@JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd", timezone="Asia/Seoul")
 
 @Data
 @NoArgsConstructor
@@ -17,41 +19,47 @@ import java.util.List;
 @Builder
 @Entity
 @DynamicInsert
-public class Therapist {
+public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int num;
 
     // @Enumerated(EnumType.STRING)
-    @ColumnDefault("'THERAPIST'")
+    @ColumnDefault("'STUDENT'")
     private String role;
 
     @Column(nullable = false, length = 100)
-    private String therapistId;
+    private String studentId;
 
     @Column(nullable = false, length = 100)
-    private String therapistPassword;
+    private String studentPassword;
 
     @Column(nullable = false, length = 100)
-    private String therapistName;
+    private String studentPasswordHelper;
 
     @Column(nullable = false, length = 100)
-    private String therapistDepartment;
+    private String studentNameHelper;
 
     @Column(nullable = false, length = 100)
-    private String therapistEmailId;
+    private String studentName;
 
     @Column(nullable = false, length = 100)
-    private String therapistEmailDomain;
+    private Date studentBirth;
 
     @Column(nullable = false, length = 100)
-    private String therapistPhone;
+    private String studentPhoneHelper;
+
+    @Column(nullable = false, length = 100)
+    private String studentEmailId;
+
+    @Column(nullable = false, length = 100)
+    private String studentEmailDomain;
 
     @ColumnDefault("false")
     private boolean isOngoing;
 
-//    @OneToMany(mappedBy = "student", cascade = CascadeType.REMOVE)
-//    List<Therapist> therapists;
-
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="therapistNum")
+    private Therapist therapist; // DB는 오브젝트를 저장할 수 없다. FK, 자바는 오브젝트를 저장할 수 있다.
 }
