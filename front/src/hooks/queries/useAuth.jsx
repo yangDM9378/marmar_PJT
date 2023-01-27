@@ -69,6 +69,8 @@ export default function useAuth() {
   useEffect(() => {
     if (localStorage.getItem('token')) {
       setIsLogin(true);
+      setStudent(true);
+      setTherapist(true);
     }
   }, [useSignIn]);
 

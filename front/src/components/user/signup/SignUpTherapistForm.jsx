@@ -25,7 +25,8 @@ export default function SignUpTherapistForm() {
       id: data.id,
       password: data.password,
       name: data.name,
-      phoneHelpler: data.phone,
+      phone: data.phone,
+      department: data.department,
       emailId: email[0],
       emailDomain: email[1],
     });

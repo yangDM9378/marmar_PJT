@@ -22,9 +22,9 @@ const signUpTherapistApi = payload => axios.post('therapist', payload);
 
 const signUpStudentApi = payload => axios.post('student', payload);
 
-const idCheckTherapistApi = payload => axios.get(`users/${payload}`);
+const idCheckTherapistApi = payload => axios.get(`therapist/${payload}`);
 
-const idCheckStudentApi = payload => axios.get(`users/${payload}`);
+const idCheckStudentApi = payload => axios.get(`student/${payload}`);
 
 export {
   signInApi,
