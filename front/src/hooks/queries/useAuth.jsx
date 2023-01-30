@@ -46,6 +46,9 @@ export default function useAuth() {
       onSuccess: () => {
         localStorage.setItem('student', 'student');
       },
+      onError: () => {
+        localStorage.clear();
+      },
       retry: false,
     });
 
@@ -56,6 +59,9 @@ export default function useAuth() {
       enabled: isLogin && therapist,
       onSuccess: () => {
         localStorage.setItem('therapist', 'therapist');
+      },
+      onError: () => {
+        localStorage.clear();
       },
       retry: false,
     });

@@ -1,5 +1,7 @@
+/* eslint-disable no-const-assign */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
+import Game from './Game';
 
 export default function ClassSection(props) {
   const { close, nums, plus, minus } = props;
@@ -25,6 +27,7 @@ export default function ClassSection(props) {
           -
         </button>
       </div>
+      <Game />
     </div>
   );
 }
