@@ -26,6 +26,7 @@ export default function useAuth() {
       console.log(error);
     },
     onSuccess: (data, variables) => {
+      localStorage.clear();
       console.log('success', data, variables);
       localStorage.setItem('token', data.data.accessToken);
       client.invalidateQueries(['useStudentCheck']);
