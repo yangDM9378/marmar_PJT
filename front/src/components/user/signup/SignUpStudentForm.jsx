@@ -37,7 +37,8 @@ export default function SignUpStudentForm() {
   const onCheckId = async id => {
     console.log(id);
     const response = await idCheckStudentApi(id);
-    if (response) {
+    console.log(response.data);
+    if (!response.data) {
       alert('중복 아이디입니다.');
     } else {
       alert('사용가능한 아이디입니다.');

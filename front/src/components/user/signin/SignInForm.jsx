@@ -36,7 +36,11 @@ export default function SignInForm() {
     <S.SignInForm onSubmit={handleSubmit(onSignIn)}>
       <S.Input {...register('id')} placeholder="아이디" />
       <S.ErrorMsg>{errors.id?.message}</S.ErrorMsg>
-      <S.Input {...register('password')} placeholder="비밀번호" />
+      <S.Input
+        {...register('password')}
+        type="password"
+        placeholder="비밀번호"
+      />
       <S.ErrorMsg>{errors.password?.message}</S.ErrorMsg>
       <S.FindBox>
         <button type="button" onClick={onFindId}>
