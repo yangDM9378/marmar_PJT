@@ -25,6 +25,7 @@ dependencies {
     api 'org.springframework.boot:spring-boot-starter-security:2.7.7'
     api 'org.springframework.boot:spring-boot-starter-web:2.7.7'
     api 'org.projectlombok:lombok:1.18.24'
+    api 'io.openvidu:openvidu-java-client:2.25.0'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
     runtimeOnly 'org.springframework.boot:spring-boot-devtools:2.7.7'
     runtimeOnly 'com.mysql:mysql-connector-j:8.0.31'
