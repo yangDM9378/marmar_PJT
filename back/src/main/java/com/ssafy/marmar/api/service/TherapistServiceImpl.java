@@ -53,7 +53,7 @@ public class TherapistServiceImpl implements TherapistService {
     @Override
     public List<StudentSearchRes> studentSearchList(String searchKeyword) throws Exception {
 
-        List<Student> students = studentRepository.findByStudentNameContaining(searchKeyword);
+        List<Student> students = studentRepository.findstudent(searchKeyword);
         List<StudentSearchRes> studentList = new ArrayList<>();
 
         for(Student student : students){

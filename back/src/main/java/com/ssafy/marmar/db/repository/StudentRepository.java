@@ -18,10 +18,10 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
     Optional<Student> findByStudentId(String userId);
     Student save(Student student);
 
-//    @Query(value = "SELECT * from student where name like '%:search%' AND therapist_num = null", nativeQuery = true)
-//    List<Student> findByStudentNameContaining(@Param("search")String searchKeyword) throws Exception;
+    @Query("SELECT s from Student s where s.studentName like %:search% AND s.therapist is null")
+    List<Student> findstudent(@Param("search")String search) throws Exception;
 
-    List<Student> findByStudentNameContaining(String searchKeyword);
+//    List<Student> findByStudentNameContaining(String searchKeyword);
 
     List<Student> findByTherapistNum(int therapistNum);
 
