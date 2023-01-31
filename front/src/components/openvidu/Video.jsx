@@ -35,7 +35,6 @@ class Video extends Component {
       mainStreamManager: undefined, // Main video of the page. Will be the 'publisher' or one of the 'subscribers'
       publisher: undefined,
       subscribers: [],
-      num: 5,
       // 모달창 열기
       modalOpen: false,
     };
@@ -57,14 +56,6 @@ class Video extends Component {
     this.setState({ modalOpen: false });
   };
 
-  numPlus = () => {
-    console.log(this.state.num);
-    this.setState({ num: this.state.num + 1 });
-  };
-
-  numMinus = () => {
-    this.setState({ num: this.state.num - 1 });
-  };
   // 모달 끝
 
   componentDidMount() {
@@ -160,7 +151,6 @@ class Video extends Component {
           mySession
             .connect(token, {
               clientData: this.state.myUserName,
-              num: this.state.num,
             })
             .then(async () => {
               // --- 5) Get your own camera stream ---
@@ -323,15 +313,6 @@ class Video extends Component {
                       >
                         비디오
                       </button>
-                      <button
-                        type="button"
-                        className="bg-white"
-                        onClick={() => {
-                          this.setState({ num: this.state.num + 1 });
-                        }}
-                      >
-                        {this.state.num}
-                      </button>
                     </div>
                   </div>
                 ) : null}
@@ -350,9 +331,6 @@ class Video extends Component {
               <ClassSection
                 className="cols-2"
                 close={(this.closeModal, this.leaveSession)}
-                nums={this.state.num}
-                plus={this.numPlus}
-                minus={this.numMinus}
                 sessionId={mySessionId}
                 streamManager={this.state.publisher}
               />
