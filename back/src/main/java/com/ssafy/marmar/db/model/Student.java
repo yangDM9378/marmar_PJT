@@ -59,7 +59,6 @@ public class Student {
     @ColumnDefault("false")
     private boolean isOngoing;
 
-    @ColumnDefault("null")
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="therapistNum")
     private Therapist therapist; // DB는 오브젝트를 저장할 수 없다. FK, 자바는 오브젝트를 저장할 수 있다.
