@@ -21,7 +21,7 @@ import UserVideoComponent from './UserVideoComponent';
 import ClassSection from './ClassSection';
 import VideoModal from './VideoModal';
 
-const APPLICATION_SERVER_URL = 'http://localhost:5000/';
+const APPLICATION_SERVER_URL = 'http://localhost:8080/';
 
 class Video extends Component {
   constructor(props) {
