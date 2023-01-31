@@ -19,11 +19,14 @@ export default function MypageSelectStudentModal({ isOpen, close }) {
     data: students,
   } = useQuery({
     queryKey: ['students', search],
-    queryFn: searchStudentApi,
+    queryFn: () => searchStudentApi(search),
     enabled: !!search,
-    staleTime: 5000,
     onSuccess: () => {
+      console.log(search);
       console.log(students);
+    },
+    onError: () => {
+      console.log(search);
     },
   });
 
