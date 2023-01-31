@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
+import ReactModal from 'react-modal';
 import App from './App';
 // eslint-disable-next-line
 import reportWebVitals from './reportWebVitals';
@@ -20,6 +21,8 @@ import SignUpStudent from './pages/user/SignUpStudent';
 import SignUpTherapist from './pages/user/SignUpTherapist';
 import SignUp from './pages/user/SignUp';
 import registerServiceWorker from './registerServiceWorker';
+
+ReactModal.setAppElement('#root');
 
 const router = createBrowserRouter([
   {
@@ -42,7 +45,14 @@ const router = createBrowserRouter([
       { path: '/SignUpTherapist', element: <SignUpTherapist /> },
       { path: '/SpeechTherapyClass', element: <SpeechTherapyClass /> },
       { path: '/SuffixTherapyClass', element: <SuffixTherapyClass /> },
-      { path: '/TherapistMypage', element: <TherapistMypage /> },
+      {
+        path: '/TherapistMypage',
+        element: (
+          <ProtectedRoute>
+            <TherapistMypage />
+          </ProtectedRoute>
+        ),
+      },
       { path: '/StudentMypage', element: <StudentMypage /> },
       { path: '/OpenVidu', element: <OpenVidu /> },
       {

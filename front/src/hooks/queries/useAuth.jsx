@@ -47,7 +47,7 @@ export default function useAuth() {
         localStorage.setItem('student', 'student');
       },
       onError: () => {
-        localStorage.clear();
+        localStorage.removeItem('student');
       },
       retry: false,
     });
@@ -61,7 +61,7 @@ export default function useAuth() {
         localStorage.setItem('therapist', 'therapist');
       },
       onError: () => {
-        localStorage.clear();
+        localStorage.removeItem('therapist');
       },
       retry: false,
     });

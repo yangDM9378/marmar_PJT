@@ -11,13 +11,6 @@ export default class UserVideoComponent extends Component {
       .clientData;
   }
 
-  getNum() {
-    console.log(
-      JSON.parse(this.props.streamManager.stream.connection.data).num,
-    );
-    return JSON.parse(this.props.streamManager.stream.connection.data).num;
-  }
-
   render() {
     return (
       <div>
@@ -26,7 +19,6 @@ export default class UserVideoComponent extends Component {
             <OpenViduVideoComponent streamManager={this.props.streamManager} />
             <div>
               <p>{this.getNicknameTag()}</p>
-              <p>{this.getNum()}</p>
             </div>
           </div>
         ) : null}
