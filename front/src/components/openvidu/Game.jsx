@@ -6,9 +6,12 @@ import { io } from 'socket.io-client';
 
 const socket = io.connect('http://localhost:4000');
 
-export default function Game() {
+export default function Game(props) {
+  const { sessionId } = props;
+
   const [state, setState] = useState({ message: '', name: '' });
   const [chat, setChat] = useState([]);
+  const [text, setText] = useState('클릭');
 
   useEffect(() => {
     socket.on('message', ({ name, message }) => {
@@ -20,11 +23,11 @@ export default function Game() {
         click();
       }
       setChat(chat.concat(mes));
-      console.log(chat);
+      // console.log(chat);
     });
   }, []);
   const click = () => {
-    alert('qwdqw');
+    setText('상대방이 클릭함');
   };
 
   const onTextChange = e => {
@@ -34,6 +37,8 @@ export default function Game() {
   const onMessageSubmit = e => {
     e.preventDefault();
     const { name, message } = state;
+    console.log(sessionId);
+    socket.emit('joinRoom', { roomName: sessionId });
     socket.emit('message', { name, message });
     setState({ message: '', name });
   };
@@ -55,6 +60,7 @@ export default function Game() {
           <input
             type="text"
             name="name"
+            className="border-2 border-black"
             onChange={e => onTextChange(e)}
             value={state.name}
             label="Name"
@@ -64,6 +70,7 @@ export default function Game() {
           <input
             type="text"
             name="message"
+            className="border-2 border-black"
             onChange={e => onTextChange(e)}
             value={state.message}
             id="outlined-multiline-static"
@@ -71,6 +78,10 @@ export default function Game() {
           />
         </div>
         <button type="submit">Send Message</button>
+        <button type="button" className="border-2 p-3">
+          클릭
+        </button>
+        <div className="border-2 m-3 p-3">{text}</div>
       </form>
       <div className="render-chat">
         <h1>Chat log</h1>

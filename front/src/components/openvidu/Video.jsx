@@ -353,6 +353,7 @@ class Video extends Component {
                 nums={this.state.num}
                 plus={this.numPlus}
                 minus={this.numMinus}
+                sessionId={mySessionId}
                 streamManager={this.state.publisher}
               />
             </div>

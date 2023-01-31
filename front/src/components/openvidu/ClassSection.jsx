@@ -4,7 +4,7 @@ import React from 'react';
 import Game from './Game';
 
 export default function ClassSection(props) {
-  const { close, nums, plus, minus } = props;
+  const { close, nums, plus, minus, sessionId } = props;
   return (
     <div>
       <button type="button" onClick={close}>
@@ -27,7 +27,7 @@ export default function ClassSection(props) {
           -
         </button>
       </div>
-      <Game />
+      <Game sessionId={sessionId} />
     </div>
   );
 }
