@@ -5,6 +5,7 @@ import com.ssafy.marmar.api.response.StudentRes;
 import com.ssafy.marmar.api.service.StudentService;
 import com.ssafy.marmar.api.service.TherapistService;
 import com.ssafy.marmar.common.auth.StudentDetails;
+import com.ssafy.marmar.common.auth.TherapistDetails;
 import com.ssafy.marmar.db.model.Student;
 import com.ssafy.marmar.db.model.Therapist;
 import com.ssafy.marmar.dto.ResponseDto;
@@ -58,4 +59,19 @@ public class StudentController {
 
         return ResponseEntity.status(200).body(StudentRes.of(user));
     }
+
+    @PutMapping("/selectTherapist/{studentNum}")
+    public ResponseEntity<Integer> updateTherapistNum(@PathVariable int studentNum, Authentication authentication) throws Exception {
+
+
+        TherapistDetails userDetails = (TherapistDetails)authentication.getDetails();
+        String userId = userDetails.getUsername();
+        Therapist user = therapistService.getUserByUserId(userId);
+        int therapistNum = user.getNum();
+        System.out.println(studentNum + " " + therapistNum);
+        studentService.updateTherapistNum(studentNum, therapistNum);
+
+        return ResponseEntity.status(200).body(200);
+    }
+
 }

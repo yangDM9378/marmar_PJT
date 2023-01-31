@@ -2,6 +2,7 @@ package com.ssafy.marmar.api.controller;
 
 import com.ssafy.marmar.api.request.TherapistRegisterPostReq;
 import com.ssafy.marmar.api.response.StudentRes;
+import com.ssafy.marmar.api.response.StudentSearchRes;
 import com.ssafy.marmar.api.response.TherapistRes;
 import com.ssafy.marmar.api.service.StudentService;
 import com.ssafy.marmar.api.service.TherapistService;
@@ -16,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
@@ -60,6 +62,25 @@ public class TherapistController {
         Therapist user = therapistService.getUserByUserId(userId);
 
         return ResponseEntity.status(200).body(TherapistRes.of(user));
+    }
+
+    @GetMapping("/searchStudent/{search}")
+    public ResponseEntity<List<StudentSearchRes>> searchStudent(@PathVariable String search) throws Exception {
+        List<StudentSearchRes> list = therapistService.studentSearchList(search);
+        return ResponseEntity.status(200).body(list);
+    }
+
+    @GetMapping("/mypage/studentList")
+    public ResponseEntity<List<StudentSearchRes>> studentList(Authentication authentication){
+
+        TherapistDetails userDetails = (TherapistDetails)authentication.getDetails();
+        String userId = userDetails.getUsername();
+        Therapist user = therapistService.getUserByUserId(userId);
+        int therapistNum = user.getNum();
+
+        List<StudentSearchRes> list = therapistService.studentList(therapistNum);
+//        List<StudentSearchRes> list = therapistService.studentSearchList(search);
+        return ResponseEntity.status(200).body(list);
     }
 
 }

@@ -42,4 +42,9 @@ public class StudentServiceImpl implements StudentService {
 
         return studentRepository.save(student);
     }
+
+    @Override
+    public void updateTherapistNum(int studentNum, int therapistNum) throws Exception {
+        studentRepository.updateTherapist(studentNum, therapistNum);
+    }
 }
