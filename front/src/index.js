@@ -8,8 +8,6 @@ import reportWebVitals from './reportWebVitals';
 import Home from './pages/common/Home';
 import NotFound from './pages/common/NotFound';
 import SignIn from './pages/user/SignIn';
-import SpeechTherapyClass from './pages/program/SpeechTherapyClass';
-import SuffixTherapyClass from './pages/program/SuffixTherapyClass';
 import TherapistMypage from './pages/mypage/TherapistMypage';
 import StudentMypage from './pages/mypage/StudentMypage';
 import LoginRequiredPage from './pages/dev/LoginRequiredPage';
@@ -20,6 +18,12 @@ import SignUpStudent from './pages/user/SignUpStudent';
 import SignUpTherapist from './pages/user/SignUpTherapist';
 import SignUp from './pages/user/SignUp';
 import registerServiceWorker from './registerServiceWorker';
+import ClockDifficulty from './pages/program/clock/ClockDifficulty';
+import ClockProgram from './pages/program/clock/ClockProgram';
+import ClockFinish from './pages/program/clock/ClockFinish';
+import WordDifficulty from './pages/program/word/WordDifficulty';
+import WordProgram from './pages/program/word/WordProgram';
+import WordFinish from './pages/program/word/WordFinish';
 
 const router = createBrowserRouter([
   {
@@ -28,7 +32,10 @@ const router = createBrowserRouter([
     errorElement: <NotFound />, // 페이지가 존재하지 않을 경우에는 NotFound.jsx를 보여준다.
     // App이라는 부모 컴포넌트 안에 outlet을 사용하여 children을 보여준다.
     children: [
+      // Home
       { index: true, path: '/', element: <Home /> },
+
+      // Login
       {
         path: '/SignIn',
         element: (
@@ -37,14 +44,6 @@ const router = createBrowserRouter([
           </LoggedRoute>
         ),
       },
-      { path: '/SignUp', element: <SignUp /> },
-      { path: '/SignUpStudent', element: <SignUpStudent /> },
-      { path: '/SignUpTherapist', element: <SignUpTherapist /> },
-      { path: '/SpeechTherapyClass', element: <SpeechTherapyClass /> },
-      { path: '/SuffixTherapyClass', element: <SuffixTherapyClass /> },
-      { path: '/TherapistMypage', element: <TherapistMypage /> },
-      { path: '/StudentMypage', element: <StudentMypage /> },
-      { path: '/OpenVidu', element: <OpenVidu /> },
       {
         path: '/LoginRequiredPage',
         element: (
@@ -53,6 +52,26 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+
+      // Sign up
+      { path: '/SignUp', element: <SignUp /> },
+      { path: '/SignUpStudent', element: <SignUpStudent /> },
+      { path: '/SignUpTherapist', element: <SignUpTherapist /> },
+
+      // My page
+      { path: '/TherapistMypage', element: <TherapistMypage /> },
+      { path: '/StudentMypage', element: <StudentMypage /> },
+
+      // Openvidu
+      { path: '/OpenVidu', element: <OpenVidu /> },
+
+      // Program
+      { path: '/WordDifficulty', element: <WordDifficulty /> },
+      { path: '/WordProgram', element: <WordProgram /> },
+      { path: '/WordFinish', element: <WordFinish /> },
+      { path: '/ClockDifficulty', element: <ClockDifficulty /> },
+      { path: '/ClockProgram', element: <ClockProgram /> },
+      { path: '/ClockFinish', element: <ClockFinish /> },
     ],
   },
 ]);
