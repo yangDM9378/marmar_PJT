@@ -5,6 +5,7 @@ import tw from 'twin.macro';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useQuery } from '@tanstack/react-query';
 import { searchStudentApi } from '../../../api/mypageApi';
+import SearchList from './SearchList';
 
 export default function MypageSelectStudentModal({ isOpen, close }) {
   const [search, setSearch] = useState('');
@@ -34,7 +35,7 @@ export default function MypageSelectStudentModal({ isOpen, close }) {
     <ReactModal
       isOpen={isOpen}
       onRequestClose={() => close()}
-      className="h-[300px] w-[800px] bg-white rounded-xl m-auto mt-20"
+      className="h-fit w-[700px] bg-slate-400 rounded-xl m-auto mt-20 p-20"
     >
       <S.ModalHeader>
         <div>학생 선택하기</div>
@@ -44,10 +45,13 @@ export default function MypageSelectStudentModal({ isOpen, close }) {
       </S.ModalHeader>
       <S.ModalSeachDiv>
         <AiOutlineSearch
-          className="absolute right-1 bottom-3"
+          className="absolute right-1 top-3"
           onClick={onSearch}
         />
         <S.ModalSeachInput type="text" onChange={onInput} />
+        {students &&
+          students.data.length > 0 &&
+          students.data.map(student => <SearchList student={student} />)}
       </S.ModalSeachDiv>
     </ReactModal>
   );
