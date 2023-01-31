@@ -58,6 +58,7 @@ class Video extends Component {
   };
 
   numPlus = () => {
+    console.log(this.state.num);
     this.setState({ num: this.state.num + 1 });
   };
 
@@ -322,6 +323,15 @@ class Video extends Component {
                       >
                         비디오
                       </button>
+                      <button
+                        type="button"
+                        className="bg-white"
+                        onClick={() => {
+                          this.setState({ num: this.state.num + 1 });
+                        }}
+                      >
+                        {this.state.num}
+                      </button>
                     </div>
                   </div>
                 ) : null}
@@ -343,6 +353,7 @@ class Video extends Component {
                 nums={this.state.num}
                 plus={this.numPlus}
                 minus={this.numMinus}
+                sessionId={mySessionId}
                 streamManager={this.state.publisher}
               />
             </div>
@@ -377,7 +388,9 @@ class Video extends Component {
       `${APPLICATION_SERVER_URL}api/sessions`,
       { customSessionId: sessionId },
       {
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+        },
       },
     );
     return response.data; // The sessionId
