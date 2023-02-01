@@ -1,46 +1,21 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import styled from 'styled-components';
 import tw from 'twin.macro';
-import React from 'react';
-import SpeechRecognition, {
-  useSpeechRecognition,
-} from 'react-speech-recognition';
+import React, { useContext } from 'react';
+import { SttContext } from '../../context/SttContext';
 
-export default function ReactSpeechRecognition({ onStop }) {
-  const { transcript, listening, browserSupportsSpeechRecognition } =
-    useSpeechRecognition();
-
-  const speechStart = () =>
-    SpeechRecognition.startListening({
-      continuous: true,
-      language: 'ko',
-    });
-
-  const speechStop = () => {
-    console.log(transcript);
-    SpeechRecognition.abortListening({
-      continuous: false,
-    });
-    console.log(transcript);
-    console.log(listening);
-    onStop(transcript);
-  };
-
-  if (!browserSupportsSpeechRecognition) {
-    return <span>speaking</span>;
-  }
+export default function ReactSpeechRecognition() {
+  const { speechStart, speechStop } = useContext(SttContext);
 
   return (
     <S.RecognitionSection>
-      {!listening && (
-        <button type="button" onClick={speechStart}>
-          녹음시작
-        </button>
-      )}
-      {listening && (
-        <button type="button" onClick={speechStop}>
-          녹음완료
-        </button>
-      )}
+      <button type="button" onClick={speechStart}>
+        녹음시작
+      </button>
+
+      <button type="button" onClick={speechStop}>
+        녹음완료
+      </button>
     </S.RecognitionSection>
   );
 }

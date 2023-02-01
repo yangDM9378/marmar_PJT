@@ -1,16 +1,22 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/destructuring-assignment */
-import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
+import React, { useContext, useEffect } from 'react';
+import { SttContext } from '../../context/SttContext';
 
-export default function ClockGame({ num, clockSpeakingQuestion, imagePath }) {
+export default function ClockGame({ imagePath, voicePath, watchQuestion }) {
+  const { getQuestion } = useContext(SttContext);
+
+  useEffect(() => {
+    getQuestion(watchQuestion);
+  }, []);
+
   return (
     <S.Game>
-      <S.Img
-        src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
-        alt=""
-      />
-      <S.SpeakingQuestion>{clockSpeakingQuestion}</S.SpeakingQuestion>
+      imagePath: <S.Img src={imagePath} />
+      voicePath: {voicePath}
+      <S.SpeakingQuestion>watchQuestion: {watchQuestion}</S.SpeakingQuestion>
     </S.Game>
   );
 }
