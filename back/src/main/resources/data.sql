@@ -78,12 +78,12 @@ CREATE TABLE `wordspeaking` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
-insert into marmar.wordspeaking values (1, "high", "aa", "aa", "aa");
-insert into marmar.wordspeaking values (2, "high", "aa123", "aa123", "aa123");
+insert into marmar.wordspeaking values (1, "high", "word/img/1.png", "12321312", "사과");
+insert into marmar.wordspeaking values (2, "high", "word/img/2.png", "aa123", "aa123");
 insert into marmar.wordspeaking values (3, "middle", "ㅠㅠ", "ㅠㅠ", "ㅠㅠ");
 insert into marmar.wordspeaking values (4, "low", "ㅇㅇ", "ㅇㅇ", "ㅇㅇ");
-insert into marmar.wordspeaking values (5, "high", "aa1", "aa", "aa");
-insert into marmar.wordspeaking values (6, "high", "aa1231", "aa123", "aa123");
+insert into marmar.wordspeaking values (5, "high", "word/img/3.png", "aa", "aa");
+insert into marmar.wordspeaking values (6, "high", "word/img/4.png", "aa123", "aa123");
 insert into marmar.wordspeaking values (7, "middle", "ㅠㅠ1", "ㅠㅠ", "ㅠㅠ");
 insert into marmar.wordspeaking values (8, "low", "ㅇㅇ1", "ㅇㅇ", "ㅇㅇ");
 insert into marmar.wordspeaking values (9, "high", "aa2", "aa", "aa");

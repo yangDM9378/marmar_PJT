@@ -7,6 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { getWordApi } from '../../../api/programApi';
 import WordGame from '../../../components/program/WordGame';
 import ReactSpeechRecognition from '../../../components/program/ReactSpeechRecognition';
+import TextToSpeech from '../../../components/program/TextToSpeech';
 
 export default function WordProgram() {
   const location = useLocation();
@@ -57,6 +58,7 @@ export default function WordProgram() {
         </button>
       </S.WordBtnAndGame>
       <ReactSpeechRecognition onStop={handleStop} />
+      <TextToSpeech />
     </S.WordProgramSection>
   );
 }
