@@ -18,8 +18,7 @@ import javax.persistence.*;
 public class Programroom {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int num;
+    private String name;
 
     private int wordQuestionCnt;
 
