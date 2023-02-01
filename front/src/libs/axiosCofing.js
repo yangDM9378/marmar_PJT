@@ -3,7 +3,7 @@
 // axiosConfig
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8080/api/v1';
+const BASE_URL = 'http://15.164.244.54/api';
 
 axios.defaults.baseURL = BASE_URL;
 // // 리소스 접근 허용
