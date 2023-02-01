@@ -6,6 +6,7 @@ import { delRegisteredStudentApi } from '../../../../api/mypageApi';
 export default function MyPageStudentListItem(props) {
   const { student } = props;
   const onDeleteRegister = () => {
+    console.log('qwdwq');
     delRegisteredStudentApi(student.num);
   };
   return (

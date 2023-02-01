@@ -20,21 +20,23 @@ import React, { Component } from 'react';
 import UserVideoComponent from './UserVideoComponent';
 import ClassSection from './ClassSection';
 import VideoModal from './VideoModal';
+import SelectStudent from './makeroom/SelectStudent';
+import { therapistCheckApi } from '../../api/userApi';
 
 const APPLICATION_SERVER_URL = 'http://localhost:8080/api/v1/openvidu/';
-
 class Video extends Component {
   constructor(props) {
     super(props);
 
     // These properties are in the state's component in order to re-render the HTML whenever their values change
     this.state = {
-      mySessionId: 'SessionA',
-      myUserName: `Participant${Math.floor(Math.random() * 100)}`,
+      mySessionId: '',
+      myUserName: ``,
       session: undefined,
       mainStreamManager: undefined, // Main video of the page. Will be the 'publisher' or one of the 'subscribers'
       publisher: undefined,
       subscribers: [],
+      studentNum: 0,
       // 모달창 열기
       modalOpen: false,
     };
@@ -55,11 +57,19 @@ class Video extends Component {
   closeModal = () => {
     this.setState({ modalOpen: false });
   };
-
   // 모달 끝
 
-  componentDidMount() {
+  activeStudent = num => {
+    this.setState({ studentNum: num });
+  };
+
+  async componentDidMount() {
     window.addEventListener('beforeunload', this.onbeforeunload);
+    const res = await therapistCheckApi();
+    await this.setState({
+      mySessionId: res.therapistId,
+      myUserName: res.therapistName,
+    });
   }
 
   componentWillUnmount() {
@@ -113,6 +123,7 @@ class Video extends Component {
         session: this.OV.initSession(),
       },
       () => {
+        console.log(this.state.studentNum);
         const mySession = this.state.session;
 
         // --- 3) Specify the actions when events take place in the session ---
@@ -218,10 +229,11 @@ class Video extends Component {
     this.setState({
       session: undefined,
       subscribers: [],
-      mySessionId: 'SessionA',
-      myUserName: `Participant${Math.floor(Math.random() * 100)}`,
+      mySessionId: '',
+      myUserName: ``,
       mainStreamManager: undefined,
       publisher: undefined,
+      studentNum: 0,
     });
   }
 
@@ -241,6 +253,7 @@ class Video extends Component {
             </div>
             <div id="join-dialog" className="space-y-3">
               <form className="form-group" onSubmit={this.joinSession}>
+                <SelectStudent />
                 <p className="text-center my-2">
                   <label>Participant: </label>
                   <input

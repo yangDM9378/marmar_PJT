@@ -12,7 +12,7 @@ const getRegisteredStudentApi = () => {
   return authApi.get('therapist/mypage/studentList');
 };
 const delRegisteredStudentApi = payload => {
-  return authApi.put(`student/selectTherapist/${payload}`);
+  return authApi.put(`student/deleteTherapist/${payload}`);
 };
 
 export {

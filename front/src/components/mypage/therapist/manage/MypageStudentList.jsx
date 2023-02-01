@@ -13,8 +13,6 @@ export default function MypageStudentList() {
   } = useQuery({
     queryKey: ['registerdStudents'],
     queryFn: () => getRegisteredStudentApi(),
-    staleTime: 6 * 10 * 1000,
-    cacheTime: 6 * 10 * 1000,
     onSuccess: () => {
       console.log(students);
     },
