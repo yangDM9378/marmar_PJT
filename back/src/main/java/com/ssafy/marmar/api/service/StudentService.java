@@ -8,4 +8,7 @@ public interface StudentService {
     Student getUserByUserId(String userId);
     Student createUser(StudentRegisterPostReq registInfo);
     void updateTherapistNum(int studentNum, int therapistNum) throws Exception;
+
+    void deleteTherapistNum(int studentNum) throws Exception;
+//    void deleteTherapistNum(int studentNum, int therapistNum);
 }
