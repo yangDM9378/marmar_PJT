@@ -1,6 +1,5 @@
 package com.ssafy.marmar.db.model;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,21 +15,15 @@ import javax.persistence.*;
 @Builder
 @Entity
 @DynamicInsert
-
-public class ClassRoom {
+public class Programroom {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int num;
 
-    @Column(nullable = false)
     private int wordQuestionCnt;
 
     @ColumnDefault("false")
     private boolean status;
-
-
-
-
 
 }

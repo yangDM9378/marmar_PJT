@@ -51,11 +51,13 @@ public class Therapist {
     @ColumnDefault("false")
     private boolean isOngoing;
 
+    private int classRoomNum;
+
 //    @OneToMany(mappedBy = "student", cascade = CascadeType.REMOVE)
 //    List<Therapist> therapists;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="roomNum")
-    private ClassRoom classRoom; // DB는 오브젝트를 저장할 수 없다. FK, 자바는 오브젝트를 저장할 수 있다.
+    @JoinColumn(name="programRoomNum")
+    private Programroom programroom; // DB는 오브젝트를 저장할 수 없다. FK, 자바는 오브젝트를 저장할 수 있다.
 
 }
