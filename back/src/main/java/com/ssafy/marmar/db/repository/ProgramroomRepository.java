@@ -14,6 +14,6 @@ public interface ProgramroomRepository extends JpaRepository<Programroom, Intege
 
     @Transactional
     @Modifying // select 문이 아님을 나타낸다
-    @Query("UPDATE Programroom set status = :inout, wordQuestionCnt = :wordQuestionCnt where num = :therapist_num")
-    void updateStatus(@Param("inout")boolean inout, @Param("wordQuestionCnt")int wordQuestionCnt, @Param("therapist_num")int therapist_num) throws Exception;
+    @Query("UPDATE Programroom set status = :inout, wordQuestionCnt = :wordQuestionCnt where name = :therapist_id")
+    void updateStatus(@Param("inout")boolean inout, @Param("wordQuestionCnt")int wordQuestionCnt, @Param("therapist_id")String therapist_id) throws Exception;
 }

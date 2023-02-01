@@ -30,10 +30,11 @@ public class RoomController {
 
         boolean inout = true;
         int therapistNum = getTherapistNum(authentication);
+        String therapistName = getTherapistName(authentication);
 
         roomService.RoomTherapist(inout, therapistNum);
         roomService.RoomStudent(inout, studentNum);
-        roomService.ProgramRoom(inout, wordQuestionCnt, therapistNum);
+        roomService.ProgramRoom(inout, wordQuestionCnt, therapistName);
 
         return ResponseEntity.status(200).body(200);
     }
@@ -42,10 +43,11 @@ public class RoomController {
     public ResponseEntity<Integer> outRoomTherapist(@PathVariable int studentNum, Authentication authentication) throws Exception {
         boolean inout = false;
         int therapistNum = getTherapistNum(authentication);
+        String therapistName = getTherapistName(authentication);
 
         roomService.RoomTherapist(inout, therapistNum);
         roomService.RoomStudent(inout, studentNum);
-        roomService.ProgramRoom(inout, 0, therapistNum);
+        roomService.ProgramRoom(inout, 0, therapistName);
 
         return ResponseEntity.status(200).body(200);
     }
@@ -57,6 +59,13 @@ public class RoomController {
         String userId = userDetails.getUsername();
         Therapist user = therapistService.getUserByUserId(userId);
         return user.getNum();
+    }
+
+    public String getTherapistName(Authentication authentication){
+        TherapistDetails userDetails = (TherapistDetails)authentication.getDetails();
+        String userId = userDetails.getUsername();
+//        Therapist user = therapistService.getUserByUserId(userId);
+        return userId;
     }
 
 

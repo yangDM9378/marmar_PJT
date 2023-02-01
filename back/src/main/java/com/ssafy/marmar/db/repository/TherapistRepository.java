@@ -24,11 +24,11 @@ public interface TherapistRepository extends JpaRepository<Therapist, Integer> {
 
     @Transactional
     @Modifying // select 문이 아님을 나타낸다
-    @Query(value = "UPDATE therapist set program_room_num = :programRoomNum where num = :therapistNum", nativeQuery = true)
-    void updateProgramRoom(@Param("programRoomNum")int programRoomNum, @Param("therapistNum")int therapistNum) throws Exception;
+    @Query(value = "UPDATE therapist set program_room_name = :programRoomName where num = :therapistNum", nativeQuery = true)
+    void updateProgramRoom(@Param("programRoomName")String programRoomName, @Param("therapistNum")int therapistNum) throws Exception;
 
     @Transactional
     @Modifying // select 문이 아님을 나타낸다
-    @Query(value = "UPDATE therapist set class_room_num = :classRoomNum where num = :therapistNum", nativeQuery = true)
-    void updateClassRoom(@Param("classRoomNum")int classRoomNum, @Param("therapistNum")int therapistNum) throws Exception;
+    @Query(value = "UPDATE therapist set class_room_name = :classRoomName where num = :therapistNum", nativeQuery = true)
+    void updateClassRoom(@Param("classRoomName")String classRoomName, @Param("therapistNum")int therapistNum) throws Exception;
 }

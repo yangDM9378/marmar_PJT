@@ -31,8 +31,8 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public void ProgramRoom(boolean go, int wordQuestionCnt, int therapistNum) throws Exception {
-        programRoomRepository.updateStatus(go, wordQuestionCnt, therapistNum);
+    public void ProgramRoom(boolean go, int wordQuestionCnt, String therapistName) throws Exception {
+        programRoomRepository.updateStatus(go, wordQuestionCnt, therapistName);
     }
 
     @Override
@@ -44,10 +44,10 @@ public class RoomServiceImpl implements RoomService {
         Therapist therapist = therapistRepository.findByTherapistId(userId).get();
         int num = therapist.getNum();
         Programroom programRoom = new Programroom();
-        programRoom.setNum(num);
+        programRoom.setName(userId);
         programRoomRepository.save(programRoom);
-        therapistRepository.updateProgramRoom(num, num);
-        therapistRepository.updateClassRoom(num, num);
+        therapistRepository.updateProgramRoom(userId, num);
+        therapistRepository.updateClassRoom(userId, num);
 
 
     }
