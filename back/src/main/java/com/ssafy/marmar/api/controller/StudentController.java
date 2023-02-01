@@ -63,15 +63,25 @@ public class StudentController {
     @PutMapping("/selectTherapist/{studentNum}")
     public ResponseEntity<Integer> updateTherapistNum(@PathVariable int studentNum, Authentication authentication) throws Exception {
 
-
-        TherapistDetails userDetails = (TherapistDetails)authentication.getDetails();
-        String userId = userDetails.getUsername();
-        Therapist user = therapistService.getUserByUserId(userId);
-        int therapistNum = user.getNum();
-        System.out.println(studentNum + " " + therapistNum);
+        int therapistNum = getTherapistNum(authentication);
         studentService.updateTherapistNum(studentNum, therapistNum);
 
         return ResponseEntity.status(200).body(200);
     }
 
+    @PutMapping("/deleteTherapist/{studentNum}")
+    public ResponseEntity<Integer> deleteTherapistNum(@PathVariable int studentNum) throws Exception {
+
+        //int therapistNum = getTherapistNum(authentication);
+        studentService.deleteTherapistNum(studentNum);
+
+        return ResponseEntity.status(200).body(200);
+    }
+
+    public int getTherapistNum(Authentication authentication){
+        TherapistDetails userDetails = (TherapistDetails)authentication.getDetails();
+        String userId = userDetails.getUsername();
+        Therapist user = therapistService.getUserByUserId(userId);
+        return user.getNum();
+    }
 }

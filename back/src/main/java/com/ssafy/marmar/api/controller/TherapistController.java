@@ -79,7 +79,6 @@ public class TherapistController {
         int therapistNum = user.getNum();
 
         List<StudentSearchRes> list = therapistService.studentList(therapistNum);
-//        List<StudentSearchRes> list = therapistService.studentSearchList(search);
         return ResponseEntity.status(200).body(list);
     }
 

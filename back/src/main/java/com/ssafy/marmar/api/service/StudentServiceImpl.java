@@ -47,4 +47,9 @@ public class StudentServiceImpl implements StudentService {
     public void updateTherapistNum(int studentNum, int therapistNum) throws Exception {
         studentRepository.updateTherapist(studentNum, therapistNum);
     }
+
+    @Override
+    public void deleteTherapistNum(int studentNum) throws Exception {
+        studentRepository.deleteTherapist(studentNum);
+    }
 }
