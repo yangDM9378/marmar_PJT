@@ -8,9 +8,16 @@ const searchStudentApi = payload => {
 const registerStudentApi = payload => {
   return authApi.put(`student/selectTherapist/${payload}`);
 };
-
 const getRegisteredStudentApi = () => {
   return authApi.get('therapist/mypage/studentList');
 };
+const delRegisteredStudentApi = payload => {
+  return authApi.put(`student/selectTherapist/${payload}`);
+};
 
-export { searchStudentApi, registerStudentApi, getRegisteredStudentApi };
+export {
+  searchStudentApi,
+  registerStudentApi,
+  getRegisteredStudentApi,
+  delRegisteredStudentApi,
+};

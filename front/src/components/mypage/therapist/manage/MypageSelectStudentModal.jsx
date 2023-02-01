@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useQuery } from '@tanstack/react-query';
-import { searchStudentApi } from '../../../api/mypageApi';
 import SearchList from './SearchList';
+import { searchStudentApi } from '../../../../api/mypageApi';
 
 export default function MypageSelectStudentModal({ isOpen, close }) {
   const [search, setSearch] = useState('');

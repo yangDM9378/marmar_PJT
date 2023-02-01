@@ -10,7 +10,7 @@ export default function MypageHeader() {
 
   return (
     <S.MypageHeader>
-      <S.HeaderInfo>내 정보</S.HeaderInfo>
+      <S.HeaderInfo>마이페이지</S.HeaderInfo>
       <S.HeaderLogoBox>
         <img src="logo.png" className="w-20 h-20 pt-1" />
       </S.HeaderLogoBox>

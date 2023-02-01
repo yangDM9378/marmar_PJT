@@ -1,5 +1,5 @@
 import React from 'react';
-import { registerStudentApi } from '../../../api/mypageApi';
+import { registerStudentApi } from '../../../../api/mypageApi';
 
 export default function SearchList(props) {
   const { student } = props;
