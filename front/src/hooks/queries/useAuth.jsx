@@ -82,14 +82,25 @@ export default function useAuth() {
   }, [useSignIn]);
 
   useEffect(() => {
+    if (
+      !localStorage.getItem('therapist') &&
+      !localStorage.getItem('student')
+    ) {
+      localStorage.clear();
+    }
+  }, []);
+
+  useEffect(() => {
     if (localStorage.getItem('therapist')) {
       setStudent(false);
+      setIsLogin(true);
     }
   }, [useTherapistCheck]);
 
   useEffect(() => {
     if (localStorage.getItem('student')) {
       setTherapist(false);
+      setIsLogin(true);
     }
   }, [useStudentCheck]);
 

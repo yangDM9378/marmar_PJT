@@ -4,21 +4,19 @@ import tw from 'twin.macro';
 import { Link } from 'react-router-dom';
 import ClassDropDown from './ClassDropDown';
 import MyDropDown from './MyDropDown';
+import useAuth from '../../hooks/queries/useAuth';
 
 export default function NavStudent() {
   const [temp, setTemp] = useState(false);
-  const onClass = () => {
-    console.log(temp);
-    setTemp(!temp);
-  };
+  const { useStudentCheck } = useAuth();
+  const { data: student } = useStudentCheck();
   return (
     <S.Box>
       <Link to="/">마르마르 소개</Link>
       <ClassDropDown />
       <S.Class
         type="button"
-        onClick={onClass}
-        className={`${temp ? 'bg-yellow-300' : 'bg-slate-300'}`}
+        className={`${student.ongoing ? 'bg-yellow-300' : 'bg-slate-300'}`}
       >
         방입장
       </S.Class>

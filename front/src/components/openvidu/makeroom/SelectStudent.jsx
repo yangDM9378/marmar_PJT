@@ -3,7 +3,8 @@ import React from 'react';
 import { getRegisteredStudentApi } from '../../../api/mypageApi';
 import StudentList from './StudentList';
 
-export default function SelectStudent() {
+export default function SelectStudent(props) {
+  const { getStudentNum } = props;
   const {
     // isLoading,
     // error,
@@ -23,7 +24,11 @@ export default function SelectStudent() {
       <p>학생 선택하기</p>
       {students &&
         students.data.map(student => (
-          <StudentList key={student.num} student={student} />
+          <StudentList
+            key={student.num}
+            student={student}
+            getStudentNum={getStudentNum}
+          />
         ))}
     </div>
   );

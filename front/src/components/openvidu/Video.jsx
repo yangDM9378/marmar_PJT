@@ -22,6 +22,7 @@ import ClassSection from './ClassSection';
 import VideoModal from './VideoModal';
 import SelectStudent from './makeroom/SelectStudent';
 import { therapistCheckApi } from '../../api/userApi';
+import { makeRoomApi } from '../../api/liveClassApi';
 
 const APPLICATION_SERVER_URL = 'http://localhost:8080/api/v1/openvidu/';
 class Video extends Component {
@@ -59,8 +60,9 @@ class Video extends Component {
   };
   // 모달 끝
 
-  activeStudent = num => {
-    this.setState({ studentNum: num });
+  getStudentNum = num => {
+    console.log(num);
+    return this.setState({ studentNum: num });
   };
 
   async componentDidMount() {
@@ -123,7 +125,7 @@ class Video extends Component {
         session: this.OV.initSession(),
       },
       () => {
-        console.log(this.state.studentNum);
+        makeRoomApi({ studentNum: this.state.studentNum });
         const mySession = this.state.session;
 
         // --- 3) Specify the actions when events take place in the session ---
@@ -217,13 +219,10 @@ class Video extends Component {
 
   leaveSession() {
     // --- 7) Leave the session by calling 'disconnect' method over the Session object ---
-
     const mySession = this.state.session;
-
     if (mySession) {
       mySession.disconnect();
     }
-
     // Empty all properties...
     this.OV = null;
     this.setState({
@@ -253,7 +252,7 @@ class Video extends Component {
             </div>
             <div id="join-dialog" className="space-y-3">
               <form className="form-group" onSubmit={this.joinSession}>
-                <SelectStudent />
+                <SelectStudent getStudentNum={this.getStudentNum} />
                 <p className="text-center my-2">
                   <label>Participant: </label>
                   <input
