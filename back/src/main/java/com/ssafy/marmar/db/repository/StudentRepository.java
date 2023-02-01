@@ -31,4 +31,10 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
     @Modifying // select 문이 아님을 나타낸다
     @Query(value = "UPDATE student s set s.therapist_num = :therapist_num where s.num = :student_num", nativeQuery = true)
     void updateTherapist(@Param("student_num")int student_num, @Param("therapist_num")int therapist_num) throws Exception;
+
+
+    @Transactional
+    @Modifying // select 문이 아님을 나타낸다
+    @Query("UPDATE Student set therapist = NULL where num = :student_num")
+    void deleteTherapist(@Param("student_num")int student_num) throws Exception;
 }
