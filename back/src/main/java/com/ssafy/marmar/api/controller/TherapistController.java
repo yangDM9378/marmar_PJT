@@ -4,6 +4,7 @@ import com.ssafy.marmar.api.request.TherapistRegisterPostReq;
 import com.ssafy.marmar.api.response.StudentRes;
 import com.ssafy.marmar.api.response.StudentSearchRes;
 import com.ssafy.marmar.api.response.TherapistRes;
+import com.ssafy.marmar.api.service.RoomService;
 import com.ssafy.marmar.api.service.StudentService;
 import com.ssafy.marmar.api.service.TherapistService;
 import com.ssafy.marmar.common.auth.StudentDetails;
@@ -30,6 +31,9 @@ public class TherapistController {
     @Autowired
     TherapistService therapistService;
 
+    @Autowired
+    RoomService roomService;
+
     @GetMapping("/{therapistId}")
     public ResponseEntity<Boolean> checkTherapistId(@PathVariable String therapistId) {
 
@@ -49,8 +53,10 @@ public class TherapistController {
     }
 
     @PostMapping()
-    public ResponseDto<Integer> register(@RequestBody TherapistRegisterPostReq registerInfo){
+    public ResponseDto<Integer> register(@RequestBody TherapistRegisterPostReq registerInfo) throws Exception {
         therapistService.createUser(registerInfo);
+        String userId = registerInfo.getId();
+        roomService.createRoom(userId);
         return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
     }
 
