@@ -14,7 +14,6 @@ public class WatchRes {
     String answer;
     String difficulty;
     String imagePath;
-    String voicePath;
 
 
     public Watch toEntity(){
@@ -23,19 +22,17 @@ public class WatchRes {
                 .answer(answer)
                 .difficulty(difficulty)
                 .imagePath(imagePath)
-                .voicePath(voicePath)
                 .build();
         return build;
     }
 
 
     @Builder
-    public WatchRes(int num,String answer, String difficulty, String imagePath, String voicePath){
+    public WatchRes(int num,String answer, String difficulty, String imagePath){
         this.num = num;
         this.answer = answer;
         this.difficulty = difficulty;
         this.imagePath = imagePath;
-        this.voicePath = voicePath;
     }
 
 

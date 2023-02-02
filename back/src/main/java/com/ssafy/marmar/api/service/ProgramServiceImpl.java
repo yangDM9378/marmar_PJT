@@ -72,7 +72,6 @@ public class ProgramServiceImpl implements ProgramService{
                     .answer(word.getAnswer())
                     .difficulty(word.getDifficulty())
                     .imagePath(word.getImagePath())
-                    .voicePath(word.getVoicePath())
                     .build();
             wordResList.add(res);
         }
