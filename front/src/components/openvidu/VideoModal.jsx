@@ -24,6 +24,6 @@ const S = {
     ${tw`hidden fixed top-0 right-0 bottom-0 left-0 z-50`}
   `,
   ModalSection: styled.section`
-    ${tw`w-full h-full rounded bg-slate-400 overflow-hidden`}
+    ${tw`w-full h-full bg-slate-400`}
   `,
 };

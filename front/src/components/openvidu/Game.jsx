@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { io } from 'socket.io-client';
+import WordProgram from '../../pages/program/word/WordProgram';
 
 const socket = io.connect('http://localhost:4000');
 export default function Game(props) {
@@ -87,6 +88,7 @@ export default function Game(props) {
         <h1>Chat log</h1>
         {renderChat()}
       </div>
+      <WordProgram />
     </div>
   );
 }

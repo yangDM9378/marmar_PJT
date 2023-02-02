@@ -1,25 +1,21 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import ClassDropDown from './ClassDropDown';
 import MyDropDown from './MyDropDown';
 
 export default function NavTherapist() {
-  const [temp, setTemp] = useState(false);
+  const navigate = useNavigate();
+  // const [temp, setTemp] = useState(false);
   const onClass = () => {
-    console.log(temp);
-    setTemp(!temp);
+    navigate('/OpenVidu');
   };
   return (
     <S.Box>
       <Link to="/">마르마르 소개</Link>
       <ClassDropDown />
-      <S.Class
-        type="button"
-        onClick={onClass}
-        className={`${temp ? 'bg-yellow-300' : 'bg-slate-300'}`}
-      >
+      <S.Class type="button" onClick={onClass} className="bg-slate-200">
         방생성
       </S.Class>
       <MyDropDown />

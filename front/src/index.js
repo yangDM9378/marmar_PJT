@@ -63,7 +63,14 @@ const router = createBrowserRouter([
       { path: '/StudentMypage', element: <StudentMypage /> },
 
       // Openvidu
-      { path: '/OpenVidu', element: <OpenVidu /> },
+      {
+        path: '/OpenVidu',
+        element: (
+          <ProtectedRoute>
+            <OpenVidu />
+          </ProtectedRoute>
+        ),
+      },
 
       // Program
       { path: '/WordDifficulty', element: <WordDifficulty /> },
@@ -76,11 +83,7 @@ const router = createBrowserRouter([
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
-);
+root.render(<RouterProvider router={router} />);
 registerServiceWorker();
 
 // If you want to start measuring performance in your app, pass a function
