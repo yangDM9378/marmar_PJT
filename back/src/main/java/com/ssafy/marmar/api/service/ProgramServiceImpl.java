@@ -35,7 +35,6 @@ public class ProgramServiceImpl implements ProgramService{
                     .answer(word.getAnswer())
                     .difficulty(word.getDifficulty())
                     .imagePath(word.getImagePath())
-                    .voicePath(word.getVoicePath())
                     .build();
             wordResList.add(res);
         }
@@ -94,7 +93,6 @@ public class ProgramServiceImpl implements ProgramService{
                     .answer(watch.getAnswer())
                     .difficulty(watch.getDifficulty())
                     .imagePath(watch.getImagePath())
-                    .voicePath(watch.getVoicePath())
                     .build();
             watchResList.add(res);
         }
@@ -132,7 +130,6 @@ public class ProgramServiceImpl implements ProgramService{
                     .answer(word.getAnswer())
                     .difficulty(word.getDifficulty())
                     .imagePath(word.getImagePath())
-                    .voicePath(word.getVoicePath())
                     .build();
             watchResList.add(res);
         }
