@@ -3,14 +3,15 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import React, { useState, useEffect, useContext } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { getClockApi } from '../../../api/programApi';
 import { SttContext } from '../../../context/SttContext';
 import ClockGame from '../../../components/program/ClockGame';
 import ReactSpeechRecognition from '../../../components/program/ReactSpeechRecognition';
+import TextToSpeech from '../../../components/program/TextToSpeech';
 
 export default function ClockProgram() {
-  const { cnt, cntMinus, cntPlus } = useContext(SttContext);
+  const { stopForNext } = useContext(SttContext);
   const location = useLocation();
   const difficulty = location.state?.difficulty;
   const [clockData, setClockData] = useState([]);
@@ -23,6 +24,19 @@ export default function ClockProgram() {
   const getClockData = async () => {
     const response = await getClockApi(difficulty);
     setClockData(response.data);
+  };
+
+  // 문제 넘기기 관련
+  const navigate = useNavigate();
+  const [cnt, setCnt] = useState(0);
+  const cntPlus = game => {
+    cnt < 9 && setCnt(cnt + 1);
+    cnt >= 9 && navigate(`ClockFinish`);
+    stopForNext();
+  };
+  const cntMinus = () => {
+    cnt > 0 && setCnt(cnt - 1);
+    stopForNext();
   };
 
   return (
@@ -45,6 +59,7 @@ export default function ClockProgram() {
 
       <ClockGame {...clockData[cnt]} />
       <ReactSpeechRecognition />
+      <TextToSpeech />
     </S.ClockProgramSection>
   );
 }

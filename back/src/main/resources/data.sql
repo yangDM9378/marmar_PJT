@@ -78,12 +78,12 @@ CREATE TABLE `wordspeaking` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
-insert into marmar.wordspeaking values (1, "high", "word/img/1.png", "12321312", "사과");
-insert into marmar.wordspeaking values (2, "high", "word/img/2.png", "aa123", "aa123");
+insert into marmar.wordspeaking values (1, "high", "image/word/1.png", "12321312", "사과");
+insert into marmar.wordspeaking values (2, "high", "image/word/2.png", "aa123", "aa123");
 insert into marmar.wordspeaking values (3, "middle", "ㅠㅠ", "ㅠㅠ", "ㅠㅠ");
 insert into marmar.wordspeaking values (4, "low", "ㅇㅇ", "ㅇㅇ", "ㅇㅇ");
-insert into marmar.wordspeaking values (5, "high", "word/img/3.png", "aa", "aa");
-insert into marmar.wordspeaking values (6, "high", "word/img/4.png", "aa123", "aa123");
+insert into marmar.wordspeaking values (5, "high", "image/word/3.png", "aa", "aa");
+insert into marmar.wordspeaking values (6, "high", "image/word/4.png", "aa123", "aa123");
 insert into marmar.wordspeaking values (7, "middle", "ㅠㅠ1", "ㅠㅠ", "ㅠㅠ");
 insert into marmar.wordspeaking values (8, "low", "ㅇㅇ1", "ㅇㅇ", "ㅇㅇ");
 insert into marmar.wordspeaking values (9, "high", "aa2", "aa", "aa");
@@ -92,12 +92,12 @@ insert into marmar.wordspeaking values (11, "middle", "ㅠㅠ2", "ㅠㅠ", "ㅠ�
 insert into marmar.wordspeaking values (12, "low", "ㅇㅇ2", "ㅇㅇ", "ㅇㅇ");
 insert into marmar.wordspeaking values (13, "middle", "ㅠㅠ3", "ㅠㅠ", "ㅠㅠ");
 
-insert into marmar.watch values (1, "high", "1시 33분", "aa", "aa");
-insert into marmar.watch values (2, "high", "2시 34분", "aa123", "aa123");
-insert into marmar.watch values (3, "middle", "ㅠㅠ", "ㅠㅠ", "ㅠㅠ");
-insert into marmar.watch values (4, "low", "ㅇㅇ", "ㅇㅇ", "ㅇㅇ");
-insert into marmar.watch values (5, "high", "aa1", "aa", "aa");
-insert into marmar.watch values (6, "high", "aa1231", "aa123", "aa123");
+insert into marmar.watch values (1, "high", "1시 33분", "image/clock/1.png", "image/clock/1.png");
+insert into marmar.watch values (2, "high", "2시 34분", "image/clock/2.png", "image/clock/2.png");
+insert into marmar.watch values (3, "middle", "ㅠㅠ", "image/clock/1.png", "image/clock/1.png");
+insert into marmar.watch values (4, "low", "ㅇㅇ", "image/clock/2.png", "image/clock/1.png");
+insert into marmar.watch values (5, "high", "aa1", "image/clock/3.png", "image/clock/3.png");
+insert into marmar.watch values (6, "high", "aa1231", "image/clock/1.png", "image/clock/1.png");
 insert into marmar.watch values (7, "middle", "ㅠㅠ1", "ㅠㅠ", "ㅠㅠ");
 insert into marmar.watch values (8, "low", "ㅇㅇ1", "ㅇㅇ", "ㅇㅇ");
 insert into marmar.watch values (9, "high", "aa2", "aa", "aa");

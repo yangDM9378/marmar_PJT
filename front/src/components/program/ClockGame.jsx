@@ -13,24 +13,23 @@ export default function ClockGame({ imagePath, voicePath, watchQuestion }) {
   }, []);
 
   return (
-    <S.Game>
-      imagePath: <S.Img src={imagePath} />
-      voicePath: {voicePath}
-      <S.SpeakingQuestion>watchQuestion: {watchQuestion}</S.SpeakingQuestion>
-    </S.Game>
+    <S.ClockGame>
+      <S.ClockImg src={imagePath} />
+      <S.watchQuestion>watchQuestion: {watchQuestion}</S.watchQuestion>
+    </S.ClockGame>
   );
 }
 
 const S = {
-  Game: styled.div`
+  ClockGame: styled.div`
     ${tw`flex-col border`}
   `,
-  Img: styled.img`
+  ClockImg: styled.img`
     ${tw`rounded-sm `}
     width:400px;
     height: inherit;
   `,
-  SpeakingQuestion: styled.div`
+  watchQuestion: styled.div`
     ${tw`flex justify-center items-center h-14 text-2xl`}
   `,
 };

@@ -1,64 +1,64 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState, useEffect } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
 import styled from 'styled-components';
 import tw from 'twin.macro';
+import React, { useState, useEffect, useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getWordApi } from '../../../api/programApi';
+import { SttContext } from '../../../context/SttContext';
 import WordGame from '../../../components/program/WordGame';
 import ReactSpeechRecognition from '../../../components/program/ReactSpeechRecognition';
 import TextToSpeech from '../../../components/program/TextToSpeech';
 
 export default function WordProgram() {
+  const { stopForNext } = useContext(SttContext);
   const location = useLocation();
   const difficulty = location.state?.difficulty;
-  const [wordData, setWordData] = useState([]);
-  const [cnt, setCnt] = useState(0);
-
-  const getWordData = async () => {
-    console.log(difficulty);
-    const response = await getWordApi(difficulty);
-    console.log(response.data);
-    setWordData(response.data);
-  };
+  const [Data, setData] = useState([]);
 
   useEffect(() => {
-    getWordData();
+    getData();
   }, [difficulty]);
 
+  const getData = async () => {
+    const response = await getWordApi(difficulty);
+    setData(response.data);
+  };
+
+  // 문제 넘기기 관련
   const navigate = useNavigate();
-  const cntPlus = () => {
-    cnt < 10 && setCnt(cnt + 1);
-    cnt >= 10 && navigate('/WordFinish');
+  const [cnt, setCnt] = useState(0);
+  const cntPlus = game => {
+    cnt < 9 && setCnt(cnt + 1);
+    cnt >= 9 && navigate(`WordFinish`);
+    stopForNext();
   };
   const cntMinus = () => {
     cnt > 0 && setCnt(cnt - 1);
-  };
-  const handleStop = transcript => {
-    if (transcript === wordData[cnt].wordSpeakingQuestion) {
-      console.log('정답이라누');
-    }
+    stopForNext();
   };
 
   return (
     <S.WordProgramSection>
       <S.WordDifficulty>{difficulty}</S.WordDifficulty>
       <S.WordTitle>단어 읽기</S.WordTitle>
-      <S.WordContext>다음 단어와 그림을 보고 말소리를 녹음해라</S.WordContext>
+      <S.WordContext>
+        [Q{cnt + 1}] 다음 단어와 그림을 보고 시간을 말해보세요.
+      </S.WordContext>
       <S.WordBtnAndGame>
         {(cnt > 0 && (
           <button type="button" onClick={cntMinus}>
             이전
           </button>
         )) || <S.ButtonDisable type="button">이전</S.ButtonDisable>}
-
-        <WordGame {...wordData[cnt]} />
         <button type="button" onClick={cntPlus}>
           다음
         </button>
       </S.WordBtnAndGame>
-      <ReactSpeechRecognition onStop={handleStop} />
-      <TextToSpeech />
+
+      <WordGame {...Data[cnt]} />
+      <ReactSpeechRecognition {...Data[cnt]} />
+      <TextToSpeech {...Data[cnt]} />
     </S.WordProgramSection>
   );
 }

@@ -1,11 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import styled from 'styled-components';
 import tw from 'twin.macro';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { SttContext } from '../../context/SttContext';
 
-export default function ReactSpeechRecognition() {
-  const { speechStart, speechStop } = useContext(SttContext);
+export default function ReactSpeechRecognition({ wordSpeakingQuestion }) {
+  const { speechStart, speechStop, getQuestion } = useContext(SttContext);
+
+  useEffect(() => {
+    getQuestion(wordSpeakingQuestion);
+  }, [wordSpeakingQuestion]);
 
   return (
     <S.RecognitionSection>

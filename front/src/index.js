@@ -68,10 +68,10 @@ const router = createBrowserRouter([
       // Program
       { path: '/WordDifficulty', element: <WordDifficulty /> },
       { path: '/WordProgram', element: <WordProgram /> },
-      { path: '/WordFinish', element: <WordFinish /> },
+      { path: '/WordProgram/WordFinish', element: <WordFinish /> },
       { path: '/ClockDifficulty', element: <ClockDifficulty /> },
       { path: '/ClockProgram', element: <ClockProgram /> },
-      { path: '/ClockFinish', element: <ClockFinish /> },
+      { path: '/ClockProgram/ClockFinish', element: <ClockFinish /> },
     ],
   },
 ]);

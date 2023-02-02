@@ -1,45 +1,32 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable import/no-extraneous-dependencies */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Speech from 'speak-tts';
 
-export default function App() {
-  const [say, setSay] = React.useState('');
+export default function TextToSpeech({ wordSpeakingQuestion }) {
+  const [say, setSay] = useState('');
+
+  const getSay = () => {
+    setSay(wordSpeakingQuestion);
+  };
+
+  useEffect(() => {
+    getSay(wordSpeakingQuestion);
+  }, [wordSpeakingQuestion]);
 
   const speech = new Speech();
-  speech
-    .init({
-      lang: 'ko-KR',
-      volume: 1,
-    })
-    .then(data => {
-      console.log('Speech is ready, voices are available', data);
-    })
-    .catch(e => {
-      console.error('An error occured while initializing : ', e);
-    });
+  speech.init({
+    lang: 'ko-KR',
+  });
 
   const handleClick = () => {
-    speech
-      .speak({
-        text: say,
-      })
-      .then(() => {
-        console.log('Success !');
-      })
-      .catch(e => {
-        console.error('An error occurred :', e);
-      });
+    speech.speak({
+      text: say,
+    });
   };
 
   return (
-    <div className="App">
-      <textarea
-        onChange={e => {
-          setSay(e.target.value);
-        }}
-      />
-      <br />
-      <br />
+    <div>
       <button type="button" onClick={handleClick}>
         Speak
       </button>
