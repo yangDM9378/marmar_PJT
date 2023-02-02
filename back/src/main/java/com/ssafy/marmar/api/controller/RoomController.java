@@ -2,9 +2,13 @@ package com.ssafy.marmar.api.controller;
 
 import com.ssafy.marmar.api.request.MakeRoomPostReq;
 import com.ssafy.marmar.api.request.TherapistRegisterPostReq;
+import com.ssafy.marmar.api.response.StudentRes;
 import com.ssafy.marmar.api.service.RoomService;
+import com.ssafy.marmar.api.service.StudentService;
 import com.ssafy.marmar.api.service.TherapistService;
+import com.ssafy.marmar.common.auth.StudentDetails;
 import com.ssafy.marmar.common.auth.TherapistDetails;
+import com.ssafy.marmar.db.model.Student;
 import com.ssafy.marmar.db.model.Therapist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +21,9 @@ public class RoomController {
 
     @Autowired
     RoomService roomService;
+
+    @Autowired
+    StudentService studentService;
 
     @Autowired
     TherapistService therapistService;
@@ -50,6 +57,16 @@ public class RoomController {
         roomService.ProgramRoom(inout, 0, therapistName);
 
         return ResponseEntity.status(200).body(200);
+    }
+
+    @GetMapping("/enter/student")
+    public ResponseEntity<String> studentEnterRoom(Authentication authentication) {
+        StudentDetails userDetails = (StudentDetails)authentication.getDetails();
+        String userId = userDetails.getUsername();
+        Student user = studentService.getUserByUserId(userId);
+        Therapist therapist = user.getTherapist();
+        String therapistId = therapist.getTherapistId();
+        return ResponseEntity.status(200).body(therapistId);
     }
 
 

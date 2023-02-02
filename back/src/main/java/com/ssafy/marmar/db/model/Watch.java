@@ -15,23 +15,19 @@ import javax.persistence.*;
 @Builder
 @Entity
 @DynamicInsert
-public class Wordimage {
+public class Watch {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int num;
 
     @Column(nullable = false, length = 100)
-    private String originName;
+    private String watchQuestion;
+
+    @Column
+    private String difficulty;
 
     @Column(nullable = false, length = 100)
-    private String path;
-
-    @Column(nullable = false, length = 100)
-    private String savedName;
-
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="wordNum")
-    private Wordspeaking wordspeaking;
+    private String imagePath;
 
 }
