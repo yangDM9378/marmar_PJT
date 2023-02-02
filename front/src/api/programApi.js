@@ -7,4 +7,6 @@ const getWordApi = payload => axios.get(`program/word/${payload}`);
 
 const getClockApi = payload => axios.get(`program/clock/${payload}`);
 
-export { getWordApi, getClockApi };
+const getQuestionApi = payload => axios.get('select/program', payload);
+
+export { getWordApi, getClockApi, getQuestionApi };
