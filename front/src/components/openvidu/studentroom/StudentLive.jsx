@@ -1,3 +1,6 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-return-await */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable react/no-unused-class-component-methods */
@@ -13,6 +16,7 @@ import { studentCheckApi } from '../../../api/userApi';
 import ClassSection from '../ClassSection';
 import UserVideoComponent from '../UserVideoComponent';
 import VideoModal from '../VideoModal';
+import { getTeacherApi } from '../../../api/liveClassApi';
 // eslint-disable-next-line react/prefer-stateless-function
 
 const APPLICATION_SERVER_URL = 'http://localhost:8080/api/v1/openvidu/';
@@ -54,8 +58,9 @@ export default class StudentLive extends Component {
     window.addEventListener('beforeunload', this.onbeforeunload);
     if (localStorage.getItem('student')) {
       const res = await studentCheckApi();
+      const teacher = await getTeacherApi();
       await this.setState({
-        mySessionId: res.studentId,
+        mySessionId: teacher.data,
         myUserName: res.studentName,
         isStudent: true,
       });
@@ -229,6 +234,18 @@ export default class StudentLive extends Component {
                     />
                   </S.MyVideo>
                 ) : null}
+                <div id="video-container">
+                  <div
+                    className="stream-container"
+                    onClick={() =>
+                      this.handleMainVideoStream(this.state.subscribers[0])
+                    }
+                  >
+                    <UserVideoComponent
+                      streamManager={this.state.subscribers[0]}
+                    />
+                  </div>
+                </div>
               </S.VideoSection>
               <ClassSection
                 className="cols-2"

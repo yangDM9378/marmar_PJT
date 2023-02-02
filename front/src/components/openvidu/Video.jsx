@@ -345,15 +345,16 @@ class Video extends Component {
                   </div>
                 ) : null}
                 <div id="video-container">
-                  {this.state.subscribers.map((sub, i) => (
-                    <div
-                      key={i}
-                      className="stream-container"
-                      onClick={() => this.handleMainVideoStream(sub)}
-                    >
-                      <UserVideoComponent streamManager={sub} />
-                    </div>
-                  ))}
+                  <div
+                    className="stream-container"
+                    onClick={() =>
+                      this.handleMainVideoStream(this.state.subscribers[0])
+                    }
+                  >
+                    <UserVideoComponent
+                      streamManager={this.state.subscribers[0]}
+                    />
+                  </div>
                 </div>
               </div>
               <ClassSection
