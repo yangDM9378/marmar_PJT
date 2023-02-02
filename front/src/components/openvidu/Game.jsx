@@ -1,8 +1,8 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
-
 import { io } from 'socket.io-client';
+import WordProgramTest from '../../pages/dev/WordProgramTest';
 
 const socket = io.connect('http://localhost:4000');
 export default function Game(props) {
@@ -87,6 +87,7 @@ export default function Game(props) {
         <h1>Chat log</h1>
         {renderChat()}
       </div>
+      <WordProgramTest />
     </div>
   );
 }

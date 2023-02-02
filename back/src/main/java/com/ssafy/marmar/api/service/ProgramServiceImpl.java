@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -135,6 +134,157 @@ public class ProgramServiceImpl implements ProgramService{
 
 
         return watchResList;
+    }
+
+
+    @Override
+    public List<WatchRes> selectWatchGameList(String difficulty, int num) {
+
+        if(difficulty == "high"){
+            List<Integer> highlist = selectNum("watch", "high");
+            Collections.shuffle(highlist);
+
+            List<Watch> watches = new ArrayList<>();
+            List<WatchRes> watchResList = new ArrayList<>();
+
+            for(int i=0; i<num; i++){
+                watches.add(watchProgramRepository.findByNum(highlist.get(i)));
+            }
+
+            for(Watch word : watches){
+                WatchRes res = WatchRes.builder()
+                        .num(word.getNum())
+                        .answer(word.getAnswer())
+                        .difficulty(word.getDifficulty())
+                        .imagePath(word.getImagePath())
+                        .build();
+                watchResList.add(res);
+            }
+            return watchResList;
+
+        } else if(difficulty == "middle"){
+            List<Integer> middlelist = selectNum("watch", "middle");
+            Collections.shuffle(middlelist);
+
+            List<Watch> watches = new ArrayList<>();
+            List<WatchRes> watchResList = new ArrayList<>();
+
+            for(int i=0; i<num; i++){
+                watches.add(watchProgramRepository.findByNum(middlelist.get(i)));
+            }
+
+            for(Watch word : watches){
+                WatchRes res = WatchRes.builder()
+                        .num(word.getNum())
+                        .answer(word.getAnswer())
+                        .difficulty(word.getDifficulty())
+                        .imagePath(word.getImagePath())
+                        .build();
+                watchResList.add(res);
+            }
+            return watchResList;
+
+        } else {
+            List<Integer> lowlist = selectNum("watch", "low");
+            Collections.shuffle(lowlist);
+
+            List<Watch> watches = new ArrayList<>();
+            List<WatchRes> watchResList = new ArrayList<>();
+
+            for(int i=0; i<num; i++){
+                watches.add(watchProgramRepository.findByNum(lowlist.get(i)));
+            }
+
+            for(Watch word : watches){
+                WatchRes res = WatchRes.builder()
+                        .num(word.getNum())
+                        .answer(word.getAnswer())
+                        .difficulty(word.getDifficulty())
+                        .imagePath(word.getImagePath())
+                        .build();
+                watchResList.add(res);
+            }
+            return watchResList;
+        }
+
+    }
+
+    @Override
+    public List<WordRes> selectWordGameList(String difficulty, int num) {
+
+        if(difficulty == "high"){
+            List<Integer> highlist = selectNum("word", "high");
+            Collections.shuffle(highlist);
+
+            List<Wordspeaking> words = new ArrayList<>();
+            List<WordRes> wordResList = new ArrayList<>();
+
+            for(int i=0; i<num; i++){
+                words.add(wordProgramRepository.findByNum(highlist.get(i)));
+            }
+
+            for(Wordspeaking word : words){
+                WordRes res = WordRes.builder()
+                        .num(word.getNum())
+                        .answer(word.getAnswer())
+                        .difficulty(word.getDifficulty())
+                        .imagePath(word.getImagePath())
+                        .build();
+                wordResList.add(res);
+            }
+
+
+            return wordResList;
+
+        } else if(difficulty == "middle"){
+            List<Integer> middlelist = selectNum("word", "middle");
+            Collections.shuffle(middlelist);
+
+            List<Wordspeaking> words = new ArrayList<>();
+            List<WordRes> wordResList = new ArrayList<>();
+
+            for(int i=0; i<num; i++){
+                words.add(wordProgramRepository.findByNum(middlelist.get(i)));
+            }
+
+            for(Wordspeaking word : words){
+                WordRes res = WordRes.builder()
+                        .num(word.getNum())
+                        .answer(word.getAnswer())
+                        .difficulty(word.getDifficulty())
+                        .imagePath(word.getImagePath())
+                        .build();
+                wordResList.add(res);
+            }
+
+
+            return wordResList;
+
+        } else {
+            List<Integer> lowlist = selectNum("word", "low");
+            Collections.shuffle(lowlist);
+
+            List<Wordspeaking> words = new ArrayList<>();
+            List<WordRes> wordResList = new ArrayList<>();
+
+            for(int i=0; i<num; i++){
+                words.add(wordProgramRepository.findByNum(lowlist.get(i)));
+            }
+
+            for(Wordspeaking word : words){
+                WordRes res = WordRes.builder()
+                        .num(word.getNum())
+                        .answer(word.getAnswer())
+                        .difficulty(word.getDifficulty())
+                        .imagePath(word.getImagePath())
+                        .build();
+                wordResList.add(res);
+            }
+
+
+            return wordResList;
+        }
+
     }
 
     public List<Integer> selectNum(String game, String di) {

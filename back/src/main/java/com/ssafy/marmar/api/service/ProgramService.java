@@ -12,4 +12,8 @@ public interface ProgramService {
 
     List<WatchRes> watchlist(String difficulty);
     List<WatchRes> watchgamelist();
+
+    List<WatchRes> selectWatchGameList(String difficulty, int num);
+
+    List<WordRes> selectWordGameList(String difficulty, int num);
 }
