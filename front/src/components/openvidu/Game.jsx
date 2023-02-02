@@ -5,14 +5,13 @@ import React, { useState, useEffect } from 'react';
 import { io } from 'socket.io-client';
 
 const socket = io.connect('http://localhost:4000');
-
 export default function Game(props) {
   const { sessionId } = props;
 
   const [state, setState] = useState({ message: '', name: '' });
   const [chat, setChat] = useState([]);
   const [text, setText] = useState('클릭');
-
+  // let socket = '';
   useEffect(() => {
     socket.on('message', ({ name, message }) => {
       const mes = {
@@ -27,6 +26,7 @@ export default function Game(props) {
     });
   }, []);
   const click = () => {
+    // socket = io.connect('http://localhost:4000');
     setText('상대방이 클릭함');
   };
 

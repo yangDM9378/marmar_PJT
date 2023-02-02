@@ -1,21 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ClassDropDown from './ClassDropDown';
 import MyDropDown from './MyDropDown';
 import useAuth from '../../hooks/queries/useAuth';
 
 export default function NavStudent() {
-  const [temp, setTemp] = useState(false);
+  const navigate = useNavigate();
   const { useStudentCheck } = useAuth();
   const { data: student } = useStudentCheck();
+  const onEnterRoom = () => {
+    navigate('/OpenVidu');
+  };
   return (
     <S.Box>
       <Link to="/">마르마르 소개</Link>
       <ClassDropDown />
       <S.Class
         type="button"
+        onClick={onEnterRoom}
         className={`${student.ongoing ? 'bg-yellow-300' : 'bg-slate-300'}`}
       >
         방입장
