@@ -30,13 +30,13 @@ export default function ClassDropDown() {
             <Menu.Item>
               {({ active }) => (
                 <Link
-                  to="/SpeechTherapyClass"
+                  to="/WordDifficulty"
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'block px-4 py-2 text-sm',
                   )}
                 >
-                  말하기
+                  단어 읽기
                 </Link>
               )}
             </Menu.Item>
@@ -44,13 +44,13 @@ export default function ClassDropDown() {
             <Menu.Item>
               {({ active }) => (
                 <Link
-                  to="/SuffixTherapyClass"
+                  to="/ClockDifficulty"
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'block px-4 py-2 text-sm',
                   )}
                 >
-                  조사 맞추기
+                  시계 읽기
                 </Link>
               )}
             </Menu.Item>

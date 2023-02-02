@@ -70,26 +70,13 @@ export default function DevDropDown() {
             <Menu.Item>
               {({ active }) => (
                 <Link
-                  to="/SpeechTherapyClass"
+                  to="/WordDifficulty"
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'block px-4 py-2 text-sm',
                   )}
                 >
                   말하기 치료
-                </Link>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <Link
-                  to="/SuffixTherapyClass"
-                  className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm',
-                  )}
-                >
-                  조사 치료
                 </Link>
               )}
             </Menu.Item>

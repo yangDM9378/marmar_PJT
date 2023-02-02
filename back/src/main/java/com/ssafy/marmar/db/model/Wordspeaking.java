@@ -30,4 +30,6 @@ public class Wordspeaking {
     @Column(nullable = false, length = 100)
     private String imagePath;
 
+    @Column(nullable = false, length = 100)
+    private String voicePath;
 }
