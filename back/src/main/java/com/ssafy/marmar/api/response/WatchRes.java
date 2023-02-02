@@ -11,7 +11,7 @@ import lombok.Setter;
 public class WatchRes {
 
     int num;
-    String watchQuestion;
+    String answer;
     String difficulty;
     String imagePath;
     String voicePath;
@@ -20,7 +20,7 @@ public class WatchRes {
     public Watch toEntity(){
         Watch build = Watch.builder()
                 .num(num)
-                .watchQuestion(watchQuestion)
+                .answer(answer)
                 .difficulty(difficulty)
                 .imagePath(imagePath)
                 .voicePath(voicePath)
@@ -30,9 +30,9 @@ public class WatchRes {
 
 
     @Builder
-    public WatchRes(int num,String watchQuestion, String difficulty, String imagePath, String voicePath){
+    public WatchRes(int num,String answer, String difficulty, String imagePath, String voicePath){
         this.num = num;
-        this.watchQuestion = watchQuestion;
+        this.answer = answer;
         this.difficulty = difficulty;
         this.imagePath = imagePath;
         this.voicePath = voicePath;

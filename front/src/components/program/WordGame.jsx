@@ -7,18 +7,16 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 import { SttContext } from '../../context/SttContext';
 
-export default function WordGame({ imagePath, wordSpeakingQuestion }) {
+export default function WordGame({ imagePath, answer }) {
   const { getQuestion } = useContext(SttContext);
 
   useEffect(() => {
-    getQuestion(wordSpeakingQuestion);
-  }, []);
+    getQuestion(answer);
+  }, [answer]);
   return (
     <S.WordGame>
       <S.WordImg src={imagePath} className="w-12 h-10 pt-1" />
-      <S.WordSpeakingQuestion>
-        WordSpeakingQuestion: {wordSpeakingQuestion}
-      </S.WordSpeakingQuestion>
+      <S.WordSpeakingQuestion>answer: {answer}</S.WordSpeakingQuestion>
     </S.WordGame>
   );
 }

@@ -62,9 +62,9 @@ CREATE TABLE `evaluation` (
 CREATE TABLE `watch` (
                          `num` int NOT NULL AUTO_INCREMENT,
                          `difficulty` varchar(255) DEFAULT NULL,
-                         `image_path` varchar(100) NOT NULL,
+                         `answer` varchar(100) NOT NULL,
                          `voice_path` varchar(100) NOT NULL,
-                         `watch_question` varchar(100) NOT NULL,
+                         `image_path` varchar(100) NOT NULL,
                          PRIMARY KEY (`num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -73,7 +73,7 @@ CREATE TABLE `wordspeaking` (
                                 `difficulty` varchar(255) DEFAULT NULL,
                                 `image_path` varchar(100) NOT NULL,
                                 `voice_path` varchar(100) NOT NULL,
-                                `word_speaking_question` varchar(100) NOT NULL,
+                                `answer` varchar(100) NOT NULL,
                                 PRIMARY KEY (`num`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 

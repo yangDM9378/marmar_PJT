@@ -11,7 +11,7 @@ import lombok.Setter;
 public class WordRes {
 
     int num;
-    String wordSpeakingQuestion;
+    String answer;
     String difficulty;
     String imagePath;
     String voicePath;
@@ -20,7 +20,7 @@ public class WordRes {
     public Wordspeaking toEntity(){
         Wordspeaking build = Wordspeaking.builder()
                 .num(num)
-                .wordSpeakingQuestion(wordSpeakingQuestion)
+                .answer(answer)
                 .difficulty(difficulty)
                 .imagePath(imagePath)
                 .voicePath(voicePath)
@@ -30,9 +30,9 @@ public class WordRes {
 
 
     @Builder
-    public WordRes(int num, String wordSpeakingQuestion, int wordSpeakingResult, String difficulty, String imagePath, String voicePath){
+    public WordRes(int num, String answer, String difficulty, String imagePath, String voicePath){
         this.num = num;
-        this.wordSpeakingQuestion = wordSpeakingQuestion;
+        this.answer = answer;
         this.difficulty = difficulty;
         this.imagePath = imagePath;
         this.voicePath = voicePath;

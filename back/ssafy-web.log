@@ -3040,3 +3040,418 @@ Caused by: java.lang.IllegalArgumentException: 'script' must not be null or empt
 	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:252) ~[spring-jdbc-5.3.24.jar:5.3.24]
 	... 33 common frames omitted
 
+2023-02-02 09:24:07.234  INFO 13448 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : Starting MarmarApplication using Java 11.0.13 on DESKTOP-KVCQHCD with PID 13448 (C:\Users\multicampus\Desktop\S08P12C204\back\build\classes\java\main started by multicampus in C:\Users\multicampus\Desktop\S08P12C204\back)
+2023-02-02 09:24:07.236  INFO 13448 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-02-02 09:24:07.300  INFO 13448 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\multicampus\.gradle\caches\modules-2\files-2.1\org.glassfish.jaxb\jaxb-runtime\2.3.1\dd6dda9da676a54c5b36ca2806ff95ee017d8738\jaxb-runtime-2.3.1.jar referenced one or more files that do not exist: file:/C:/Users/multicampus/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/jaxb-runtime/2.3.1/dd6dda9da676a54c5b36ca2806ff95ee017d8738/jaxb-api-2.3.1.jar,file:/C:/Users/multicampus/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/jaxb-runtime/2.3.1/dd6dda9da676a54c5b36ca2806ff95ee017d8738/txw2-2.3.1.jar,file:/C:/Users/multicampus/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/jaxb-runtime/2.3.1/dd6dda9da676a54c5b36ca2806ff95ee017d8738/istack-commons-runtime-3.0.7.jar,file:/C:/Users/multicampus/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/jaxb-runtime/2.3.1/dd6dda9da676a54c5b36ca2806ff95ee017d8738/stax-ex-1.8.jar,file:/C:/Users/multicampus/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/jaxb-runtime/2.3.1/dd6dda9da676a54c5b36ca2806ff95ee017d8738/FastInfoset-1.2.15.jar,file:/C:/Users/multicampus/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/jaxb-runtime/2.3.1/dd6dda9da676a54c5b36ca2806ff95ee017d8738/javax.activation-api-1.2.0.jar
+2023-02-02 09:24:07.300  INFO 13448 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-02-02 09:24:07.300  INFO 13448 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-02-02 09:24:08.247  INFO 13448 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-02-02 09:24:08.336  INFO 13448 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 80 ms. Found 4 JPA repository interfaces.
+2023-02-02 09:24:09.257  INFO 13448 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-02-02 09:24:09.269  INFO 13448 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-02-02 09:24:09.269  INFO 13448 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.70]
+2023-02-02 09:24:09.589  INFO 13448 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-02-02 09:24:09.600  INFO 13448 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-02-02 09:24:09.601  INFO 13448 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2300 ms
+2023-02-02 09:24:09.726  INFO 13448 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-02-02 09:24:10.109  INFO 13448 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-02-02 09:24:10.170  WARN 13448 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Invocation of init method failed; nested exception is org.springframework.jdbc.datasource.init.ScriptStatementFailedException: Failed to execute SQL script statement #1 of URL [file:/C:/Users/multicampus/Desktop/S08P12C204/back/build/resources/main/data.sql]: CREATE TABLE `class_room` ( `num` int NOT NULL AUTO_INCREMENT, `status` bit(1) NOT NULL DEFAULT b'0', `word_question_cnt` int NOT NULL, PRIMARY KEY (`num`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci; nested exception is java.sql.SQLSyntaxErrorException: Table 'class_room' already exists
+2023-02-02 09:24:10.171  INFO 13448 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-02-02 09:24:10.178  INFO 13448 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-02-02 09:24:10.181  INFO 13448 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-02-02 09:24:10.196  INFO 13448 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-02-02 09:24:10.238 ERROR 13448 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Invocation of init method failed; nested exception is org.springframework.jdbc.datasource.init.ScriptStatementFailedException: Failed to execute SQL script statement #1 of URL [file:/C:/Users/multicampus/Desktop/S08P12C204/back/build/resources/main/data.sql]: CREATE TABLE `class_room` ( `num` int NOT NULL AUTO_INCREMENT, `status` bit(1) NOT NULL DEFAULT b'0', `word_question_cnt` int NOT NULL, PRIMARY KEY (`num`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci; nested exception is java.sql.SQLSyntaxErrorException: Table 'class_room' already exists
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154) ~[spring-context-5.3.24.jar:5.3.24]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908) ~[spring-context-5.3.24.jar:5.3.24]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.24.jar:5.3.24]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147) ~[spring-boot-2.7.7.jar:2.7.7]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731) ~[spring-boot-2.7.7.jar:2.7.7]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.7.jar:2.7.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-2.7.7.jar:2.7.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.7.7.jar:2.7.7]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.7.7.jar:2.7.7]
+	at com.ssafy.marmar.MarmarApplication.main(MarmarApplication.java:10) ~[main/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) ~[spring-boot-devtools-2.7.7.jar:2.7.7]
+Caused by: org.springframework.jdbc.datasource.init.ScriptStatementFailedException: Failed to execute SQL script statement #1 of URL [file:/C:/Users/multicampus/Desktop/S08P12C204/back/build/resources/main/data.sql]: CREATE TABLE `class_room` ( `num` int NOT NULL AUTO_INCREMENT, `status` bit(1) NOT NULL DEFAULT b'0', `word_question_cnt` int NOT NULL, PRIMARY KEY (`num`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci; nested exception is java.sql.SQLSyntaxErrorException: Table 'class_room' already exists
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:282) ~[spring-jdbc-5.3.24.jar:5.3.24]
+	at org.springframework.jdbc.datasource.init.ResourceDatabasePopulator.populate(ResourceDatabasePopulator.java:254) ~[spring-jdbc-5.3.24.jar:5.3.24]
+	at org.springframework.jdbc.datasource.init.DatabasePopulatorUtils.execute(DatabasePopulatorUtils.java:54) ~[spring-jdbc-5.3.24.jar:5.3.24]
+	at org.springframework.boot.jdbc.init.DataSourceScriptDatabaseInitializer.runScripts(DataSourceScriptDatabaseInitializer.java:90) ~[spring-boot-2.7.7.jar:2.7.7]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.runScripts(AbstractScriptDatabaseInitializer.java:145) ~[spring-boot-2.7.7.jar:2.7.7]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyScripts(AbstractScriptDatabaseInitializer.java:107) ~[spring-boot-2.7.7.jar:2.7.7]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyDataScripts(AbstractScriptDatabaseInitializer.java:101) ~[spring-boot-2.7.7.jar:2.7.7]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.initializeDatabase(AbstractScriptDatabaseInitializer.java:76) ~[spring-boot-2.7.7.jar:2.7.7]
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.afterPropertiesSet(AbstractScriptDatabaseInitializer.java:65) ~[spring-boot-2.7.7.jar:2.7.7]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863) ~[spring-beans-5.3.24.jar:5.3.24]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800) ~[spring-beans-5.3.24.jar:5.3.24]
+	... 23 common frames omitted
+Caused by: java.sql.SQLSyntaxErrorException: Table 'class_room' already exists
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-j-8.0.31.jar:8.0.31]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.0.31.jar:8.0.31]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763) ~[mysql-connector-j-8.0.31.jar:8.0.31]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648) ~[mysql-connector-j-8.0.31.jar:8.0.31]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-4.0.3.jar:na]
+	at org.springframework.jdbc.datasource.init.ScriptUtils.executeSqlScript(ScriptUtils.java:261) ~[spring-jdbc-5.3.24.jar:5.3.24]
+	... 33 common frames omitted
+
+2023-02-02 09:24:50.447  INFO 12392 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : Starting MarmarApplication using Java 11.0.13 on DESKTOP-KVCQHCD with PID 12392 (C:\Users\multicampus\Desktop\S08P12C204\back\build\classes\java\main started by multicampus in C:\Users\multicampus\Desktop\S08P12C204\back)
+2023-02-02 09:24:50.449  INFO 12392 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-02-02 09:24:50.497  INFO 12392 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\multicampus\.gradle\caches\modules-2\files-2.1\org.glassfish.jaxb\jaxb-runtime\2.3.1\dd6dda9da676a54c5b36ca2806ff95ee017d8738\jaxb-runtime-2.3.1.jar referenced one or more files that do not exist: file:/C:/Users/multicampus/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/jaxb-runtime/2.3.1/dd6dda9da676a54c5b36ca2806ff95ee017d8738/jaxb-api-2.3.1.jar,file:/C:/Users/multicampus/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/jaxb-runtime/2.3.1/dd6dda9da676a54c5b36ca2806ff95ee017d8738/txw2-2.3.1.jar,file:/C:/Users/multicampus/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/jaxb-runtime/2.3.1/dd6dda9da676a54c5b36ca2806ff95ee017d8738/istack-commons-runtime-3.0.7.jar,file:/C:/Users/multicampus/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/jaxb-runtime/2.3.1/dd6dda9da676a54c5b36ca2806ff95ee017d8738/stax-ex-1.8.jar,file:/C:/Users/multicampus/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/jaxb-runtime/2.3.1/dd6dda9da676a54c5b36ca2806ff95ee017d8738/FastInfoset-1.2.15.jar,file:/C:/Users/multicampus/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/jaxb-runtime/2.3.1/dd6dda9da676a54c5b36ca2806ff95ee017d8738/javax.activation-api-1.2.0.jar
+2023-02-02 09:24:50.498  INFO 12392 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-02-02 09:24:50.498  INFO 12392 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-02-02 09:24:51.392  INFO 12392 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-02-02 09:24:51.488  INFO 12392 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 87 ms. Found 4 JPA repository interfaces.
+2023-02-02 09:24:52.332  INFO 12392 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-02-02 09:24:52.342  INFO 12392 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-02-02 09:24:52.342  INFO 12392 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.70]
+2023-02-02 09:24:52.647  INFO 12392 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-02-02 09:24:52.657  INFO 12392 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-02-02 09:24:52.658  INFO 12392 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2159 ms
+2023-02-02 09:24:52.766  INFO 12392 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-02-02 09:24:53.099  INFO 12392 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-02-02 09:24:53.508  INFO 12392 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-02-02 09:24:53.591  INFO 12392 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-02-02 09:24:53.776  INFO 12392 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-02-02 09:24:53.945  INFO 12392 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2023-02-02 09:24:54.894  INFO 12392 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-02-02 09:24:54.910  INFO 12392 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-02-02 09:24:55.450  WARN 12392 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-02-02 09:24:55.658  WARN 12392 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 745a3e2c-c936-4d29-9cc3-ebe2141e2526
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-02-02 09:24:55.882 DEBUG 12392 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 13 mappings in 'requestMappingHandlerMapping'
+2023-02-02 09:24:55.929 DEBUG 12392 --- [restartedMain] o.s.w.s.c.annotation.WebMvcConfigurer    : Default resource handling disabled
+2023-02-02 09:24:55.933  INFO 12392 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@58e6bb95, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7e1e720c, org.springframework.security.web.context.SecurityContextPersistenceFilter@14b6983d, org.springframework.security.web.header.HeaderWriterFilter@40d7e027, org.springframework.web.filter.CorsFilter@70f69be8, org.springframework.security.web.authentication.logout.LogoutFilter@45a801f2, com.ssafy.marmar.common.auth.JwtAuthenticationFilter@1c5c04f2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@590baae4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6bba5b71, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@710b2eff, org.springframework.security.web.session.SessionManagementFilter@4e7052bc, org.springframework.security.web.access.ExceptionTranslationFilter@3845c8e9, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6a72c149]
+2023-02-02 09:24:56.015 DEBUG 12392 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2023-02-02 09:24:56.055 DEBUG 12392 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2023-02-02 09:24:56.078  WARN 12392 --- [restartedMain] o.s.b.a.m.MustacheAutoConfiguration      : Cannot find template location: classpath:/templates/ (please add some templates, check your Mustache configuration, or set spring.mustache.check-template-location=false)
+2023-02-02 09:24:56.245  INFO 12392 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-02-02 09:24:56.295  INFO 12392 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-02-02 09:24:56.309  INFO 12392 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : Started MarmarApplication in 6.333 seconds (JVM running for 7.811)
+2023-02-02 09:28:58.198  INFO 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-02-02 09:28:58.200  INFO 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-02-02 09:28:58.200 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2023-02-02 09:28:58.200 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2023-02-02 09:28:58.201 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2023-02-02 09:28:58.202 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@1e242043
+2023-02-02 09:28:58.203 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@5c7340dd
+2023-02-02 09:28:58.203 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2023-02-02 09:28:58.203  INFO 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2023-02-02 09:28:58.229 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:28:58.257 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/word/high", parameters={}
+2023-02-02 09:28:58.259 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:28:58.459 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:28:58.460 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WordRes@2f166e91, com.ssafy.marmar.api.response.WordRes@237b86b2, com (truncated)...]
+2023-02-02 09:28:58.531 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:28:58.531 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:28:58.533 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/word/high", parameters={}
+2023-02-02 09:28:58.533 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:28:58.538 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:28:58.538 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WordRes@579da4e3, com.ssafy.marmar.api.response.WordRes@190de2f1, com (truncated)...]
+2023-02-02 09:28:58.540 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:29:47.772 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:29:47.773 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/word/high", parameters={}
+2023-02-02 09:29:47.773 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:29:47.782 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:29:47.782 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WordRes@605adc07, com.ssafy.marmar.api.response.WordRes@11b276fb, com (truncated)...]
+2023-02-02 09:29:47.787 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:29:47.791 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:29:47.792 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/word/high", parameters={}
+2023-02-02 09:29:47.792 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:29:47.799 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:29:47.799 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WordRes@6c2cc944, com.ssafy.marmar.api.response.WordRes@526adee1, com (truncated)...]
+2023-02-02 09:29:47.801 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:29:53.761 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:29:53.762 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/word/high", parameters={}
+2023-02-02 09:29:53.764 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:29:53.769 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:29:53.770 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WordRes@39824ede, com.ssafy.marmar.api.response.WordRes@1fd019d6, com (truncated)...]
+2023-02-02 09:29:53.772 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:29:53.775 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:29:53.776 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/word/high", parameters={}
+2023-02-02 09:29:53.776 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:29:53.781 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:29:53.781 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WordRes@341908f7, com.ssafy.marmar.api.response.WordRes@351dc10, com. (truncated)...]
+2023-02-02 09:29:53.781 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:30:07.228 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:30:07.230 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/word/high", parameters={}
+2023-02-02 09:30:07.230 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:30:07.235 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:30:07.236 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WordRes@6de3dfb4, com.ssafy.marmar.api.response.WordRes@183a7c42, com (truncated)...]
+2023-02-02 09:30:07.237 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:30:07.239 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:30:07.241 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/word/high", parameters={}
+2023-02-02 09:30:07.241 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:30:07.246 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:30:07.247 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WordRes@70719e7, com.ssafy.marmar.api.response.WordRes@5f517e96, com. (truncated)...]
+2023-02-02 09:30:07.249 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:30:53.955 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:30:53.956 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/word/high", parameters={}
+2023-02-02 09:30:53.957 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:30:53.962 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:30:53.962 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WordRes@4c223570, com.ssafy.marmar.api.response.WordRes@fbe97b3, com. (truncated)...]
+2023-02-02 09:30:53.963 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:30:53.964 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:30:53.965 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/word/high", parameters={}
+2023-02-02 09:30:53.966 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:30:53.969 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:30:53.969 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WordRes@5724f66, com.ssafy.marmar.api.response.WordRes@6bcc2d96, com. (truncated)...]
+2023-02-02 09:30:53.971 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:32:30.329 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:32:30.329 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/word/mid", parameters={}
+2023-02-02 09:32:30.330 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:32:30.333 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:32:30.334 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2023-02-02 09:32:30.334 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:32:30.336 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:32:30.337 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/word/mid", parameters={}
+2023-02-02 09:32:30.338 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:32:30.341 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:32:30.341 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2023-02-02 09:32:30.341 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:32:32.134 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:32:32.136 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/word/low", parameters={}
+2023-02-02 09:32:32.136 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:32:32.141 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:32:32.141 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WordRes@509ea863, com.ssafy.marmar.api.response.WordRes@259b0d21, com (truncated)...]
+2023-02-02 09:32:32.142 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:32:32.144 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:32:32.145 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/word/low", parameters={}
+2023-02-02 09:32:32.145 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:32:32.148 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:32:32.150 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WordRes@9ee6858, com.ssafy.marmar.api.response.WordRes@8f4d8e9, com.s (truncated)...]
+2023-02-02 09:32:32.150 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:32:36.760 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:32:36.761 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:32:36.761 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:32:36.769 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:32:36.769 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@16913770, com.ssafy.marmar.api.response.WatchRes@174328d7, c (truncated)...]
+2023-02-02 09:32:36.773 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:32:36.775 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:32:36.776 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:32:36.777 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:32:36.781 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:32:36.781 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@5500349e, com.ssafy.marmar.api.response.WatchRes@25084e39, c (truncated)...]
+2023-02-02 09:32:36.783 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:34:36.121 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:34:36.123 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:34:36.123 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:34:36.134 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:34:36.135 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@32722f73, com.ssafy.marmar.api.response.WatchRes@edd6293, co (truncated)...]
+2023-02-02 09:34:36.138 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:34:36.166 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:34:36.168 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:34:36.169 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:34:36.174 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:34:36.175 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@7e7dd994, com.ssafy.marmar.api.response.WatchRes@1e9ec752, c (truncated)...]
+2023-02-02 09:34:36.177 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:34:55.833 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:34:55.834 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:34:55.835 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:34:55.840 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:34:55.841 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@5ae47ba6, com.ssafy.marmar.api.response.WatchRes@3803def9, c (truncated)...]
+2023-02-02 09:34:55.843 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:35:00.611 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:35:00.612 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:35:00.613 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:35:00.618 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:35:00.618 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@3edb9cf6, com.ssafy.marmar.api.response.WatchRes@694c4e6b, c (truncated)...]
+2023-02-02 09:35:00.620 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:35:00.621 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:35:00.622 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:35:00.622 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:35:00.626 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:35:00.626 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@73a6b2c, com.ssafy.marmar.api.response.WatchRes@2a4860d3, co (truncated)...]
+2023-02-02 09:35:00.627 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:40:32.127 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:40:32.127 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:40:32.127 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:40:32.133 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:40:32.134 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@6d79105e, com.ssafy.marmar.api.response.WatchRes@7a33cf4d, c (truncated)...]
+2023-02-02 09:40:32.135 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:40:32.137 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:40:32.138 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:40:32.138 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:40:32.141 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:40:32.141 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@680bf90f, com.ssafy.marmar.api.response.WatchRes@46a256af, c (truncated)...]
+2023-02-02 09:40:32.142 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:41:25.599 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:41:25.600 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:41:25.601 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:41:25.606 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:41:25.607 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@17d14c2b, com.ssafy.marmar.api.response.WatchRes@70b5ebb1, c (truncated)...]
+2023-02-02 09:41:25.610 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:41:25.612 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:41:25.614 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:41:25.614 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:41:25.619 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:41:25.619 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@be8671a, com.ssafy.marmar.api.response.WatchRes@6c956b85, co (truncated)...]
+2023-02-02 09:41:25.620 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:41:50.637 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:41:50.638 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:41:50.639 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:41:50.646 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:41:50.646 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@6f2ab02d, com.ssafy.marmar.api.response.WatchRes@6bca3cfb, c (truncated)...]
+2023-02-02 09:41:50.648 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:41:50.650 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:41:50.651 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:41:50.651 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:41:50.655 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:41:50.655 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@4a3a3d42, com.ssafy.marmar.api.response.WatchRes@4022e7f9, c (truncated)...]
+2023-02-02 09:41:50.657 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:41:54.009 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:41:54.010 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:41:54.010 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:41:54.014 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:41:54.014 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@3b306926, com.ssafy.marmar.api.response.WatchRes@47a202f, co (truncated)...]
+2023-02-02 09:41:54.016 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:41:54.017 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:41:54.018 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:41:54.019 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:41:54.022 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:41:54.023 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@72f3be4a, com.ssafy.marmar.api.response.WatchRes@2f69487, co (truncated)...]
+2023-02-02 09:41:54.024 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:42:06.609 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:42:06.610 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:42:06.610 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:42:06.615 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:42:06.615 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@173b248c, com.ssafy.marmar.api.response.WatchRes@1a0b6c14, c (truncated)...]
+2023-02-02 09:42:06.616 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:42:06.617 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:42:06.618 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:42:06.618 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:42:06.621 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:42:06.625 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@582450a6, com.ssafy.marmar.api.response.WatchRes@1605db23, c (truncated)...]
+2023-02-02 09:42:06.627 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:42:31.313 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:42:31.314 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:42:31.315 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:42:31.320 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:42:31.320 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@544f0ee2, com.ssafy.marmar.api.response.WatchRes@2698a32f, c (truncated)...]
+2023-02-02 09:42:31.321 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:42:31.323 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:42:31.324 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:42:31.324 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:42:31.328 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:42:31.328 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@3e47bb92, com.ssafy.marmar.api.response.WatchRes@262c6a96, c (truncated)...]
+2023-02-02 09:42:31.329 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:42:34.610 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:42:34.611 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:42:34.611 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:42:34.616 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:42:34.617 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@7ef18baa, com.ssafy.marmar.api.response.WatchRes@e5323b8, co (truncated)...]
+2023-02-02 09:42:34.618 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:42:34.619 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:42:34.621 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:42:34.621 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:42:34.626 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:42:34.626 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@61630bfd, com.ssafy.marmar.api.response.WatchRes@3befa20c, c (truncated)...]
+2023-02-02 09:42:34.627 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:42:42.041 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:42:42.042 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/word/high", parameters={}
+2023-02-02 09:42:42.043 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:42:42.047 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:42:42.047 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WordRes@a92260, com.ssafy.marmar.api.response.WordRes@45ae4a1f, com.s (truncated)...]
+2023-02-02 09:42:42.048 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:42:42.050 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:42:42.051 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/word/high", parameters={}
+2023-02-02 09:42:42.051 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:42:42.055 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:42:42.055 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WordRes@2cea5586, com.ssafy.marmar.api.response.WordRes@3be31a5d, com (truncated)...]
+2023-02-02 09:42:42.056 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:43:32.447 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:43:32.448 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/mid", parameters={}
+2023-02-02 09:43:32.448 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:43:32.452 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:43:32.452 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2023-02-02 09:43:32.453 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:43:32.456 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:43:32.456 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/mid", parameters={}
+2023-02-02 09:43:32.457 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:43:32.460 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:43:32.460 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2023-02-02 09:43:32.461 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:43:51.903 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:43:51.904 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/word/high", parameters={}
+2023-02-02 09:43:51.906 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:43:51.909 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:43:51.910 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WordRes@6c5b6eb8, com.ssafy.marmar.api.response.WordRes@5cb89988, com (truncated)...]
+2023-02-02 09:43:51.911 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:43:51.913 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:43:51.914 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/word/high", parameters={}
+2023-02-02 09:43:51.914 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:43:51.918 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:43:51.918 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WordRes@3340bd82, com.ssafy.marmar.api.response.WordRes@5b7d2f05, com (truncated)...]
+2023-02-02 09:43:51.919 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:43:56.988 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:43:56.988 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:43:56.989 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:43:56.993 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:43:56.993 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@4ba1ed28, com.ssafy.marmar.api.response.WatchRes@11d9b1e7, c (truncated)...]
+2023-02-02 09:43:56.994 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:43:56.996 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:43:56.997 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:43:56.997 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:43:57.001 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:43:57.001 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@5422a700, com.ssafy.marmar.api.response.WatchRes@2e5ec8b9, c (truncated)...]
+2023-02-02 09:43:57.002 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:44:13.303 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:44:13.304 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:44:13.305 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:44:13.309 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:44:13.309 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@7ea7c83e, com.ssafy.marmar.api.response.WatchRes@18a6d22a, c (truncated)...]
+2023-02-02 09:44:13.310 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:44:13.312 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:44:13.313 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:44:13.313 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:44:13.317 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:44:13.317 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@69242c37, com.ssafy.marmar.api.response.WatchRes@57b17162, c (truncated)...]
+2023-02-02 09:44:13.318 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:44:17.096 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:44:17.097 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/word/high", parameters={}
+2023-02-02 09:44:17.097 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:44:17.101 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:44:17.101 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WordRes@553a2837, com.ssafy.marmar.api.response.WordRes@46cbeed2, com (truncated)...]
+2023-02-02 09:44:17.102 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:44:17.104 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:44:17.104 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/word/high", parameters={}
+2023-02-02 09:44:17.104 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#wordspeakingList(String)
+2023-02-02 09:44:17.106 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:44:17.106 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WordRes@5b9040b4, com.ssafy.marmar.api.response.WordRes@72826377, com (truncated)...]
+2023-02-02 09:44:17.108 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:44:20.229 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:44:20.230 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:44:20.230 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:44:20.235 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:44:20.235 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@292dab34, com.ssafy.marmar.api.response.WatchRes@3c3d88b5, c (truncated)...]
+2023-02-02 09:44:20.236 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:44:20.238 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:44:20.239 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/program/clock/high", parameters={}
+2023-02-02 09:44:20.239 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.ProgramController#watchList(String)
+2023-02-02 09:44:20.243 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-02 09:44:20.243 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.ssafy.marmar.api.response.WatchRes@3760e7f6, com.ssafy.marmar.api.response.WatchRes@5a01e541, c (truncated)...]
+2023-02-02 09:44:20.244 DEBUG 12392 --- [http-nio-127.0.0.1-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-02 09:47:10.922  INFO 12392 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-02-02 09:47:10.928  INFO 12392 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-02-02 09:47:10.944  INFO 12392 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

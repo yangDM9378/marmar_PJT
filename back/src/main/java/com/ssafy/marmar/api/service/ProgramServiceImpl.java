@@ -32,7 +32,7 @@ public class ProgramServiceImpl implements ProgramService{
         for(Wordspeaking word : words){
             WordRes res = WordRes.builder()
                     .num(word.getNum())
-                    .wordSpeakingQuestion(word.getWordSpeakingQuestion())
+                    .answer(word.getAnswer())
                     .difficulty(word.getDifficulty())
                     .imagePath(word.getImagePath())
                     .voicePath(word.getVoicePath())
@@ -70,7 +70,7 @@ public class ProgramServiceImpl implements ProgramService{
         for(Wordspeaking word : words){
             WordRes res = WordRes.builder()
                     .num(word.getNum())
-                    .wordSpeakingQuestion(word.getWordSpeakingQuestion())
+                    .answer(word.getAnswer())
                     .difficulty(word.getDifficulty())
                     .imagePath(word.getImagePath())
                     .voicePath(word.getVoicePath())
@@ -91,7 +91,7 @@ public class ProgramServiceImpl implements ProgramService{
         for(Watch watch : watches){
             WatchRes res = WatchRes.builder()
                     .num(watch.getNum())
-                    .watchQuestion(watch.getWatchQuestion())
+                    .answer(watch.getAnswer())
                     .difficulty(watch.getDifficulty())
                     .imagePath(watch.getImagePath())
                     .voicePath(watch.getVoicePath())
@@ -129,7 +129,7 @@ public class ProgramServiceImpl implements ProgramService{
         for(Watch word : watches){
             WatchRes res = WatchRes.builder()
                     .num(word.getNum())
-                    .watchQuestion(word.getWatchQuestion())
+                    .answer(word.getAnswer())
                     .difficulty(word.getDifficulty())
                     .imagePath(word.getImagePath())
                     .voicePath(word.getVoicePath())

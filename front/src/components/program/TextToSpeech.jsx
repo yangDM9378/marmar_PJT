@@ -3,16 +3,16 @@
 import React, { useState, useEffect } from 'react';
 import Speech from 'speak-tts';
 
-export default function TextToSpeech({ wordSpeakingQuestion }) {
+export default function TextToSpeech({ answer }) {
   const [say, setSay] = useState('');
 
   const getSay = () => {
-    setSay(wordSpeakingQuestion);
+    setSay(answer);
   };
 
   useEffect(() => {
-    getSay(wordSpeakingQuestion);
-  }, [wordSpeakingQuestion]);
+    getSay(answer);
+  }, [answer]);
 
   const speech = new Speech();
   speech.init({

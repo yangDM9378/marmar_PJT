@@ -10,6 +10,7 @@ export const SttContext = createContext();
 
 export default function SttProvider({ children }) {
   // 녹음 관련
+  const [correct, setCorrect] = useState(false);
   const { transcript } = useSpeechRecognition();
   const speechStart = () => {
     SpeechRecognition.startListening({
@@ -21,6 +22,7 @@ export default function SttProvider({ children }) {
     SpeechRecognition.abortListening({
       continuous: false,
     });
+    console.log(question, transcript);
     if (transcript === question) {
       alert('잘 발음 했다');
     } else {
@@ -38,7 +40,6 @@ export default function SttProvider({ children }) {
   const getQuestion = value => {
     setQuestion(value);
   };
-
   return (
     <SttContext.Provider
       value={{

@@ -5,17 +5,18 @@ import tw from 'twin.macro';
 import React, { useContext, useEffect } from 'react';
 import { SttContext } from '../../context/SttContext';
 
-export default function ClockGame({ imagePath, voicePath, watchQuestion }) {
+export default function ClockGame({ imagePath, answer }) {
   const { getQuestion } = useContext(SttContext);
 
   useEffect(() => {
-    getQuestion(watchQuestion);
-  }, []);
+    console.log(answer);
+    getQuestion(answer);
+  }, [answer]);
 
   return (
     <S.ClockGame>
       <S.ClockImg src={imagePath} />
-      <S.watchQuestion>watchQuestion: {watchQuestion}</S.watchQuestion>
+      <S.watchQuestion>watchQuestion: {answer}</S.watchQuestion>
     </S.ClockGame>
   );
 }

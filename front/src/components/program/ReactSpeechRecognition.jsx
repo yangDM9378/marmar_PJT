@@ -4,12 +4,12 @@ import tw from 'twin.macro';
 import React, { useContext, useEffect } from 'react';
 import { SttContext } from '../../context/SttContext';
 
-export default function ReactSpeechRecognition({ wordSpeakingQuestion }) {
+export default function ReactSpeechRecognition({ answer }) {
   const { speechStart, speechStop, getQuestion } = useContext(SttContext);
 
   useEffect(() => {
-    getQuestion(wordSpeakingQuestion);
-  }, [wordSpeakingQuestion]);
+    getQuestion(answer);
+  }, [answer]);
 
   return (
     <S.RecognitionSection>
