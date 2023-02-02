@@ -10,7 +10,7 @@ export const SttContext = createContext();
 
 export default function SttProvider({ children }) {
   // 녹음 관련
-  const [correct, setCorrect] = useState(false);
+  // const [correct, setCorrect] = useState(false);
   const { transcript } = useSpeechRecognition();
   const speechStart = () => {
     SpeechRecognition.startListening({

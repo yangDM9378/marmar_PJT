@@ -20,6 +20,7 @@ export default function TextToSpeech({ answer }) {
   });
 
   const handleClick = () => {
+    console.log(say);
     speech.speak({
       text: say,
     });
