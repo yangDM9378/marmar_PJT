@@ -60,7 +60,7 @@ export default function ClockProgram() {
 
       <ClockGame {...clockData[cnt]} />
       <ReactSpeechRecognition />
-      <TextToSpeech />
+      <TextToSpeech {...clockData[cnt]} />
     </S.ClockProgramSection>
   );
 }
