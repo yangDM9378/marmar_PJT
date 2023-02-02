@@ -25,9 +25,9 @@ public class Wordspeaking {
     private String wordSpeakingQuestion;
 
     @Column
-    private String wordSpeakingStudent;
+    private String difficulty;
 
-    @Column
-    private int wordSpeakingResult;
+    @Column(nullable = false, length = 100)
+    private String imagePath;
 
 }

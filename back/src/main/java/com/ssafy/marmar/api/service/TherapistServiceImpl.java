@@ -4,12 +4,9 @@ import com.ssafy.marmar.api.request.TherapistRegisterPostReq;
 import com.ssafy.marmar.api.response.StudentSearchRes;
 import com.ssafy.marmar.db.model.Student;
 import com.ssafy.marmar.db.model.Therapist;
-import com.ssafy.marmar.db.model.Wordspeaking;
 import com.ssafy.marmar.db.repository.StudentRepository;
 import com.ssafy.marmar.db.repository.TherapistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
