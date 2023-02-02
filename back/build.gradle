@@ -32,6 +32,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.7'
     testImplementation 'org.springframework.security:spring-security-test:5.7.6'
     compileOnly 'com.querydsl:querydsl-apt:5.0.0'
+
 }
 
 

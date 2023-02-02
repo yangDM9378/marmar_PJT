@@ -24,6 +24,7 @@ import ClockFinish from './pages/program/clock/ClockFinish';
 import WordDifficulty from './pages/program/word/WordDifficulty';
 import WordProgram from './pages/program/word/WordProgram';
 import WordFinish from './pages/program/word/WordFinish';
+import Program from './pages/onClass/Program';
 
 const router = createBrowserRouter([
   {
@@ -66,6 +67,7 @@ const router = createBrowserRouter([
       { path: '/OpenVidu', element: <OpenVidu /> },
 
       // Program
+      { path: '/Program', element: <Program /> },
       { path: '/WordDifficulty', element: <WordDifficulty /> },
       { path: '/WordProgram', element: <WordProgram /> },
       { path: '/WordProgram/WordFinish', element: <WordFinish /> },
