@@ -24,6 +24,9 @@ public class Picture {
     private int answer;
 
     @Column(nullable = false, length = 100)
+    private String difficulty;
+
+    @Column(nullable = false, length = 100)
     private String pictureOne;
 
     @Column(nullable = false, length = 100)

@@ -1,9 +1,12 @@
 package com.ssafy.marmar.api.service;
 
+import com.ssafy.marmar.api.response.PictureRes;
 import com.ssafy.marmar.api.response.WatchRes;
 import com.ssafy.marmar.api.response.WordRes;
+import com.ssafy.marmar.db.model.Picture;
 import com.ssafy.marmar.db.model.Watch;
 import com.ssafy.marmar.db.model.Wordspeaking;
+import com.ssafy.marmar.db.repository.PictureProgramRepository;
 import com.ssafy.marmar.db.repository.WatchProgramRepository;
 import com.ssafy.marmar.db.repository.WordProgramRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +24,9 @@ public class ProgramServiceImpl implements ProgramService{
 
     @Autowired
     WatchProgramRepository watchProgramRepository;
+
+    @Autowired
+    PictureProgramRepository pictureProgramRepository;
 
     @Override
     public List<WordRes> wordlist(String difficulty) {
@@ -140,7 +146,7 @@ public class ProgramServiceImpl implements ProgramService{
     @Override
     public List<WatchRes> selectWatchGameList(String difficulty, int num) {
 
-        if(difficulty == "high"){
+        if(difficulty.equals("high")){
             List<Integer> highlist = selectNum("watch", "high");
             Collections.shuffle(highlist);
 
@@ -162,7 +168,7 @@ public class ProgramServiceImpl implements ProgramService{
             }
             return watchResList;
 
-        } else if(difficulty == "middle"){
+        } else if(difficulty.equals("middle")){
             List<Integer> middlelist = selectNum("watch", "middle");
             Collections.shuffle(middlelist);
 
@@ -212,7 +218,7 @@ public class ProgramServiceImpl implements ProgramService{
     @Override
     public List<WordRes> selectWordGameList(String difficulty, int num) {
 
-        if(difficulty == "high"){
+        if(difficulty.equals("high")){
             List<Integer> highlist = selectNum("word", "high");
             Collections.shuffle(highlist);
 
@@ -236,7 +242,7 @@ public class ProgramServiceImpl implements ProgramService{
 
             return wordResList;
 
-        } else if(difficulty == "middle"){
+        } else if(difficulty.equals("middle")){
             List<Integer> middlelist = selectNum("word", "middle");
             Collections.shuffle(middlelist);
 
@@ -287,8 +293,148 @@ public class ProgramServiceImpl implements ProgramService{
 
     }
 
+    @Override
+    public List<PictureRes> picturelist(String difficulty) {
+        List<Picture> pictures = pictureProgramRepository.findAllByDifficulty(difficulty);
+        List<PictureRes> pictureResList = new ArrayList<>();
+
+        for(Picture picture : pictures){
+            PictureRes res = PictureRes.builder()
+                    .num(picture.getNum())
+                    .answer(picture.getAnswer())
+                    .difficulty(picture.getDifficulty())
+                    .pictureOne(picture.getPictureOne())
+                    .pictureTwo(picture.getPictureTwo())
+                    .pictureThree(picture.getPictureThree())
+                    .pictureFour(picture.getPictureFour())
+                    .build();
+            pictureResList.add(res);
+        }
+
+        return pictureResList;
+    }
+
+    @Override
+    public List<PictureRes> picturegamelist() {
+        List<Integer> highlist = selectNum("picture", "high");
+        List<Integer> middlelist = selectNum("picture", "middle");
+        List<Integer> lowlist = selectNum("picture", "low");
+
+        Collections.shuffle(highlist);
+        Collections.shuffle(middlelist);
+        Collections.shuffle(lowlist);
+
+        List<Picture> pictures = new ArrayList<>();
+        List<PictureRes> pictureResList = new ArrayList<>();
+
+        for(int i=0; i<3; i++){
+            pictures.add(pictureProgramRepository.findByNum(lowlist.get(i)));
+        }
+        for(int i=0; i<4; i++){
+            pictures.add(pictureProgramRepository.findByNum(middlelist.get(i)));
+        }
+        for(int i=0; i<3; i++){
+            pictures.add(pictureProgramRepository.findByNum(highlist.get(i)));
+        }
+
+        for(Picture picture : pictures){
+            PictureRes res = PictureRes.builder()
+                    .num(picture.getNum())
+                    .answer(picture.getAnswer())
+                    .difficulty(picture.getDifficulty())
+                    .pictureOne(picture.getPictureOne())
+                    .pictureTwo(picture.getPictureTwo())
+                    .pictureThree(picture.getPictureThree())
+                    .pictureFour(picture.getPictureFour())
+                    .build();
+            pictureResList.add(res);
+        }
+
+
+        return pictureResList;
+    }
+
+    @Override
+    public List<PictureRes> selectPictureGameList(String difficulty, int num) {
+        if(difficulty.equals("high")){
+            List<Integer> highlist = selectNum("picture", "high");
+            Collections.shuffle(highlist);
+
+            List<Picture> pictures = new ArrayList<>();
+            List<PictureRes> pictureResList = new ArrayList<>();
+
+            for(int i=0; i<num; i++){
+                pictures.add(pictureProgramRepository.findByNum(highlist.get(i)));
+            }
+
+            for(Picture picture : pictures){
+                PictureRes res = PictureRes.builder()
+                        .num(picture.getNum())
+                        .answer(picture.getAnswer())
+                        .difficulty(picture.getDifficulty())
+                        .pictureOne(picture.getPictureOne())
+                        .pictureTwo(picture.getPictureTwo())
+                        .pictureThree(picture.getPictureThree())
+                        .pictureFour(picture.getPictureFour())
+                        .build();
+                pictureResList.add(res);
+            }
+            return pictureResList;
+
+        } else if(difficulty.equals("middle")){
+            List<Integer> middlelist = selectNum("ficture", "middle");
+            Collections.shuffle(middlelist);
+
+            List<Picture> pictures = new ArrayList<>();
+            List<PictureRes> pictureResList = new ArrayList<>();
+
+            for(int i=0; i<num; i++){
+                pictures.add(pictureProgramRepository.findByNum(middlelist.get(i)));
+            }
+
+            for(Picture picture : pictures){
+                PictureRes res = PictureRes.builder()
+                        .num(picture.getNum())
+                        .answer(picture.getAnswer())
+                        .difficulty(picture.getDifficulty())
+                        .pictureOne(picture.getPictureOne())
+                        .pictureTwo(picture.getPictureTwo())
+                        .pictureThree(picture.getPictureThree())
+                        .pictureFour(picture.getPictureFour())
+                        .build();
+                pictureResList.add(res);
+            }
+            return pictureResList;
+
+        } else {
+            List<Integer> lowlist = selectNum("picture", "low");
+            Collections.shuffle(lowlist);
+
+            List<Picture> pictures = new ArrayList<>();
+            List<PictureRes> pictureResList = new ArrayList<>();
+
+            for(int i=0; i<num; i++){
+                pictures.add(pictureProgramRepository.findByNum(lowlist.get(i)));
+            }
+
+            for(Picture picture : pictures){
+                PictureRes res = PictureRes.builder()
+                        .num(picture.getNum())
+                        .answer(picture.getAnswer())
+                        .difficulty(picture.getDifficulty())
+                        .pictureOne(picture.getPictureOne())
+                        .pictureTwo(picture.getPictureTwo())
+                        .pictureThree(picture.getPictureThree())
+                        .pictureFour(picture.getPictureFour())
+                        .build();
+                pictureResList.add(res);
+            }
+            return pictureResList;
+        }
+    }
+
     public List<Integer> selectNum(String game, String di) {
-        if(game == "word"){
+        if(game.equals("word")){
             List<Wordspeaking> Words = wordProgramRepository.findAllByDifficulty(di);
             List<Integer> WordsList = new ArrayList<>();
 
