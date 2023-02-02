@@ -1,0 +1,1 @@
+-- insert into marmar.wordspeaking (num, difficulty, image_path, word_speaking_question) values (1, "high", "word/img/1.png", "사과");
