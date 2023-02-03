@@ -16,7 +16,6 @@ public class StudentRegisterPostReq {
     String nameHelper;
     Date birth;
     String phoneHelper;
-    String emailId;
-    String emailDomain;
+    String email;
 
 }

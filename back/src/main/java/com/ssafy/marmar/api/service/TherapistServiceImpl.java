@@ -38,8 +38,7 @@ public class TherapistServiceImpl implements TherapistService {
         therapist.setTherapistId(registInfo.getId());
         therapist.setTherapistName(registInfo.getName());
         therapist.setTherapistPhone(registInfo.getPhone());
-        therapist.setTherapistEmailId(registInfo.getEmailId());
-        therapist.setTherapistEmailDomain(registInfo.getEmailDomain());
+        therapist.setTherapistEmail(registInfo.getEmail());
         therapist.setTherapistDepartment(registInfo.getDepartment());
 
         therapist.setTherapistPassword(passwordEncoder.encode(registInfo.getPassword()));

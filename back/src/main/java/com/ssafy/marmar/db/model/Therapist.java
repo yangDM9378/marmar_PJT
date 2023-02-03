@@ -40,10 +40,10 @@ public class Therapist {
     private String therapistDepartment;
 
     @Column(nullable = false, length = 100)
-    private String therapistEmailId;
+    private String therapistEmail;
 
-    @Column(nullable = false, length = 100)
-    private String therapistEmailDomain;
+//    @Column(nullable = false, length = 100)
+//    private String therapistEmailDomain;
 
     @Column(nullable = false, length = 100)
     private String therapistPhone;
