@@ -15,8 +15,7 @@ public class TherapistRes {
     String therapistPassword;
     String therapistName;
     String therapistDepartment;
-    String therapistEmailId;
-    String therapistEmailDomain;
+    String therapistEmail;
     String therapistPhone;
     boolean isOngoing;
 
@@ -30,8 +29,7 @@ public class TherapistRes {
         res.setTherapistName(therapist.getTherapistName());
         res.setTherapistDepartment(therapist.getTherapistDepartment());
         res.setTherapistPhone(therapist.getTherapistPhone());
-        res.setTherapistEmailId(therapist.getTherapistEmailId());
-        res.setTherapistEmailDomain(therapist.getTherapistEmailDomain());
+        res.setTherapistEmail(therapist.getTherapistEmail());
         res.setOngoing(therapist.isOngoing());
 
 

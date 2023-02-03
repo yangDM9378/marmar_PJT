@@ -1,5 +1,6 @@
 package com.ssafy.marmar.api.service;
 
+import com.ssafy.marmar.api.response.PictureRes;
 import com.ssafy.marmar.api.response.WatchRes;
 import com.ssafy.marmar.api.response.WordRes;
 
@@ -12,4 +13,14 @@ public interface ProgramService {
 
     List<WatchRes> watchlist(String difficulty);
     List<WatchRes> watchgamelist();
+
+    List<WatchRes> selectWatchGameList(String difficulty, int num);
+
+    List<WordRes> selectWordGameList(String difficulty, int num);
+
+    List<PictureRes> picturelist(String difficulty);
+
+    List<PictureRes> picturegamelist();
+
+    List<PictureRes> selectPictureGameList(String difficulty, int num);
 }
