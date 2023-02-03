@@ -32,6 +32,12 @@ public class TherapistServiceImpl implements TherapistService {
     }
 
     @Override
+    public Therapist getUserByUserEmail(String userEmail) {
+        Therapist therapist = therapistRepository.findByTherapistEmail(userEmail).get();
+        return therapist;
+    }
+
+    @Override
     public Therapist createUser(TherapistRegisterPostReq registInfo) {
         Therapist therapist = new Therapist();
 

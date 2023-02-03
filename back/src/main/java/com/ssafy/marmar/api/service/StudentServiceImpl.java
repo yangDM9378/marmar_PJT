@@ -26,6 +26,12 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public Student getUserByUserEmail(String userEmail) {
+        Student student = studentRepository.findByStudentEmail(userEmail).get();
+        return student;
+    }
+
+    @Override
     public Student createUser(StudentRegisterPostReq registerInfo) {
         Student student = new Student();
 
