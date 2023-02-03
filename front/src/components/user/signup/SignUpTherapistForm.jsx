@@ -19,16 +19,13 @@ export default function SignUpTherapistForm() {
 
   const onSubmit = data => {
     console.log(data);
-    const email = data.email.split('@');
-    console.log(email);
     useSignUpTherapist.mutate({
       id: data.id,
       password: data.password,
       name: data.name,
       phone: data.phone,
       department: data.department,
-      emailId: email[0],
-      emailDomain: email[1],
+      email: data.email,
     });
   };
 

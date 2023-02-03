@@ -317,7 +317,7 @@ const S = {
     ${tw`w-full bg-brand flex justify-center`}
   `,
   LiveContainer: styled.div`
-    ${tw`grid grid-cols-3 w-full max-h-full bg-videobg bg-cover`}
+    ${tw`grid grid-cols-3 w-full max-h-full bg-cover`}
   `,
   VideoSection: styled.div`
     ${tw`grid-cols-1 flex flex-col max-h-screen justify-around border-4 border-black m-5 p-5`}
