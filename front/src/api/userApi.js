@@ -26,6 +26,18 @@ const idCheckTherapistApi = payload => axios.get(`therapist/${payload}`);
 
 const idCheckStudentApi = payload => axios.get(`student/${payload}`);
 
+const findIdApi = paylaod => {
+  console.log(paylaod);
+  return 'id1234';
+  // axios.get('url', paylaod);
+};
+
+const findPwApi = paylaod => {
+  console.log(paylaod);
+  return 'pw1234';
+  // axios.get('url', paylaod);
+};
+
 export {
   signInApi,
   studentCheckApi,
@@ -34,4 +46,6 @@ export {
   signUpStudentApi,
   idCheckTherapistApi,
   idCheckStudentApi,
+  findIdApi,
+  findPwApi,
 };

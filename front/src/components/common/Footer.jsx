@@ -16,7 +16,7 @@ export default function Footer() {
         <p className="mt-3">대표번호 : 010-8837-7192</p>
       </S.TextBox>
       <S.ImgBox>
-        <img src="logo.png" alt="qw" className="w-30 h-30" />
+        <img src="logo.png" alt="logo.png" className="w-30 h-30" />
       </S.ImgBox>
     </S.Section>
   );

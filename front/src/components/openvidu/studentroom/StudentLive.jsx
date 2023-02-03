@@ -65,8 +65,6 @@ export default class StudentLive extends Component {
         myUserName: res.studentName,
         isStudent: true,
       });
-      await this.joinSession();
-      await this.openModal();
     }
   }
 
@@ -101,7 +99,7 @@ export default class StudentLive extends Component {
     // --- 1) Get an OpenVidu object ---
 
     this.OV = new OpenVidu();
-
+    this.openModal();
     // --- 2) Init a session ---
 
     this.setState(
@@ -127,7 +125,6 @@ export default class StudentLive extends Component {
           });
           console.log(subscribers);
         });
-
         // On every Stream destroyed...
         mySession.on('streamDestroyed', event => {
           // Remove the stream from 'subscribers' array
@@ -230,7 +227,18 @@ export default class StudentLive extends Component {
   render() {
     return (
       <S.PageContainer>
-        {this.state.session === undefined ? <div>loading</div> : null}
+        {this.state.session === undefined ? (
+          <S.WaitRoom>
+            <S.StartBtn
+              type="button"
+              onClick={() => {
+                this.joinSession();
+              }}
+            >
+              입장하기
+            </S.StartBtn>
+          </S.WaitRoom>
+        ) : null}
         {this.state.session !== undefined ? (
           <VideoModal open={this.state.modalOpen}>
             <S.LiveContainer>
@@ -299,11 +307,17 @@ export default class StudentLive extends Component {
 }
 
 const S = {
+  WaitRoom: styled.div`
+    ${tw`h-full flex justify-center items-center min-h-screen`}
+  `,
+  StartBtn: styled.button`
+    ${tw`border-4 border-black p-5`}
+  `,
   PageContainer: styled.div`
     ${tw`w-full bg-brand flex justify-center`}
   `,
   LiveContainer: styled.div`
-    ${tw`grid grid-cols-3 w-full max-h-full bg-video-bg bg-cover`}
+    ${tw`grid grid-cols-3 w-full max-h-full bg-videobg bg-cover`}
   `,
   VideoSection: styled.div`
     ${tw`grid-cols-1 flex flex-col max-h-screen justify-around border-4 border-black m-5 p-5`}

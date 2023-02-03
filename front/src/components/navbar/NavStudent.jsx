@@ -20,7 +20,7 @@ export default function NavStudent() {
       <S.Class
         type="button"
         onClick={onEnterRoom}
-        className={`${student.ongoing ? 'bg-yellow-300' : 'bg-slate-300'}`}
+        className={`${student.ongoing ? 'bg-yellow-300' : 'hidden'}`}
       >
         방입장
       </S.Class>

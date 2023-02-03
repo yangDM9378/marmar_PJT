@@ -23,7 +23,7 @@ import ClassSection from './ClassSection';
 import VideoModal from './VideoModal';
 import SelectStudent from './makeroom/SelectStudent';
 import { therapistCheckApi } from '../../api/userApi';
-import { makeRoomApi } from '../../api/liveClassApi';
+import { closeRoomApi, makeRoomApi } from '../../api/liveClassApi';
 
 const APPLICATION_SERVER_URL = 'http://localhost:8080/api/v1/openvidu/';
 
@@ -242,6 +242,7 @@ class Video extends Component {
   leaveSession() {
     // --- 7) Leave the session by calling 'disconnect' method over the Session object ---
     const mySession = this.state.session;
+    closeRoomApi(this.state.studentNum);
     if (mySession) {
       mySession.disconnect();
     }
@@ -313,7 +314,7 @@ class Video extends Component {
         ) : null}
         {this.state.session !== undefined ? (
           <VideoModal open={this.state.modalOpen}>
-            <S.LiveContainer>
+            <S.LiveContainer className="bg-video-bg">
               <S.VideoSection>
                 {this.state.mainStreamManager !== undefined ? (
                   <S.MyVideo>
@@ -426,7 +427,7 @@ const S = {
     ${tw`w-full bg-brand flex justify-center`}
   `,
   LiveContainer: styled.div`
-    ${tw`grid grid-cols-3 w-full max-h-full bg-video-bg bg-cover`}
+    ${tw`grid grid-cols-3 w-full max-h-full bg-cover`}
   `,
   VideoSection: styled.div`
     ${tw`grid-cols-1 flex flex-col max-h-screen justify-around border-4 border-black m-5 p-5`}
