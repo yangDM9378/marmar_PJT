@@ -57,4 +57,15 @@ public class StudentServiceImpl implements StudentService {
     public void deleteTherapistNum(int studentNum) throws Exception {
         studentRepository.deleteTherapist(studentNum);
     }
+
+    @Override
+    public boolean studentHelperPwdCheck(Student student, String pwd) {
+        System.out.println("#####");
+        System.out.println(student.getStudentPasswordHelper()+" "+pwd);
+        if(student.getStudentPasswordHelper().equals(pwd)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
