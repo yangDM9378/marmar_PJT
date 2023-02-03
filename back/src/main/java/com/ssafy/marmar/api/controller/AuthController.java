@@ -1,18 +1,21 @@
 package com.ssafy.marmar.api.controller;
 
+import com.ssafy.marmar.api.request.FindPassPostReq;
 import com.ssafy.marmar.api.request.UserLoginPostReq;
 import com.ssafy.marmar.api.response.UserLoginPostRes;
+import com.ssafy.marmar.api.service.SendEmailService;
 import com.ssafy.marmar.api.service.UserService;
 import com.ssafy.marmar.common.util.JwtTokenUtil;
 import com.ssafy.marmar.db.model.Student;
 import com.ssafy.marmar.db.model.Therapist;
+import com.ssafy.marmar.dto.MailDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -20,6 +23,9 @@ public class AuthController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    SendEmailService sendEmailService;
 
     @Autowired
     PasswordEncoder passwordEncoder;
@@ -50,6 +56,30 @@ public class AuthController {
 
         // 유효하지 않는 패스워드인 경우, 로그인 실패로 응답.
         return ResponseEntity.status(401).body(UserLoginPostRes.of(401, "잘못된 비밀번호입니다.", null));
+    }
+//dto -> name, email, role
+
+    @GetMapping("/check/findPw")
+    public @ResponseBody Map<String, Boolean> pw_find(@RequestBody FindPassPostReq findPassPostReq){
+        Map<String,Boolean> json = new HashMap<>();
+
+        if(findPassPostReq.getRole().equals("STUDENT")){
+            boolean pwFindCheck = userService.studentEmailCheck(findPassPostReq.getEmail(),findPassPostReq.getId());
+            System.out.println(pwFindCheck);
+            json.put("check", pwFindCheck);
+            return json;
+        } else {
+            boolean pwFindCheck = userService.therapistEmailCheck(findPassPostReq.getEmail(),findPassPostReq.getId());
+            System.out.println(pwFindCheck);
+            json.put("check", pwFindCheck);
+            return json;
+        }
+    }
+
+    @PostMapping("/check/findPw/sendEmail")
+    public @ResponseBody void sendEmail(@RequestBody FindPassPostReq findPassPostReq) throws Exception {
+        MailDto dto = sendEmailService.createMailAndChangePassword(findPassPostReq.getEmail(),findPassPostReq.getId(), findPassPostReq.getRole());
+        sendEmailService.mailSend(dto);
     }
 
 }

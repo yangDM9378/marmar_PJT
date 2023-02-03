@@ -16,6 +16,7 @@ import java.util.Optional;
 public interface StudentRepository extends JpaRepository<Student, Integer> {
 
     Optional<Student> findByStudentId(String userId);
+    Optional<Student> findByStudentEmail(String email);
     Student save(Student student);
 
     @Query("SELECT s from Student s where s.studentName like %:search% AND s.therapist is null")
@@ -42,4 +43,9 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
     @Modifying // select 문이 아님을 나타낸다
     @Query("UPDATE Student set isOngoing = :inout where num = :student_num")
     void updateOngoing(@Param("inout")boolean inout, @Param("student_num")int student_num) throws Exception;
+
+    @Transactional
+    @Modifying // select 문이 아님을 나타낸다
+    @Query(value = "UPDATE student s set s.student_password = :student_pw where s.num = :num", nativeQuery = true)
+    void updateStudentPassword(@Param("student_pw")String student_pw, @Param("num")int num) throws Exception;
 }

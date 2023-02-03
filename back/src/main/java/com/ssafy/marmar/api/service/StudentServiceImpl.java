@@ -35,8 +35,7 @@ public class StudentServiceImpl implements StudentService {
         student.setStudentPasswordHelper(registerInfo.getPasswordHelper());
         student.setStudentBirth(registerInfo.getBirth());
         student.setStudentPhoneHelper(registerInfo.getPhoneHelper());
-        student.setStudentEmailId(registerInfo.getEmailId());
-        student.setStudentEmailDomain(registerInfo.getEmailDomain());
+        student.setStudentEmail(registerInfo.getEmail());
 
         student.setStudentPassword(passwordEncoder.encode(registerInfo.getPassword()));
 

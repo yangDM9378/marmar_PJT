@@ -13,8 +13,7 @@ public class TherapistRegisterPostReq {
     String password;
     String name;
     String phone;
-    String emailId;
-    String emailDomain;
+    String email;
     String department;
 
 }

@@ -443,7 +443,7 @@ public class ProgramServiceImpl implements ProgramService{
             }
 
             return WordsList;
-        } else {
+        } else if(game.equals("clock")){
             List<Watch> Watches = watchProgramRepository.findAllByDifficulty(di);
             List<Integer> WatchesList = new ArrayList<>();
 
@@ -452,6 +452,15 @@ public class ProgramServiceImpl implements ProgramService{
             }
 
             return WatchesList;
+        } else {
+            List<Picture> Pictures = pictureProgramRepository.findAllByDifficulty(di);
+            List<Integer> PicturesList = new ArrayList<>();
+
+            for(Picture picture : Pictures){
+                PicturesList.add(picture.getNum());
+            }
+
+            return PicturesList;
         }
 
     }
