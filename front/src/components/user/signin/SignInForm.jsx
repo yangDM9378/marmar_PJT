@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import { useForm } from 'react-hook-form';
@@ -15,6 +15,7 @@ const schema = yup
   })
   .required();
 export default function SignInForm() {
+  const [isFail, setIsFail] = useState(false);
   const { useSignIn } = useAuth();
   const {
     register,
@@ -22,15 +23,17 @@ export default function SignInForm() {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
+    mode: 'onChange',
   });
   const onSignIn = data => {
-    useSignIn.mutate({ id: data.id, password: data.password });
-  };
-  const onFindId = () => {
-    alert('아이디 찾기');
-  };
-  const onFindPassword = () => {
-    alert('비밀번호 찾기');
+    useSignIn.mutate(
+      { id: data.id, password: data.password },
+      {
+        onError: error => {
+          setIsFail(true);
+        },
+      },
+    );
   };
   return (
     <S.SignInForm onSubmit={handleSubmit(onSignIn)}>
@@ -42,15 +45,11 @@ export default function SignInForm() {
         placeholder="비밀번호"
       />
       <S.ErrorMsg>{errors.password?.message}</S.ErrorMsg>
-      <S.FindBox>
-        <button type="button" onClick={onFindId}>
-          아이디 찾기
-        </button>
-        <span>|</span>
-        <button type="button" onClick={onFindPassword}>
-          비밀번호 찾기
-        </button>
-      </S.FindBox>
+      <S.LoginFailMsg className={`${isFail ? '' : 'hidden'}`}>
+        아이디 또는 비밀번호를 잘못 입력했습니다.
+        <br />
+        입력하신 내용을 다시 확인해주세요.
+      </S.LoginFailMsg>
       <S.SignInButton type="submit">로그인</S.SignInButton>
     </S.SignInForm>
   );
@@ -66,8 +65,8 @@ const S = {
   ErrorMsg: styled.p`
     ${tw`mb-3 text-red-400 text-xs font-bold`}
   `,
-  FindBox: styled.div`
-    ${tw`flex justify-end my-12 space-x-1 text-slate-400 font-bold text-xs`}
+  LoginFailMsg: styled.p`
+    ${tw`mb-3 text-red-400 text-xs font-bold`}
   `,
   SignInButton: styled.button`
     ${tw`bg-brand w-full py-2 px-4 rounded-md text-xl font-cafe24 text-white hover:bg-brandHover`}

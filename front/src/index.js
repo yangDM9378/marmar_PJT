@@ -24,6 +24,8 @@ import ClockFinish from './pages/program/clock/ClockFinish';
 import WordDifficulty from './pages/program/word/WordDifficulty';
 import WordProgram from './pages/program/word/WordProgram';
 import WordFinish from './pages/program/word/WordFinish';
+import FindId from './pages/user/FindId';
+import FindPw from './pages/user/FindPw';
 
 const router = createBrowserRouter([
   {
@@ -41,6 +43,22 @@ const router = createBrowserRouter([
         element: (
           <LoggedRoute>
             <SignIn />
+          </LoggedRoute>
+        ),
+      },
+      {
+        path: '/Login/FindId',
+        element: (
+          <LoggedRoute>
+            <FindId />
+          </LoggedRoute>
+        ),
+      },
+      {
+        path: '/Login/FindPw',
+        element: (
+          <LoggedRoute>
+            <FindPw />
           </LoggedRoute>
         ),
       },
@@ -63,7 +81,14 @@ const router = createBrowserRouter([
       { path: '/StudentMypage', element: <StudentMypage /> },
 
       // Openvidu
-      { path: '/OpenVidu', element: <OpenVidu /> },
+      {
+        path: '/OpenVidu',
+        element: (
+          <ProtectedRoute>
+            <OpenVidu />
+          </ProtectedRoute>
+        ),
+      },
 
       // Program
       { path: '/WordDifficulty', element: <WordDifficulty /> },
@@ -76,11 +101,7 @@ const router = createBrowserRouter([
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
-);
+root.render(<RouterProvider router={router} />);
 registerServiceWorker();
 
 // If you want to start measuring performance in your app, pass a function
