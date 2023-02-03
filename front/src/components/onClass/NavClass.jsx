@@ -2,7 +2,7 @@
 /* eslint-disable react/no-this-in-sfc */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable import/no-extraneous-dependencies */
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import { getQuestionApi } from '../../api/programApi';
@@ -10,7 +10,11 @@ import { OnClassContext } from '../../context/OnClassContext';
 
 export default function NavClass() {
   const { request, setRequest, setResponse } = useContext(OnClassContext);
-
+  const [makeRequest, setMakeRequest] = useState({
+    game: '',
+    difficulty: '',
+    num: '',
+  });
   // 프로그램
   const programOption = ['단어 읽기', '시계 읽기'];
   const programParam = ['word', 'clock'];
@@ -18,7 +22,7 @@ export default function NavClass() {
   const onSelectProgram = e => {
     const idx = programOption.indexOf(e.value);
     const program = programParam[idx];
-    setRequest(prev => ({ ...prev, game: program }));
+    setMakeRequest(prev => ({ ...prev, game: program }));
   };
   // 난이도
   const difficultyOption = ['상', '중', '하'];
@@ -27,23 +31,26 @@ export default function NavClass() {
   const onSelectDifficulty = e => {
     const idx = difficultyOption.indexOf(e.value);
     const difficulty = difficultyParam[idx];
-    setRequest(prev => ({ ...prev, difficulty }));
+    setMakeRequest(prev => ({ ...prev, difficulty }));
   };
   // 문제 개수
   const countOption = [1, 2, 3, 4, 5];
   const defaultCount = '문제 개수';
   const onSelectCount = e => {
-    setRequest(prev => ({ ...prev, num: e.value }));
+    setMakeRequest(prev => ({ ...prev, num: e.value }));
   };
   // 문제 불러오기
   const getQuestion = async () => {
-    const response = await getQuestionApi(request);
-    setResponse(response.data);
-    console.log(response);
+    console.log('qwdwq');
+    await setRequest(makeRequest);
+    const response = await getQuestionApi(makeRequest);
+    await setResponse(response.data);
+    await console.log(response);
   };
 
   return (
     <div>
+      <input type="text" />
       <Dropdown
         options={programOption}
         onChange={onSelectProgram}
@@ -62,7 +69,7 @@ export default function NavClass() {
         value={defaultCount}
         placeholder="Select an option"
       />
-      <button type="submit" onClick={getQuestion}>
+      <button type="button" onClick={getQuestion}>
         시작
       </button>
     </div>

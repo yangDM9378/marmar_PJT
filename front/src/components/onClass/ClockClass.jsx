@@ -8,16 +8,24 @@ import ClockGame from '../program/ClockGame';
 
 export default function ClockProgram() {
   // 데이터 가져오기
-  const { request, response } = useContext(OnClassContext);
+  const { request, setRequest, response, setResponse } =
+    useContext(OnClassContext);
 
   // 문제 넘기기 관련
   const [cnt, setCnt] = useState(0);
-  const cntPlus = game => {
-    cnt < 9 && setCnt(cnt + 1);
-    // cnt >= request.count && alart('end');
+  const cntPlus = () => {
+    cnt < request.num - 1 && setCnt(cnt + 1);
   };
   const cntMinus = () => {
     cnt > 0 && setCnt(cnt - 1);
+  };
+  const handleEndGame = () => {
+    setRequest({
+      game: '',
+      difficulty: '',
+      num: 0,
+    });
+    setResponse(['default']);
   };
 
   return (
@@ -28,14 +36,23 @@ export default function ClockProgram() {
         [Q{cnt + 1}] 다음 시계를 보고 시간을 말해보세요.
       </S.ClockContext>
       <S.ClockBtnAndGame>
-        {(cnt > 0 && (
+        {cnt > 0 && cnt <= request.num - 1 && (
           <button type="button" onClick={cntMinus}>
             이전
           </button>
-        )) || <S.ButtonDisable type="button">이전</S.ButtonDisable>}
-        <button type="button" onClick={cntPlus}>
-          다음
-        </button>
+        )}
+
+        {cnt === request.num - 1 && (
+          <button type="button" onClick={handleEndGame}>
+            처음으로
+          </button>
+        )}
+
+        {cnt < request.num - 1 && (
+          <button type="button" onClick={cntPlus}>
+            다음
+          </button>
+        )}
       </S.ClockBtnAndGame>
       <ClockGame {...response[cnt]} />
     </S.ClockProgramSection>
