@@ -5,16 +5,21 @@ export const OnClassContext = createContext();
 
 export default function OnClassProvider({ children }) {
   const [request, setRequest] = useState({
-    program: '',
+    game: '',
     difficulty: '',
-    count: 0,
+    num: 0,
   });
 
-  const [response, setResponse] = useState('');
+  const [response, setResponse] = useState(['default']);
 
   return (
     <OnClassContext.Provider
-      value={{ request, setRequest, response, setResponse }}
+      value={{
+        request,
+        setRequest,
+        response,
+        setResponse,
+      }}
     >
       {children}
     </OnClassContext.Provider>

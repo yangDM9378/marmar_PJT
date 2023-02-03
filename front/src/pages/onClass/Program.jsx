@@ -1,7 +1,6 @@
 import React from 'react';
-import ClockClass from '../../components/onClass/ClockClass';
 import NavClass from '../../components/onClass/NavClass';
-import WordClass from '../../components/onClass/WordClass';
+import ProgramClass from '../../components/onClass/ProgramClass';
 import OnClassProvider from '../../context/OnClassContext';
 
 export default function Program() {
@@ -9,8 +8,7 @@ export default function Program() {
     <div>
       <OnClassProvider>
         <NavClass />
-        <WordClass />
-        <ClockClass />
+        <ProgramClass />
       </OnClassProvider>
     </div>
   );

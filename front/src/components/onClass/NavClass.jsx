@@ -18,7 +18,7 @@ export default function NavClass() {
   const onSelectProgram = e => {
     const idx = programOption.indexOf(e.value);
     const program = programParam[idx];
-    setRequest(prev => ({ ...prev, program }));
+    setRequest(prev => ({ ...prev, game: program }));
   };
   // 난이도
   const difficultyOption = ['상', '중', '하'];
@@ -33,13 +33,13 @@ export default function NavClass() {
   const countOption = [1, 2, 3, 4, 5];
   const defaultCount = '문제 개수';
   const onSelectCount = e => {
-    setRequest(prev => ({ ...prev, count: e.value }));
+    setRequest(prev => ({ ...prev, num: e.value }));
   };
   // 문제 불러오기
   const getQuestion = async () => {
-    console.log(request);
-    // const response = await getQuestionApi(request);
-    // setResponse(response.data);
+    const response = await getQuestionApi(request);
+    setResponse(response.data);
+    console.log(response);
   };
 
   return (
