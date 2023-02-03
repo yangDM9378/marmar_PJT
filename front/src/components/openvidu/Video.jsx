@@ -15,13 +15,15 @@
 /* eslint-disable react/destructuring-assignment */
 import { OpenVidu } from 'openvidu-browser';
 import axios from 'axios';
+import styled from 'styled-components';
+import tw from 'twin.macro';
 import React, { Component } from 'react';
 import UserVideoComponent from './UserVideoComponent';
 import ClassSection from './ClassSection';
 import VideoModal from './VideoModal';
 import SelectStudent from './makeroom/SelectStudent';
 import { therapistCheckApi } from '../../api/userApi';
-import { makeRoomApi } from '../../api/liveClassApi';
+import { closeRoomApi, makeRoomApi } from '../../api/liveClassApi';
 
 const APPLICATION_SERVER_URL = 'http://localhost:8080/api/v1/openvidu/';
 
@@ -115,6 +117,13 @@ class Video extends Component {
     }
   }
 
+  enableProdMode() {
+    console.log = () => {};
+    console.debug = () => {};
+    console.info = () => {};
+    console.warn = () => {};
+  }
+
   deleteSubscriber(streamManager) {
     const { subscribers } = this.state;
     const index = subscribers.indexOf(streamManager, 0);
@@ -158,7 +167,6 @@ class Video extends Component {
             subscribers,
           });
         });
-
         // On every Stream destroyed...
         mySession.on('streamDestroyed', event => {
           // Remove the stream from 'subscribers' array
@@ -169,7 +177,6 @@ class Video extends Component {
         mySession.on('exception', exception => {
           // console.warn(exception);
         });
-
         // --- 4) Connect to the session with a valid user token ---
 
         // Get a token from the OpenVidu deployment
@@ -190,8 +197,8 @@ class Video extends Component {
                 videoSource: undefined, // The source of video. If undefined default webcam
                 publishAudio: true, // Whether you want to start publishing with your audio unmuted or not
                 publishVideo: true, // Whether you want to start publishing with your video enabled or not
-                resolution: '640x480', // The resolution of your video
-                frameRate: 30, // The frame rate of your video
+                resolution: '100%x100%', // The resolution of your video
+                frameRate: 20, // The frame rate of your video
                 insertMode: 'APPEND', // How the video is inserted in the target element 'video-container'
                 mirror: false, // Whether to mirror your local video or not
               });
@@ -235,6 +242,7 @@ class Video extends Component {
   leaveSession() {
     // --- 7) Leave the session by calling 'disconnect' method over the Session object ---
     const mySession = this.state.session;
+    closeRoomApi(this.state.studentNum);
     if (mySession) {
       mySession.disconnect();
     }
@@ -306,13 +314,10 @@ class Video extends Component {
         ) : null}
         {this.state.session !== undefined ? (
           <VideoModal open={this.state.modalOpen}>
-            <div
-              id="session"
-              className="grid grid-cols-3 w-full h-[100vh] bg-video-bg bg-cover"
-            >
-              <div className="grid-cols-1 flex flex-col justify-around">
+            <S.LiveContainer className="bg-video-bg">
+              <S.VideoSection>
                 {this.state.mainStreamManager !== undefined ? (
-                  <div id="main-video" className="relative">
+                  <S.MyVideo>
                     <UserVideoComponent
                       streamManager={this.state.mainStreamManager}
                     />
@@ -342,11 +347,11 @@ class Video extends Component {
                         비디오
                       </button>
                     </div>
-                  </div>
+                  </S.MyVideo>
                 ) : null}
-                <div id="video-container">
+                <S.UserVideo>
                   <div
-                    className="stream-container"
+                    className="h-[100%]"
                     onClick={() =>
                       this.handleMainVideoStream(this.state.subscribers[0])
                     }
@@ -355,15 +360,15 @@ class Video extends Component {
                       streamManager={this.state.subscribers[0]}
                     />
                   </div>
-                </div>
-              </div>
+                </S.UserVideo>
+              </S.VideoSection>
               <ClassSection
                 className="cols-2"
                 close={(this.closeModal, this.leaveSession)}
                 sessionId={mySessionId}
                 streamManager={this.state.publisher}
               />
-            </div>
+            </S.LiveContainer>
           </VideoModal>
         ) : null}
       </div>
@@ -416,3 +421,21 @@ class Video extends Component {
 }
 
 export default Video;
+
+const S = {
+  PageContainer: styled.div`
+    ${tw`w-full bg-brand flex justify-center`}
+  `,
+  LiveContainer: styled.div`
+    ${tw`grid grid-cols-3 w-full max-h-full bg-cover`}
+  `,
+  VideoSection: styled.div`
+    ${tw`grid-cols-1 flex flex-col max-h-screen justify-around border-4 border-black m-5 p-5`}
+  `,
+  MyVideo: styled.div`
+    ${tw`relative border-4 border-blue-600 h-[45%]`}
+  `,
+  UserVideo: styled.div`
+    ${tw`relative border-4 border-red-400 h-[45%]`}
+  `,
+};

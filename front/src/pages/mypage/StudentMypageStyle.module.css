@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+}
+.testsection {
+  height: 500px;
+  width: 25%;
+  margin: 50px;
+}
+
+.box1 {
+  background-color: rebeccapurple;
+}
+
+.box2 {
+  background-color: aqua;
+}
+.box3 {
+  background-color: cadetblue;
+}

@@ -66,7 +66,7 @@ export default function WordProgram() {
 
 const S = {
   WordProgramSection: styled.div`
-    ${tw` bg-brand min-h-[800px] flex-col`}
+    ${tw`bg-brand min-h-[800px] flex-col`}
   `,
   WordDifficulty: styled.h4`
     ${tw`flex text-xl justify-end `}

@@ -12,6 +12,7 @@ import { OpenVidu } from 'openvidu-browser';
 import axios from 'axios';
 import styled from 'styled-components';
 import tw from 'twin.macro';
+import { OpenViduLoggerConfiguration } from 'openvidu-browser/lib/OpenViduInternal/Logger/OpenViduLoggerConfiguration';
 import { studentCheckApi } from '../../../api/userApi';
 import ClassSection from '../ClassSection';
 import UserVideoComponent from '../UserVideoComponent';
@@ -64,8 +65,6 @@ export default class StudentLive extends Component {
         myUserName: res.studentName,
         isStudent: true,
       });
-      await this.joinSession();
-      await this.openModal();
     }
   }
 
@@ -73,7 +72,7 @@ export default class StudentLive extends Component {
     window.removeEventListener('beforeunload', this.onbeforeunload);
   }
 
-  onbeforeunload(event) {
+  onbeforeunload() {
     this.leaveSession();
   }
 
@@ -100,7 +99,7 @@ export default class StudentLive extends Component {
     // --- 1) Get an OpenVidu object ---
 
     this.OV = new OpenVidu();
-
+    this.openModal();
     // --- 2) Init a session ---
 
     this.setState(
@@ -124,8 +123,8 @@ export default class StudentLive extends Component {
           this.setState({
             subscribers,
           });
+          console.log(subscribers);
         });
-
         // On every Stream destroyed...
         mySession.on('streamDestroyed', event => {
           // Remove the stream from 'subscribers' array
@@ -186,6 +185,8 @@ export default class StudentLive extends Component {
                 mainStreamManager: publisher,
                 publisher,
               });
+
+              console.log(this.state.subscribers);
             })
             .catch(error => {
               console.log(
@@ -197,6 +198,10 @@ export default class StudentLive extends Component {
         });
       },
     );
+  }
+
+  enableProdMode() {
+    OpenViduLoggerConfiguration.disabled();
   }
 
   leaveSession() {
@@ -222,7 +227,18 @@ export default class StudentLive extends Component {
   render() {
     return (
       <S.PageContainer>
-        {this.state.session === undefined ? <div>loading</div> : null}
+        {this.state.session === undefined ? (
+          <S.WaitRoom>
+            <S.StartBtn
+              type="button"
+              onClick={() => {
+                this.joinSession();
+              }}
+            >
+              입장하기
+            </S.StartBtn>
+          </S.WaitRoom>
+        ) : null}
         {this.state.session !== undefined ? (
           <VideoModal open={this.state.modalOpen}>
             <S.LiveContainer>
@@ -234,9 +250,9 @@ export default class StudentLive extends Component {
                     />
                   </S.MyVideo>
                 ) : null}
-                <div id="video-container">
+                <S.UserVideo>
                   <div
-                    className="stream-container"
+                    className="h-[100%]"
                     onClick={() =>
                       this.handleMainVideoStream(this.state.subscribers[0])
                     }
@@ -245,10 +261,10 @@ export default class StudentLive extends Component {
                       streamManager={this.state.subscribers[0]}
                     />
                   </div>
-                </div>
+                </S.UserVideo>
               </S.VideoSection>
               <ClassSection
-                className="cols-2"
+                className="grid cols-2"
                 close={(this.closeModal, this.leaveSession)}
                 sessionId={this.state.mySessionId}
                 streamManager={this.state.publisher}
@@ -291,16 +307,25 @@ export default class StudentLive extends Component {
 }
 
 const S = {
+  WaitRoom: styled.div`
+    ${tw`h-full flex justify-center items-center min-h-screen`}
+  `,
+  StartBtn: styled.button`
+    ${tw`border-4 border-black p-5`}
+  `,
   PageContainer: styled.div`
     ${tw`w-full bg-brand flex justify-center`}
   `,
   LiveContainer: styled.div`
-    ${tw`grid grid-cols-3 w-full h-[100vh] bg-video-bg bg-cover`}
+    ${tw`grid grid-cols-3 w-full max-h-full bg-videobg bg-cover`}
   `,
   VideoSection: styled.div`
-    ${tw`grid-cols-1 flex flex-col justify-around`}
+    ${tw`grid-cols-1 flex flex-col max-h-screen justify-around border-4 border-black m-5 p-5`}
   `,
   MyVideo: styled.div`
-    ${tw`relative`}
+    ${tw`relative border-4 border-blue-600 h-[45%]`}
+  `,
+  UserVideo: styled.div`
+    ${tw`relative border-4 border-red-400 h-[45%]`}
   `,
 };

@@ -14,9 +14,9 @@ export default function ClassSection(props) {
     <div>
       <button
         type="button"
-        onClick={() => {
-          close();
-          closeNavigate();
+        onClick={async () => {
+          await close();
+          await closeNavigate();
         }}
       >
         종료

@@ -6,6 +6,8 @@ import com.ssafy.marmar.db.model.Student;
 public interface StudentService {
 
     Student getUserByUserId(String userId);
+    Student getUserByUserEmail(String userEmail);
+
     Student createUser(StudentRegisterPostReq registInfo);
     void updateTherapistNum(int studentNum, int therapistNum) throws Exception;
 

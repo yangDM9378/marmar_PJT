@@ -45,6 +45,21 @@ public class StudentController {
 
     }
 
+    @GetMapping("/checkEmail/{studentEmail}")
+    public ResponseEntity<Boolean> checkStudentEmail(@PathVariable String studentEmail) {
+
+        try{
+            therapistService.getUserByUserEmail(studentEmail);
+        }catch(NoSuchElementException e){//아이디 중복되지 않으면 true 리턴
+            try{
+                studentService.getUserByUserEmail(studentEmail);
+            } catch(NoSuchElementException e1){//아이디 중복되지 않으면 true 리턴
+                return ResponseEntity.status(200).body(true);
+            }
+        }
+        return	ResponseEntity.status(200).body(false);
+    }
+
     @PostMapping()
     public ResponseDto<Integer> register(@RequestBody StudentRegisterPostReq registerInfo){
         studentService.createUser(registerInfo);
