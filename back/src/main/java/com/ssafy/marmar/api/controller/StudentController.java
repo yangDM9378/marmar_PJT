@@ -1,5 +1,6 @@
 package com.ssafy.marmar.api.controller;
 
+import com.ssafy.marmar.api.request.FindPassPostReq;
 import com.ssafy.marmar.api.request.StudentRegisterPostReq;
 import com.ssafy.marmar.api.response.StudentRes;
 import com.ssafy.marmar.api.service.StudentService;
@@ -15,6 +16,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.NoSuchElementException;
 
 @RestController
@@ -98,5 +101,18 @@ public class StudentController {
         String userId = userDetails.getUsername();
         Therapist user = therapistService.getUserByUserId(userId);
         return user.getNum();
+    }
+
+    @PostMapping("/check/PasswordHelper")
+    public @ResponseBody Map<String, Boolean> pw_find(@RequestBody String studentPasswordHelper, Authentication authentication){
+        Map<String,Boolean> json = new HashMap<>();
+        StudentDetails studentDetails = (StudentDetails) authentication.getDetails();
+        String userId = studentDetails.getUsername();
+        Student student = studentService.getUserByUserId(userId);
+        System.out.println(studentPasswordHelper);
+        boolean pwFindCheck = studentService.studentHelperPwdCheck(student, studentPasswordHelper);
+        json.put("check", pwFindCheck);
+        System.out.println(studentPasswordHelper);
+        return json;
     }
 }

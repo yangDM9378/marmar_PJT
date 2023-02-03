@@ -13,4 +13,7 @@ public interface StudentService {
 
     void deleteTherapistNum(int studentNum) throws Exception;
 //    void deleteTherapistNum(int studentNum, int therapistNum);
+
+
+    boolean studentHelperPwdCheck(Student student, String pwd);
 }
