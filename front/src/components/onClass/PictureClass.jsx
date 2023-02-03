@@ -1,52 +1,77 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable no-else-return */
-/* eslint-disable array-callback-return */
-/* eslint-disable prefer-const */
 import React, { useState } from 'react';
 
-let initial = [false, false, false, false];
+// let initial = [false, false, false, false];
 
 export default function PictureClass() {
-  const data = {
-    num: 1,
-    picture_one: '사진1',
-    picture_two: '사진2',
-    picture_three: '사진3',
-    picture_four: '사진4',
-    answer: 3,
-  };
-  const { isCheckArr, setIsCheckArr } = useState(initial);
+  const [isCheckArr, setIsCheckArr] = useState([false, false, false, false]);
 
-  const check = async e => {
-    console.log(isCheckArr);
-    console.log(e.target.value);
+  const check = e => {
     const updateArr = isCheckArr?.map((item, idx) => {
-      console.log(item);
-      if (idx === e.target.value) {
+      if (idx === Number(e.target.value)) {
+        console.log(123);
+        console.log(true);
         return !item;
       } else {
-        return item;
+        return false;
       }
     });
     setIsCheckArr(updateArr);
   };
+  const correctCheck = () => {
+    console.log(isCheckArr);
+    if (isCheckArr.toString() === [false, false, false, false].toString()) {
+      return alert('답을 눌러주세요');
+    } else if (isCheckArr[0] === true) {
+      return alert('정답임');
+    } else {
+      return alert('정답아님');
+    }
+  };
+
   return (
     <div>
+      <button type="button" value="0" onClick={check}>
+        pic1
+      </button>
+      {isCheckArr[0] && (
+        <button type="button" value="0" onClick={check}>
+          false
+        </button>
+      )}
+
       <button type="button" value="1" onClick={check}>
-        {data.picture_one}
+        pic2
+      </button>
+      {isCheckArr[1] && (
+        <button type="button" value="1" onClick={check}>
+          false
+        </button>
+      )}
+
+      <button type="button" value="2" onClick={check}>
+        pic3
+      </button>
+      {isCheckArr[2] && (
+        <button type="button" value="2" onClick={check}>
+          false
+        </button>
+      )}
+
+      <button type="button" value="3" onClick={check}>
+        pic4
       </button>
 
-      <button type="submit" value="2" onClick={check}>
-        {data.picture_two}
-      </button>
-      <button type="submit" value="3" onClick={check}>
-        {data.picture_three}
-      </button>
-      <button type="submit" value="4" onClick={check}>
-        {data.picture_four}
-      </button>
-      {/* <button type="button" onClick={correctCheck}>
+      {isCheckArr[3] && (
+        <button type="button" value="3" onClick={check}>
+          false
+        </button>
+      )}
+
+      <button type="button" onClick={correctCheck}>
         정답확인
-      </button> */}
+      </button>
     </div>
   );
 }
