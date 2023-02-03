@@ -51,10 +51,10 @@ public class Student {
     private String studentPhoneHelper;
 
     @Column(nullable = false, length = 100)
-    private String studentEmailId;
+    private String studentEmail;
 
-    @Column(nullable = false, length = 100)
-    private String studentEmailDomain;
+//    @Column(nullable = false, length = 100)
+//    private String studentEmailDomain;
 
     @ColumnDefault("false")
     private boolean isOngoing;

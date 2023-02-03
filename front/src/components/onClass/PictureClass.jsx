@@ -1,77 +1,64 @@
-/* eslint-disable eqeqeq */
-/* eslint-disable no-else-return */
-import React, { useState } from 'react';
-
-// let initial = [false, false, false, false];
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react-hooks/exhaustive-deps */
+import styled from 'styled-components';
+import tw from 'twin.macro';
+import React, { useState, useContext } from 'react';
+import { OnClassContext } from '../../context/OnClassContext';
+import PictureGame from '../program/PictureGame';
 
 export default function PictureClass() {
-  const [isCheckArr, setIsCheckArr] = useState([false, false, false, false]);
+  // 데이터 가져오기
+  const { request, response } = useContext(OnClassContext);
 
-  const check = e => {
-    const updateArr = isCheckArr?.map((item, idx) => {
-      if (idx === Number(e.target.value)) {
-        console.log(123);
-        console.log(true);
-        return !item;
-      } else {
-        return false;
-      }
-    });
-    setIsCheckArr(updateArr);
+  // 문제 넘기기 관련
+  const [cnt, setCnt] = useState(0);
+  const cntPlus = game => {
+    console.log(request);
+    cnt < request.num && setCnt(request.num + 1);
   };
-  const correctCheck = () => {
-    console.log(isCheckArr);
-    if (isCheckArr.toString() === [false, false, false, false].toString()) {
-      return alert('답을 눌러주세요');
-    } else if (isCheckArr[0] === true) {
-      return alert('정답임');
-    } else {
-      return alert('정답아님');
-    }
+  const cntMinus = () => {
+    cnt > 0 && setCnt(cnt - 1);
   };
 
   return (
-    <div>
-      <button type="button" value="0" onClick={check}>
-        pic1
-      </button>
-      {isCheckArr[0] && (
-        <button type="button" value="0" onClick={check}>
-          false
+    <S.PictureProgramSection>
+      <S.PictureDifficulty>{request.difficulty}</S.PictureDifficulty>
+      <S.PictureTitle>{request.program}</S.PictureTitle>
+      <S.PictureContext>
+        [Q{cnt + 1}] 다음 시계를 보고 시간을 말해보세요.
+      </S.PictureContext>
+      <S.PictureBtnAndGame>
+        {(cnt > 0 && (
+          <button type="button" onClick={cntMinus}>
+            이전
+          </button>
+        )) || <S.ButtonDisable type="button">이전</S.ButtonDisable>}
+        <button type="button" onClick={cntPlus}>
+          다음
         </button>
-      )}
-
-      <button type="button" value="1" onClick={check}>
-        pic2
-      </button>
-      {isCheckArr[1] && (
-        <button type="button" value="1" onClick={check}>
-          false
-        </button>
-      )}
-
-      <button type="button" value="2" onClick={check}>
-        pic3
-      </button>
-      {isCheckArr[2] && (
-        <button type="button" value="2" onClick={check}>
-          false
-        </button>
-      )}
-
-      <button type="button" value="3" onClick={check}>
-        pic4
-      </button>
-
-      {isCheckArr[3] && (
-        <button type="button" value="3" onClick={check}>
-          false
-        </button>
-      )}
-
-      <button type="button" onClick={correctCheck}>
-        정답확인
-      </button>
-    </div>
+      </S.PictureBtnAndGame>
+      <PictureGame {...response[cnt]} />
+    </S.PictureProgramSection>
   );
 }
+
+const S = {
+  PictureProgramSection: styled.div`
+    ${tw` bg-brand min-h-[800px] flex-col`}
+  `,
+  PictureDifficulty: styled.h4`
+    ${tw`flex text-xl justify-end `}
+  `,
+  PictureTitle: styled.h1`
+    ${tw` flex text-4xl min-h-[60px] justify-center items-center font-bold text-white`}
+  `,
+  PictureContext: styled.p`
+    ${tw` flex text-xl min-h-[100px] justify-center font-thin text-white`}
+  `,
+  PictureBtnAndGame: styled.div`
+    ${tw`flex justify-around`}
+  `,
+  ButtonDisable: styled.button`
+    ${tw`cursor-not-allowed`}
+  `,
+};

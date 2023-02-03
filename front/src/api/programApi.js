@@ -10,6 +10,7 @@ const getClockApi = payload => {
   return axios.get(`program/clock/${payload}`);
 };
 const getQuestionApi = payload => {
+  console.log(payload);
   return axios.post('program/select/game', payload);
 };
 

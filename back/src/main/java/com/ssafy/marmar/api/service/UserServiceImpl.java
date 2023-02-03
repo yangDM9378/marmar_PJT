@@ -47,4 +47,25 @@ public class UserServiceImpl implements UserService {
         }
         return therapist;
     }
+
+    @Override
+    public boolean studentEmailCheck(String userEmail, String userId) {
+        Student student = studentRepository.findByStudentEmail(userEmail).get();
+        if(student!=null && student.getStudentId().equals(userId)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean therapistEmailCheck(String userEmail, String userId) {
+        Therapist therapist = therapistRepository.findByTherapistEmail(userEmail).get();
+        if(therapist!=null && therapist.getTherapistId().equals(userId)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

@@ -14,6 +14,7 @@ import java.util.Optional;
 @Repository
 public interface TherapistRepository extends JpaRepository<Therapist, Integer> {
     Optional<Therapist> findByTherapistId(String userId);
+    Optional<Therapist> findByTherapistEmail(String email);
 //    Optional<Therapist> findByNum(String userId);
     Therapist save(Therapist therapist);
 
@@ -31,4 +32,9 @@ public interface TherapistRepository extends JpaRepository<Therapist, Integer> {
     @Modifying // select 문이 아님을 나타낸다
     @Query(value = "UPDATE therapist set class_room_name = :classRoomName where num = :therapistNum", nativeQuery = true)
     void updateClassRoom(@Param("classRoomName")String classRoomName, @Param("therapistNum")int therapistNum) throws Exception;
+
+    @Transactional
+    @Modifying // select 문이 아님을 나타낸다
+    @Query(value = "UPDATE therapist t set t.therapist_password = :therapist_pw where t.num = :num", nativeQuery = true)
+    void updateTherapistPassword(@Param("therapist_pw")String therapist_pw, @Param("num")int num) throws Exception;
 }
