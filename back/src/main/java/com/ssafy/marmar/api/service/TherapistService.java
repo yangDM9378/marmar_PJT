@@ -12,6 +12,7 @@ import java.util.List;
 public interface TherapistService {
 
     Therapist getUserByUserId(String userId);
+    Therapist getUserByUserEmail(String userEmail);
     Therapist createUser(TherapistRegisterPostReq registInfo);
 
     List<StudentSearchRes> studentSearchList(String searchKeyword) throws Exception;
