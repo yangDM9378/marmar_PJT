@@ -1,16 +1,25 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/jsx-no-constructed-context-values */
 /* eslint-disable react/react-in-jsx-scope */
 import { useState, createContext } from 'react';
 import SpeechRecognition, {
   useSpeechRecognition,
 } from 'react-speech-recognition';
-// import { useNavigate } from 'react-router-dom';
+import useSound from 'use-sound';
+import correct from '../audio/correct.mp3';
+import wrong from '../audio/wrong.mp3';
+import next from '../audio/next.mp3';
 
 export const SttContext = createContext();
 
 export default function SttProvider({ children }) {
+  // 효과음
+  const [playCorrect, { stopCorrect }] = useSound(correct);
+  const [playWrong, { stopWrong }] = useSound(wrong);
+  const [playNext, { stopNext }] = useSound(next);
+
   // 녹음 관련
-  // const [correct, setCorrect] = useState(false);
   const { transcript } = useSpeechRecognition();
   const speechStart = () => {
     SpeechRecognition.startListening({
@@ -24,12 +33,15 @@ export default function SttProvider({ children }) {
     });
     console.log(question, transcript);
     if (transcript === question) {
+      playCorrect();
       alert('잘 발음 했다');
     } else {
+      playWrong();
       alert('다시 발음해주세요');
     }
   };
   const stopForNext = () => {
+    playNext();
     SpeechRecognition.abortListening({
       continuous: false,
     });

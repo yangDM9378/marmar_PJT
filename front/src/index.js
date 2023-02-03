@@ -26,6 +26,7 @@ import WordProgram from './pages/program/word/WordProgram';
 import WordFinish from './pages/program/word/WordFinish';
 import FindId from './pages/user/FindId';
 import FindPw from './pages/user/FindPw';
+import Program from './pages/onClass/Program';
 
 const router = createBrowserRouter([
   {
@@ -91,6 +92,7 @@ const router = createBrowserRouter([
       },
 
       // Program
+      { path: '/Program', element: <Program /> },
       { path: '/WordDifficulty', element: <WordDifficulty /> },
       { path: '/WordProgram', element: <WordProgram /> },
       { path: '/WordProgram/WordFinish', element: <WordFinish /> },

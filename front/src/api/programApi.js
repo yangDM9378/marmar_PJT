@@ -3,8 +3,15 @@
 
 import axios from 'axios';
 
-const getWordApi = payload => axios.get(`program/word/${payload}`);
+const getWordApi = payload => {
+  return axios.get(`program/word/${payload}`);
+};
+const getClockApi = payload => {
+  return axios.get(`program/clock/${payload}`);
+};
+const getQuestionApi = payload => {
+  console.log(payload);
+  return axios.post('program/select/game', payload);
+};
 
-const getClockApi = payload => axios.get(`program/clock/${payload}`);
-
-export { getWordApi, getClockApi };
+export { getWordApi, getClockApi, getQuestionApi };
