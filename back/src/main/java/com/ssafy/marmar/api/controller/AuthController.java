@@ -1,5 +1,6 @@
 package com.ssafy.marmar.api.controller;
 
+import com.ssafy.marmar.api.request.FindIdPostReq;
 import com.ssafy.marmar.api.request.FindPassPostReq;
 import com.ssafy.marmar.api.request.UserLoginPostReq;
 import com.ssafy.marmar.api.response.UserLoginPostRes;
@@ -64,12 +65,12 @@ public class AuthController {
         Map<String,Boolean> json = new HashMap<>();
 
         if(findPassPostReq.getRole().equals("STUDENT")){
-            boolean pwFindCheck = userService.studentEmailCheck(findPassPostReq.getEmail(),findPassPostReq.getId());
+            boolean pwFindCheck = userService.studentIdEmailCheck(findPassPostReq.getEmail(),findPassPostReq.getId());
             System.out.println(pwFindCheck);
             json.put("check", pwFindCheck);
             return json;
         } else {
-            boolean pwFindCheck = userService.therapistEmailCheck(findPassPostReq.getEmail(),findPassPostReq.getId());
+            boolean pwFindCheck = userService.therapistIdEmailCheck(findPassPostReq.getEmail(),findPassPostReq.getId());
             System.out.println(pwFindCheck);
             json.put("check", pwFindCheck);
             return json;
@@ -80,6 +81,39 @@ public class AuthController {
     public @ResponseBody void sendEmail(@RequestBody FindPassPostReq findPassPostReq) throws Exception {
         MailDto dto = sendEmailService.createMailAndChangePassword(findPassPostReq.getEmail(),findPassPostReq.getId(), findPassPostReq.getRole());
         sendEmailService.mailSend(dto);
+    }
+
+    @GetMapping("/check/findId")
+    public @ResponseBody Map<String, Boolean> id_find(@RequestBody FindIdPostReq findIdPostReq){
+        Map<String,Boolean> json = new HashMap<>();
+
+        if(findIdPostReq.getRole().equals("STUDENT")){
+            boolean pwFindCheck = userService.studentPwdEmailCheck(findIdPostReq.getEmail(),findIdPostReq.getName());
+            System.out.println(pwFindCheck);
+            json.put("check", pwFindCheck);
+            return json;
+        } else {
+            boolean pwFindCheck = userService.therapistPwdEmailCheck(findIdPostReq.getEmail(),findIdPostReq.getName());
+            System.out.println(pwFindCheck);
+            json.put("check", pwFindCheck);
+            return json;
+        }
+    }
+
+    @PostMapping("/check/findId/showId")
+    public ResponseEntity<String> showId(@RequestBody FindIdPostReq findIdPostReq) throws Exception {
+        if(findIdPostReq.getRole().equals("STUDENT")){
+            Student student = userService.getStudentByUserEmail(findIdPostReq.getEmail());
+            String str = student.getStudentId();
+            return ResponseEntity.status(200).body(str);
+        } else {
+            Therapist therapist = userService.getTherapistByUserEmail(findIdPostReq.getEmail());
+            String str = therapist.getTherapistId();
+            return ResponseEntity.status(200).body(str);
+        }
+
+       // MailDto dto = sendEmailService.createMailAndChangePassword(findPassPostReq.getEmail(),findPassPostReq.getId(), findPassPostReq.getRole());
+        //sendEmailService.mailSend(dto);
     }
 
 }

@@ -8,6 +8,12 @@ public interface UserService {
     Student getStudentByUserId(String userId);
     Therapist getTherapistByUserId(String userId);
 
-    boolean studentEmailCheck(String userEmail, String userId);
-    boolean therapistEmailCheck(String userEmail, String userId);
+    Student getStudentByUserEmail(String userEmail);
+    Therapist getTherapistByUserEmail(String userEmail);
+
+    boolean studentIdEmailCheck(String userEmail, String userId);
+    boolean therapistIdEmailCheck(String userEmail, String userId);
+
+    boolean studentPwdEmailCheck(String userEmail, String userName);
+    boolean therapistPwdEmailCheck(String userEmail, String userName);
 }
