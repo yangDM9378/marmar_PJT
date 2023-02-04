@@ -1,0 +1,19 @@
+package com.ssafy.marmar.api.request;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.Date;
+
+@Getter
+@Setter
+public class TherapistRegisterPostReq {
+
+    String id;
+    String password;
+    String name;
+    String phone;
+    String email;
+    String department;
+
+}
