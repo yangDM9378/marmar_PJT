@@ -3,6 +3,7 @@ package com.ssafy.marmar.api.controller;
 import com.ssafy.marmar.api.request.FindPassPostReq;
 import com.ssafy.marmar.api.request.StudentRegisterPostReq;
 import com.ssafy.marmar.api.response.StudentRes;
+import com.ssafy.marmar.api.response.UserLoginPostRes;
 import com.ssafy.marmar.api.service.StudentService;
 import com.ssafy.marmar.api.service.TherapistService;
 import com.ssafy.marmar.common.auth.StudentDetails;
@@ -104,15 +105,71 @@ public class StudentController {
     }
 
     @PostMapping("/check/PasswordHelper")
-    public @ResponseBody Map<String, Boolean> pw_find(@RequestBody String studentPasswordHelper, Authentication authentication){
+    public @ResponseBody Map<String, Boolean> pw_find(@RequestBody Map<String, String> student_password_helper, Authentication authentication){
         Map<String,Boolean> json = new HashMap<>();
         StudentDetails studentDetails = (StudentDetails) authentication.getDetails();
         String userId = studentDetails.getUsername();
         Student student = studentService.getUserByUserId(userId);
-        System.out.println(studentPasswordHelper);
-        boolean pwFindCheck = studentService.studentHelperPwdCheck(student, studentPasswordHelper);
+        boolean pwFindCheck = studentService.studentHelperPwdCheck(student, student_password_helper.get("student_password_helper"));
         json.put("check", pwFindCheck);
-        System.out.println(studentPasswordHelper);
         return json;
     }
+
+    // 회원 정보 수정
+    // 비밀번호, 2차 비밀번호, 학생 이름, 보호자 이름, 핸드폰 번호, 생년월일
+    @PutMapping("/modify/Password")
+    public ResponseEntity<String> modifyPassword(@RequestBody Map<String, String> modifyPassword, Authentication authentication) throws Exception {
+        StudentDetails studentDetails = (StudentDetails) authentication.getDetails();
+        String userId = studentDetails.getUsername();
+        String modifypwd = modifyPassword.get("modifyPassword");
+        studentService.modifyPwd(userId, modifypwd);
+        return ResponseEntity.status(200).body("비밀번호 수정 성공");
+    }
+
+    @PutMapping("/modify/PasswordHelper")
+    public ResponseEntity<String> modifyPasswordHelper(@RequestBody Map<String, String> modifyPasswordHelper, Authentication authentication) throws Exception {
+        StudentDetails studentDetails = (StudentDetails) authentication.getDetails();
+        String userId = studentDetails.getUsername();
+        String modifypwdhelper = modifyPasswordHelper.get("modifyPasswordHelper");
+        studentService.modifyPwdHelper(userId, modifypwdhelper);
+        return ResponseEntity.status(200).body("2차 비밀번호 수정 성공");
+    }
+
+    @PutMapping("/modify/name")
+    public ResponseEntity<String> modifyName(@RequestBody Map<String, String> name, Authentication authentication) throws Exception {
+        StudentDetails studentDetails = (StudentDetails) authentication.getDetails();
+        String userId = studentDetails.getUsername();
+        String modifyname = name.get("name");
+        studentService.modifyName(userId, modifyname);
+        return ResponseEntity.status(200).body("학생 이름 수정 성공");
+    }
+
+    @PutMapping("/modify/nameHelper")
+    public ResponseEntity<String> modifyNameHelper(@RequestBody Map<String, String> nameHelper, Authentication authentication) throws Exception {
+        StudentDetails studentDetails = (StudentDetails) authentication.getDetails();
+        String userId = studentDetails.getUsername();
+        String modifynamehelper = nameHelper.get("nameHelper");
+        studentService.modifyNameHelper(userId, modifynamehelper);
+        return ResponseEntity.status(200).body("보호자 이름 수정 성공");
+    }
+
+    @PutMapping("/modify/phone")
+    public ResponseEntity<String> modifyPhone(@RequestBody Map<String, String> phone, Authentication authentication) throws Exception {
+        StudentDetails studentDetails = (StudentDetails) authentication.getDetails();
+        String userId = studentDetails.getUsername();
+        String modifyphone = phone.get("phone");
+        studentService.modifyPhone(userId, modifyphone);
+        return ResponseEntity.status(200).body("전화번호 수정 성공");
+    }
+
+    @PutMapping("/modify/birth")
+    public ResponseEntity<String> modifyBirth(@RequestBody Map<String, String> birth, Authentication authentication) throws Exception {
+        StudentDetails studentDetails = (StudentDetails) authentication.getDetails();
+        String userId = studentDetails.getUsername();
+        String modifybirth = birth.get("birth");
+        studentService.modifyBirth(userId, modifybirth);
+        return ResponseEntity.status(200).body("생일 수정 성공");
+    }
+
+
 }

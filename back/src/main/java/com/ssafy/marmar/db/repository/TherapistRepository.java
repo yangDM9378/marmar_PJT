@@ -15,26 +15,46 @@ import java.util.Optional;
 public interface TherapistRepository extends JpaRepository<Therapist, Integer> {
     Optional<Therapist> findByTherapistId(String userId);
     Optional<Therapist> findByTherapistEmail(String email);
-//    Optional<Therapist> findByNum(String userId);
+
     Therapist save(Therapist therapist);
 
     @Transactional
-    @Modifying // select 문이 아님을 나타낸다
+    @Modifying
     @Query("UPDATE Therapist set isOngoing = :inout where num = :therapistNum")
     void updateOngoing(@Param("inout")boolean inout, @Param("therapistNum")int therapistNum) throws Exception;
 
     @Transactional
-    @Modifying // select 문이 아님을 나타낸다
+    @Modifying
     @Query(value = "UPDATE therapist set program_room_name = :programRoomName where num = :therapistNum", nativeQuery = true)
     void updateProgramRoom(@Param("programRoomName")String programRoomName, @Param("therapistNum")int therapistNum) throws Exception;
 
     @Transactional
-    @Modifying // select 문이 아님을 나타낸다
+    @Modifying
     @Query(value = "UPDATE therapist set class_room_name = :classRoomName where num = :therapistNum", nativeQuery = true)
     void updateClassRoom(@Param("classRoomName")String classRoomName, @Param("therapistNum")int therapistNum) throws Exception;
 
     @Transactional
-    @Modifying // select 문이 아님을 나타낸다
+    @Modifying
     @Query(value = "UPDATE therapist t set t.therapist_password = :therapist_pw where t.num = :num", nativeQuery = true)
     void updateTherapistPassword(@Param("therapist_pw")String therapist_pw, @Param("num")int num) throws Exception;
+
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE therapist t set t.therapist_password = :therapist_pwd where t.therapist_id = :userId", nativeQuery = true)
+    void modifyTherapistPassword(@Param("userId")String userId, @Param("therapist_pwd")String therapist_pwd) throws Exception;
+
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE therapist t set t.therapist_name = :modifyname where t.therapist_id = :userId", nativeQuery = true)
+    void modifyTherapistName(@Param("userId")String userId, @Param("modifyname")String modifyname) throws Exception;
+
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE therapist t set t.therapist_phone = :modifyphone where t.therapist_id = :userId", nativeQuery = true)
+    void modifyTherapistPhone(@Param("userId")String userId, @Param("modifyphone")String modifyphone) throws Exception;
+
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE therapist t set t.therapist_department = :modifydepartment where t.therapist_id = :userId", nativeQuery = true)
+    void modifyTherapistDepartment(@Param("userId")String userId, @Param("modifydepartment")String modifydepartment) throws Exception;
 }

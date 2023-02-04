@@ -22,42 +22,49 @@ public class ProgramController {
     @Autowired
     ProgramService programService;
 
+    // word 연습하기
     @GetMapping("/word/{difficulty}")
-    public ResponseEntity<List<WordRes>> wordspeakingList(@PathVariable String difficulty){
+    public ResponseEntity<List<WordRes>> wordSpeakingList(@PathVariable String difficulty){
         List<WordRes> list = programService.wordlist(difficulty);
         return ResponseEntity.status(200).body(list);
     }
 
+    // word 게임하기
     @GetMapping("/word/game")
     public ResponseEntity<List<WordRes>> wordGameList(){
         List<WordRes> list = programService.wordgamelist();
         return ResponseEntity.status(200).body(list);
     }
 
+    // clock 연습하기
     @GetMapping("/clock/{difficulty}")
     public ResponseEntity<List<WatchRes>> watchList(@PathVariable String difficulty){
         List<WatchRes> list = programService.watchlist(difficulty);
         return ResponseEntity.status(200).body(list);
     }
 
+    // clock 게임하기
     @GetMapping("/clock/game")
     public ResponseEntity<List<WatchRes>> watchGameList(){
         List<WatchRes> list = programService.watchgamelist();
         return ResponseEntity.status(200).body(list);
     }
 
+    // picture 연습하기
     @GetMapping("/picture/{difficulty}")
     public ResponseEntity<List<PictureRes>> pictureList(@PathVariable String difficulty){
         List<PictureRes> list = programService.picturelist(difficulty);
         return ResponseEntity.status(200).body(list);
     }
 
+    // picture 게임하기
     @GetMapping("/picture/game")
     public ResponseEntity<List<PictureRes>> pictureGameList(){
         List<PictureRes> list = programService.picturegamelist();
         return ResponseEntity.status(200).body(list);
     }
 
+    // 수업 중 프로그램
     @PostMapping("/select/game")
     public ResponseEntity<Object> register(@RequestBody SelectGamePostReq selectGamePostReq){
 
@@ -73,6 +80,5 @@ public class ProgramController {
         }
         return ResponseEntity.status(200).body(null);
     }
-    // 게임 종류, 난이도, 개수
-
+    
 }

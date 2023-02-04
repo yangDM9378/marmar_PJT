@@ -68,9 +68,7 @@ public class RoomController {
         String therapistId = therapist.getTherapistId();
         return ResponseEntity.status(200).body(therapistId);
     }
-
-
-
+    
     public int getTherapistNum(Authentication authentication){
         TherapistDetails userDetails = (TherapistDetails)authentication.getDetails();
         String userId = userDetails.getUsername();
@@ -81,7 +79,6 @@ public class RoomController {
     public String getTherapistName(Authentication authentication){
         TherapistDetails userDetails = (TherapistDetails)authentication.getDetails();
         String userId = userDetails.getUsername();
-//        Therapist user = therapistService.getUserByUserId(userId);
         return userId;
     }
 

@@ -87,4 +87,25 @@ public class TherapistServiceImpl implements TherapistService {
 
         return studentList;
     }
+
+    @Override
+    public void modifyPwd(String userId, String modifypwd) throws Exception {
+        String str = passwordEncoder.encode(modifypwd);
+        therapistRepository.modifyTherapistPassword(userId, str);
+    }
+
+    @Override
+    public void modifyName(String userId, String modifyname) throws Exception {
+        therapistRepository.modifyTherapistName(userId, modifyname);
+    }
+
+    @Override
+    public void modifyPhone(String userId, String modifyphone) throws Exception {
+        therapistRepository.modifyTherapistPhone(userId, modifyphone);
+    }
+
+    @Override
+    public void modifyDepartment(String userId, String modifydepartment) throws Exception {
+        therapistRepository.modifyTherapistDepartment(userId, modifydepartment);
+    }
 }

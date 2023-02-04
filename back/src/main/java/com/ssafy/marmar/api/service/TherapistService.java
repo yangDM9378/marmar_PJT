@@ -18,4 +18,12 @@ public interface TherapistService {
     List<StudentSearchRes> studentSearchList(String searchKeyword) throws Exception;
 
     List<StudentSearchRes> studentList(int therapistNum);
+
+    void modifyPwd(String userId, String modifypwd) throws Exception;
+
+    void modifyName(String userId, String modifyname) throws Exception;
+
+    void modifyPhone(String userId, String modifyphone) throws Exception;
+
+    void modifyDepartment(String userId, String modifydepartment) throws Exception;
 }

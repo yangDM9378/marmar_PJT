@@ -48,4 +48,36 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
     @Modifying // select 문이 아님을 나타낸다
     @Query(value = "UPDATE student s set s.student_password = :student_pw where s.num = :num", nativeQuery = true)
     void updateStudentPassword(@Param("student_pw")String student_pw, @Param("num")int num) throws Exception;
+
+    @Transactional
+    @Modifying // select 문이 아님을 나타낸다
+    @Query(value = "UPDATE student s set s.student_password = :modifyPwd where s.student_id = :userId", nativeQuery = true)
+    void modifyStudentPassword(@Param("userId")String userId, @Param("modifyPwd")String modifyPwd) throws Exception;
+
+    @Transactional
+    @Modifying // select 문이 아님을 나타낸다
+    @Query(value = "UPDATE student s set s.student_password_helper = :modifypwdhelper where s.student_id = :userId", nativeQuery = true)
+    void modifyStudentPwdHelper(@Param("userId")String userId, @Param("modifypwdhelper")String modifypwdhelper) throws Exception;
+
+    @Transactional
+    @Modifying // select 문이 아님을 나타낸다
+    @Query(value = "UPDATE student s set s.student_name = :modifyname where s.student_id = :userId", nativeQuery = true)
+    void modifyStudentName(@Param("userId")String userId, @Param("modifyname")String modifyname) throws Exception;
+
+    @Transactional
+    @Modifying // select 문이 아님을 나타낸다
+    @Query(value = "UPDATE student s set s.student_name_helper = :modifynamehelper where s.student_id = :userId", nativeQuery = true)
+    void modifyStudentNameHelper(@Param("userId")String userId, @Param("modifynamehelper")String modifynamehelper) throws Exception;
+
+    @Transactional
+    @Modifying // select 문이 아님을 나타낸다
+    @Query(value = "UPDATE student s set s.student_phone_helper = :modifyphone where s.student_id = :userId", nativeQuery = true)
+    void modifyStudentPhone(@Param("userId")String userId, @Param("modifyphone")String modifyphone) throws Exception;
+
+    @Transactional
+    @Modifying // select 문이 아님을 나타낸다
+    @Query(value = "UPDATE student s set s.student_birth = :modifybirth where s.student_id = :userId", nativeQuery = true)
+    void modifyStudentBirth(@Param("userId")String userId, @Param("modifyname")String modifybirth) throws Exception;
+
+
 }
