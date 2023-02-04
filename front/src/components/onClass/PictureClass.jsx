@@ -2,21 +2,29 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import styled from 'styled-components';
 import tw from 'twin.macro';
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { OnClassContext } from '../../context/OnClassContext';
 import PictureGame from '../program/PictureGame';
 
 export default function PictureClass() {
   // 데이터 가져오기
-  const { request, setRequest, response, setResponse } =
-    useContext(OnClassContext);
+  const {
+    request,
+    setRequest,
+    response,
+    setResponse,
+    setIsCheckArr,
+    cnt,
+    setCnt,
+  } = useContext(OnClassContext);
 
   // 문제 넘기기 관련
-  const [cnt, setCnt] = useState(0);
   const cntPlus = () => {
+    setIsCheckArr([false, false, false, false]);
     cnt < request.num - 1 && setCnt(cnt + 1);
   };
   const cntMinus = () => {
+    setIsCheckArr([false, false, false, false]);
     cnt > 0 && setCnt(cnt - 1);
   };
   const handleEndGame = () => {
@@ -25,57 +33,52 @@ export default function PictureClass() {
       difficulty: '',
       num: 0,
     });
+    setIsCheckArr([false, false, false, false]);
     setResponse(['default']);
   };
 
   return (
-    <S.PictureProgramSection>
-      <S.PictureDifficulty>{request.difficulty}</S.PictureDifficulty>
-      <S.PictureTitle>{request.program}</S.PictureTitle>
-      <S.PictureContext>
-        [Q{cnt + 1}] 다음 시계를 보고 시간을 말해보세요.
-      </S.PictureContext>
-      <S.PictureBtnAndGame>
+    <S.ProgramSection>
+      <S.CountinueBtn>
+        <button type="button" onClick={handleEndGame}>
+          처음으로
+        </button>
+      </S.CountinueBtn>
+      <S.Title>Picture</S.Title>
+      <S.Context>
+        [Q{cnt + 1}] 다음 사진 중 관계없는 사진을 선택하세요.
+      </S.Context>
+      <PictureGame {...response[cnt]} />
+      <S.Button>
         {cnt > 0 && cnt <= request.num - 1 && (
           <button type="button" onClick={cntMinus}>
             이전
           </button>
         )}
-
-        {cnt === request.num - 1 && (
-          <button type="button" onClick={handleEndGame}>
-            처음으로
-          </button>
-        )}
-
         {cnt < request.num - 1 && (
           <button type="button" onClick={cntPlus}>
             다음
           </button>
         )}
-      </S.PictureBtnAndGame>
-      <PictureGame {...response[cnt]} />
-    </S.PictureProgramSection>
+      </S.Button>
+    </S.ProgramSection>
   );
 }
 
 const S = {
-  PictureProgramSection: styled.div`
+  ProgramSection: styled.div`
     ${tw` bg-brand min-h-[800px] flex-col`}
   `,
-  PictureDifficulty: styled.h4`
-    ${tw`flex text-xl justify-end `}
+  CountinueBtn: styled.div`
+    ${tw`flex text-xl min-h-[60px] justify-end`}
   `,
-  PictureTitle: styled.h1`
+  Title: styled.h1`
     ${tw` flex text-4xl min-h-[60px] justify-center items-center font-bold text-white`}
   `,
-  PictureContext: styled.p`
-    ${tw` flex text-xl min-h-[100px] justify-center font-thin text-white`}
+  Context: styled.p`
+    ${tw` flex text-xl justify-center font-thin text-white`}
   `,
-  PictureBtnAndGame: styled.div`
+  Button: styled.div`
     ${tw`flex justify-around`}
-  `,
-  ButtonDisable: styled.button`
-    ${tw`cursor-not-allowed`}
   `,
 };

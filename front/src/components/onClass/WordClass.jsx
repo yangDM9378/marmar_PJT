@@ -2,17 +2,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import styled from 'styled-components';
 import tw from 'twin.macro';
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { OnClassContext } from '../../context/OnClassContext';
 import WordGame from '../program/WordGame';
 
 export default function WordClass() {
   // 데이터 가져오기
-  const { request, setRequest, response, setResponse } =
+  const { request, setRequest, response, setResponse, cnt, setCnt } =
     useContext(OnClassContext);
 
   // 문제 넘기기 관련
-  const [cnt, setCnt] = useState(0);
+
   const cntPlus = () => {
     cnt + 1 < request.num && setCnt(cnt + 1);
   };
