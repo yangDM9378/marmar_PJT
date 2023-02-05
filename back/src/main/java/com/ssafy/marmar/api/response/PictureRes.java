@@ -18,21 +18,6 @@ public class PictureRes {
     String pictureThree;
     String pictureFour;
 
-
-    public Picture toEntity(){
-        Picture build = Picture.builder()
-                .num(num)
-                .answer(answer)
-                .difficulty(difficulty)
-                .pictureOne(pictureOne)
-                .pictureTwo(pictureTwo)
-                .pictureThree(pictureThree)
-                .pictureFour(pictureFour)
-                .build();
-        return build;
-    }
-
-
     @Builder
     public PictureRes(int num, int answer, String difficulty, String pictureOne, String pictureTwo, String pictureThree, String pictureFour){
         this.num = num;

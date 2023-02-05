@@ -74,27 +74,27 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void modifyPwdHelper(String userId, String modifypwdhelper) throws Exception {
-        studentRepository.modifyStudentPwdHelper(userId, modifypwdhelper);
+    public void modifyPwdHelper(String userId, String modifyPwdHelper) throws Exception {
+        studentRepository.modifyStudentPwdHelper(userId, modifyPwdHelper);
     }
 
     @Override
-    public void modifyName(String userId, String modifyname) throws Exception {
-        studentRepository.modifyStudentName(userId, modifyname);
+    public void modifyName(String userId, String modifyName) throws Exception {
+        studentRepository.modifyStudentName(userId, modifyName);
     }
 
     @Override
-    public void modifyNameHelper(String userId, String modifynamehelper) throws Exception {
-        studentRepository.modifyStudentNameHelper(userId, modifynamehelper);
+    public void modifyNameHelper(String userId, String modifyNameHelper) throws Exception {
+        studentRepository.modifyStudentNameHelper(userId, modifyNameHelper);
     }
 
     @Override
-    public void modifyPhone(String userId, String modifyphone) throws Exception {
-        studentRepository.modifyStudentPhone(userId, modifyphone);
+    public void modifyPhone(String userId, String modifyPhone) throws Exception {
+        studentRepository.modifyStudentPhone(userId, modifyPhone);
     }
 
     @Override
-    public void modifyBirth(String userId, String modifybirth) throws Exception {
-        studentRepository.modifyStudentBirth(userId, modifybirth);
+    public void modifyBirth(String userId, String modifyBirth) throws Exception {
+        studentRepository.modifyStudentBirth(userId, modifyBirth);
     }
 }

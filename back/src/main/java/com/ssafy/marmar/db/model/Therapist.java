@@ -23,7 +23,6 @@ public class Therapist {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int num;
 
-    // @Enumerated(EnumType.STRING)
     @ColumnDefault("'THERAPIST'")
     private String role;
 
@@ -42,9 +41,6 @@ public class Therapist {
     @Column(nullable = false, length = 100)
     private String therapistEmail;
 
-//    @Column(nullable = false, length = 100)
-//    private String therapistEmailDomain;
-
     @Column(nullable = false, length = 100)
     private String therapistPhone;
 
@@ -53,11 +49,6 @@ public class Therapist {
 
     private String classRoomName;
 
-//    @OneToMany(mappedBy = "student", cascade = CascadeType.REMOVE)
-//    List<Therapist> therapists;
-
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="programRoomName")
-    private Programroom programroom; // DB는 오브젝트를 저장할 수 없다. FK, 자바는 오브젝트를 저장할 수 있다.
+    private String programRoomName;
 
 }

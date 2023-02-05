@@ -45,16 +45,16 @@ public interface TherapistRepository extends JpaRepository<Therapist, Integer> {
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE therapist t set t.therapist_name = :modifyname where t.therapist_id = :userId", nativeQuery = true)
-    void modifyTherapistName(@Param("userId")String userId, @Param("modifyname")String modifyname) throws Exception;
+    @Query(value = "UPDATE therapist t set t.therapist_name = :modifyName where t.therapist_id = :userId", nativeQuery = true)
+    void modifyTherapistName(@Param("userId")String userId, @Param("modifyName")String modifyName) throws Exception;
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE therapist t set t.therapist_phone = :modifyphone where t.therapist_id = :userId", nativeQuery = true)
-    void modifyTherapistPhone(@Param("userId")String userId, @Param("modifyphone")String modifyphone) throws Exception;
+    @Query(value = "UPDATE therapist t set t.therapist_phone = :modifyPhone where t.therapist_id = :userId", nativeQuery = true)
+    void modifyTherapistPhone(@Param("userId")String userId, @Param("modifyPhone")String modifyPhone) throws Exception;
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE therapist t set t.therapist_department = :modifydepartment where t.therapist_id = :userId", nativeQuery = true)
-    void modifyTherapistDepartment(@Param("userId")String userId, @Param("modifydepartment")String modifydepartment) throws Exception;
+    @Query(value = "UPDATE therapist t set t.therapist_department = :modifyDepartment where t.therapist_id = :userId", nativeQuery = true)
+    void modifyTherapistDepartment(@Param("userId")String userId, @Param("modifyDepartment")String modifyDepartment) throws Exception;
 }

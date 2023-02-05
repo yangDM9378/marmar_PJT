@@ -15,18 +15,6 @@ public class WatchRes {
     String difficulty;
     String imagePath;
 
-
-    public Watch toEntity(){
-        Watch build = Watch.builder()
-                .num(num)
-                .answer(answer)
-                .difficulty(difficulty)
-                .imagePath(imagePath)
-                .build();
-        return build;
-    }
-
-
     @Builder
     public WatchRes(int num,String answer, String difficulty, String imagePath){
         this.num = num;

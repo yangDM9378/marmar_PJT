@@ -56,28 +56,28 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
 
     @Transactional
     @Modifying // select 문이 아님을 나타낸다
-    @Query(value = "UPDATE student s set s.student_password_helper = :modifypwdhelper where s.student_id = :userId", nativeQuery = true)
-    void modifyStudentPwdHelper(@Param("userId")String userId, @Param("modifypwdhelper")String modifypwdhelper) throws Exception;
+    @Query(value = "UPDATE student s set s.student_password_helper = :modifyPwdHelper where s.student_id = :userId", nativeQuery = true)
+    void modifyStudentPwdHelper(@Param("userId")String userId, @Param("modifyPwdHelper")String modifyPwdHelper) throws Exception;
 
     @Transactional
     @Modifying // select 문이 아님을 나타낸다
-    @Query(value = "UPDATE student s set s.student_name = :modifyname where s.student_id = :userId", nativeQuery = true)
-    void modifyStudentName(@Param("userId")String userId, @Param("modifyname")String modifyname) throws Exception;
+    @Query(value = "UPDATE student s set s.student_name = :modifyName where s.student_id = :userId", nativeQuery = true)
+    void modifyStudentName(@Param("userId")String userId, @Param("modifyName")String modifyName) throws Exception;
 
     @Transactional
     @Modifying // select 문이 아님을 나타낸다
-    @Query(value = "UPDATE student s set s.student_name_helper = :modifynamehelper where s.student_id = :userId", nativeQuery = true)
-    void modifyStudentNameHelper(@Param("userId")String userId, @Param("modifynamehelper")String modifynamehelper) throws Exception;
+    @Query(value = "UPDATE student s set s.student_name_helper = :modifyNameHelper where s.student_id = :userId", nativeQuery = true)
+    void modifyStudentNameHelper(@Param("userId")String userId, @Param("modifyNameHelper")String modifyNameHelper) throws Exception;
 
     @Transactional
     @Modifying // select 문이 아님을 나타낸다
-    @Query(value = "UPDATE student s set s.student_phone_helper = :modifyphone where s.student_id = :userId", nativeQuery = true)
-    void modifyStudentPhone(@Param("userId")String userId, @Param("modifyphone")String modifyphone) throws Exception;
+    @Query(value = "UPDATE student s set s.student_phone_helper = :modifyPhone where s.student_id = :userId", nativeQuery = true)
+    void modifyStudentPhone(@Param("userId")String userId, @Param("modifyPhone")String modifyPhone) throws Exception;
 
     @Transactional
     @Modifying // select 문이 아님을 나타낸다
-    @Query(value = "UPDATE student s set s.student_birth = :modifybirth where s.student_id = :userId", nativeQuery = true)
-    void modifyStudentBirth(@Param("userId")String userId, @Param("modifyname")String modifybirth) throws Exception;
+    @Query(value = "UPDATE student s set s.student_birth = :modifyBirth where s.student_id = :userId", nativeQuery = true)
+    void modifyStudentBirth(@Param("userId")String userId, @Param("modifyBirth")String modifyBirth) throws Exception;
 
 
 }

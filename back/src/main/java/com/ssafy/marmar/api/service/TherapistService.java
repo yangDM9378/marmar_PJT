@@ -19,11 +19,11 @@ public interface TherapistService {
 
     List<StudentSearchRes> studentList(int therapistNum);
 
-    void modifyPwd(String userId, String modifypwd) throws Exception;
+    void modifyPwd(String userId, String modifyPwd) throws Exception;
 
-    void modifyName(String userId, String modifyname) throws Exception;
+    void modifyName(String userId, String modifyName) throws Exception;
 
-    void modifyPhone(String userId, String modifyphone) throws Exception;
+    void modifyPhone(String userId, String modifyPhone) throws Exception;
 
-    void modifyDepartment(String userId, String modifydepartment) throws Exception;
+    void modifyDepartment(String userId, String modifyDepartment) throws Exception;
 }

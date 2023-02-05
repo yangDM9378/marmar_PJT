@@ -1,15 +1,12 @@
 package com.ssafy.marmar.api.controller;
 
 import com.ssafy.marmar.api.request.TherapistRegisterPostReq;
-import com.ssafy.marmar.api.response.StudentRes;
 import com.ssafy.marmar.api.response.StudentSearchRes;
 import com.ssafy.marmar.api.response.TherapistRes;
 import com.ssafy.marmar.api.service.RoomService;
 import com.ssafy.marmar.api.service.StudentService;
 import com.ssafy.marmar.api.service.TherapistService;
-import com.ssafy.marmar.common.auth.StudentDetails;
 import com.ssafy.marmar.common.auth.TherapistDetails;
-import com.ssafy.marmar.db.model.Student;
 import com.ssafy.marmar.db.model.Therapist;
 import com.ssafy.marmar.dto.ResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,16 +37,13 @@ public class TherapistController {
 
         try{
             therapistService.getUserByUserId(therapistId);
-
-        }catch(NoSuchElementException e){//아이디 중복되지 않으면 true 리턴
+        }catch(NoSuchElementException e){
             try{
                 studentService.getUserByUserId(therapistId);
-            } catch(NoSuchElementException e1){//아이디 중복되지 않으면 true 리턴
+            } catch(NoSuchElementException e1){
                 return ResponseEntity.status(200).body(true);
             }
         }
-
-        //중복되면 false 리턴
         return	ResponseEntity.status(200).body(false);
     }
 
@@ -58,15 +52,13 @@ public class TherapistController {
 
         try{
             therapistService.getUserByUserEmail(therapistEmail);
-        }catch(NoSuchElementException e){//아이디 중복되지 않으면 true 리턴
+        }catch(NoSuchElementException e){
             try{
                 studentService.getUserByUserEmail(therapistEmail);
-            } catch(NoSuchElementException e1){//아이디 중복되지 않으면 true 리턴
+            } catch(NoSuchElementException e1){
                 return ResponseEntity.status(200).body(true);
             }
         }
-
-        //중복되면 false 리턴
         return	ResponseEntity.status(200).body(false);
     }
 

@@ -1,8 +1,5 @@
 package com.ssafy.marmar.api.controller;
 
-import com.ssafy.marmar.api.request.MakeRoomPostReq;
-import com.ssafy.marmar.api.request.TherapistRegisterPostReq;
-import com.ssafy.marmar.api.response.StudentRes;
 import com.ssafy.marmar.api.service.RoomService;
 import com.ssafy.marmar.api.service.StudentService;
 import com.ssafy.marmar.api.service.TherapistService;
@@ -29,34 +26,20 @@ public class RoomController {
     TherapistService therapistService;
 
 
-
-    @PutMapping("/makeroom")
-    public ResponseEntity<Integer> makeRoom(@RequestBody MakeRoomPostReq makeroomInfo, Authentication authentication) throws Exception {
-        int studentNum = makeroomInfo.getStudentNum();
-        int wordQuestionCnt = makeroomInfo.getWordQuestionCnt();
-
-        boolean inout = true;
+    @PutMapping("/makeroom/{studentNum}")
+    public ResponseEntity<String> makeRoom(@PathVariable int studentNum, Authentication authentication) throws Exception {
         int therapistNum = getTherapistNum(authentication);
-        String therapistName = getTherapistName(authentication);
-
-        roomService.RoomTherapist(inout, therapistNum);
-        roomService.RoomStudent(inout, studentNum);
-        roomService.ProgramRoom(inout, wordQuestionCnt, therapistName);
-
-        return ResponseEntity.status(200).body(200);
+        roomService.RoomTherapist(true, therapistNum);
+        roomService.RoomStudent(true, studentNum);
+        return ResponseEntity.status(200).body("방이 생성되었습니다.");
     }
 
     @PutMapping("/endroom/{studentNum}")
-    public ResponseEntity<Integer> outRoomTherapist(@PathVariable int studentNum, Authentication authentication) throws Exception {
-        boolean inout = false;
+    public ResponseEntity<String> outRoomTherapist(@PathVariable int studentNum, Authentication authentication) throws Exception {
         int therapistNum = getTherapistNum(authentication);
-        String therapistName = getTherapistName(authentication);
-
-        roomService.RoomTherapist(inout, therapistNum);
-        roomService.RoomStudent(inout, studentNum);
-        roomService.ProgramRoom(inout, 0, therapistName);
-
-        return ResponseEntity.status(200).body(200);
+        roomService.RoomTherapist(false, therapistNum);
+        roomService.RoomStudent(false, studentNum);
+        return ResponseEntity.status(200).body("방이 종료되었습니다.");
     }
 
     @GetMapping("/enter/student")
@@ -75,13 +58,6 @@ public class RoomController {
         Therapist user = therapistService.getUserByUserId(userId);
         return user.getNum();
     }
-
-    public String getTherapistName(Authentication authentication){
-        TherapistDetails userDetails = (TherapistDetails)authentication.getDetails();
-        String userId = userDetails.getUsername();
-        return userId;
-    }
-
 
 
 }
