@@ -21,13 +21,16 @@ export default function SttProvider({ children }) {
 
   // 녹음 관련
   const { transcript } = useSpeechRecognition();
+  const [start, setStart] = useState(false);
   const speechStart = () => {
+    setStart(true);
     SpeechRecognition.startListening({
       continuous: true,
       language: 'ko',
     });
   };
   const speechStop = () => {
+    setStart(false);
     SpeechRecognition.abortListening({
       continuous: false,
     });
@@ -41,6 +44,7 @@ export default function SttProvider({ children }) {
     }
   };
   const stopForNext = () => {
+    setStart(false);
     playNext();
     SpeechRecognition.abortListening({
       continuous: false,
@@ -66,6 +70,8 @@ export default function SttProvider({ children }) {
         stopForNext,
         isCheckArr,
         setIsCheckArr,
+        start,
+        setStart,
       }}
     >
       {children}

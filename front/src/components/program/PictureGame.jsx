@@ -3,7 +3,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
-import { FaUserCheck } from 'react-icons/fa';
+import { FaCheck } from 'react-icons/fa';
 import { SttContext } from '../../context/SttContext';
 
 export default function PictureGame({
@@ -31,10 +31,10 @@ export default function PictureGame({
     if (isCheckArr.toString() === [false, false, false, false].toString()) {
       return alert('답을 눌러주세요');
     } else if (isCheckArr[answer] === true) {
-      setIsCheckArr([false, false, false, false]);
+      // setIsCheckArr([false, false, false, false]);
       return alert('정답임');
     } else {
-      setIsCheckArr([false, false, false, false]);
+      // setIsCheckArr([false, false, false, false]);
       return alert('정답아님');
     }
   };
@@ -46,7 +46,7 @@ export default function PictureGame({
           <S.gameImg src={pictureOne} onClick={() => check(0)} />
           {isCheckArr[0] && (
             <S.gameIcon onClick={() => check(0)}>
-              <FaUserCheck size="150" />
+              <FaCheck className="Icon" />
             </S.gameIcon>
           )}
         </S.gameCard>
@@ -54,7 +54,7 @@ export default function PictureGame({
           <S.gameImg src={pictureTwo} onClick={() => check(1)} />
           {isCheckArr[1] && (
             <S.gameIcon onClick={() => check(1)}>
-              <FaUserCheck size="150" />
+              <FaCheck className="Icon" />
             </S.gameIcon>
           )}
         </S.gameCard>
@@ -64,7 +64,7 @@ export default function PictureGame({
           <S.gameImg src={pictureThree} onClick={() => check(2)} />
           {isCheckArr[2] && (
             <S.gameIcon onClick={() => check(2)}>
-              <FaUserCheck size="150" />
+              <FaCheck className="Icon" />
             </S.gameIcon>
           )}
         </S.gameCard>
@@ -72,7 +72,7 @@ export default function PictureGame({
           <S.gameImg src={pictureFour} onClick={() => check(3)} />
           {isCheckArr[3] && (
             <S.gameIcon onClick={() => check(3)}>
-              <FaUserCheck size="150" />
+              <FaCheck className="Icon" />
             </S.gameIcon>
           )}
         </S.gameCard>
@@ -97,13 +97,19 @@ const S = {
     ${tw`relative  bg-white rounded-3xl m-5`}
   `,
   gameImg: styled.img`
-    ${tw`w-48 h-48 relative`}
+    ${tw`relative`}
+    width: 10rem;
+    height: 10rem;
   `,
   gameIcon: styled.div`
     ${tw`absolute`}
-    left:50%;
+    left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    .Icon {
+      font-size: 5rem;
+      color: #ff385c;
+    }
   `,
   correctBtn: styled.div`
     ${tw`flex justify-center h-20 `}
