@@ -37,7 +37,7 @@ public class ProgramController {
     }
 
     // 수업 중 프로그램
-    @PostMapping("/select/game")
+    @PostMapping("/game/select")
     public ResponseEntity<List<Object>> register(@RequestBody SelectGamePostReq selectGamePostReq){
         List<Object> list = programService.selectList(selectGamePostReq.getGame(), selectGamePostReq.getDifficulty(), selectGamePostReq.getNum());
         return ResponseEntity.status(200).body(list);
