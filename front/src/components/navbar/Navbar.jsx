@@ -16,7 +16,7 @@ export default function Navbar() {
   return (
     <S.NavHeader>
       <S.LogoLink to="/">
-        <h1>마르마르</h1>
+        <S.LogoName>marmar</S.LogoName>
       </S.LogoLink>
       <DevDropDown />
       {!student && !therapist && <NavDefault />}
@@ -31,5 +31,8 @@ const S = {
   `,
   LogoLink: styled(Link)`
     ${tw`flex items-center text-4xl text-brand`}
+  `,
+  LogoName: styled.h1`
+    font-family: 'Modak', cursive;
   `,
 };
