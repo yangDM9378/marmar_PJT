@@ -1,13 +1,17 @@
+import { useQueryClient } from '@tanstack/react-query';
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import { delRegisteredStudentApi } from '../../../../api/mypageApi';
 
 export default function MyPageStudentListItem(props) {
+  const queryClient = useQueryClient();
   const { student } = props;
-  const onDeleteRegister = () => {
+
+  const onDeleteRegister = async () => {
     console.log('qwdwq');
-    delRegisteredStudentApi(student.num);
+    await delRegisteredStudentApi(student.num);
+    await queryClient.invalidateQueries({ queryKey: ['registerdStudents'] });
   };
   return (
     <S.StudentBox>

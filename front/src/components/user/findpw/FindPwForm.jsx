@@ -5,6 +5,8 @@ import tw from 'twin.macro';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { useMutation } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
 import { findPwApi } from '../../../api/userApi';
 
 const schema = yup
@@ -24,6 +26,7 @@ const schema = yup
 
 export default function FindPwForm() {
   // eslint-disable-next-line no-unused-vars
+  const navigate = useNavigate();
   const [isFail, setIsFail] = useState(false);
   const {
     register,
@@ -33,15 +36,21 @@ export default function FindPwForm() {
     resolver: yupResolver(schema),
     mode: 'onChange',
   });
-  const onFindPw = async data => {
-    console.log(data);
-    const payload = {
-      id: data.id,
-      email: data.email,
-      role: data.check,
-    };
-    const res = findPwApi(payload);
-    console.log(res);
+  const mutation = useMutation(findPwApi);
+  const onFindPw = e => {
+    mutation.mutate(
+      { id: e.id, email: e.email, role: e.check },
+      {
+        onError: () => {
+          setIsFail(true);
+        },
+        onSuccess: data => {
+          setIsFail(false);
+          alert('가입된 이메일로 임시비밀번호가 발급되었습니다.');
+          navigate('/SignIn');
+        },
+      },
+    );
   };
   return (
     <S.FindForm onSubmit={handleSubmit(onFindPw)}>
@@ -93,7 +102,7 @@ export default function FindPwForm() {
       />
       <S.ErrorMsg>{errors.email?.message}</S.ErrorMsg>
       <S.FailMsg className={`${isFail ? '' : 'hidden'}`}>
-        이메일 또는 이름를 잘못 입력했습니다.
+        이메일 또는 아이디를 잘못 입력했습니다.
         <br />
         입력하신 내용을 다시 확인해주세요.
       </S.FailMsg>

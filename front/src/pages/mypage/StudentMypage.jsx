@@ -1,12 +1,16 @@
-import React from 'react';
-import style from './StudentMypageStyle.module.css';
+import React, { useEffect, useState } from 'react';
+import Mypage from '../../components/mypage/student/Mypage';
+import SecondPassword from '../../components/mypage/student/SecondPassword';
 
 export default function StudentMypage() {
+  const [isParent, setIsParent] = useState(false);
+  useEffect(() => {
+    setIsParent(localStorage.getItem('secondPw'));
+  }, []);
   return (
-    <div className={`${style.container}`}>
-      <div className={`${style.testsection} ${style.box1}`}>box1</div>
-      <div className={`${style.testsection} ${style.box2}`}>box2</div>
-      <div className={`${style.testsection} ${style.box3}`}>box3</div>
+    <div>
+      {!isParent && <SecondPassword setIsParent={setIsParent} />}
+      {isParent && <Mypage />}
     </div>
   );
 }

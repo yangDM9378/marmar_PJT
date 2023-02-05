@@ -26,15 +26,16 @@ const idCheckTherapistApi = payload => axios.get(`therapist/${payload}`);
 
 const idCheckStudentApi = payload => axios.get(`student/${payload}`);
 
-const findIdApi = paylaod => {
-  console.log(paylaod);
-  return 'id1234';
+const findIdApi = payload => {
+  // console.log(payload);
+  const res = axios.post('auth/check/findId/showId', payload);
+  return res;
   // axios.get('url', paylaod);
 };
 
-const findPwApi = paylaod => {
-  console.log(paylaod);
-  return 'pw1234';
+const findPwApi = payload => {
+  console.log(payload);
+  return axios.post('auth/check/findPw/sendEmail', payload);
   // axios.get('url', paylaod);
 };
 

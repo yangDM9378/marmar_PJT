@@ -1,10 +1,14 @@
+import { useQueryClient } from '@tanstack/react-query';
 import React from 'react';
 import { registerStudentApi } from '../../../../api/mypageApi';
 
 export default function SearchList(props) {
+  const queryClient = useQueryClient();
   const { student } = props;
-  const onRegister = () => {
-    registerStudentApi(student.num);
+  const onRegister = async () => {
+    await registerStudentApi(student.num);
+    await queryClient.invalidateQueries({ queryKey: ['students'] });
+    await queryClient.invalidateQueries({ queryKey: ['registerdStudents'] });
   };
   return (
     <div className="border-4 p-3 flex justify-between">

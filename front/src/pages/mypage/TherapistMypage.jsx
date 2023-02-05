@@ -3,9 +3,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
+import MypageHeader from '../../components/mypage/MypageHeader';
 import MypageManageComponent from '../../components/mypage/therapist/manage/MypageManageComponent';
 import MyInfoComponent from '../../components/mypage/therapist/myinfo/MyInfoComponent';
-import MypageHeader from '../../components/mypage/therapist/MypageHeader';
 
 export default function TherapistMypage() {
   const tabList = {
