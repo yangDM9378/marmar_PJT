@@ -13,7 +13,9 @@ function App() {
     <QueryClientProvider QueryClientProvider client={queryClient}>
       <SttProvider>
         <Navbar />
-        <Outlet />
+        <div className="min-h-[70vh]">
+          <Outlet />
+        </div>
         <Footer />
       </SttProvider>
       <ReactQueryDevtools initialIsOpen />

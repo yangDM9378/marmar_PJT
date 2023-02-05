@@ -27,6 +27,8 @@ import WordFinish from './pages/program/word/WordFinish';
 import FindId from './pages/user/FindId';
 import FindPw from './pages/user/FindPw';
 import Program from './pages/onClass/Program';
+import ProtectedRouteTherapist from './pages/common/ProtectedRouteTherapist';
+import ProtectedRouteStudent from './pages/common/ProtectedRouteStudent';
 
 const router = createBrowserRouter([
   {
@@ -78,8 +80,22 @@ const router = createBrowserRouter([
       { path: '/SignUpTherapist', element: <SignUpTherapist /> },
 
       // My page
-      { path: '/TherapistMypage', element: <TherapistMypage /> },
-      { path: '/StudentMypage', element: <StudentMypage /> },
+      {
+        path: '/TherapistMypage',
+        element: (
+          <ProtectedRouteTherapist>
+            <TherapistMypage />
+          </ProtectedRouteTherapist>
+        ),
+      },
+      {
+        path: '/StudentMypage',
+        element: (
+          <ProtectedRouteStudent>
+            <StudentMypage />
+          </ProtectedRouteStudent>
+        ),
+      },
 
       // Openvidu
       {

@@ -2,11 +2,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
-import useAuth from '../../../hooks/queries/useAuth';
+import useAuth from '../../hooks/queries/useAuth';
 
 export default function MypageHeader() {
-  const { useTherapistCheck } = useAuth();
+  const { useTherapistCheck, useStudentCheck } = useAuth();
   const { data: therapist } = useTherapistCheck();
+  const { data: student } = useStudentCheck();
 
   return (
     <S.MypageHeader>
@@ -14,7 +15,8 @@ export default function MypageHeader() {
       <S.HeaderLogoBox>
         <img src="logo.png" className="w-20 h-20 pt-1" />
       </S.HeaderLogoBox>
-      <S.HeaderName>{therapist.therapistName}</S.HeaderName>
+      {therapist && <S.HeaderName>{therapist.therapistName}</S.HeaderName>}
+      {student && <S.HeaderName>{student.studentName}</S.HeaderName>}
     </S.MypageHeader>
   );
 }
