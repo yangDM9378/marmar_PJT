@@ -52,6 +52,9 @@ export default function SttProvider({ children }) {
   const getQuestion = value => {
     setQuestion(value);
   };
+  // picturegame
+  const [isCheckArr, setIsCheckArr] = useState([false, false, false, false]);
+
   return (
     <SttContext.Provider
       value={{
@@ -61,6 +64,8 @@ export default function SttProvider({ children }) {
         question,
         getQuestion,
         stopForNext,
+        isCheckArr,
+        setIsCheckArr,
       }}
     >
       {children}

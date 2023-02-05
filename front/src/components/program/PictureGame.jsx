@@ -4,7 +4,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import { FaUserCheck } from 'react-icons/fa';
-import { OnClassContext } from '../../context/OnClassContext';
+import { SttContext } from '../../context/SttContext';
 
 export default function PictureGame({
   answer,
@@ -14,7 +14,7 @@ export default function PictureGame({
   pictureThree,
   pictureFour,
 }) {
-  const { isCheckArr, setIsCheckArr } = useContext(OnClassContext);
+  const { isCheckArr, setIsCheckArr } = useContext(SttContext);
   const check = e => {
     console.log(e);
     const updateArr = isCheckArr?.map((item, idx) => {

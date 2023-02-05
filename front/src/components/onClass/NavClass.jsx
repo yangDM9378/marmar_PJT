@@ -7,10 +7,12 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import { getQuestionApi } from '../../api/programApi';
 import { OnClassContext } from '../../context/OnClassContext';
+import { SttContext } from '../../context/SttContext';
 
 export default function NavClass() {
-  const { request, setRequest, setResponse, setIsCheckArr, setCnt } =
+  const { request, setRequest, setResponse, setCnt } =
     useContext(OnClassContext);
+  const { setIsCheckArr } = useContext(SttContext);
   const [makeRequest, setMakeRequest] = useState({
     game: '',
     difficulty: '',

@@ -5,51 +5,59 @@ import { Link } from 'react-router-dom';
 
 export default function WordDifficulty() {
   return (
-    <S.SignUpSection>
-      <S.SignUpBox>
-        <S.SignUpHeader>단어 읽기</S.SignUpHeader>
-        <S.SignUpMiniBox>
+    <S.WordSection>
+      <S.WordBox>
+        <S.WordHeader>단어 읽기</S.WordHeader>
+        <S.WordMiniBox>
           <Link to="/WordProgram" state={{ difficulty: 'high' }}>
-            <S.SignUpUserBox>
-              <S.SignUpUserH1>상</S.SignUpUserH1>
+            <S.WordUserBox>
+              <S.WordUserH1>상</S.WordUserH1>
               <img src="" alt="" />
-            </S.SignUpUserBox>
+            </S.WordUserBox>
           </Link>
           <Link to="/WordProgram" state={{ difficulty: 'mid' }}>
-            <S.SignUpUserBox>
-              <S.SignUpUserH1>중</S.SignUpUserH1>
+            <S.WordUserBox>
+              <S.WordUserH1>중</S.WordUserH1>
               <img src="" alt="" />
-            </S.SignUpUserBox>
+            </S.WordUserBox>
           </Link>
           <Link to="/WordProgram" state={{ difficulty: 'low' }}>
-            <S.SignUpUserBox>
-              <S.SignUpUserH1>하</S.SignUpUserH1>
+            <S.WordUserBox>
+              <S.WordUserH1>하</S.WordUserH1>
               <img src="" alt="" />
-            </S.SignUpUserBox>
+            </S.WordUserBox>
           </Link>
-        </S.SignUpMiniBox>
-      </S.SignUpBox>
-    </S.SignUpSection>
+        </S.WordMiniBox>
+      </S.WordBox>
+    </S.WordSection>
   );
 }
 
 const S = {
-  SignUpSection: styled.div`
+  WordSection: styled.div`
     ${tw`px-10 bg-brand min-h-[800px] flex justify-center items-center`}
   `,
-  SignUpBox: styled.div`
-    ${tw`bg-white rounded-3xl w-[650px] h-[650px] p-10`}
+  WordBox: styled.div`
+    ${tw`bg-white rounded-3xl w-[800px] h-[650px] p-10 `}
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
   `,
-  SignUpHeader: styled.h1`
-    ${tw`font-extrabold text-2xl text-center p-2 font-cafe24`}
+  WordHeader: styled.h1`
+    ${tw`font-extrabold text-7xl text-center p-2 font-cafe24 `}
+    color: darkblue;
   `,
-  SignUpMiniBox: styled.div`
-    ${tw`p-5 flex justify-around`}
+  WordMiniBox: styled.div`
+    ${tw`p-5 flex justify-around `}
   `,
-  SignUpUserBox: styled.div`
-    ${tw`bg-yellow-300 rounded-3xl w-[250px] h-[450px] p-10`}
+  WordUserBox: styled.div`
+    ${tw`bg-yellow-300 rounded-3xl w-[200px] h-[200px] p-10`}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 30%;
   `,
-  SignUpUserH1: styled.h1`
-    ${tw`font-extrabold text-2xl text-center p-2 font-cafe24`}
+  WordUserH1: styled.h1`
+    ${tw`font-extrabold text-7xl text-center p-2 font-cafe24`}
   `,
 };

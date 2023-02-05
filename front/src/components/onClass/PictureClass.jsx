@@ -5,19 +5,13 @@ import tw from 'twin.macro';
 import React, { useContext } from 'react';
 import { OnClassContext } from '../../context/OnClassContext';
 import PictureGame from '../program/PictureGame';
+import { SttContext } from '../../context/SttContext';
 
 export default function PictureClass() {
   // 데이터 가져오기
-  const {
-    request,
-    setRequest,
-    response,
-    setResponse,
-    setIsCheckArr,
-    cnt,
-    setCnt,
-  } = useContext(OnClassContext);
-
+  const { request, setRequest, response, setResponse, cnt, setCnt } =
+    useContext(OnClassContext);
+  const { setIsCheckArr } = useContext(SttContext);
   // 문제 넘기기 관련
   const cntPlus = () => {
     setIsCheckArr([false, false, false, false]);

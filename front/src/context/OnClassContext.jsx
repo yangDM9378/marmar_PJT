@@ -15,9 +15,6 @@ export default function OnClassProvider({ children }) {
   // cnt
   const [cnt, setCnt] = useState(0);
 
-  // picturegame
-  const [isCheckArr, setIsCheckArr] = useState([false, false, false, false]);
-
   return (
     <OnClassContext.Provider
       value={{
@@ -25,8 +22,6 @@ export default function OnClassProvider({ children }) {
         setRequest,
         response,
         setResponse,
-        isCheckArr,
-        setIsCheckArr,
         cnt,
         setCnt,
       }}
