@@ -1,6 +1,5 @@
 package com.ssafy.marmar.db.repository;
 
-import com.ssafy.marmar.db.model.Student;
 import com.ssafy.marmar.db.model.Therapist;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -17,6 +16,7 @@ public interface TherapistRepository extends JpaRepository<Therapist, Integer> {
     Optional<Therapist> findByTherapistEmail(String email);
 
     Therapist save(Therapist therapist);
+    void delete(Therapist therapist);
 
     @Transactional
     @Modifying

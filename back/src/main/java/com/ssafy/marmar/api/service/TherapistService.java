@@ -26,4 +26,6 @@ public interface TherapistService {
     void modifyPhone(String userId, String modifyPhone) throws Exception;
 
     void modifyDepartment(String userId, String modifyDepartment) throws Exception;
+
+    void deleteStudent(Therapist therapist) throws Exception;
 }

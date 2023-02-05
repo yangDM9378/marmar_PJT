@@ -2641,3 +2641,201 @@ This generated password is for development use only. Your security configuration
 2023-02-05 20:04:20.772  INFO 9336 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2023-02-05 20:04:20.772  INFO 9336 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2023-02-05 20:04:20.804  INFO 9336 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-02-05 20:17:08.871  INFO 2420 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : Starting MarmarApplication using Java 11.0.18 on DESKTOP-0DUSSE9 with PID 2420 (C:\Users\yoona\OneDrive\바탕 화면\[공통] PJT\[git 업로드] marmar 프로젝트\S08P12C204\back\build\classes\java\main started by yoona in C:\Users\yoona\OneDrive\바탕 화면\[공통] PJT\[git 업로드] marmar 프로젝트\S08P12C204\back)
+2023-02-05 20:17:08.873  INFO 2420 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : No active profile set, falling back to 1 default profile: "default"
+2023-02-05 20:17:08.944  INFO 2420 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in C:\Users\yoona\.gradle\caches\modules-2\files-2.1\org.glassfish.jaxb\jaxb-runtime\2.3.1\dd6dda9da676a54c5b36ca2806ff95ee017d8738\jaxb-runtime-2.3.1.jar referenced one or more files that do not exist: file:/C:/Users/yoona/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/jaxb-runtime/2.3.1/dd6dda9da676a54c5b36ca2806ff95ee017d8738/jaxb-api-2.3.1.jar,file:/C:/Users/yoona/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/jaxb-runtime/2.3.1/dd6dda9da676a54c5b36ca2806ff95ee017d8738/txw2-2.3.1.jar,file:/C:/Users/yoona/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/jaxb-runtime/2.3.1/dd6dda9da676a54c5b36ca2806ff95ee017d8738/istack-commons-runtime-3.0.7.jar,file:/C:/Users/yoona/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/jaxb-runtime/2.3.1/dd6dda9da676a54c5b36ca2806ff95ee017d8738/stax-ex-1.8.jar,file:/C:/Users/yoona/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/jaxb-runtime/2.3.1/dd6dda9da676a54c5b36ca2806ff95ee017d8738/FastInfoset-1.2.15.jar,file:/C:/Users/yoona/.gradle/caches/modules-2/files-2.1/org.glassfish.jaxb/jaxb-runtime/2.3.1/dd6dda9da676a54c5b36ca2806ff95ee017d8738/javax.activation-api-1.2.0.jar
+2023-02-05 20:17:08.946  INFO 2420 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-02-05 20:17:08.947  INFO 2420 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-02-05 20:17:10.283  INFO 2420 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-02-05 20:17:10.408  INFO 2420 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 113 ms. Found 5 JPA repository interfaces.
+2023-02-05 20:17:11.676  INFO 2420 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-02-05 20:17:11.699  INFO 2420 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-02-05 20:17:11.699  INFO 2420 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.70]
+2023-02-05 20:17:12.184  INFO 2420 --- [restartedMain] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2023-02-05 20:17:12.194  INFO 2420 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-02-05 20:17:12.194  INFO 2420 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3246 ms
+2023-02-05 20:17:12.300  INFO 2420 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-02-05 20:17:12.839  INFO 2420 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-02-05 20:17:13.043  INFO 2420 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-02-05 20:17:13.160  INFO 2420 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.14.Final
+2023-02-05 20:17:13.446  INFO 2420 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-02-05 20:17:13.611  INFO 2420 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2023-02-05 20:17:14.644  INFO 2420 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-02-05 20:17:14.655  INFO 2420 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-02-05 20:17:15.537  WARN 2420 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-02-05 20:17:15.951  WARN 2420 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 2028c98e-b87c-4994-aa6e-42e7791b1544
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2023-02-05 20:17:16.159 DEBUG 2420 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 40 mappings in 'requestMappingHandlerMapping'
+2023-02-05 20:17:16.212 DEBUG 2420 --- [restartedMain] o.s.w.s.c.annotation.WebMvcConfigurer    : Default resource handling disabled
+2023-02-05 20:17:16.217  INFO 2420 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4a56b495, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@659ed8f8, org.springframework.security.web.context.SecurityContextPersistenceFilter@26982e47, org.springframework.security.web.header.HeaderWriterFilter@3b1660da, org.springframework.web.filter.CorsFilter@326e0fdc, org.springframework.security.web.authentication.logout.LogoutFilter@789f012f, com.ssafy.marmar.common.auth.JwtAuthenticationFilter@3abbeaa2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@72a8283d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@16606a3b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4536037c, org.springframework.security.web.session.SessionManagementFilter@77a8cdef, org.springframework.security.web.access.ExceptionTranslationFilter@35205e5e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@666e4579]
+2023-02-05 20:17:16.304 DEBUG 2420 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2023-02-05 20:17:16.347 DEBUG 2420 --- [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2023-02-05 20:17:16.377  WARN 2420 --- [restartedMain] o.s.b.a.m.MustacheAutoConfiguration      : Cannot find template location: classpath:/templates/ (please add some templates, check your Mustache configuration, or set spring.mustache.check-template-location=false)
+2023-02-05 20:17:16.626  INFO 2420 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-02-05 20:17:16.691  INFO 2420 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-02-05 20:17:16.707  INFO 2420 --- [restartedMain] com.ssafy.marmar.MarmarApplication       : Started MarmarApplication in 8.514 seconds (JVM running for 10.75)
+2023-02-05 20:18:08.640  INFO 2420 --- [http-nio-127.0.0.1-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-02-05 20:18:08.644  INFO 2420 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-02-05 20:18:08.644 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2023-02-05 20:18:08.645 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2023-02-05 20:18:08.645 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2023-02-05 20:18:08.646 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@151a1f29
+2023-02-05 20:18:08.646 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@1a5bdf47
+2023-02-05 20:18:08.647 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2023-02-05 20:18:08.648  INFO 2420 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2023-02-05 20:18:08.682 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.AuthController#login(UserLoginPostReq)
+2023-02-05 20:18:08.693 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/auth/login", parameters={}
+2023-02-05 20:18:08.695 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.AuthController#login(UserLoginPostReq)
+2023-02-05 20:18:08.786 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.ssafy.marmar.api.request.UserLoginPostReq@6c24bb]
+2023-02-05 20:18:09.041 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-05 20:18:09.041 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.ssafy.marmar.api.response.UserLoginPostRes@2043eba1]
+2023-02-05 20:18:09.061 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-05 20:18:51.514 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.StudentController#deleteStudent(Authentication)
+2023-02-05 20:18:51.567 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-4] o.s.web.servlet.DispatcherServlet        : DELETE "/api/v1/student/delete", parameters={}
+2023-02-05 20:18:51.568 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.StudentController#deleteStudent(Authentication)
+2023-02-05 20:18:51.639 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'text/plain', given [*/*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-02-05 20:18:51.640 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["학생 탈퇴 성공"]
+2023-02-05 20:18:51.642 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-05 20:19:07.552 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.StudentController#register(StudentRegisterPostReq)
+2023-02-05 20:19:07.554 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/student", parameters={}
+2023-02-05 20:19:07.555 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.StudentController#register(StudentRegisterPostReq)
+2023-02-05 20:19:07.562 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.ssafy.marmar.api.request.StudentRegisterPostReq@6395c637]
+2023-02-05 20:19:07.691 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'text/plain', given [*/*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-02-05 20:19:07.693 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["회원가입에 성공하였습니다."]
+2023-02-05 20:19:07.695 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-05 20:20:02.701 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.AuthController#login(UserLoginPostReq)
+2023-02-05 20:20:02.702 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-6] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/auth/login", parameters={}
+2023-02-05 20:20:02.702 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.AuthController#login(UserLoginPostReq)
+2023-02-05 20:20:02.704 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.ssafy.marmar.api.request.UserLoginPostReq@6f1efd4e]
+2023-02-05 20:20:02.834 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-05 20:20:02.834 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.ssafy.marmar.api.response.UserLoginPostRes@3b719328]
+2023-02-05 20:20:02.835 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 401 UNAUTHORIZED
+2023-02-05 20:20:05.784 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.AuthController#login(UserLoginPostReq)
+2023-02-05 20:20:05.785 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-5] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/auth/login", parameters={}
+2023-02-05 20:20:05.786 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.AuthController#login(UserLoginPostReq)
+2023-02-05 20:20:05.788 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.ssafy.marmar.api.request.UserLoginPostReq@41a6b1cb]
+2023-02-05 20:20:05.912 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-05 20:20:05.912 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.ssafy.marmar.api.response.UserLoginPostRes@192a2585]
+2023-02-05 20:20:05.914 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 401 UNAUTHORIZED
+2023-02-05 20:20:11.100 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.AuthController#login(UserLoginPostReq)
+2023-02-05 20:20:11.102 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/auth/login", parameters={}
+2023-02-05 20:20:11.103 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.AuthController#login(UserLoginPostReq)
+2023-02-05 20:20:11.104 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.ssafy.marmar.api.request.UserLoginPostReq@6168edbb]
+2023-02-05 20:20:11.223 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-05 20:20:11.225 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.ssafy.marmar.api.response.UserLoginPostRes@4f096efc]
+2023-02-05 20:20:11.226 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 401 UNAUTHORIZED
+2023-02-05 20:20:23.134 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.TherapistController#register(TherapistRegisterPostReq)
+2023-02-05 20:20:23.136 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-7] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/therapist", parameters={}
+2023-02-05 20:20:23.136 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.TherapistController#register(TherapistRegisterPostReq)
+2023-02-05 20:20:23.139 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.ssafy.marmar.api.request.TherapistRegisterPostReq@9d01ca3]
+2023-02-05 20:20:23.342 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-05 20:20:23.342 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Writing [ResponseDto(status=200, data=1)]
+2023-02-05 20:20:23.346 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-05 20:20:29.963 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.AuthController#login(UserLoginPostReq)
+2023-02-05 20:20:29.965 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-8] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/auth/login", parameters={}
+2023-02-05 20:20:29.965 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.AuthController#login(UserLoginPostReq)
+2023-02-05 20:20:29.967 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.ssafy.marmar.api.request.UserLoginPostReq@579fa54e]
+2023-02-05 20:20:30.103 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-05 20:20:30.103 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.ssafy.marmar.api.response.UserLoginPostRes@5146a1af]
+2023-02-05 20:20:30.104 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-05 20:21:05.868 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.StudentController#updateTherapistNum(int, Authentication)
+2023-02-05 20:21:05.892 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-9] o.s.web.servlet.DispatcherServlet        : PUT "/api/v1/student/selectTherapist/%7BstudentNum%7D", parameters={}
+2023-02-05 20:21:05.893 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.StudentController#updateTherapistNum(int, Authentication)
+2023-02-05 20:21:05.900 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-9] o.s.web.method.HandlerMethod             : Could not resolve parameter [0] in public org.springframework.http.ResponseEntity<java.lang.String> com.ssafy.marmar.api.controller.StudentController.updateTherapistNum(int,org.springframework.security.core.Authentication) throws java.lang.Exception: Failed to convert value of type 'java.lang.String' to required type 'int'; nested exception is java.lang.NumberFormatException: For input string: "{studentNum}"
+2023-02-05 20:21:05.904  WARN 2420 --- [http-nio-127.0.0.1-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'int'; nested exception is java.lang.NumberFormatException: For input string: "{studentNum}"]
+2023-02-05 20:21:05.905 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2023-02-05 20:21:05.908 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-9] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for PUT "/error", parameters={}
+2023-02-05 20:21:05.909 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2023-02-05 20:21:05.914 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-05 20:21:05.914 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Sun Feb 05 20:21:05 KST 2023, status=400, error=Bad Request, trace=org.springframework.we (truncated)...]
+2023-02-05 20:21:05.921 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 400
+2023-02-05 20:21:22.740 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.StudentController#updateTherapistNum(int, Authentication)
+2023-02-05 20:21:22.746 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-10] o.s.web.servlet.DispatcherServlet        : PUT "/api/v1/student/selectTherapist/2", parameters={}
+2023-02-05 20:21:22.746 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.StudentController#updateTherapistNum(int, Authentication)
+2023-02-05 20:21:22.754 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'text/plain', given [*/*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-02-05 20:21:22.754 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["담당 선생님이 업데이트 되었습니다."]
+2023-02-05 20:21:22.757 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-05 20:21:41.466 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.StudentController#updateTherapistNum(int, Authentication)
+2023-02-05 20:21:41.481 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : PUT "/api/v1/student/selectTherapist/3", parameters={}
+2023-02-05 20:21:41.481 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.StudentController#updateTherapistNum(int, Authentication)
+2023-02-05 20:21:41.493 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'text/plain', given [*/*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-02-05 20:21:41.494 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["담당 선생님이 업데이트 되었습니다."]
+2023-02-05 20:21:41.494 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-05 20:22:23.007 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.AuthController#login(UserLoginPostReq)
+2023-02-05 20:22:23.008 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-4] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/auth/login", parameters={}
+2023-02-05 20:22:23.008 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.AuthController#login(UserLoginPostReq)
+2023-02-05 20:22:23.009 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.ssafy.marmar.api.request.UserLoginPostReq@a9517dd]
+2023-02-05 20:22:23.139 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-05 20:22:23.140 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.ssafy.marmar.api.response.UserLoginPostRes@3fd083]
+2023-02-05 20:22:23.141 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-05 20:22:31.749 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.StudentController#getStudentInfo(Authentication)
+2023-02-05 20:22:31.764 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/student/me", parameters={}
+2023-02-05 20:22:31.766 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.StudentController#getStudentInfo(Authentication)
+2023-02-05 20:22:31.788 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-05 20:22:31.788 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.ssafy.marmar.api.response.StudentRes@7dc84548]
+2023-02-05 20:22:31.791 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-05 20:22:37.564 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.StudentController#deleteStudent(Authentication)
+2023-02-05 20:22:37.580 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-6] o.s.web.servlet.DispatcherServlet        : DELETE "/api/v1/student/delete", parameters={}
+2023-02-05 20:22:37.581 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.StudentController#deleteStudent(Authentication)
+2023-02-05 20:22:37.597 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'text/plain', given [*/*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-02-05 20:22:37.597 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["학생 탈퇴 성공"]
+2023-02-05 20:22:37.599 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-05 20:22:54.404 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.StudentController#register(StudentRegisterPostReq)
+2023-02-05 20:22:54.404 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-5] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/student", parameters={}
+2023-02-05 20:22:54.405 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.StudentController#register(StudentRegisterPostReq)
+2023-02-05 20:22:54.406 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.ssafy.marmar.api.request.StudentRegisterPostReq@6a3da831]
+2023-02-05 20:22:54.522 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'text/plain', given [*/*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-02-05 20:22:54.522 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["회원가입에 성공하였습니다."]
+2023-02-05 20:22:54.523 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-05 20:23:27.208 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.AuthController#login(UserLoginPostReq)
+2023-02-05 20:23:27.210 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/auth/login", parameters={}
+2023-02-05 20:23:27.211 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.AuthController#login(UserLoginPostReq)
+2023-02-05 20:23:27.212 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.ssafy.marmar.api.request.UserLoginPostReq@4af3409e]
+2023-02-05 20:23:27.324 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-05 20:23:27.325 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.ssafy.marmar.api.response.UserLoginPostRes@33dd507b]
+2023-02-05 20:23:27.326 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-05 20:23:40.963 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.TherapistController#deleteStudent(Authentication)
+2023-02-05 20:23:40.974 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-7] o.s.web.servlet.DispatcherServlet        : DELETE "/api/v1/therapist/delete", parameters={}
+2023-02-05 20:23:40.977 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.TherapistController#deleteStudent(Authentication)
+2023-02-05 20:23:40.998 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'text/plain', given [*/*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-02-05 20:23:41.000 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["선생님 탈퇴 성공"]
+2023-02-05 20:23:41.001 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-05 20:23:55.140 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.TherapistController#register(TherapistRegisterPostReq)
+2023-02-05 20:23:55.141 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-8] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/therapist", parameters={}
+2023-02-05 20:23:55.142 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.TherapistController#register(TherapistRegisterPostReq)
+2023-02-05 20:23:55.143 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.ssafy.marmar.api.request.TherapistRegisterPostReq@3e35bbcb]
+2023-02-05 20:23:55.273 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-05 20:23:55.273 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Writing [ResponseDto(status=200, data=1)]
+2023-02-05 20:23:55.275 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-05 20:23:57.989 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.AuthController#login(UserLoginPostReq)
+2023-02-05 20:23:57.991 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-9] o.s.web.servlet.DispatcherServlet        : POST "/api/v1/auth/login", parameters={}
+2023-02-05 20:23:57.992 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.AuthController#login(UserLoginPostReq)
+2023-02-05 20:23:57.994 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.ssafy.marmar.api.request.UserLoginPostReq@46508dec]
+2023-02-05 20:23:58.110 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-05 20:23:58.110 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.ssafy.marmar.api.response.UserLoginPostRes@65d052fa]
+2023-02-05 20:23:58.111 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-05 20:24:17.123 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.StudentController#updateTherapistNum(int, Authentication)
+2023-02-05 20:24:17.134 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-10] o.s.web.servlet.DispatcherServlet        : PUT "/api/v1/student/selectTherapist/4", parameters={}
+2023-02-05 20:24:17.135 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.StudentController#updateTherapistNum(int, Authentication)
+2023-02-05 20:24:17.144 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'text/plain', given [*/*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-02-05 20:24:17.144 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["담당 선생님이 업데이트 되었습니다."]
+2023-02-05 20:24:17.146 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-05 20:24:32.684 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.TherapistController#getStudentInfo(Authentication)
+2023-02-05 20:24:32.690 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/v1/therapist/me", parameters={}
+2023-02-05 20:24:32.691 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.TherapistController#getStudentInfo(Authentication)
+2023-02-05 20:24:32.698 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/json, application/*+json]
+2023-02-05 20:24:32.700 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.ssafy.marmar.api.response.TherapistRes@5e7397b0]
+2023-02-05 20:24:32.702 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-05 20:24:40.454 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.TherapistController#deleteStudent(Authentication)
+2023-02-05 20:24:40.465 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-4] o.s.web.servlet.DispatcherServlet        : DELETE "/api/v1/therapist/delete", parameters={}
+2023-02-05 20:24:40.466 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.ssafy.marmar.api.controller.TherapistController#deleteStudent(Authentication)
+2023-02-05 20:24:40.493 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'text/plain', given [*/*] and supported [text/plain, */*, text/plain, */*, application/json, application/*+json, application/json, application/*+json]
+2023-02-05 20:24:40.494 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["선생님 탈퇴 성공"]
+2023-02-05 20:24:40.495 DEBUG 2420 --- [http-nio-127.0.0.1-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2023-02-05 20:25:04.994  INFO 2420 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-02-05 20:25:05.010  INFO 2420 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-02-05 20:25:05.025  INFO 2420 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

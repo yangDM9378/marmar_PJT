@@ -23,4 +23,6 @@ public interface StudentService {
     void modifyNameHelper(String userId, String modifyNameHelper) throws Exception;
     void modifyPhone(String userId, String modifyPhone) throws Exception;
     void modifyBirth(String userId, String modifyBirth) throws Exception;
+
+    void deleteStudent(Student student);
 }

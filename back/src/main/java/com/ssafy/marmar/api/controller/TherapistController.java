@@ -6,7 +6,9 @@ import com.ssafy.marmar.api.response.TherapistRes;
 import com.ssafy.marmar.api.service.RoomService;
 import com.ssafy.marmar.api.service.StudentService;
 import com.ssafy.marmar.api.service.TherapistService;
+import com.ssafy.marmar.common.auth.StudentDetails;
 import com.ssafy.marmar.common.auth.TherapistDetails;
+import com.ssafy.marmar.db.model.Student;
 import com.ssafy.marmar.db.model.Therapist;
 import com.ssafy.marmar.dto.ResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -132,6 +134,15 @@ public class TherapistController {
         String modifydepartment = department.get("department");
         therapistService.modifyDepartment(userId, modifydepartment);
         return ResponseEntity.status(200).body("소속 수정 성공");
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> deleteStudent(Authentication authentication) throws Exception {
+        TherapistDetails userDetails = (TherapistDetails)authentication.getDetails();
+        String userId = userDetails.getUsername();
+        Therapist therapist = therapistService.getUserByUserId(userId);
+        therapistService.deleteStudent(therapist);
+        return ResponseEntity.status(200).body("선생님 탈퇴 성공");
     }
 
 }

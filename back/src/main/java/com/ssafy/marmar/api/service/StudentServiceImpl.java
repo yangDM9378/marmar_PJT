@@ -97,4 +97,9 @@ public class StudentServiceImpl implements StudentService {
     public void modifyBirth(String userId, String modifyBirth) throws Exception {
         studentRepository.modifyStudentBirth(userId, modifyBirth);
     }
+
+    @Override
+    public void deleteStudent(Student student) {
+        studentRepository.delete(student);
+    }
 }

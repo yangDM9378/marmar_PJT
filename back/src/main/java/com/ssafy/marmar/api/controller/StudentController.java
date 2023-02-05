@@ -154,6 +154,15 @@ public class StudentController {
         return ResponseEntity.status(200).body("생일 수정 성공");
     }
 
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> deleteStudent(Authentication authentication) throws Exception {
+        StudentDetails studentDetails = (StudentDetails) authentication.getDetails();
+        String userId = studentDetails.getUsername();
+        Student student = studentService.getUserByUserId(userId);
+        studentService.deleteStudent(student);
+        return ResponseEntity.status(200).body("학생 탈퇴 성공");
+    }
+
     public int getTherapistNum(Authentication authentication){
         TherapistDetails userDetails = (TherapistDetails)authentication.getDetails();
         String userId = userDetails.getUsername();

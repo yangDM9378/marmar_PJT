@@ -22,9 +22,8 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
     @Query("SELECT s from Student s where s.studentName like %:search% AND s.therapist is null")
     List<Student> findstudent(@Param("search")String search) throws Exception;
 
-//    List<Student> findByStudentNameContaining(String searchKeyword);
-
     List<Student> findByTherapistNum(int therapistNum);
+    void delete(Student student);
 
 
     //update student set therapist_num=1 where num = 1;
