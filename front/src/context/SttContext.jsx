@@ -18,29 +18,33 @@ export default function SttProvider({ children }) {
   const [playCorrect, { stopCorrect }] = useSound(correct);
   const [playWrong, { stopWrong }] = useSound(wrong);
   const [playNext, { stopNext }] = useSound(next);
+  // 모달관련
+  const [modalCorrect, setModalCorrect] = useState(false);
+  const [modalWrong, setmodalWrong] = useState(false);
 
   // 녹음 관련
-  const { transcript } = useSpeechRecognition();
+  const { transcript, resetTranscript } = useSpeechRecognition();
   const [start, setStart] = useState(false);
   const speechStart = () => {
-    setStart(true);
+    resetTranscript();
     SpeechRecognition.startListening({
       continuous: true,
       language: 'ko',
     });
+    setStart(true);
   };
   const speechStop = () => {
-    setStart(false);
     SpeechRecognition.abortListening({
       continuous: false,
     });
+    setStart(false);
     console.log(question, transcript);
     if (transcript === question) {
       playCorrect();
-      alert('잘 발음 했다');
+      setModalCorrect(true);
     } else {
+      setmodalWrong(true);
       playWrong();
-      alert('다시 발음해주세요');
     }
   };
   const stopForNext = () => {
@@ -72,6 +76,10 @@ export default function SttProvider({ children }) {
         setIsCheckArr,
         start,
         setStart,
+        modalCorrect,
+        setModalCorrect,
+        modalWrong,
+        setmodalWrong,
       }}
     >
       {children}

@@ -10,12 +10,21 @@ import { SttContext } from '../../../context/SttContext';
 import WordGame from '../../../components/program/WordGame';
 import ReactSpeechRecognition from '../../../components/program/ReactSpeechRecognition';
 import TextToSpeech from '../../../components/program/TextToSpeech';
+import CorrectModal from '../../../components/program/CorrectModal';
+import WrongModal from '../../../components/program/WrongModal';
 
 export default function WordProgram() {
-  const { stopForNext } = useContext(SttContext);
+  const {
+    stopForNext,
+    modalCorrect,
+    setModalCorrect,
+    modalWrong,
+    setmodalWrong,
+  } = useContext(SttContext);
   const location = useLocation();
   const difficulty = location.state?.difficulty;
-  const [Data, setData] = useState([]);
+  const [Data, setData] = useState([[]]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getData();
@@ -28,11 +37,9 @@ export default function WordProgram() {
   };
 
   // 문제 넘기기 관련
-  const navigate = useNavigate();
   const [cnt, setCnt] = useState(0);
-  const cntPlus = game => {
-    cnt < 9 && setCnt(cnt + 1);
-    cnt >= 9 && navigate(`WordFinish`);
+  const cntPlus = () => {
+    cnt < 4 && setCnt(cnt + 1);
     stopForNext();
   };
   const cntMinus = () => {
@@ -40,9 +47,31 @@ export default function WordProgram() {
     stopForNext();
   };
 
+  const goWordDifficulty = () => {
+    navigate(`/WordDifficulty`);
+  };
+
   return (
     <S.WordProgramSection>
-      <S.WordDifficulty>{difficulty}</S.WordDifficulty>
+      <CorrectModal
+        isOpen={modalCorrect}
+        close={() => {
+          setModalCorrect(false);
+        }}
+      />
+      <WrongModal
+        isOpen={modalWrong}
+        close={() => {
+          setmodalWrong(false);
+        }}
+      />
+      <S.WordDifficulty>
+        {difficulty}
+        <button type="button" onClick={goWordDifficulty}>
+          처음으로
+        </button>
+      </S.WordDifficulty>
+
       <S.WordTitle>단어 읽기</S.WordTitle>
       <S.WordContext>
         [Q{cnt + 1}] 다음 그림과 단어를 보고 따라 읽어보세요.
@@ -54,15 +83,17 @@ export default function WordProgram() {
               <MdNavigateBefore className="btn" onClick={cntMinus} />
             )) || <MdNavigateBefore className="disbtn" />}
           </S.WordBtn>
-          <WordGame {...Data[cnt]} />
+          <WordGame {...Data[0][cnt]} />
           <S.WordBtn>
-            <MdNavigateNext className="btn" onClick={cntPlus} />
+            {(cnt < 4 && (
+              <MdNavigateNext className="btn" onClick={cntPlus} />
+            )) || <MdNavigateNext className="disbtn" />}
           </S.WordBtn>
         </S.WordBtnAndGame>
 
         <S.STTAndTTS>
-          <ReactSpeechRecognition {...Data[cnt]} />
-          <TextToSpeech {...Data[cnt]} />
+          <ReactSpeechRecognition {...Data[0][cnt]} />
+          <TextToSpeech {...Data[0][cnt]} />
         </S.STTAndTTS>
       </S.WordBody>
     </S.WordProgramSection>

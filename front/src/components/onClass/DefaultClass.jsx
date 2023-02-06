@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import tw from 'twin.macro';
+// import tw from 'twin.macro';
 import React from 'react';
 
 export default function DefaultClass() {

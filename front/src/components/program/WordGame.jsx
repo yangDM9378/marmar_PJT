@@ -9,7 +9,6 @@ import { SttContext } from '../../context/SttContext';
 
 export default function WordGame({ imagePath, answer }) {
   const { getQuestion } = useContext(SttContext);
-  console.log(imagePath);
 
   useEffect(() => {
     getQuestion(answer);

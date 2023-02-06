@@ -13,7 +13,7 @@ function App() {
     <QueryClientProvider QueryClientProvider client={queryClient}>
       <SttProvider>
         <Navbar />
-        <div className="min-h-[70vh]">
+        <div className="min-h-[70vh] mt-14">
           <Outlet />
         </div>
         <Footer />

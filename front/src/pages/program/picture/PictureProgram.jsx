@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 import React, { useState, useEffect, useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md';
 import { getPictureApi } from '../../../api/programApi';
 import PictureGame from '../../../components/program/PictureGame';
 import { SttContext } from '../../../context/SttContext';
@@ -11,8 +12,10 @@ import { SttContext } from '../../../context/SttContext';
 export default function PictureProgram() {
   const location = useLocation();
   const difficulty = location.state?.difficulty;
-  const [PictureData, setPictureData] = useState([]);
+  const [PictureData, setPictureData] = useState([[]]);
   const { setIsCheckArr } = useContext(SttContext);
+  const navigate = useNavigate();
+
   // 데이터 가져오기
   useEffect(() => {
     getPictureData();
@@ -25,11 +28,9 @@ export default function PictureProgram() {
   };
 
   // 문제 넘기기 관련
-  const navigate = useNavigate();
   const [cnt, setCnt] = useState(0);
   const cntPlus = () => {
     cnt < 9 && setCnt(cnt + 1);
-    cnt >= 9 && navigate(`PictureFinish`);
     setIsCheckArr([false, false, false, false]);
   };
   const cntMinus = () => {
@@ -37,24 +38,35 @@ export default function PictureProgram() {
     setIsCheckArr([false, false, false, false]);
   };
 
+  const goPictureDifficulty = () => {
+    navigate(`/PictureDifficulty`);
+  };
+
   return (
     <S.PictureProgramSection>
-      <S.PictureDifficulty>{difficulty}</S.PictureDifficulty>
+      <S.PictureDifficulty>
+        {difficulty}
+        <button type="button" onClick={goPictureDifficulty}>
+          처음으로
+        </button>
+      </S.PictureDifficulty>
       <S.PictureTitle>그림 맞추기</S.PictureTitle>
       <S.PictureContext>
         [Q{cnt + 1}] 다음 그림 중 관련없는 하나를 고르세요.
       </S.PictureContext>
       <S.PictureBtnAndGame>
-        {(cnt > 0 && (
-          <button type="button" onClick={cntMinus}>
-            이전
-          </button>
-        )) || <S.ButtonDisable type="button">이전</S.ButtonDisable>}
-        <button type="button" onClick={cntPlus}>
-          다음
-        </button>
+        <S.PictureBtn>
+          {(cnt > 0 && (
+            <MdNavigateBefore className="btn" onClick={cntMinus} />
+          )) || <MdNavigateBefore className="disbtn" />}
+        </S.PictureBtn>
+        <S.PictureBtn>
+          {(cnt < 4 && (
+            <MdNavigateNext className="btn" onClick={cntPlus} />
+          )) || <MdNavigateNext className="disbtn" />}
+        </S.PictureBtn>
       </S.PictureBtnAndGame>
-      <PictureGame {...PictureData[cnt]} />
+      <PictureGame {...PictureData[0][cnt]} />
     </S.PictureProgramSection>
   );
 }
@@ -75,7 +87,13 @@ const S = {
   PictureBtnAndGame: styled.div`
     ${tw`flex justify-around`}
   `,
-  ButtonDisable: styled.button`
-    ${tw`cursor-not-allowed`}
+  PictureBtn: styled.div`
+    ${tw`flex justify-center items-center`}
+    .btn {
+      ${tw`border-2 rounded-full text-6xl text-brand`}
+    }
+    .disbtn {
+      ${tw`cursor-not-allowed border-2 rounded-full text-6xl text-gray-600`}
+    }
   `,
 };

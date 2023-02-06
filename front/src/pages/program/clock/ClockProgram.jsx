@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 import React, { useState, useEffect, useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md';
 import { getClockApi } from '../../../api/programApi';
 import { SttContext } from '../../../context/SttContext';
 import ClockGame from '../../../components/program/ClockGame';
@@ -14,25 +15,23 @@ export default function ClockProgram() {
   const { stopForNext } = useContext(SttContext);
   const location = useLocation();
   const difficulty = location.state?.difficulty;
-  const [clockData, setClockData] = useState([]);
+  const [Data, setData] = useState([[]]);
+  const navigate = useNavigate();
 
-  // 데이터 가져오기
   useEffect(() => {
-    getClockData();
+    getData();
   }, [difficulty]);
 
-  const getClockData = async () => {
+  const getData = async () => {
     const response = await getClockApi(difficulty);
-    console.log(response.data);
-    setClockData(response.data);
+    console.log(response);
+    setData(response.data);
   };
 
   // 문제 넘기기 관련
-  const navigate = useNavigate();
   const [cnt, setCnt] = useState(0);
-  const cntPlus = game => {
+  const cntPlus = () => {
     cnt < 9 && setCnt(cnt + 1);
-    cnt >= 9 && navigate(`ClockFinish`);
     stopForNext();
   };
   const cntMinus = () => {
@@ -40,48 +39,76 @@ export default function ClockProgram() {
     stopForNext();
   };
 
+  const goClockDifficulty = () => {
+    navigate(`/ClockDifficulty`);
+  };
+
   return (
     <S.ClockProgramSection>
-      <S.ClockDifficulty>{difficulty}</S.ClockDifficulty>
-      <S.ClockTitle>단어 읽기</S.ClockTitle>
-      <S.ClockContext>
-        [Q{cnt + 1}] 다음 시계를 보고 시간을 말해보세요.
-      </S.ClockContext>
-      <S.ClockBtnAndGame>
-        {(cnt > 0 && (
-          <button type="button" onClick={cntMinus}>
-            이전
-          </button>
-        )) || <S.ButtonDisable type="button">이전</S.ButtonDisable>}
-        <button type="button" onClick={cntPlus}>
-          다음
+      <S.ClockDifficulty>
+        {difficulty}
+        <button type="button" onClick={goClockDifficulty}>
+          처음으로
         </button>
-      </S.ClockBtnAndGame>
+      </S.ClockDifficulty>
 
-      <ClockGame {...clockData[cnt]} />
-      <ReactSpeechRecognition />
-      <TextToSpeech {...clockData[cnt]} />
+      <S.ClockTitle>시계읽기</S.ClockTitle>
+      <S.ClockContext>[Q{cnt + 1}] 다음 시간을 맞춰보세요^^</S.ClockContext>
+      <S.ClockBody>
+        <S.ClockBtnAndGame>
+          <S.ClockBtn>
+            {(cnt > 0 && (
+              <MdNavigateBefore className="btn" onClick={cntMinus} />
+            )) || <MdNavigateBefore className="disbtn" />}
+          </S.ClockBtn>
+          <ClockGame {...Data[0][cnt]} />
+          <S.ClockBtn>
+            {(cnt < 4 && (
+              <MdNavigateNext className="btn" onClick={cntPlus} />
+            )) || <MdNavigateNext className="disbtn" />}
+          </S.ClockBtn>
+        </S.ClockBtnAndGame>
+
+        <S.STTAndTTS>
+          <ReactSpeechRecognition {...Data[0][cnt]} />
+          <TextToSpeech {...Data[0][cnt]} />
+        </S.STTAndTTS>
+      </S.ClockBody>
     </S.ClockProgramSection>
   );
 }
 
 const S = {
   ClockProgramSection: styled.div`
-    ${tw` bg-brand min-h-[800px] flex-col`}
+    ${tw`bg-brand min-h-[580px] max-h-[600px] flex-col`}
   `,
+
   ClockDifficulty: styled.h4`
-    ${tw`flex text-xl justify-end `}
+    ${tw`flex text-xl justify-end text-white`}
   `,
   ClockTitle: styled.h1`
-    ${tw` flex text-4xl min-h-[60px] justify-center items-center font-bold text-white`}
+    ${tw` flex text-4xl min-h-[60] justify-center items-center font-bold text-white`}
   `,
   ClockContext: styled.p`
-    ${tw` flex text-xl min-h-[100px] justify-center font-thin text-white`}
+    ${tw` flex text-xl min-h-[100] justify-center font-thin text-white`}
+  `,
+  ClockBody: styled.div`
+    ${tw`bg-white`}
   `,
   ClockBtnAndGame: styled.div`
     ${tw`flex justify-around`}
   `,
-  ButtonDisable: styled.button`
-    ${tw`cursor-not-allowed`}
+  ClockBtn: styled.div`
+    ${tw`flex justify-center items-center`}
+    .btn {
+      ${tw`border-2 rounded-full text-6xl text-brand`}
+    }
+    .disbtn {
+      ${tw`cursor-not-allowed border-2 rounded-full text-6xl text-gray-600`}
+    }
+  `,
+
+  STTAndTTS: styled.div`
+    ${tw`flex justify-center`}
   `,
 };

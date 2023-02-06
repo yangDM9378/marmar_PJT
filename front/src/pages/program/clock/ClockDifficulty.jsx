@@ -26,8 +26,7 @@ export default function ClockDifficulty() {
 
 const S = {
   ProgramSection: styled.div`
-    ${tw`bg-brand`}
-    padding: 50px;
+    ${tw`bg-brand m-auto`}
   `,
   ProgramBox: styled.div`
     ${tw`bg-white`}

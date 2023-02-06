@@ -4,8 +4,7 @@
 import axios from 'axios';
 
 const getWordApi = payload => {
-  const word = 'word';
-  const res = axios.get(`program/practice/${word}/${payload}`);
+  const res = axios.get(`program/practice/word/${payload}`);
   console.log(res);
   return res;
 };

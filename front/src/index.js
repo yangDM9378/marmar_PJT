@@ -20,13 +20,10 @@ import SignUp from './pages/user/SignUp';
 import registerServiceWorker from './registerServiceWorker';
 import ClockDifficulty from './pages/program/clock/ClockDifficulty';
 import ClockProgram from './pages/program/clock/ClockProgram';
-import ClockFinish from './pages/program/clock/ClockFinish';
 import WordDifficulty from './pages/program/word/WordDifficulty';
 import WordProgram from './pages/program/word/WordProgram';
-import WordFinish from './pages/program/word/WordFinish';
 import PictureDifficulty from './pages/program/picture/PictureDifficulty';
 import PictureProgram from './pages/program/picture/PictureProgram';
-import PictureFinish from './pages/program/picture/PictureFinish';
 import FindId from './pages/user/FindId';
 import FindPw from './pages/user/FindPw';
 import Program from './pages/onClass/Program';
@@ -114,13 +111,10 @@ const router = createBrowserRouter([
       { path: '/Program', element: <Program /> },
       { path: '/WordDifficulty', element: <WordDifficulty /> },
       { path: '/WordProgram', element: <WordProgram /> },
-      { path: '/WordProgram/WordFinish', element: <WordFinish /> },
       { path: '/ClockDifficulty', element: <ClockDifficulty /> },
       { path: '/ClockProgram', element: <ClockProgram /> },
-      { path: '/ClockProgram/ClockFinish', element: <ClockFinish /> },
       { path: '/PictureDifficulty', element: <PictureDifficulty /> },
       { path: '/PictureProgram', element: <PictureProgram /> },
-      { path: '/PictureProgram/PictureFinish', element: <PictureFinish /> },
     ],
   },
 ]);
