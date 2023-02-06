@@ -60,12 +60,46 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public boolean studentHelperPwdCheck(Student student, String pwd) {
-        System.out.println("#####");
-        System.out.println(student.getStudentPasswordHelper()+" "+pwd);
         if(student.getStudentPasswordHelper().equals(pwd)) {
             return true;
         } else {
             return false;
         }
+    }
+
+    @Override
+    public void modifyPwd(String userId, String modifyPwd) throws Exception {
+        String str = passwordEncoder.encode(modifyPwd);
+        studentRepository.modifyStudentPassword(userId, str);
+    }
+
+    @Override
+    public void modifyPwdHelper(String userId, String modifyPwdHelper) throws Exception {
+        studentRepository.modifyStudentPwdHelper(userId, modifyPwdHelper);
+    }
+
+    @Override
+    public void modifyName(String userId, String modifyName) throws Exception {
+        studentRepository.modifyStudentName(userId, modifyName);
+    }
+
+    @Override
+    public void modifyNameHelper(String userId, String modifyNameHelper) throws Exception {
+        studentRepository.modifyStudentNameHelper(userId, modifyNameHelper);
+    }
+
+    @Override
+    public void modifyPhone(String userId, String modifyPhone) throws Exception {
+        studentRepository.modifyStudentPhone(userId, modifyPhone);
+    }
+
+    @Override
+    public void modifyBirth(String userId, String modifyBirth) throws Exception {
+        studentRepository.modifyStudentBirth(userId, modifyBirth);
+    }
+
+    @Override
+    public void deleteStudent(Student student) {
+        studentRepository.delete(student);
     }
 }

@@ -87,4 +87,46 @@ public class TherapistServiceImpl implements TherapistService {
 
         return studentList;
     }
+
+    @Override
+    public void modifyPwd(String userId, String modifyPwd) throws Exception {
+        String str = passwordEncoder.encode(modifyPwd);
+        therapistRepository.modifyTherapistPassword(userId, str);
+    }
+
+    @Override
+    public void modifyName(String userId, String modifyName) throws Exception {
+        therapistRepository.modifyTherapistName(userId, modifyName);
+    }
+
+    @Override
+    public void modifyPhone(String userId, String modifyPhone) throws Exception {
+        therapistRepository.modifyTherapistPhone(userId, modifyPhone);
+    }
+
+    @Override
+    public void modifyDepartment(String userId, String modifyDepartment) throws Exception {
+        therapistRepository.modifyTherapistDepartment(userId, modifyDepartment);
+    }
+
+    @Override
+    public void deleteStudent(Therapist therapist) throws Exception {
+        List<Student> students = studentRepository.findByTherapistNum(therapist.getNum());
+        List<StudentSearchRes> studentList = new ArrayList<>();
+
+        for(Student student : students){
+            StudentSearchRes res = StudentSearchRes.builder()
+                    .num(student.getNum())
+                    .studentName(student.getStudentName())
+                    .studentId(student.getStudentId())
+                    .build();
+            studentList.add(res);
+        }
+
+        for(StudentSearchRes student : studentList){
+            studentRepository.deleteTherapist(student.getNum());
+        }
+
+        therapistRepository.delete(therapist);
+    }
 }

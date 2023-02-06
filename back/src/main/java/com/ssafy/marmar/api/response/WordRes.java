@@ -15,18 +15,6 @@ public class WordRes {
     String difficulty;
     String imagePath;
 
-
-    public Wordspeaking toEntity(){
-        Wordspeaking build = Wordspeaking.builder()
-                .num(num)
-                .answer(answer)
-                .difficulty(difficulty)
-                .imagePath(imagePath)
-                .build();
-        return build;
-    }
-
-
     @Builder
     public WordRes(int num, String answer, String difficulty, String imagePath){
         this.num = num;

@@ -32,6 +32,7 @@ public class StudentRes {
         res.setStudentPassword(student.getStudentPassword());
         res.setStudentPasswordHelper(student.getStudentPasswordHelper());
         res.setStudentName(student.getStudentName());
+        res.setStudentNameHelper(student.getStudentNameHelper());
         res.setStudentBirth(student.getStudentBirth());
         res.setStudentPhoneHelper(student.getStudentPhoneHelper());
         res.setStudentEmail(student.getStudentEmail());

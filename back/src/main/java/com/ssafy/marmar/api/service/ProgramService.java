@@ -8,19 +8,7 @@ import java.util.List;
 
 public interface ProgramService {
 
-    List<WordRes> wordlist(String difficulty);
-    List<WordRes> wordgamelist();
+    List<Object> programlist(String category, String difficulty);
+    List<Object> selectList(String category, String difficulty, int num);
 
-    List<WatchRes> watchlist(String difficulty);
-    List<WatchRes> watchgamelist();
-
-    List<WatchRes> selectWatchGameList(String difficulty, int num);
-
-    List<WordRes> selectWordGameList(String difficulty, int num);
-
-    List<PictureRes> picturelist(String difficulty);
-
-    List<PictureRes> picturegamelist();
-
-    List<PictureRes> selectPictureGameList(String difficulty, int num);
 }

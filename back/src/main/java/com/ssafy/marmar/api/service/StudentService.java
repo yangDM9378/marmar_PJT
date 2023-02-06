@@ -16,4 +16,13 @@ public interface StudentService {
 
 
     boolean studentHelperPwdCheck(Student student, String pwd);
+
+    void modifyPwd(String userId, String modifyPwd) throws Exception;
+    void modifyPwdHelper(String userId, String modifyPwdHelper) throws Exception;
+    void modifyName(String userId, String modifyName) throws Exception;
+    void modifyNameHelper(String userId, String modifyNameHelper) throws Exception;
+    void modifyPhone(String userId, String modifyPhone) throws Exception;
+    void modifyBirth(String userId, String modifyBirth) throws Exception;
+
+    void deleteStudent(Student student);
 }
