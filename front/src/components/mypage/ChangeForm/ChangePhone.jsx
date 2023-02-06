@@ -5,10 +5,11 @@ import tw from 'twin.macro';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import useModify from '../../../hooks/queries/useModify';
 
 const schema = yup
   .object({
-    phoneHelper: yup.string().required('전화번호를 입력해주세요.'),
+    phone: yup.string().required('전화번호를 입력해주세요.'),
   })
   .required();
 
@@ -22,6 +23,7 @@ export default function ChangePhone(props) {
     resolver: yupResolver(schema),
     mode: 'onChange',
   });
+  const { useModPhone } = useModify();
   const onInput = e => {
     const data = e.target.value;
     if (data.length === 3 && e.nativeEvent.data !== null) {
@@ -33,22 +35,23 @@ export default function ChangePhone(props) {
   };
   const onChangePhone = async data => {
     console.log(data);
+    useModPhone.mutate(data);
   };
   return (
     <S.Form onSubmit={handleSubmit(onChangePhone)}>
-      <S.Label htmlFor="phoneHelper">{label}</S.Label>
+      <S.Label htmlFor="phone">{label}</S.Label>
       <S.InputBox>
         <S.Input
-          {...register('phoneHelper')}
+          {...register('phone')}
           type="text"
-          id="phoneHelper"
+          id="phone"
           maxLength="13"
           placeholder={placeholder}
           onChange={onInput}
         />
         <S.Button type="submit">{button}</S.Button>
       </S.InputBox>
-      <S.ErrorMsg>{errors.phoneHelper?.message}</S.ErrorMsg>
+      <S.ErrorMsg>{errors.phone?.message}</S.ErrorMsg>
     </S.Form>
   );
 }

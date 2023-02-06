@@ -9,12 +9,12 @@ import useModify from '../../../hooks/queries/useModify';
 
 const schema = yup
   .object({
-    department: yup.string().required('소속기관을 입력해주세요.'),
+    birth: yup.string().required('생년월일을 입력해주세요.'),
   })
   .required();
 
-export default function ChangeDepartment(props) {
-  const { label, button, placeholder } = props;
+export default function ChangeBirth(props) {
+  const { label, button } = props;
   const {
     register,
     handleSubmit,
@@ -23,26 +23,21 @@ export default function ChangeDepartment(props) {
     resolver: yupResolver(schema),
     mode: 'onChange',
   });
-  const { useTheModDepartment } = useModify();
+  const { useModBirth } = useModify();
 
-  const onChangeDepartment = async data => {
+  const onChangeBirth = async data => {
     console.log(data);
-    useTheModDepartment.mutate(data);
+    useModBirth.mutate(data);
   };
 
   return (
-    <S.Form onSubmit={handleSubmit(onChangeDepartment)}>
-      <S.Label htmlFor="department">{label}</S.Label>
+    <S.Form onSubmit={handleSubmit(onChangeBirth)}>
+      <S.Label htmlFor="birth">{label}</S.Label>
       <S.InputBox>
-        <S.Input
-          {...register('department')}
-          type="text"
-          id="department"
-          placeholder={placeholder}
-        />
+        <S.Input {...register('birth')} type="date" id="birth" />
         <S.Button type="submit">{button}</S.Button>
       </S.InputBox>
-      <S.ErrorMsg>{errors.department?.message}</S.ErrorMsg>
+      <S.ErrorMsg>{errors.birth?.message}</S.ErrorMsg>
     </S.Form>
   );
 }

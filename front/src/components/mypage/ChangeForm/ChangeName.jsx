@@ -5,6 +5,7 @@ import tw from 'twin.macro';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import useModify from '../../../hooks/queries/useModify';
 
 const schema = yup
   .object({
@@ -13,7 +14,7 @@ const schema = yup
   .required();
 
 export default function ChangeName(props) {
-  const { label, button, placeholder } = props;
+  const { label, button, placeholder, check } = props;
 
   const {
     register,
@@ -23,8 +24,14 @@ export default function ChangeName(props) {
     resolver: yupResolver(schema),
     mode: 'onChange',
   });
+  const { useModName } = useModify();
   const onChangeName = async data => {
     console.log(data);
+    if (check === 'name') {
+      useModName.mutate({ name: data.name, check: 'name' });
+    } else {
+      useModName.mutate({ nameHelper: data.name, check: 'nameHelper' });
+    }
   };
   return (
     <S.Form onSubmit={handleSubmit(onChangeName)}>

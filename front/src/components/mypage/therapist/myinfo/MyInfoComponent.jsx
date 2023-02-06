@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 import useAuth from '../../../../hooks/queries/useAuth';
 import ChangeDepartment from '../../ChangeForm/ChangeDepartment';
-import ChangeEmail from '../../ChangeForm/ChangeEmail';
 import ChangeName from '../../ChangeForm/ChangeName';
 import ChangePassword from '../../ChangeForm/ChangePassword';
 import ChangePhone from '../../ChangeForm/ChangePhone';
@@ -13,11 +12,6 @@ export default function MyInfoComponent() {
   const { data: therapist } = useTherapistCheck();
   return (
     <S.Container>
-      <ChangeEmail
-        label="이메일"
-        button="이메일 변경"
-        placeholder={therapist?.therapistEmail}
-      />
       <ChangeName
         label="이름"
         button="이름 변경"

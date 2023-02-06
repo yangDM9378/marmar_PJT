@@ -5,6 +5,7 @@ import tw from 'twin.macro';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import useModify from '../../../hooks/queries/useModify';
 
 const schema = yup
   .object({
@@ -16,7 +17,6 @@ const schema = yup
       .required('변경할 2차 비밀번호를 입력해주세요.'),
   })
   .required();
-
 export default function ChangePasswordHelper() {
   const {
     register,
@@ -26,8 +26,13 @@ export default function ChangePasswordHelper() {
     resolver: yupResolver(schema),
     mode: 'onChange',
   });
-  const onChangePasswordHelper = async data => {
+  const { useModPasswordHelper } = useModify();
+  const onChangePasswordHelper = data => {
     console.log(data);
+    useModPasswordHelper.mutate({
+      nowPasswordHelper: data.nowPasswordHelper,
+      modifyPasswordHelper: data.passwordHelper,
+    });
   };
   return (
     <S.Form onSubmit={handleSubmit(onChangePasswordHelper)}>
@@ -51,7 +56,7 @@ export default function ChangePasswordHelper() {
         <S.Label htmlFor="passwordHelper">새 2차 비밀번호</S.Label>
         <S.InputBox>
           <S.Input
-            {...register('name')}
+            {...register('passwordHelper')}
             type="password"
             id="passwordHelper"
             maxLength="4"

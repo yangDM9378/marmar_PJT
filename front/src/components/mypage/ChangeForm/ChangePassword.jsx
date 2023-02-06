@@ -5,6 +5,7 @@ import tw from 'twin.macro';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import useModify from '../../../hooks/queries/useModify';
 
 // 최소 8자, 최대 20자 최소 하나의 문자, 하나의 숫자 및 하나의 특수 문자 :
 const pwRegExp =
@@ -35,9 +36,15 @@ export default function ChangePassword() {
     resolver: yupResolver(schema),
     mode: 'onChange',
   });
+  const { useModPassword } = useModify();
   const onChangePassword = async data => {
     console.log(data);
+    useModPassword.mutate({
+      nowPassword: data.nowPassword,
+      modifyPassword: data.password,
+    });
   };
+
   return (
     <S.Form onSubmit={handleSubmit(onChangePassword)}>
       <div>
