@@ -10,7 +10,7 @@ const getClockApi = payload => {
   return axios.get(`program/clock/${payload}`);
 };
 const getPictureApi = payload => {
-  return axios.get(`program/picture/${payload}`);
+  return axios.get(`program/practice/picture/${payload}`);
 };
 const getQuestionApi = payload => {
   console.log(payload);
