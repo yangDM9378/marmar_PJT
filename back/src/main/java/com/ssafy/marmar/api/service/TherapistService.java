@@ -29,4 +29,6 @@ public interface TherapistService {
     void modifyDepartment(String userId, String modifyDepartment) throws Exception;
 
     void deleteStudent(Therapist therapist) throws Exception;
+
+    boolean checkPwd(String pwd, Therapist therapist);
 }

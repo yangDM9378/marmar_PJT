@@ -111,4 +111,10 @@ public class StudentServiceImpl implements StudentService {
     public void deleteStudent(Student student) {
         studentRepository.delete(student);
     }
+
+    @Override
+    public boolean checkPwd(String pwd, Student student) {
+        boolean res = passwordEncoder.matches(pwd, student.getStudentPassword());
+        return res;
+    }
 }

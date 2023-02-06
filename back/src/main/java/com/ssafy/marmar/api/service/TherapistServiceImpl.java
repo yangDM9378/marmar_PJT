@@ -137,4 +137,10 @@ public class TherapistServiceImpl implements TherapistService {
 
         therapistRepository.delete(therapist);
     }
+
+    @Override
+    public boolean checkPwd(String pwd, Therapist therapist) {
+        boolean res = passwordEncoder.matches(pwd, therapist.getTherapistPassword());
+        return res;
+    }
 }

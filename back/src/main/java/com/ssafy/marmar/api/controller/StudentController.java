@@ -163,6 +163,24 @@ public class StudentController {
         return ResponseEntity.status(200).body("학생 탈퇴 성공");
     }
 
+    @PostMapping("/checkPwd")
+    public ResponseEntity<Boolean> checkPwd(@RequestBody Map<String, String> pwd, Authentication authentication) {
+        StudentDetails studentDetails = (StudentDetails) authentication.getDetails();
+        String userId = studentDetails.getUsername();
+        Student student = studentService.getUserByUserId(userId);
+        boolean res = studentService.checkPwd(pwd.get("pwd"), student);
+        return ResponseEntity.status(200).body(res);
+    }
+
+//    @PutMapping("/evaluation/{studentNum}")
+//    public ResponseEntity<Boolean> evaluation(@PathVariable int studentNum, Authentication authentication) {
+//        StudentDetails studentDetails = (StudentDetails) authentication.getDetails();
+//        String userId = studentDetails.getUsername();
+//        Student student = studentService.getUserByUserId(userId);
+//        boolean res = studentService.checkPwd(pwd.get("pwd"), student);
+//        return ResponseEntity.status(200).body(res);
+//    }
+
     public int getTherapistNum(Authentication authentication){
         TherapistDetails userDetails = (TherapistDetails)authentication.getDetails();
         String userId = userDetails.getUsername();

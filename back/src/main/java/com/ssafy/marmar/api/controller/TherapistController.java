@@ -145,4 +145,13 @@ public class TherapistController {
         return ResponseEntity.status(200).body("선생님 탈퇴 성공");
     }
 
+    @PostMapping("/checkPwd")
+    public ResponseEntity<Boolean> checkPwd(@RequestBody Map<String, String> pwd, Authentication authentication) {
+        TherapistDetails userDetails = (TherapistDetails)authentication.getDetails();
+        String userId = userDetails.getUsername();
+        Therapist therapist = therapistService.getUserByUserId(userId);
+        boolean res = therapistService.checkPwd(pwd.get("pwd"), therapist);
+        return ResponseEntity.status(200).body(res);
+    }
+
 }
