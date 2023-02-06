@@ -4,7 +4,10 @@
 import axios from 'axios';
 
 const getWordApi = payload => {
-  return axios.get(`program/practice/word/${payload}`);
+  const word = 'word';
+  const res = axios.get(`program/practice/${word}/${payload}`);
+  console.log(res);
+  return res;
 };
 const getClockApi = payload => {
   return axios.get(`program/practice/clock/${payload}`);

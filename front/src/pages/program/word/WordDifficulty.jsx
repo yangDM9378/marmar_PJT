@@ -9,13 +9,13 @@ export default function ClockDifficulty() {
       <S.ProgramBox>
         <S.ProgramHeader>🐣단어 읽기</S.ProgramHeader>
         <S.DiffSection>
-          <S.DiffLink to="/ClockProgram" state={{ difficulty: 'high' }}>
+          <S.DiffLink to="/WordProgram" state={{ difficulty: 'high' }}>
             <S.DiffH1>상</S.DiffH1>
           </S.DiffLink>
-          <S.DiffLink to="/ClockProgram" state={{ difficulty: 'mid' }}>
+          <S.DiffLink to="/WordProgram" state={{ difficulty: 'mid' }}>
             <S.DiffH1>중</S.DiffH1>
           </S.DiffLink>
-          <S.DiffLink to="/ClockProgram" state={{ difficulty: 'low' }}>
+          <S.DiffLink to="/WordProgram" state={{ difficulty: 'low' }}>
             <S.DiffH1>하</S.DiffH1>
           </S.DiffLink>
         </S.DiffSection>
