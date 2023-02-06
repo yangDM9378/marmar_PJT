@@ -4,14 +4,14 @@
 import axios from 'axios';
 
 const getWordApi = payload => {
-  return axios.get(`program/word/${payload}`);
+  return axios.get(`program/practice/word/${payload}`);
 };
 const getClockApi = payload => {
-  return axios.get(`program/clock/${payload}`);
+  return axios.get(`program/practice/clock/${payload}`);
 };
 const getQuestionApi = payload => {
   console.log(payload);
-  return axios.post('program/select/game', payload);
+  return axios.post('program/game/select', payload);
 };
 
 export { getWordApi, getClockApi, getQuestionApi };
