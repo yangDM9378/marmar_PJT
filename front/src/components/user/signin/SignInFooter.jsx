@@ -8,19 +8,34 @@ export default function SignInFooter() {
   const onGoSignUp = () => {
     navigate('/SignUp');
   };
+  const onGoFindId = () => {
+    navigate('/Login/FindId');
+  };
+  const onGoFindPw = () => {
+    navigate('/Login/FindPw');
+  };
   return (
     <S.FooterBox>
-      <span>아직 회원이 아니신가요?</span>
-      <S.SignUpBtn onClick={onGoSignUp}>회원가입</S.SignUpBtn>
+      <S.Btn type="button" onClick={onGoFindId}>
+        아이디 찾기
+      </S.Btn>
+      <span>|</span>
+      <S.Btn type="button" onClick={onGoFindPw}>
+        비밀번호 찾기
+      </S.Btn>
+      <span>|</span>
+      <S.Btn type="button" onClick={onGoSignUp}>
+        회원가입
+      </S.Btn>
     </S.FooterBox>
   );
 }
 
 const S = {
   FooterBox: styled.div`
-    ${tw`border-t-2 w-full text-xs text-center py-4 space-x-2 text-slate-400`}
+    ${tw`border-t-2 w-full text-xs text-center py-4 text-slate-400 flex space-x-5 justify-center`}
   `,
-  SignUpBtn: styled.button`
-    ${tw`text-xs text-brand font-bold`}
+  Btn: styled.button`
+    ${tw`text-xs font-bold`}
   `,
 };

@@ -14,14 +14,18 @@
 /* eslint-disable react/sort-comp */
 /* eslint-disable react/destructuring-assignment */
 import { OpenVidu } from 'openvidu-browser';
-
 import axios from 'axios';
+import styled from 'styled-components';
+import tw from 'twin.macro';
 import React, { Component } from 'react';
 import UserVideoComponent from './UserVideoComponent';
 import ClassSection from './ClassSection';
 import VideoModal from './VideoModal';
+import SelectStudent from './makeroom/SelectStudent';
+import { therapistCheckApi } from '../../api/userApi';
+import { closeRoomApi, makeRoomApi } from '../../api/liveClassApi';
 
-const APPLICATION_SERVER_URL = 'http://localhost:5000/';
+const APPLICATION_SERVER_URL = 'http://localhost:8080/api/v1/openvidu/';
 
 class Video extends Component {
   constructor(props) {
@@ -29,13 +33,14 @@ class Video extends Component {
 
     // These properties are in the state's component in order to re-render the HTML whenever their values change
     this.state = {
-      mySessionId: 'SessionA',
-      myUserName: `Participant${Math.floor(Math.random() * 100)}`,
+      mySessionId: '',
+      myUserName: ``,
       session: undefined,
       mainStreamManager: undefined, // Main video of the page. Will be the 'publisher' or one of the 'subscribers'
       publisher: undefined,
       subscribers: [],
-      num: 5,
+      studentNum: 0,
+      isStudent: false,
       // 모달창 열기
       modalOpen: false,
     };
@@ -56,18 +61,32 @@ class Video extends Component {
   closeModal = () => {
     this.setState({ modalOpen: false });
   };
-
-  numPlus = () => {
-    this.setState({ num: this.state.num + 1 });
-  };
-
-  numMinus = () => {
-    this.setState({ num: this.state.num - 1 });
-  };
   // 모달 끝
 
-  componentDidMount() {
+  getStudentNum = num => {
+    console.log(num);
+    return this.setState({ studentNum: num });
+  };
+
+  async componentDidMount() {
     window.addEventListener('beforeunload', this.onbeforeunload);
+    if (localStorage.getItem('therapist')) {
+      const res = await therapistCheckApi();
+      await this.setState({
+        mySessionId: res.therapistId,
+        myUserName: res.therapistName,
+      });
+    }
+    // } else if (localStorage.getItem('student')) {
+    //   const res = await studentCheckApi();
+    //   await this.setState({
+    //     mySessionId: res.studentId,
+    //     myUserName: res.studentName,
+    //     isStudent: true,
+    //   });
+    //   await this.joinSession();
+    //   await this.openModal();
+    // }
   }
 
   componentWillUnmount() {
@@ -98,6 +117,13 @@ class Video extends Component {
     }
   }
 
+  enableProdMode() {
+    console.log = () => {};
+    console.debug = () => {};
+    console.info = () => {};
+    console.warn = () => {};
+  }
+
   deleteSubscriber(streamManager) {
     const { subscribers } = this.state;
     const index = subscribers.indexOf(streamManager, 0);
@@ -121,8 +147,11 @@ class Video extends Component {
         session: this.OV.initSession(),
       },
       () => {
+        if (!this.state.isStudent) {
+          makeRoomApi({ studentNum: this.state.studentNum });
+        }
         const mySession = this.state.session;
-
+        // console.log(this.state);
         // --- 3) Specify the actions when events take place in the session ---
 
         // On every new Stream received...
@@ -138,7 +167,6 @@ class Video extends Component {
             subscribers,
           });
         });
-
         // On every Stream destroyed...
         mySession.on('streamDestroyed', event => {
           // Remove the stream from 'subscribers' array
@@ -147,9 +175,8 @@ class Video extends Component {
 
         // On every asynchronous exception...
         mySession.on('exception', exception => {
-          console.warn(exception);
+          // console.warn(exception);
         });
-
         // --- 4) Connect to the session with a valid user token ---
 
         // Get a token from the OpenVidu deployment
@@ -159,7 +186,6 @@ class Video extends Component {
           mySession
             .connect(token, {
               clientData: this.state.myUserName,
-              num: this.state.num,
             })
             .then(async () => {
               // --- 5) Get your own camera stream ---
@@ -171,8 +197,8 @@ class Video extends Component {
                 videoSource: undefined, // The source of video. If undefined default webcam
                 publishAudio: true, // Whether you want to start publishing with your audio unmuted or not
                 publishVideo: true, // Whether you want to start publishing with your video enabled or not
-                resolution: '640x480', // The resolution of your video
-                frameRate: 30, // The frame rate of your video
+                resolution: '100%x100%', // The resolution of your video
+                frameRate: 20, // The frame rate of your video
                 insertMode: 'APPEND', // How the video is inserted in the target element 'video-container'
                 mirror: false, // Whether to mirror your local video or not
               });
@@ -215,22 +241,22 @@ class Video extends Component {
 
   leaveSession() {
     // --- 7) Leave the session by calling 'disconnect' method over the Session object ---
-
     const mySession = this.state.session;
-
+    closeRoomApi(this.state.studentNum);
     if (mySession) {
       mySession.disconnect();
     }
-
     // Empty all properties...
     this.OV = null;
     this.setState({
       session: undefined,
       subscribers: [],
-      mySessionId: 'SessionA',
-      myUserName: `Participant${Math.floor(Math.random() * 100)}`,
+      mySessionId: '',
+      myUserName: ``,
       mainStreamManager: undefined,
       publisher: undefined,
+      studentNum: 0,
+      isStudent: false,
     });
   }
 
@@ -240,7 +266,7 @@ class Video extends Component {
 
     return (
       <div className="w-full bg-brand flex justify-center">
-        {this.state.session === undefined ? (
+        {this.state.session === undefined && this.state.isStudent === false ? (
           <div
             id="join"
             className="w-[70%] h-[500px] my-auto bg-white rounded-2xl p-10"
@@ -250,6 +276,7 @@ class Video extends Component {
             </div>
             <div id="join-dialog" className="space-y-3">
               <form className="form-group" onSubmit={this.joinSession}>
+                <SelectStudent getStudentNum={this.getStudentNum} />
                 <p className="text-center my-2">
                   <label>Participant: </label>
                   <input
@@ -287,13 +314,10 @@ class Video extends Component {
         ) : null}
         {this.state.session !== undefined ? (
           <VideoModal open={this.state.modalOpen}>
-            <div
-              id="session"
-              className="grid grid-cols-3 w-full h-[100vh] bg-video-bg bg-cover"
-            >
-              <div className="grid-cols-1 flex flex-col justify-around">
+            <S.LiveContainer className="bg-video-bg">
+              <S.VideoSection>
                 {this.state.mainStreamManager !== undefined ? (
-                  <div id="main-video" className="relative">
+                  <S.MyVideo>
                     <UserVideoComponent
                       streamManager={this.state.mainStreamManager}
                     />
@@ -323,29 +347,28 @@ class Video extends Component {
                         비디오
                       </button>
                     </div>
-                  </div>
+                  </S.MyVideo>
                 ) : null}
-                <div id="video-container">
-                  {this.state.subscribers.map((sub, i) => (
-                    <div
-                      key={i}
-                      className="stream-container"
-                      onClick={() => this.handleMainVideoStream(sub)}
-                    >
-                      <UserVideoComponent streamManager={sub} />
-                    </div>
-                  ))}
-                </div>
-              </div>
+                <S.UserVideo>
+                  <div
+                    className="h-[100%]"
+                    onClick={() =>
+                      this.handleMainVideoStream(this.state.subscribers[0])
+                    }
+                  >
+                    <UserVideoComponent
+                      streamManager={this.state.subscribers[0]}
+                    />
+                  </div>
+                </S.UserVideo>
+              </S.VideoSection>
               <ClassSection
                 className="cols-2"
                 close={(this.closeModal, this.leaveSession)}
-                nums={this.state.num}
-                plus={this.numPlus}
-                minus={this.numMinus}
+                sessionId={mySessionId}
                 streamManager={this.state.publisher}
               />
-            </div>
+            </S.LiveContainer>
           </VideoModal>
         ) : null}
       </div>
@@ -377,7 +400,9 @@ class Video extends Component {
       `${APPLICATION_SERVER_URL}api/sessions`,
       { customSessionId: sessionId },
       {
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+        },
       },
     );
     return response.data; // The sessionId
@@ -396,3 +421,21 @@ class Video extends Component {
 }
 
 export default Video;
+
+const S = {
+  PageContainer: styled.div`
+    ${tw`w-full bg-brand flex justify-center`}
+  `,
+  LiveContainer: styled.div`
+    ${tw`grid grid-cols-3 w-full max-h-full bg-cover`}
+  `,
+  VideoSection: styled.div`
+    ${tw`grid-cols-1 flex flex-col max-h-screen justify-around border-4 border-black m-5 p-5`}
+  `,
+  MyVideo: styled.div`
+    ${tw`relative border-4 border-blue-600 h-[45%]`}
+  `,
+  UserVideo: styled.div`
+    ${tw`relative border-4 border-red-400 h-[45%]`}
+  `,
+};

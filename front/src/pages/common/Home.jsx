@@ -1,5 +1,10 @@
 import React from 'react';
+import HomeHeader from '../../components/home/HomeHeader';
 
 export default function Home() {
-  return <div>Home</div>;
+  return (
+    <div className="min-h-[70vh]">
+      <HomeHeader />
+    </div>
+  );
 }
