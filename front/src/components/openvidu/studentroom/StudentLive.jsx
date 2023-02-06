@@ -241,7 +241,7 @@ export default class StudentLive extends Component {
         ) : null}
         {this.state.session !== undefined ? (
           <VideoModal open={this.state.modalOpen}>
-            <S.LiveContainer>
+            <S.LiveContainer className="min-h-screen">
               <S.VideoSection>
                 {this.state.mainStreamManager !== undefined ? (
                   <S.MyVideo>

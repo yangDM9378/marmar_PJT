@@ -314,7 +314,7 @@ class Video extends Component {
         ) : null}
         {this.state.session !== undefined ? (
           <VideoModal open={this.state.modalOpen}>
-            <S.LiveContainer className="bg-video-bg">
+            <S.LiveContainer className="bg-video-bg min-h-screen">
               <S.VideoSection>
                 {this.state.mainStreamManager !== undefined ? (
                   <S.MyVideo>

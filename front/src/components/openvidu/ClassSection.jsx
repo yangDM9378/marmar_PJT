@@ -14,6 +14,7 @@ export default function ClassSection(props) {
     <div>
       <button
         type="button"
+        className="border-2 m-3 p-3"
         onClick={async () => {
           await close();
           await closeNavigate();
