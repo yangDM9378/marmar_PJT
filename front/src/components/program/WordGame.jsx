@@ -15,22 +15,33 @@ export default function WordGame({ imagePath, answer }) {
   }, [answer]);
   return (
     <S.WordGame>
-      <S.WordImg src={imagePath} className="w-12 h-10 pt-1" />
-      <S.WordSpeakingQuestion>answer: {answer}</S.WordSpeakingQuestion>
+      <S.WordGameImg>
+        <S.WordImgCard>
+          <img className="img" src={imagePath} />
+          <div className="word">{answer}</div>
+        </S.WordImgCard>
+      </S.WordGameImg>
     </S.WordGame>
   );
 }
 
 const S = {
   WordGame: styled.div`
-    ${tw`flex-col border`}
+    ${tw`flex justify-center items-center min-h-[20rem]`}
   `,
-  WordImg: styled.img`
-    ${tw`rounded-sm `}
-    width:150px;
-    height: inherit;
+  WordGameImg: styled.div`
+    ${tw`flex justify-center items-center`}
   `,
-  WordSpeakingQuestion: styled.div`
-    ${tw`flex justify-center items-center h-14 text-2xl`}
+  WordImgCard: styled.div`
+    ${tw`flex-col rounded-xl text-center border-8 border-brand `}
+    .img {
+      ${tw`bg-white rounded-xl p-3`}
+      width: 12rem;
+      height: 12rem;
+    }
+    ,
+    .word {
+      ${tw`text-4xl bg-brand m-2 text-white`}
+    }
   `,
 };

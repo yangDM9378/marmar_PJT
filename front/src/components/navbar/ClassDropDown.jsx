@@ -55,6 +55,19 @@ export default function ClassDropDown() {
               )}
             </Menu.Item>
           </div>
+          <Menu.Item>
+            {({ active }) => (
+              <Link
+                to="/PictureDifficulty"
+                className={classNames(
+                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                  'block px-4 py-2 text-sm',
+                )}
+              >
+                그림
+              </Link>
+            )}
+          </Menu.Item>
         </Menu.Items>
       </Transition>
     </Menu>

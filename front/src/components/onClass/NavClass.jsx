@@ -9,9 +9,12 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import { getQuestionApi } from '../../api/programApi';
 import { OnClassContext } from '../../context/OnClassContext';
+import { SttContext } from '../../context/SttContext';
 
 export default function NavClass() {
-  const { request, setRequest, setResponse } = useContext(OnClassContext);
+  const { request, setRequest, setResponse, setCnt } =
+    useContext(OnClassContext);
+  const { setIsCheckArr } = useContext(SttContext);
   const [makeRequest, setMakeRequest] = useState({
     game: '',
     difficulty: '',
@@ -43,11 +46,12 @@ export default function NavClass() {
   };
   // 문제 불러오기
   const getQuestion = async () => {
-    console.log('qwdwq');
     await setRequest(makeRequest);
     const response = await getQuestionApi(makeRequest);
     await setResponse(response.data);
     await console.log(response);
+    setIsCheckArr([false, false, false, false]);
+    setCnt(0);
   };
   return (
     <S.Setting>

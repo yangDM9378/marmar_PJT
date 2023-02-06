@@ -12,6 +12,9 @@ export default function OnClassProvider({ children }) {
 
   const [response, setResponse] = useState(['default']);
 
+  // cnt
+  const [cnt, setCnt] = useState(0);
+
   return (
     <OnClassContext.Provider
       value={{
@@ -19,6 +22,8 @@ export default function OnClassProvider({ children }) {
         setRequest,
         response,
         setResponse,
+        cnt,
+        setCnt,
       }}
     >
       {children}
