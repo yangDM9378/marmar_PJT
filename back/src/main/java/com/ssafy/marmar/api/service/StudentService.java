@@ -1,8 +1,12 @@
 package com.ssafy.marmar.api.service;
 
+import com.ssafy.marmar.api.request.EvaluationPostReq;
 import com.ssafy.marmar.api.request.StudentRegisterPostReq;
 import com.ssafy.marmar.api.request.UpdatePwdPostReq;
+import com.ssafy.marmar.api.response.EvaluationRes;
 import com.ssafy.marmar.db.model.Student;
+
+import java.util.List;
 
 public interface StudentService {
 
@@ -27,4 +31,8 @@ public interface StudentService {
     void deleteStudent(Student student);
 
     boolean checkPwd(String pwd, Student student);
+
+    boolean insertEvaluation(int studentNum, EvaluationPostReq evaluationPostReq);
+
+    List<EvaluationRes> selectList(int studentNum);
 }

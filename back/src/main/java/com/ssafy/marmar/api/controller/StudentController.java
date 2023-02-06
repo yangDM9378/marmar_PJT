@@ -1,7 +1,9 @@
 package com.ssafy.marmar.api.controller;
 
+import com.ssafy.marmar.api.request.EvaluationPostReq;
 import com.ssafy.marmar.api.request.StudentRegisterPostReq;
 import com.ssafy.marmar.api.request.UpdatePwdPostReq;
+import com.ssafy.marmar.api.response.EvaluationRes;
 import com.ssafy.marmar.api.response.StudentRes;
 import com.ssafy.marmar.api.service.StudentService;
 import com.ssafy.marmar.api.service.TherapistService;
@@ -15,6 +17,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
@@ -172,14 +175,17 @@ public class StudentController {
         return ResponseEntity.status(200).body(res);
     }
 
-//    @PutMapping("/evaluation/{studentNum}")
-//    public ResponseEntity<Boolean> evaluation(@PathVariable int studentNum, Authentication authentication) {
-//        StudentDetails studentDetails = (StudentDetails) authentication.getDetails();
-//        String userId = studentDetails.getUsername();
-//        Student student = studentService.getUserByUserId(userId);
-//        boolean res = studentService.checkPwd(pwd.get("pwd"), student);
-//        return ResponseEntity.status(200).body(res);
-//    }
+    @PutMapping("/evaluation/{studentNum}")
+    public ResponseEntity<Boolean> evaluation(@PathVariable int studentNum, @RequestBody EvaluationPostReq evaluationPostReq) {
+        boolean res = studentService.insertEvaluation(studentNum, evaluationPostReq);
+        return ResponseEntity.status(200).body(res);
+    }
+
+    @GetMapping("/evaluation/result/{studentNum}")
+    public ResponseEntity<List<EvaluationRes>> evaluationResult(@PathVariable int studentNum) {
+        List<EvaluationRes> list = studentService.selectList(studentNum);
+        return ResponseEntity.status(200).body(list);
+    }
 
     public int getTherapistNum(Authentication authentication){
         TherapistDetails userDetails = (TherapistDetails)authentication.getDetails();

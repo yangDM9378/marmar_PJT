@@ -1,14 +1,24 @@
 package com.ssafy.marmar.api.service;
 
 
+import com.ssafy.marmar.api.request.EvaluationPostReq;
 import com.ssafy.marmar.api.request.StudentRegisterPostReq;
 import com.ssafy.marmar.api.request.UpdatePwdPostReq;
+import com.ssafy.marmar.api.response.EvaluationRes;
+import com.ssafy.marmar.api.response.WordRes;
+import com.ssafy.marmar.db.model.Evaluation;
 import com.ssafy.marmar.db.model.Student;
+import com.ssafy.marmar.db.model.Wordspeaking;
+import com.ssafy.marmar.db.repository.EvaluationRepository;
 import com.ssafy.marmar.db.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Service
@@ -16,6 +26,9 @@ public class StudentServiceImpl implements StudentService {
 
     @Autowired
     StudentRepository studentRepository;
+
+    @Autowired
+    EvaluationRepository evaluationRepository;
 
     @Autowired
     PasswordEncoder passwordEncoder;
@@ -116,5 +129,43 @@ public class StudentServiceImpl implements StudentService {
     public boolean checkPwd(String pwd, Student student) {
         boolean res = passwordEncoder.matches(pwd, student.getStudentPassword());
         return res;
+    }
+
+    @Override
+    public boolean insertEvaluation(int studentNum, EvaluationPostReq evaluationPostReq) {
+        try{
+            Student student = studentRepository.findByNum(studentNum).get();
+            Evaluation evaluation = new Evaluation();
+            evaluation.setEvalAchieve(evaluationPostReq.getEvalAchieve());
+            evaluation.setEvalConcentration(evaluationPostReq.getEvalConcentration());
+            evaluation.setEvalEntire(evaluationPostReq.getEvalEntire());
+            evaluation.setStudent(student);
+            evaluation.setEvalDate(LocalDateTime.now());
+            evaluationRepository.save(evaluation);
+            return true;
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    @Override
+    public List<EvaluationRes> selectList(int studentNum) {
+
+        List<Evaluation> evaluations = evaluationRepository.findAllByStudentNum(studentNum);
+        List<EvaluationRes> EvaluationResList = new ArrayList<>();
+
+        for(Evaluation evaluation : evaluations){
+            EvaluationRes res = EvaluationRes.builder()
+                    .num(evaluation.getNum())
+                    .evalAchieve(evaluation.getEvalAchieve())
+                    .evalConcentration(evaluation.getEvalConcentration())
+                    .evalEntire(evaluation.getEvalEntire())
+                    .evalDate(evaluation.getEvalDate())
+                    .student(evaluation.getStudent())
+                    .build();
+            EvaluationResList.add(res);
+        }
+
+        return EvaluationResList;
     }
 }
