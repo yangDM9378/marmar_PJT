@@ -48,9 +48,13 @@ export default function FindIdForm() {
           setIsFail(true);
         },
         onSuccess: data => {
-          setIsFail(false);
-          setOpen(!isOpen);
-          setId(data.data);
+          if (data) {
+            setIsFail(false);
+            setOpen(!isOpen);
+            setId(data.data);
+          } else {
+            setIsFail(true);
+          }
         },
       },
     );
