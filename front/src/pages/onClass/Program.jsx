@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/destructuring-assignment */
 import React, { useContext, useEffect } from 'react';
 import NavClass from '../../components/onClass/NavClass';
