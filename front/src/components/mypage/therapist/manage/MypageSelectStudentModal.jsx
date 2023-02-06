@@ -35,6 +35,7 @@ export default function MypageSelectStudentModal({ isOpen, close }) {
     <ReactModal
       isOpen={isOpen}
       onRequestClose={() => close()}
+      ariaHideApp={false}
       className="h-fit w-[700px] bg-slate-400 rounded-xl m-auto mt-20 p-20"
     >
       <S.ModalHeader>

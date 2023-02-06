@@ -16,9 +16,14 @@ export default function SocketProvider({ children }) {
   const onConnect = () => {
     socket.emit('connecting');
   };
+  const joinRoom = sessionId => {
+    socket.emit('joinRoom', { roomName: sessionId });
+  };
 
   return (
-    <SocketContext.Provider value={{ socket, onAny, onConnect, test }}>
+    <SocketContext.Provider
+      value={{ socket, onAny, onConnect, test, joinRoom }}
+    >
       {children}
     </SocketContext.Provider>
   );
