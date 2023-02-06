@@ -16,6 +16,7 @@ export default function FindIdModal({ isOpen, close, id }) {
     <ReactModal
       isOpen={isOpen}
       onRequestClose={() => close()}
+      ariaHideApp={false}
       className="h-fit w-[600px] bg-white rounded-xl mx-auto mt-20  p-3"
     >
       <S.ModalHeader>

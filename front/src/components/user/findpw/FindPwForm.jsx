@@ -45,9 +45,13 @@ export default function FindPwForm() {
           setIsFail(true);
         },
         onSuccess: data => {
-          setIsFail(false);
-          alert('가입된 이메일로 임시비밀번호가 발급되었습니다.');
-          navigate('/SignIn');
+          if (data) {
+            setIsFail(false);
+            alert('가입된 이메일로 임시비밀번호가 발급되었습니다.');
+            navigate('/SignIn');
+          } else {
+            setIsFail(true);
+          }
         },
       },
     );
