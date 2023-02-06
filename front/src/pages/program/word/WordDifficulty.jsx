@@ -3,53 +3,80 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 import { Link } from 'react-router-dom';
 
-export default function WordDifficulty() {
+export default function ClockDifficulty() {
   return (
-    <S.SignUpSection>
-      <S.SignUpBox>
-        <S.SignUpHeader>단어 읽기</S.SignUpHeader>
-        <S.SignUpMiniBox>
-          <Link to="/WordProgram" state={{ difficulty: 'high' }}>
-            <S.SignUpUserBox>
-              <S.SignUpUserH1>상</S.SignUpUserH1>
-              <img src="" alt="" />
-            </S.SignUpUserBox>
-          </Link>
-          <Link to="/WordProgram" state={{ difficulty: 'mid' }}>
-            <S.SignUpUserBox>
-              <S.SignUpUserH1>중</S.SignUpUserH1>
-              <img src="" alt="" />
-            </S.SignUpUserBox>
-          </Link>
-          <Link to="/WordProgram" state={{ difficulty: 'low' }}>
-            <S.SignUpUserBox>
-              <S.SignUpUserH1>하</S.SignUpUserH1>
-              <img src="" alt="" />
-            </S.SignUpUserBox>
-          </Link>
-        </S.SignUpMiniBox>
-      </S.SignUpBox>
-    </S.SignUpSection>
+    <S.ProgramSection>
+      <S.ProgramBox>
+        <S.ProgramHeader>🐣단어 읽기</S.ProgramHeader>
+        <S.DiffSection>
+          <S.DiffLink to="/ClockProgram" state={{ difficulty: 'high' }}>
+            <S.DiffH1>상</S.DiffH1>
+          </S.DiffLink>
+          <S.DiffLink to="/ClockProgram" state={{ difficulty: 'mid' }}>
+            <S.DiffH1>중</S.DiffH1>
+          </S.DiffLink>
+          <S.DiffLink to="/ClockProgram" state={{ difficulty: 'low' }}>
+            <S.DiffH1>하</S.DiffH1>
+          </S.DiffLink>
+        </S.DiffSection>
+      </S.ProgramBox>
+    </S.ProgramSection>
   );
 }
 
 const S = {
-  SignUpSection: styled.div`
-    ${tw`px-10 bg-brand min-h-[800px] flex justify-center items-center`}
+  ProgramSection: styled.div`
+    ${tw`bg-brand`}
+    padding: 50px
   `,
-  SignUpBox: styled.div`
-    ${tw`bg-white rounded-3xl w-[650px] h-[650px] p-10`}
+  ProgramBox: styled.div`
+    ${tw`bg-white`}
+    border-radius: 25px;
+    margin: 0px 200px;
+    padding: 50px;
+    min-width: 400px;
+    @media screen and (max-width: 1000px) {
+      margin: 0px 100px;
+    }
   `,
-  SignUpHeader: styled.h1`
-    ${tw`font-extrabold text-2xl text-center p-2 font-cafe24`}
+  ProgramHeader: styled.h1`
+    ${tw`font-cafe24`}
+    text-align: center;
+    font-size: 50px;
   `,
-  SignUpMiniBox: styled.div`
-    ${tw`p-5 flex justify-around`}
+  DiffSection: styled.div`
+    margin-top: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    @media screen and (max-width: 1000px) {
+      min-height: 400px;
+      flex-direction: column;
+      align-items: center;
+    }
   `,
-  SignUpUserBox: styled.div`
-    ${tw`bg-yellow-300 rounded-3xl w-[250px] h-[450px] p-10`}
+  DiffLink: styled(Link)`
+    ${tw`bg-yellow-300`}
+    border-radius: 25px;
+    margin: 10px;
+    width: 250px;
+    height: 250px;
+    @media screen and (max-width: 1000px) {
+      width: 250px;
+      height: 100px;
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+      border: 5px solid;
+    }
   `,
-  SignUpUserH1: styled.h1`
-    ${tw`font-extrabold text-2xl text-center p-2 font-cafe24`}
+  DiffH1: styled.h1`
+    ${tw`font-cafe24`}
+    font-size: 80px;
+    @media screen and (max-width: 1000px) {
+      font-size: 50px;
+    }
   `,
 };

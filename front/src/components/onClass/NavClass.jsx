@@ -2,6 +2,8 @@
 /* eslint-disable react/no-this-in-sfc */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable import/no-extraneous-dependencies */
+import styled from 'styled-components';
+import tw from 'twin.macro';
 import React, { useContext, useState } from 'react';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
@@ -48,29 +50,55 @@ export default function NavClass() {
     await console.log(response);
   };
   return (
-    <div>
-      <input type="text" />
-      <Dropdown
+    <S.Setting>
+      <S.Dropdown
         options={programOption}
         onChange={onSelectProgram}
         value={defaultProgram}
         placeholder="Select an option"
       />
-      <Dropdown
+      <S.Dropdown
         options={difficultyOption}
         onChange={onSelectDifficulty}
         value={defaultDifficulty}
         placeholder="Select an option"
       />
-      <Dropdown
+      <S.Dropdown
         options={countOption}
         onChange={onSelectCount}
         value={defaultCount}
         placeholder="Select an option"
       />
-      <button type="button" onClick={getQuestion}>
+      <S.Button type="button" onClick={getQuestion}>
         시작
-      </button>
-    </div>
+      </S.Button>
+    </S.Setting>
   );
 }
+
+const S = {
+  Setting: styled.section`
+    padding: 10px;
+    display: flex;
+  `,
+  Dropdown: styled(Dropdown)`
+    ${tw`font-cafe24`}
+    margin: 10px;
+    flex: 1;
+  `,
+  Button: styled.button`
+    ${tw`font-cafe24`}
+    color: black;
+    font-size: 15px;
+    border: 2px solid;
+    border-radius: 0.6em;
+    padding: 1.2em 1.2em;
+    &:hover {
+      box-shadow: 0 0 10px 0 yellow inset, 0 0 10px 4px white;
+      transition: 1000ms;
+      transform: translateY(-0px);
+      background-color: yellow;
+      color: #000000;
+    }
+  `,
+};

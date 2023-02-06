@@ -4,18 +4,25 @@ import React from 'react';
 
 export default function DefaultClass() {
   return (
-    <S.ClassGameDiv>
-      <S.ClassGameHeader>문제를 설정해주세요!</S.ClassGameHeader>
-    </S.ClassGameDiv>
+    <S.ClassGameSection>
+      <S.ClassGameInfo>단어읽기</S.ClassGameInfo>
+      <S.ClassGameInfo>시계읽기</S.ClassGameInfo>
+      <S.ClassGameInfo>그림선택</S.ClassGameInfo>
+    </S.ClassGameSection>
   );
 }
-
 const S = {
-  ClassGameDiv: styled.div`
-    ${tw` bg-brand min-h-[800px] flex`}
+  ClassGameSection: styled.section`
+    border: 4px solid;
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   `,
-  ClassGameHeader: styled.div`
-    font-size: 100px;
-    align-self: center;
+  ClassGameInfo: styled.div`
+    border: 4px solid;
+    flex: 1;
+    margin: 10px;
+    height: 400px;
   `,
 };
