@@ -10,10 +10,12 @@ import 'react-dropdown/style.css';
 import { getQuestionApi } from '../../api/programApi';
 import { OnClassContext } from '../../context/OnClassContext';
 import { SttContext } from '../../context/SttContext';
+import { SocketContext } from '../../context/SocketContext';
 
 export default function NavClass() {
   const { request, setRequest, setResponse, setCnt } =
     useContext(OnClassContext);
+  const { socket, clickStartButton } = useContext(SocketContext);
   const { setIsCheckArr } = useContext(SttContext);
   const [makeRequest, setMakeRequest] = useState({
     game: '',
@@ -52,7 +54,21 @@ export default function NavClass() {
     await console.log(response);
     setIsCheckArr([false, false, false, false]);
     setCnt(0);
+
+    clickStartButton(makeRequest);
   };
+
+  socket.on('startButton', async payload => {
+    await setRequest(payload);
+    const response = await getQuestionApi(payload);
+    await setResponse(response.data);
+    await console.log(response);
+    setIsCheckArr([false, false, false, false]);
+    setCnt(0);
+
+    console.log(payload);
+  });
+
   return (
     <S.Setting>
       <S.Dropdown

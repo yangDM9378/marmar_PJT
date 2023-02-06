@@ -6,15 +6,16 @@ import Program from '../../pages/onClass/Program';
 
 export default function Game(props) {
   const { sessionId } = props;
-
-  const { joinRoom } = useContext(SocketContext);
+  const { joinRoom, getRoom, roomName } = useContext(SocketContext);
 
   useEffect(() => {
     joinRoom(sessionId);
+    getRoom();
   }, []);
 
   return (
     <div>
+      <p>방 이름 : {roomName}</p>
       <Program />
     </div>
   );
