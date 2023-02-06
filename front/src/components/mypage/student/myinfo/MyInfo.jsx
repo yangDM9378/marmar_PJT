@@ -2,44 +2,45 @@ import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import useAuth from '../../../../hooks/queries/useAuth';
-import ChangeDepartment from '../../ChangeForm/ChangeDepartment';
 import ChangeEmail from '../../ChangeForm/ChangeEmail';
 import ChangeName from '../../ChangeForm/ChangeName';
 import ChangePassword from '../../ChangeForm/ChangePassword';
+import ChangePasswordHelper from '../../ChangeForm/ChangePasswordHelper';
 import ChangePhone from '../../ChangeForm/ChangePhone';
 
-export default function MyInfoComponent() {
-  const { useTherapistCheck } = useAuth();
-  const { data: therapist } = useTherapistCheck();
+export default function MyInfo() {
+  const { useStudentCheck } = useAuth();
+  const { data: student } = useStudentCheck();
   return (
     <S.Container>
       <ChangeEmail
         label="이메일"
         button="이메일 변경"
-        placeholder={therapist?.therapistEmail}
+        placeholder={student?.studentEmail}
       />
       <ChangeName
-        label="이름"
-        button="이름 변경"
-        placeholder={therapist?.therapistName}
+        label="아이 이름"
+        button="아이 이름 변경"
+        placeholder={student?.studentName}
       />
-      <ChangeDepartment
-        label="소속 기관"
-        button="소속 기관 변경"
-        placeholder={therapist?.therapistDepartment}
+      <ChangeName
+        label="보호자 이름"
+        button="보호자 이름 변경"
+        placeholder={student?.studentNameHelper}
       />
       <ChangePhone
         label="전화번호"
         button="전화번호 변경"
-        placeholder={therapist?.therapistPhone}
+        placeholder={student?.studentPhoneHelper}
       />
       <ChangePassword />
+      <ChangePasswordHelper />
     </S.Container>
   );
 }
 
 const S = {
   Container: styled.div`
-    ${tw`space-y-5 p-3`}
+    ${tw`space-y-5`}
   `,
 };

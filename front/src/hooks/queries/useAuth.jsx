@@ -109,5 +109,10 @@ export default function useAuth() {
       setIsLogin(false);
     }
   }, [useLogOut]);
-  return { useSignIn, useStudentCheck, useTherapistCheck, useLogOut };
+  return {
+    useSignIn,
+    useStudentCheck,
+    useTherapistCheck,
+    useLogOut,
+  };
 }
