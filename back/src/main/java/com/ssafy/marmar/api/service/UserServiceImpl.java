@@ -93,7 +93,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean studentPwdEmailCheck(String userEmail, String userName) {
+    public boolean studentIdCheck(String userEmail, String userName) {
         Student student = studentRepository.findByStudentEmail(userEmail).get();
         if(student!=null && student.getStudentName().equals(userName)) {
             return true;
@@ -103,7 +103,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean therapistPwdEmailCheck(String userEmail, String userName) {
+    public boolean therapistIdCheck(String userEmail, String userName) {
         Therapist therapist = therapistRepository.findByTherapistEmail(userEmail).get();
         if(therapist!=null && therapist.getTherapistName().equals(userName)){
             return true;

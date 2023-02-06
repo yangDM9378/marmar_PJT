@@ -14,6 +14,6 @@ public interface UserService {
     boolean studentIdEmailCheck(String userEmail, String userId);
     boolean therapistIdEmailCheck(String userEmail, String userId);
 
-    boolean studentPwdEmailCheck(String userEmail, String userName);
-    boolean therapistPwdEmailCheck(String userEmail, String userName);
+    boolean studentIdCheck(String userEmail, String userName);
+    boolean therapistIdCheck(String userEmail, String userName);
 }

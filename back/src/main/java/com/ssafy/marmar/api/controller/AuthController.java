@@ -87,10 +87,10 @@ public class AuthController {
     @GetMapping("/check/findId")
     public ResponseEntity<Boolean> id_find(@RequestBody FindIdPostReq findIdPostReq){
         if(findIdPostReq.getRole().equals("STUDENT")){
-            boolean pwFindCheck = userService.studentPwdEmailCheck(findIdPostReq.getEmail(),findIdPostReq.getName());
+            boolean pwFindCheck = userService.studentIdCheck(findIdPostReq.getEmail(),findIdPostReq.getName());
             return ResponseEntity.status(200).body(pwFindCheck);
         } else {
-            boolean pwFindCheck = userService.therapistPwdEmailCheck(findIdPostReq.getEmail(),findIdPostReq.getName());
+            boolean pwFindCheck = userService.therapistIdCheck(findIdPostReq.getEmail(),findIdPostReq.getName());
             return ResponseEntity.status(200).body(pwFindCheck);
         }
     }
