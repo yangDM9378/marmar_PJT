@@ -1,8 +1,12 @@
+import express from "express";
+import path from "path";
+import { Server } from "socket.io";
+import http from "http";
 
-const app = require('express')()
-const server = require('http').createServer(app)
-const cors = require('cors')
-const io = require('socket.io')(server,{
+const app = express();
+const port = 4000;
+const server = http.createServer(app);
+const io = new Server(server, {
     cors : {
         origin :"*",
         credentials :true
@@ -10,12 +14,24 @@ const io = require('socket.io')(server,{
 });
 
 
+// 연결 시작
 io.on('connection', socket=>{
-    socket.on('joinRoom',function (data) {
-        // console.log(data);
-        socket.join(data.roomName);
-        roomName = data.roomName;
+    let roomName = ''
+
+    socket.onAny((event) => {
+        console.log(`Socket event: ${event}`);
     });
+    socket.on('joinRoom', (data) => {
+        console.log(data);
+        socket.join(data.roomName);
+        roomName = data.roomName
+        socket.emit('joinRoom', data.roomName)
+    });
+    socket.on('startButton', (payload) => {
+        console.log(payload)
+        io.sockets.in(roomName).emit('startButton', payload)
+    })
+    
     socket.on('message',(num) => {
         console.log(num)
         io.sockets.in(roomName).emit('message',(num))
@@ -31,6 +47,6 @@ io.on('connection', socket=>{
     
 })
 
-server.listen(4000, function(){
-    console.log('listening on port 4000');
+server.listen(port, function(){
+    console.log(`listening on port ${port}`);
 })

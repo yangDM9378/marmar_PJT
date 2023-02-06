@@ -5,20 +5,23 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import Navbar from './components/navbar/Navbar';
 import Footer from './components/common/Footer';
 import SttProvider from './context/SttContext';
+import SocketProvider from './context/SocketContext';
 
 const queryClient = new QueryClient();
 
 function App() {
   return (
     <QueryClientProvider QueryClientProvider client={queryClient}>
-      <SttProvider>
-        <Navbar />
-        <div className="min-h-[70vh] mt-14">
-          <Outlet />
-        </div>
-        <Footer />
-      </SttProvider>
-      <ReactQueryDevtools initialIsOpen />
+      <SocketProvider>
+        <SttProvider>
+          <Navbar />
+          <div className="min-h-[70vh]">
+            <Outlet />
+          </div>
+          <Footer />
+        </SttProvider>
+        <ReactQueryDevtools initialIsOpen />
+      </SocketProvider>
     </QueryClientProvider>
   );
 }

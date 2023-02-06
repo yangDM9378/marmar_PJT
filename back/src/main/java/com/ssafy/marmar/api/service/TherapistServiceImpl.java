@@ -1,6 +1,7 @@
 package com.ssafy.marmar.api.service;
 
 import com.ssafy.marmar.api.request.TherapistRegisterPostReq;
+import com.ssafy.marmar.api.request.UpdatePwdPostReq;
 import com.ssafy.marmar.api.response.StudentSearchRes;
 import com.ssafy.marmar.db.model.Student;
 import com.ssafy.marmar.db.model.Therapist;
@@ -89,9 +90,16 @@ public class TherapistServiceImpl implements TherapistService {
     }
 
     @Override
-    public void modifyPwd(String userId, String modifyPwd) throws Exception {
-        String str = passwordEncoder.encode(modifyPwd);
-        therapistRepository.modifyTherapistPassword(userId, str);
+    public boolean modifyPwd(String userId, UpdatePwdPostReq updatePwdPostReq) throws Exception {
+        String now = updatePwdPostReq.getNowPassword();
+        Therapist therapist = therapistRepository.findByTherapistId(userId).get();
+        if(passwordEncoder.matches(now, therapist.getTherapistPassword())){
+            String str = passwordEncoder.encode(updatePwdPostReq.getModifyPassword());
+            therapistRepository.modifyTherapistPassword(userId, str);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

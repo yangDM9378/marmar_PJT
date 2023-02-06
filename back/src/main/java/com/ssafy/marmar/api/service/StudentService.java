@@ -1,6 +1,7 @@
 package com.ssafy.marmar.api.service;
 
 import com.ssafy.marmar.api.request.StudentRegisterPostReq;
+import com.ssafy.marmar.api.request.UpdatePwdPostReq;
 import com.ssafy.marmar.db.model.Student;
 
 public interface StudentService {
@@ -17,7 +18,7 @@ public interface StudentService {
 
     boolean studentHelperPwdCheck(Student student, String pwd);
 
-    void modifyPwd(String userId, String modifyPwd) throws Exception;
+    boolean modifyPwd(String userId, UpdatePwdPostReq updatePwdPostReq) throws Exception;
     void modifyPwdHelper(String userId, String modifyPwdHelper) throws Exception;
     void modifyName(String userId, String modifyName) throws Exception;
     void modifyNameHelper(String userId, String modifyNameHelper) throws Exception;

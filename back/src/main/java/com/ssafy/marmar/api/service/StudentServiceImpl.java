@@ -2,6 +2,7 @@ package com.ssafy.marmar.api.service;
 
 
 import com.ssafy.marmar.api.request.StudentRegisterPostReq;
+import com.ssafy.marmar.api.request.UpdatePwdPostReq;
 import com.ssafy.marmar.db.model.Student;
 import com.ssafy.marmar.db.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,9 +69,17 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void modifyPwd(String userId, String modifyPwd) throws Exception {
-        String str = passwordEncoder.encode(modifyPwd);
-        studentRepository.modifyStudentPassword(userId, str);
+    public boolean modifyPwd(String userId, UpdatePwdPostReq updatePwdPostReq) throws Exception {
+        String now = updatePwdPostReq.getNowPassword();
+        Student student = studentRepository.findByStudentId(userId).get();
+        if(passwordEncoder.matches(now, student.getStudentPassword())){
+            String str = passwordEncoder.encode(updatePwdPostReq.getModifyPassword());
+            studentRepository.modifyStudentPassword(userId, str);
+            return true;
+        } else{
+            return false;
+        }
+
     }
 
     @Override

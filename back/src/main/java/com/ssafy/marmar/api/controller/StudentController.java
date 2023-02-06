@@ -1,6 +1,7 @@
 package com.ssafy.marmar.api.controller;
 
 import com.ssafy.marmar.api.request.StudentRegisterPostReq;
+import com.ssafy.marmar.api.request.UpdatePwdPostReq;
 import com.ssafy.marmar.api.response.StudentRes;
 import com.ssafy.marmar.api.service.StudentService;
 import com.ssafy.marmar.api.service.TherapistService;
@@ -101,12 +102,11 @@ public class StudentController {
     // 회원 정보 수정
     // 비밀번호, 2차 비밀번호, 학생 이름, 보호자 이름, 핸드폰 번호, 생년월일
     @PutMapping("/modify/Password")
-    public ResponseEntity<String> modifyPassword(@RequestBody Map<String, String> modifyPassword, Authentication authentication) throws Exception {
+    public ResponseEntity<Boolean> modifyPassword(@RequestBody UpdatePwdPostReq updatePwdPostReq, Authentication authentication) throws Exception {
         StudentDetails studentDetails = (StudentDetails) authentication.getDetails();
         String userId = studentDetails.getUsername();
-        String modifypwd = modifyPassword.get("modifyPassword");
-        studentService.modifyPwd(userId, modifypwd);
-        return ResponseEntity.status(200).body("비밀번호 수정 성공");
+        boolean res = studentService.modifyPwd(userId, updatePwdPostReq);
+        return ResponseEntity.status(200).body(res);
     }
 
     @PutMapping("/modify/PasswordHelper")

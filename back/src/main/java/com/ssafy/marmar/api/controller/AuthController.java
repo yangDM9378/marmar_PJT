@@ -56,7 +56,7 @@ public class AuthController {
     }
 
     // 비밀번호 찾기_마르마르의 회원인지 체크하기
-    @GetMapping("/check/findPw")
+    @PostMapping("/check/findPw")
     public @ResponseBody Map<String, Boolean> pw_find(@RequestBody FindPassPostReq findPassPostReq){
         Map<String,Boolean> json = new HashMap<>();
 
@@ -84,7 +84,7 @@ public class AuthController {
     }
 
     // 아이디 찾기_마르마르의 회원인지 체크하기
-    @GetMapping("/check/findId")
+    @PostMapping("/check/findId")
     public ResponseEntity<Boolean> id_find(@RequestBody FindIdPostReq findIdPostReq){
         if(findIdPostReq.getRole().equals("STUDENT")){
             boolean pwFindCheck = userService.studentIdCheck(findIdPostReq.getEmail(),findIdPostReq.getName());

@@ -1,6 +1,7 @@
 package com.ssafy.marmar.api.service;
 
 import com.ssafy.marmar.api.request.TherapistRegisterPostReq;
+import com.ssafy.marmar.api.request.UpdatePwdPostReq;
 import com.ssafy.marmar.api.response.StudentSearchRes;
 import com.ssafy.marmar.db.model.Student;
 import com.ssafy.marmar.db.model.Therapist;
@@ -19,7 +20,7 @@ public interface TherapistService {
 
     List<StudentSearchRes> studentList(int therapistNum);
 
-    void modifyPwd(String userId, String modifyPwd) throws Exception;
+    boolean modifyPwd(String userId, UpdatePwdPostReq updatePwdPostReq) throws Exception;
 
     void modifyName(String userId, String modifyName) throws Exception;
 
