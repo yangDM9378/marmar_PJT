@@ -9,9 +9,12 @@ const getWordApi = payload => {
 const getClockApi = payload => {
   return axios.get(`program/practice/clock/${payload}`);
 };
+const getPictureApi = payload => {
+  return axios.get(`program/practice/picture/${payload}`);
+};
 const getQuestionApi = payload => {
   console.log(payload);
   return axios.post('program/game/select', payload);
 };
 
-export { getWordApi, getClockApi, getQuestionApi };
+export { getWordApi, getClockApi, getPictureApi, getQuestionApi };
