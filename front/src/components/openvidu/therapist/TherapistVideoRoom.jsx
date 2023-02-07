@@ -10,6 +10,12 @@ import axios from 'axios';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import { useNavigate } from 'react-router-dom';
+import {
+  BsFillMicFill,
+  BsCameraVideo,
+  BsFillMicMuteFill,
+  BsCameraVideoOff,
+} from 'react-icons/bs';
 import { closeRoomApi, makeRoomApi } from '../../../api/liveClassApi';
 import VideoModal from '../VideoModal';
 import UserVideoComponent from '../UserVideoComponent';
@@ -262,19 +268,6 @@ export default function TherapistVideoRoom() {
         <VideoModal open={modalOpen}>
           <S.LiveContainer className="min-h-screen bg-video-bg">
             <S.VideoSection>
-              {mainStreamManager !== undefined ? (
-                <S.MyVideo>
-                  <UserVideoComponent streamManager={mainStreamManager} />
-                  <S.HandleVideoBox>
-                    <S.HandleVideoButton type="button" onClick={handleAudio}>
-                      음소거
-                    </S.HandleVideoButton>
-                    <S.HandleVideoButton type="button" onClick={handleVideo}>
-                      비디오
-                    </S.HandleVideoButton>
-                  </S.HandleVideoBox>
-                </S.MyVideo>
-              ) : null}
               {subscribers[0] && (
                 <S.UserVideo>
                   <div className="h-[100%]">
@@ -282,8 +275,37 @@ export default function TherapistVideoRoom() {
                   </div>
                 </S.UserVideo>
               )}
+              {mainStreamManager !== undefined ? (
+                <S.MyVideo>
+                  <UserVideoComponent streamManager={mainStreamManager} />
+                  <S.HandleVideoBox>
+                    <S.HandleVideoButton
+                      type="button"
+                      onClick={handleAudio}
+                      className={`${audio ? 'bg-slate-600' : 'bg-red-600'}`}
+                    >
+                      {audio ? (
+                        <BsFillMicFill className="text-white" />
+                      ) : (
+                        <BsFillMicMuteFill className="text-white" />
+                      )}
+                    </S.HandleVideoButton>
+                    <S.HandleVideoButton
+                      type="button"
+                      onClick={handleVideo}
+                      className={`${video ? 'bg-slate-600' : 'bg-red-600'}`}
+                    >
+                      {video ? (
+                        <BsCameraVideo className="text-white" />
+                      ) : (
+                        <BsCameraVideoOff className="text-white" />
+                      )}
+                    </S.HandleVideoButton>
+                  </S.HandleVideoBox>
+                </S.MyVideo>
+              ) : null}
             </S.VideoSection>
-            <div className="col-span-2">
+            <div className="col-span-2 border-8 border-pink-400 rounded-xl ml-2">
               <ClassSection
                 close={(closeModal, leaveSession)}
                 sessionId={mySessionId}
@@ -311,18 +333,18 @@ const S = {
     ${tw`grid grid-cols-3 w-full max-h-full bg-cover`}
   `,
   VideoSection: styled.div`
-    ${tw`grid-cols-1 flex flex-col max-h-screen justify-around border-4 border-black m-5 p-5`}
+    ${tw`grid-cols-1 flex flex-col max-h-screen justify-around`}
   `,
   MyVideo: styled.div`
-    ${tw`relative border-4 border-blue-600 h-[45%]`}
+    ${tw`relative h-[50%]`}
   `,
   HandleVideoBox: styled.div`
-    ${tw`absolute top-0 right-0 space-x-3 pr-2`}
+    ${tw`absolute bottom-0 space-x-3 left-[45%]`}
   `,
   HandleVideoButton: styled.button`
-    ${tw`bg-slate-300`}
+    ${tw`p-3 rounded-full`}
   `,
   UserVideo: styled.div`
-    ${tw`relative border-4 border-red-400 h-[45%]`}
+    ${tw`relative h-[50%]`}
   `,
 };
