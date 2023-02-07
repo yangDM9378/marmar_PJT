@@ -27,25 +27,21 @@ export default function ClockDifficulty() {
 
 const S = {
   ProgramSection: styled.div`
-    ${tw`bg-brand  mt-12`}
-    border: 4px solid red;
+    ${tw`flex bg-brand min-h-[100vh] mt-[8vh] p-[4vh] justify-center items-center`}
+
   `,
   ProgramBox: styled.div`
-    ${tw`bg-white rounded-3xl `}
+    ${tw`flex-col max-h-[80vh] max-w-[80vh] bg-white rounded-3xl p-12`}
     @media screen and (max-width: 1000px) {
       margin: 0px 100px;
     }
   `,
   ProgramHeader: styled.h1`
-    ${tw`font-cafe24`}
-    text-align: center;
-    font-size: 50px;
+    ${tw`font-cafe24 text-center text-[6vh]`}
   `,
   DiffSection: styled.div`
-    margin-top: 20px;
-    padding: 20px;
-    display: flex;
-    justify-content: space-evenly;
+    ${tw`flex mt-[3vh] p-[3vh] justify-evenly`}
+
     @media screen and (max-width: 1000px) {
       min-height: 400px;
       flex-direction: column;
@@ -53,25 +49,17 @@ const S = {
     }
   `,
   DiffLink: styled(Link)`
-    ${tw`bg-yellow-300`}
-    border-radius: 25px;
-    margin: 10px;
-    width: 250px;
-    height: 250px;
+    ${tw`flex justify-center items-center bg-yellow-300 rounded-[4vh] m-[1.2vh] w-[30vh] h-[25vh]`}
     @media screen and (max-width: 1000px) {
-      width: 250px;
-      height: 100px;
+      width: 150px;
+      height: 80px;
     }
     &:hover {
       border: 5px solid;
     }
-    display: flex;
-    justify-content: center;
-    align-items: center;
   `,
   DiffH1: styled.h1`
-    ${tw`font-cafe24`}
-    font-size: 80px;
+    ${tw`font-cafe24 text-[8vh]`}
     @media screen and (max-width: 1000px) {
       font-size: 50px;
     }
