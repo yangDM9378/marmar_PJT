@@ -12,7 +12,6 @@ export default function SignIn() {
         <SignInForm />
         <SignInFooter />
       </S.SignInBox>
-      <S.Test>테스트</S.Test>
     </S.SignInSection>
   );
 }
@@ -26,10 +25,5 @@ const S = {
   `,
   SignInHeader: styled.h1`
     ${tw`font-extrabold text-2xl text-center pb-2 font-cafe24`}
-  `,
-  Test: styled.div`
-    background-color: aquamarine;
-    height: 500px;
-    width: 300px;
   `,
 };
