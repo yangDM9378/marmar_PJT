@@ -16,6 +16,5 @@ export default function useDelete() {
       console.log('end');
     },
   });
-
   return { useDeleteAccount };
 }

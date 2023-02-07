@@ -2,40 +2,27 @@
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
-import { useForm } from 'react-hook-form';
+// import { useForm } from 'react-hook-form';
 import useDelete from '../../../hooks/queries/useDelete';
 
-export default function ChangePassword(prop) {
+export default function DeletePassword(prop) {
   const status = prop;
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    mode: 'onChange',
-  });
   const { useDeleteAccount } = useDelete();
-  const onChangePassword = async data => {
+  const handleDelete = async data => {
+    data.preventDefault();
     useDeleteAccount.mutate({ password: data.password, status });
   };
 
   return (
-    <S.Form onSubmit={handleSubmit(onChangePassword)}>
-      <div>
-        <S.Label htmlFor="nowPassword">현재 비밀번호</S.Label>
-        <S.InputBox className="border-b-white">
-          <S.Input
-            {...register('nowPassword')}
-            type="password"
-            id="nowPassword"
-            placeholder="현재 비밀번호를 입력해 주세요"
-          />
-          <S.Button type="button" className="invisible">
-            css용
-          </S.Button>
-        </S.InputBox>
-        <S.ErrorMsg>{errors.nowPassword?.message}</S.ErrorMsg>
-      </div>
+    <S.Form onSubmit={handleDelete}>
+      <S.Label htmlFor="password">비밀번호</S.Label>
+      <S.InputBox className="border-b-white">
+        <S.Input
+          type="password"
+          id="password"
+          placeholder="비밀번호를 입력해 주세요"
+        />
+      </S.InputBox>
       <S.Button type="submit">계정 삭제</S.Button>
     </S.Form>
   );

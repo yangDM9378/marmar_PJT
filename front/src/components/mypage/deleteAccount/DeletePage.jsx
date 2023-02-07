@@ -11,9 +11,6 @@ export default function DeletePage() {
     <div>
       {therapist && <DeletePassword status="therapist" />}
       {student && <DeletePassword status="student" />}
-      {!therapist && !student && (
-        <h1>지금까지 마르마르를 이용해주셔서 감사합니다.</h1>
-      )}
     </div>
   );
 }
