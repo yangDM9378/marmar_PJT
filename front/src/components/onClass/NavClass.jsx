@@ -11,8 +11,12 @@ import { getQuestionApi } from '../../api/programApi';
 import { OnClassContext } from '../../context/OnClassContext';
 import { SttContext } from '../../context/SttContext';
 import { SocketContext } from '../../context/SocketContext';
+import useAuth from '../../hooks/queries/useAuth';
 
 export default function NavClass() {
+  const { useStudentCheck } = useAuth();
+  const { data: student } = useStudentCheck();
+
   const { request, setRequest, setResponse, setCnt } =
     useContext(OnClassContext);
   const { socket, clickStartButton } = useContext(SocketContext);
@@ -70,29 +74,31 @@ export default function NavClass() {
   });
 
   return (
-    <S.Setting>
-      <S.Dropdown
-        options={programOption}
-        onChange={onSelectProgram}
-        value={defaultProgram}
-        placeholder="Select an option"
-      />
-      <S.Dropdown
-        options={difficultyOption}
-        onChange={onSelectDifficulty}
-        value={defaultDifficulty}
-        placeholder="Select an option"
-      />
-      <S.Dropdown
-        options={countOption}
-        onChange={onSelectCount}
-        value={defaultCount}
-        placeholder="Select an option"
-      />
-      <S.Button type="button" onClick={getQuestion}>
-        시작
-      </S.Button>
-    </S.Setting>
+    <div className={`${student ? 'hidden' : ''}`}>
+      <S.Setting>
+        <S.Dropdown
+          options={programOption}
+          onChange={onSelectProgram}
+          value={defaultProgram}
+          placeholder="Select an option"
+        />
+        <S.Dropdown
+          options={difficultyOption}
+          onChange={onSelectDifficulty}
+          value={defaultDifficulty}
+          placeholder="Select an option"
+        />
+        <S.Dropdown
+          options={countOption}
+          onChange={onSelectCount}
+          value={defaultCount}
+          placeholder="Select an option"
+        />
+        <S.Button type="button" onClick={getQuestion}>
+          시작
+        </S.Button>
+      </S.Setting>
+    </div>
   );
 }
 

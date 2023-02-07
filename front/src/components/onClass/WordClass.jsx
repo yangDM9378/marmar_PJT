@@ -5,19 +5,24 @@ import tw from 'twin.macro';
 import React, { useContext } from 'react';
 import { OnClassContext } from '../../context/OnClassContext';
 import WordGame from '../program/WordGame';
+import { socket, SocketContext } from '../../context/SocketContext';
 
 export default function WordClass() {
   // 데이터 가져오기
   const { request, setRequest, response, setResponse, cnt, setCnt } =
     useContext(OnClassContext);
+  const { clickPrevButton, clickNextButton, clickEndButton } =
+    useContext(SocketContext);
 
   // 문제 넘기기 관련
 
   const cntPlus = () => {
     cnt + 1 < request.num && setCnt(cnt + 1);
+    cnt + 1 < request.num && clickNextButton(cnt + 1); // socket_emit
   };
   const cntMinus = () => {
     cnt > 0 && setCnt(cnt - 1);
+    cnt > 0 && clickPrevButton(cnt - 1); // socket_emit
   };
   const handleEndGame = () => {
     setRequest({
@@ -26,7 +31,22 @@ export default function WordClass() {
       num: 0,
     });
     setResponse(['default']);
+    clickEndButton({ game: '', difficulty: '', num: 0 }); // socket_emit
   };
+
+  // socket 다음 버튼
+  socket.on('nextButton', num => {
+    setCnt(num);
+  });
+  // socket 이전 버튼
+  socket.on('prevButton', num => {
+    setCnt(num);
+  });
+  // socket 엔드 버튼
+  socket.on('endButton', payload => {
+    setRequest(payload);
+    setResponse(['default']);
+  });
 
   return (
     <S.WordProgramSection>

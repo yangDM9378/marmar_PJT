@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 import { FaCheck } from 'react-icons/fa';
 import { SttContext } from '../../context/SttContext';
+import { socket, SocketContext } from '../../context/SocketContext';
 
 export default function PictureGame({
   answer,
@@ -15,6 +16,8 @@ export default function PictureGame({
   pictureFour,
 }) {
   const { isCheckArr, setIsCheckArr } = useContext(SttContext);
+  const { pictureClickAnswer } = useContext(SocketContext);
+
   const check = e => {
     console.log(e);
     const updateArr = isCheckArr?.map((item, idx) => {
@@ -25,6 +28,7 @@ export default function PictureGame({
       }
     });
     setIsCheckArr(updateArr);
+    pictureClickAnswer(updateArr); // socket_emit
   };
   const correctCheck = e => {
     console.log(isCheckArr);
@@ -38,6 +42,10 @@ export default function PictureGame({
       return alert('정답아님');
     }
   };
+
+  socket.on('pictureClickAnswer', data => {
+    setIsCheckArr(data);
+  });
 
   return (
     <S.gameSection>

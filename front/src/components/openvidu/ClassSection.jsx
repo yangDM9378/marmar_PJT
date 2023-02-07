@@ -1,10 +1,12 @@
 /* eslint-disable no-const-assign */
 /* eslint-disable react/destructuring-assignment */
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { SocketContext } from '../../context/SocketContext';
 import Game from './Game';
 
 export default function ClassSection(props) {
+  const { leaveRoom } = useContext(SocketContext);
   const navigate = useNavigate();
   const { close, sessionId } = props;
   const closeNavigate = () => {
@@ -18,6 +20,7 @@ export default function ClassSection(props) {
         onClick={async () => {
           await close();
           await closeNavigate();
+          await leaveRoom();
         }}
       >
         종료
