@@ -1,5 +1,6 @@
 package com.ssafy.marmar.api.service;
 
+import com.ssafy.marmar.api.response.PictureRes;
 import com.ssafy.marmar.api.response.WatchRes;
 import com.ssafy.marmar.api.response.WordRes;
 
@@ -7,9 +8,7 @@ import java.util.List;
 
 public interface ProgramService {
 
-    List<WordRes> wordlist(String difficulty);
-    List<WordRes> wordgamelist();
+    List<Object> programlist(String category, String difficulty);
+    List<Object> selectList(String category, String difficulty, int num);
 
-    List<WatchRes> watchlist(String difficulty);
-    List<WatchRes> watchgamelist();
 }

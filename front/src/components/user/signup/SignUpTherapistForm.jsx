@@ -19,23 +19,20 @@ export default function SignUpTherapistForm() {
 
   const onSubmit = data => {
     console.log(data);
-    const email = data.email.split('@');
-    console.log(email);
     useSignUpTherapist.mutate({
       id: data.id,
       password: data.password,
       name: data.name,
       phone: data.phone,
       department: data.department,
-      emailId: email[0],
-      emailDomain: email[1],
+      email: data.email,
     });
   };
 
   const onCheckId = async id => {
     console.log(id);
     const response = await idCheckTherapistApi(id);
-    if (response) {
+    if (!response.data) {
       alert('중복 아이디입니다.');
     } else {
       alert('사용가능한 아이디입니다.');

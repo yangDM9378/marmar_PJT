@@ -18,9 +18,6 @@ export default function SignUpStudentForm() {
   } = useForm();
 
   const onSubmit = data => {
-    console.log(data);
-    const email = data.email.split('@');
-    console.log(email);
     useSignUpStudent.mutate({
       id: data.id,
       password: data.password,
@@ -29,8 +26,7 @@ export default function SignUpStudentForm() {
       nameHelper: data.name_helper,
       birth: data.birth,
       phoneHelper: data.phone,
-      emailId: email[0],
-      emailDomain: email[1],
+      email: data.email,
     });
   };
 

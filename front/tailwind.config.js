@@ -14,6 +14,8 @@ module.exports = {
       },
       backgroundImage: {
         'video-bg': "url('/public/bg.jpg')",
+        'main-bg': "url('/public/main-bg.png')",
+        'logo-bg': "url('/public/logo.png')",
       },
     },
   },

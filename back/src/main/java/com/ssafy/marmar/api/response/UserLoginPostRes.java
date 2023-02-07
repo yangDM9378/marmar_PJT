@@ -10,8 +10,6 @@ public class UserLoginPostRes{
 
     public static UserLoginPostRes of(Integer statusCode, String message, String accessToken) {
         UserLoginPostRes res = new UserLoginPostRes();
-//        res.setStatusCode(statusCode);
-//        res.setMessage(message);
         res.setAccessToken(accessToken);
         return res;
     }

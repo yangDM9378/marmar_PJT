@@ -23,7 +23,6 @@ public class Therapist {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int num;
 
-    // @Enumerated(EnumType.STRING)
     @ColumnDefault("'THERAPIST'")
     private String role;
 
@@ -40,10 +39,7 @@ public class Therapist {
     private String therapistDepartment;
 
     @Column(nullable = false, length = 100)
-    private String therapistEmailId;
-
-    @Column(nullable = false, length = 100)
-    private String therapistEmailDomain;
+    private String therapistEmail;
 
     @Column(nullable = false, length = 100)
     private String therapistPhone;
@@ -51,11 +47,8 @@ public class Therapist {
     @ColumnDefault("false")
     private boolean isOngoing;
 
-//    @OneToMany(mappedBy = "student", cascade = CascadeType.REMOVE)
-//    List<Therapist> therapists;
+    private String classRoomName;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="roomNum")
-    private ClassRoom classRoom; // DB는 오브젝트를 저장할 수 없다. FK, 자바는 오브젝트를 저장할 수 있다.
+    private String programRoomName;
 
 }

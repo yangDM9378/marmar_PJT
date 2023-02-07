@@ -20,10 +20,16 @@ import SignUp from './pages/user/SignUp';
 import registerServiceWorker from './registerServiceWorker';
 import ClockDifficulty from './pages/program/clock/ClockDifficulty';
 import ClockProgram from './pages/program/clock/ClockProgram';
-import ClockFinish from './pages/program/clock/ClockFinish';
 import WordDifficulty from './pages/program/word/WordDifficulty';
 import WordProgram from './pages/program/word/WordProgram';
-import WordFinish from './pages/program/word/WordFinish';
+import PictureDifficulty from './pages/program/picture/PictureDifficulty';
+import PictureProgram from './pages/program/picture/PictureProgram';
+import FindId from './pages/user/FindId';
+import FindPw from './pages/user/FindPw';
+import Program from './pages/onClass/Program';
+import ProtectedRouteTherapist from './pages/common/ProtectedRouteTherapist';
+import ProtectedRouteStudent from './pages/common/ProtectedRouteStudent';
+import Evaluation from './components/onClass/Evaluation';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +51,22 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: '/Login/FindId',
+        element: (
+          <LoggedRoute>
+            <FindId />
+          </LoggedRoute>
+        ),
+      },
+      {
+        path: '/Login/FindPw',
+        element: (
+          <LoggedRoute>
+            <FindPw />
+          </LoggedRoute>
+        ),
+      },
+      {
         path: '/LoginRequiredPage',
         element: (
           <ProtectedRoute>
@@ -59,28 +81,49 @@ const router = createBrowserRouter([
       { path: '/SignUpTherapist', element: <SignUpTherapist /> },
 
       // My page
-      { path: '/TherapistMypage', element: <TherapistMypage /> },
-      { path: '/StudentMypage', element: <StudentMypage /> },
+      {
+        path: '/TherapistMypage',
+        element: (
+          <ProtectedRouteTherapist>
+            <TherapistMypage />
+          </ProtectedRouteTherapist>
+        ),
+      },
+      {
+        path: '/StudentMypage',
+        element: (
+          <ProtectedRouteStudent>
+            <StudentMypage />
+          </ProtectedRouteStudent>
+        ),
+      },
 
       // Openvidu
-      { path: '/OpenVidu', element: <OpenVidu /> },
+      {
+        path: '/OpenVidu',
+        element: (
+          <ProtectedRoute>
+            <OpenVidu />
+          </ProtectedRoute>
+        ),
+      },
 
       // Program
+      { path: '/Program', element: <Program /> },
       { path: '/WordDifficulty', element: <WordDifficulty /> },
       { path: '/WordProgram', element: <WordProgram /> },
-      { path: '/WordFinish', element: <WordFinish /> },
       { path: '/ClockDifficulty', element: <ClockDifficulty /> },
       { path: '/ClockProgram', element: <ClockProgram /> },
-      { path: '/ClockFinish', element: <ClockFinish /> },
+      { path: '/PictureDifficulty', element: <PictureDifficulty /> },
+      { path: '/PictureProgram', element: <PictureProgram /> },
+
+      // Evaluation
+      { path: '/Evaluation', element: <Evaluation /> },
     ],
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>,
-);
+root.render(<RouterProvider router={router} />);
 registerServiceWorker();
 
 // If you want to start measuring performance in your app, pass a function

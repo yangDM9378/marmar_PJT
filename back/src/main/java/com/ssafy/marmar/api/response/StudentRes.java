@@ -19,8 +19,7 @@ public class StudentRes {
     String studentName;
     Date studentBirth;
     String studentPhoneHelper;
-    String studentEmailId;
-    String studentEmailDomain;
+    String studentEmail;
     boolean isOngoing;
     Therapist therapist;
 
@@ -33,10 +32,10 @@ public class StudentRes {
         res.setStudentPassword(student.getStudentPassword());
         res.setStudentPasswordHelper(student.getStudentPasswordHelper());
         res.setStudentName(student.getStudentName());
+        res.setStudentNameHelper(student.getStudentNameHelper());
         res.setStudentBirth(student.getStudentBirth());
         res.setStudentPhoneHelper(student.getStudentPhoneHelper());
-        res.setStudentEmailId(student.getStudentEmailId());
-        res.setStudentEmailDomain(student.getStudentEmailDomain());
+        res.setStudentEmail(student.getStudentEmail());
         res.setOngoing(student.isOngoing());
         res.setTherapist(student.getTherapist());
 

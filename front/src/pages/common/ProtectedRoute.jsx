@@ -8,7 +8,7 @@ export default function ProtectedRoute({ children }) {
   const { data: student } = useStudentCheck();
   const { data: therapist } = useTherapistCheck();
   if (!student && !therapist) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/SignIn" replace />;
   }
   return children;
 }

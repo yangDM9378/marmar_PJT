@@ -132,6 +132,32 @@ export default function DevDropDown() {
                 </Link>
               )}
             </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <Link
+                  to="/Program"
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm',
+                  )}
+                >
+                  Program
+                </Link>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <Link
+                  to="/Evaluation"
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm',
+                  )}
+                >
+                  Evaluation
+                </Link>
+              )}
+            </Menu.Item>
             {/* <form method="POST" action="#">
               <Menu.Item>
                 {({ active }) => (

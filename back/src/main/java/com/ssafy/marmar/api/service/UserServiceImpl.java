@@ -47,4 +47,69 @@ public class UserServiceImpl implements UserService {
         }
         return therapist;
     }
+
+    @Override
+    public Student getStudentByUserEmail(String userEmail) {
+        Student student = new Student();
+        try {
+            student = studentRepository.findByStudentEmail(userEmail).get();
+        } catch(NoSuchElementException e) {
+            System.out.println(e.getMessage());
+            student = null;
+        }
+        return student;
+    }
+
+    @Override
+    public Therapist getTherapistByUserEmail(String userEmail) {
+        Therapist therapist = new Therapist();
+        try {
+            therapist = therapistRepository.findByTherapistEmail(userEmail).get();
+        } catch(NoSuchElementException e) {
+            System.out.println(e.getMessage());
+            therapist = null;
+        }
+        return therapist;
+    }
+
+    @Override
+    public boolean studentIdEmailCheck(String userEmail, String userId) {
+        Student student = studentRepository.findByStudentEmail(userEmail).get();
+        if(student!=null && student.getStudentId().equals(userId)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean therapistIdEmailCheck(String userEmail, String userId) {
+        Therapist therapist = therapistRepository.findByTherapistEmail(userEmail).get();
+        if(therapist!=null && therapist.getTherapistId().equals(userId)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean studentIdCheck(String userEmail, String userName) {
+        Student student = studentRepository.findByStudentEmail(userEmail).get();
+        if(student!=null && student.getStudentName().equals(userName)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean therapistIdCheck(String userEmail, String userName) {
+        Therapist therapist = therapistRepository.findByTherapistEmail(userEmail).get();
+        if(therapist!=null && therapist.getTherapistName().equals(userName)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

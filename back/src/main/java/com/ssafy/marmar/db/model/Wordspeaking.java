@@ -22,7 +22,7 @@ public class Wordspeaking {
     private int num;
 
     @Column(nullable = false, length = 100)
-    private String wordSpeakingQuestion;
+    private String answer;
 
     @Column
     private String difficulty;
@@ -30,6 +30,4 @@ public class Wordspeaking {
     @Column(nullable = false, length = 100)
     private String imagePath;
 
-    @Column(nullable = false, length = 100)
-    private String voicePath;
 }

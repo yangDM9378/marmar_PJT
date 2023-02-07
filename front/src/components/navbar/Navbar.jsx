@@ -16,7 +16,7 @@ export default function Navbar() {
   return (
     <S.NavHeader>
       <S.LogoLink to="/">
-        <h1>마르마르</h1>
+        <S.LogoName>marmar</S.LogoName>
       </S.LogoLink>
       <DevDropDown />
       {!student && !therapist && <NavDefault />}
@@ -27,9 +27,12 @@ export default function Navbar() {
 }
 const S = {
   NavHeader: styled.header`
-    ${tw`flex justify-between border-b border-gray-300 p-2`}
+    ${tw`flex justify-between border-b border-gray-300 p-[2vh] fixed top-0 left-0 right-0 h-[8vh] bg-white`}
   `,
   LogoLink: styled(Link)`
     ${tw`flex items-center text-4xl text-brand`}
+  `,
+  LogoName: styled.h1`
+    font-family: 'Modak', cursive;
   `,
 };

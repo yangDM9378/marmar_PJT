@@ -1,3 +1,4 @@
+/* eslint-disable no-return-await */
 /* eslint-disable func-names */
 /* eslint-disable consistent-return */
 
@@ -26,6 +27,25 @@ const idCheckTherapistApi = payload => axios.get(`therapist/${payload}`);
 
 const idCheckStudentApi = payload => axios.get(`student/${payload}`);
 
+const findIdApi = async payload => {
+  const check = await authApi.post('auth/check/findId', payload);
+  if (check.data === true) {
+    return await axios.post('auth/check/findId/showId', payload);
+  }
+  return false;
+
+  // axios.get('url', paylaod);
+};
+
+const findPwApi = async payload => {
+  const check = await authApi.post('auth/check/findPw', payload);
+  if (check.data === true) {
+    return await axios.post('auth/check/findPw/sendEmail', payload);
+  }
+  return false;
+  // axios.get('url', paylaod);
+};
+
 export {
   signInApi,
   studentCheckApi,
@@ -34,4 +54,6 @@ export {
   signUpStudentApi,
   idCheckTherapistApi,
   idCheckStudentApi,
+  findIdApi,
+  findPwApi,
 };

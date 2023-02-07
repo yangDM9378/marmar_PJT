@@ -11,31 +11,16 @@ import lombok.Setter;
 public class WatchRes {
 
     int num;
-    String watchQuestion;
+    String answer;
     String difficulty;
     String imagePath;
-    String voicePath;
-
-
-    public Watch toEntity(){
-        Watch build = Watch.builder()
-                .num(num)
-                .watchQuestion(watchQuestion)
-                .difficulty(difficulty)
-                .imagePath(imagePath)
-                .voicePath(voicePath)
-                .build();
-        return build;
-    }
-
 
     @Builder
-    public WatchRes(int num,String watchQuestion, String difficulty, String imagePath, String voicePath){
+    public WatchRes(int num,String answer, String difficulty, String imagePath){
         this.num = num;
-        this.watchQuestion = watchQuestion;
+        this.answer = answer;
         this.difficulty = difficulty;
         this.imagePath = imagePath;
-        this.voicePath = voicePath;
     }
 
 

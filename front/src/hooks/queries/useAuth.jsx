@@ -46,6 +46,9 @@ export default function useAuth() {
       onSuccess: () => {
         localStorage.setItem('student', 'student');
       },
+      onError: () => {
+        localStorage.removeItem('student');
+      },
       retry: false,
     });
 
@@ -56,6 +59,9 @@ export default function useAuth() {
       enabled: isLogin && therapist,
       onSuccess: () => {
         localStorage.setItem('therapist', 'therapist');
+      },
+      onError: () => {
+        localStorage.removeItem('therapist');
       },
       retry: false,
     });
@@ -76,14 +82,25 @@ export default function useAuth() {
   }, [useSignIn]);
 
   useEffect(() => {
+    if (
+      !localStorage.getItem('therapist') &&
+      !localStorage.getItem('student')
+    ) {
+      localStorage.clear();
+    }
+  }, []);
+
+  useEffect(() => {
     if (localStorage.getItem('therapist')) {
       setStudent(false);
+      setIsLogin(true);
     }
   }, [useTherapistCheck]);
 
   useEffect(() => {
     if (localStorage.getItem('student')) {
       setTherapist(false);
+      setIsLogin(true);
     }
   }, [useStudentCheck]);
 
@@ -92,5 +109,10 @@ export default function useAuth() {
       setIsLogin(false);
     }
   }, [useLogOut]);
-  return { useSignIn, useStudentCheck, useTherapistCheck, useLogOut };
+  return {
+    useSignIn,
+    useStudentCheck,
+    useTherapistCheck,
+    useLogOut,
+  };
 }

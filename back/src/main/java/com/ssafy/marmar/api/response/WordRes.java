@@ -11,31 +11,16 @@ import lombok.Setter;
 public class WordRes {
 
     int num;
-    String wordSpeakingQuestion;
+    String answer;
     String difficulty;
     String imagePath;
-    String voicePath;
-
-
-    public Wordspeaking toEntity(){
-        Wordspeaking build = Wordspeaking.builder()
-                .num(num)
-                .wordSpeakingQuestion(wordSpeakingQuestion)
-                .difficulty(difficulty)
-                .imagePath(imagePath)
-                .voicePath(voicePath)
-                .build();
-        return build;
-    }
-
 
     @Builder
-    public WordRes(int num, String wordSpeakingQuestion, int wordSpeakingResult, String difficulty, String imagePath, String voicePath){
+    public WordRes(int num, String answer, String difficulty, String imagePath){
         this.num = num;
-        this.wordSpeakingQuestion = wordSpeakingQuestion;
+        this.answer = answer;
         this.difficulty = difficulty;
         this.imagePath = imagePath;
-        this.voicePath = voicePath;
     }
 
 
