@@ -15,9 +15,7 @@ function App() {
       <SocketProvider>
         <SttProvider>
           <Navbar />
-          <div className="min-h-[70vh]">
-            <Outlet />
-          </div>
+          <Outlet />
           <Footer />
         </SttProvider>
         <ReactQueryDevtools initialIsOpen />
