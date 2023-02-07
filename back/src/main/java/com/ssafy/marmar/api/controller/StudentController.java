@@ -157,23 +157,21 @@ public class StudentController {
         return ResponseEntity.status(200).body("생일 수정 성공");
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity<String> deleteStudent(Authentication authentication) throws Exception {
+    @DeleteMapping("/delete/{password}")
+    public ResponseEntity<String> deleteStudent(@PathVariable String password, Authentication authentication) throws Exception {
         StudentDetails studentDetails = (StudentDetails) authentication.getDetails();
         String userId = studentDetails.getUsername();
         Student student = studentService.getUserByUserId(userId);
-        studentService.deleteStudent(student);
-        return ResponseEntity.status(200).body("학생 탈퇴 성공");
+        boolean res = studentService.checkPwd(password, student);
+        if(res == true){
+            studentService.deleteStudent(student);
+            return ResponseEntity.status(200).body("탈퇴처리가 되었습니다. 그동안 이용해주셔서 감사합니다.");
+        } else{
+            return ResponseEntity.status(403).body("비밀번호를 다시 입력해주세요.");
+        }
     }
 
-    @PostMapping("/checkPwd")
-    public ResponseEntity<Boolean> checkPwd(@RequestBody Map<String, String> pwd, Authentication authentication) {
-        StudentDetails studentDetails = (StudentDetails) authentication.getDetails();
-        String userId = studentDetails.getUsername();
-        Student student = studentService.getUserByUserId(userId);
-        boolean res = studentService.checkPwd(pwd.get("pwd"), student);
-        return ResponseEntity.status(200).body(res);
-    }
+
 
     @PutMapping("/evaluation/{studentNum}")
     public ResponseEntity<Boolean> evaluation(@PathVariable int studentNum, @RequestBody EvaluationPostReq evaluationPostReq) {

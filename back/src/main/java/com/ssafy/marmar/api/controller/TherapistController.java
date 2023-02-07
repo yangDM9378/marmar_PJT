@@ -136,22 +136,18 @@ public class TherapistController {
         return ResponseEntity.status(200).body("소속 수정 성공");
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity<String> deleteStudent(Authentication authentication) throws Exception {
+    @DeleteMapping("/delete/{password}")
+    public ResponseEntity<String> deleteTherapist(@PathVariable String password, Authentication authentication) throws Exception {
         TherapistDetails userDetails = (TherapistDetails)authentication.getDetails();
         String userId = userDetails.getUsername();
         Therapist therapist = therapistService.getUserByUserId(userId);
-        therapistService.deleteStudent(therapist);
-        return ResponseEntity.status(200).body("선생님 탈퇴 성공");
-    }
-
-    @PostMapping("/checkPwd")
-    public ResponseEntity<Boolean> checkPwd(@RequestBody Map<String, String> pwd, Authentication authentication) {
-        TherapistDetails userDetails = (TherapistDetails)authentication.getDetails();
-        String userId = userDetails.getUsername();
-        Therapist therapist = therapistService.getUserByUserId(userId);
-        boolean res = therapistService.checkPwd(pwd.get("pwd"), therapist);
-        return ResponseEntity.status(200).body(res);
+        boolean res = therapistService.checkPwd(password, therapist);
+        if(res == true){
+            therapistService.deleteStudent(therapist);
+            return ResponseEntity.status(200).body("탈퇴처리가 되었습니다. 그동안 이용해주셔서 감사합니다.");
+        } else{
+            return ResponseEntity.status(403).body("비밀번호를 다시 입력해주세요.");
+        }
     }
 
 }
