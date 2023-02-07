@@ -27,7 +27,7 @@ export default function Navbar() {
 }
 const S = {
   NavHeader: styled.header`
-    ${tw`flex justify-between border-b border-gray-300 p-2 fixed top-0 left-0 right-0 h-14 bg-white`}
+    ${tw`flex justify-between border-b border-gray-300 p-[2vh] fixed top-0 left-0 right-0 h-[8vh] bg-white`}
   `,
   LogoLink: styled(Link)`
     ${tw`flex items-center text-4xl text-brand`}
