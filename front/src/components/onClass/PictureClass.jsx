@@ -6,20 +6,25 @@ import React, { useContext } from 'react';
 import { OnClassContext } from '../../context/OnClassContext';
 import PictureGame from '../program/PictureGame';
 import { SttContext } from '../../context/SttContext';
+import { socket, SocketContext } from '../../context/SocketContext';
 
 export default function PictureClass() {
   // 데이터 가져오기
   const { request, setRequest, response, setResponse, cnt, setCnt } =
     useContext(OnClassContext);
   const { setIsCheckArr } = useContext(SttContext);
+  const { clickPrevButton, clickNextButton, clickEndButton } =
+    useContext(SocketContext);
   // 문제 넘기기 관련
   const cntPlus = () => {
     setIsCheckArr([false, false, false, false]);
     cnt < request.num - 1 && setCnt(cnt + 1);
+    cnt < request.num - 1 && clickNextButton(cnt + 1); // socket_emit
   };
   const cntMinus = () => {
     setIsCheckArr([false, false, false, false]);
     cnt > 0 && setCnt(cnt - 1);
+    cnt > 0 && clickPrevButton(cnt - 1); // socket_emit
   };
   const handleEndGame = () => {
     setRequest({
@@ -29,7 +34,25 @@ export default function PictureClass() {
     });
     setIsCheckArr([false, false, false, false]);
     setResponse(['default']);
+    clickEndButton({ game: '', difficulty: '', num: 0 }); // socket_emit
   };
+
+  // socket 다음 버튼
+  socket.on('nextButton', num => {
+    setIsCheckArr([false, false, false, false]);
+    setCnt(num);
+  });
+  // socket 이전 버튼
+  socket.on('prevButton', num => {
+    setIsCheckArr([false, false, false, false]);
+    setCnt(num);
+  });
+  // socket 엔드 버튼
+  socket.on('endButton', payload => {
+    setRequest(payload);
+    setIsCheckArr([false, false, false, false]);
+    setResponse(['default']);
+  });
 
   return (
     <S.ProgramSection>

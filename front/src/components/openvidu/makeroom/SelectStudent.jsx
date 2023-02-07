@@ -4,7 +4,7 @@ import { getRegisteredStudentApi } from '../../../api/mypageApi';
 import StudentList from './StudentList';
 
 export default function SelectStudent(props) {
-  const { getStudentNum } = props;
+  const { setStudent } = props;
   const {
     // isLoading,
     // error,
@@ -27,7 +27,7 @@ export default function SelectStudent(props) {
           <StudentList
             key={student.num}
             student={student}
-            getStudentNum={getStudentNum}
+            setStudent={setStudent}
           />
         ))}
     </div>

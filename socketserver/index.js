@@ -21,30 +21,43 @@ io.on('connection', socket=>{
     socket.onAny((event) => {
         console.log(`Socket event: ${event}`);
     });
+    // 방 입장
     socket.on('joinRoom', (data) => {
         console.log(data);
         socket.join(data.roomName);
         roomName = data.roomName
         socket.emit('joinRoom', data.roomName)
     });
+    // 방 나가기
+    socket.on('leaveRoom', () => {
+        console.log('방 나가기')
+        socket.leave(roomName)
+    })
+    // 문제 시작
     socket.on('startButton', (payload) => {
         console.log(payload)
         io.sockets.in(roomName).emit('startButton', payload)
     })
-    
-    socket.on('message',(num) => {
-        console.log(num)
-        io.sockets.in(roomName).emit('message',(num))
-    });
-    socket.on('nextclick', function(data) {
-        console.log("data"+data);
-        io.sockets.in(roomName).emit('nextclick_2',(data))
-    });
-    socket.on('preclicke', function(data) {
-        console.log("data"+data);
-        io.sockets.in(roomName).emit('preclicke_2',(data))
-    });
-    
+    // 이전 버튼
+    socket.on('prevButton', (num) => {
+        console.log('prevButton : ', num)
+        io.sockets.in(roomName).emit('prevButton', num)
+    })
+    // 다음 버튼
+    socket.on('nextButton', (num) => {
+        console.log('nextButton : ', num)
+        io.sockets.in(roomName).emit('nextButton', num)
+    })
+    // 종료 버튼
+    socket.on('endButton', (payload) => {
+        console.log('endButton : ', payload)
+        io.sockets.in(roomName).emit('endButton', payload)
+    })
+    // 픽쳐게임 문제 선택
+    socket.on('pictureClickAnswer', (data) => {
+        console.log('pictureClickAnswer : ', data)
+        io.sockets.in(roomName).emit('pictureClickAnswer', data)
+    })
 })
 
 server.listen(port, function(){
