@@ -29,6 +29,7 @@ import FindPw from './pages/user/FindPw';
 import Program from './pages/onClass/Program';
 import ProtectedRouteTherapist from './pages/common/ProtectedRouteTherapist';
 import ProtectedRouteStudent from './pages/common/ProtectedRouteStudent';
+import Evaluation from './components/onClass/Evaluation';
 
 const router = createBrowserRouter([
   {
@@ -115,6 +116,9 @@ const router = createBrowserRouter([
       { path: '/ClockProgram', element: <ClockProgram /> },
       { path: '/PictureDifficulty', element: <PictureDifficulty /> },
       { path: '/PictureProgram', element: <PictureProgram /> },
+
+      // Evaluation
+      { path: '/Evaluation', element: <Evaluation /> },
     ],
   },
 ]);
