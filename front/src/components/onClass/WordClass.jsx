@@ -74,7 +74,7 @@ export default function WordClass() {
           </button>
         )}
       </S.WordBtnAndGame>
-      <WordGame {...response[cnt]} />
+      <WordGame {...response[0][cnt]} />
     </S.WordProgramSection>
   );
 }

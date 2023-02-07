@@ -100,7 +100,7 @@ export default function ClockProgram() {
           )}
         </S.ClockBtnAndGame>
       )}
-      <ClockGame {...response[cnt]} />
+      <ClockGame {...response[0][cnt]} />
     </S.ClockProgramSection>
   );
 }

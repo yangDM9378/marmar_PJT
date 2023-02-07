@@ -65,7 +65,7 @@ export default function PictureClass() {
       <S.Context>
         [Q{cnt + 1}] 다음 사진 중 관계없는 사진을 선택하세요.
       </S.Context>
-      <PictureGame {...response[cnt]} />
+      <PictureGame {...response[0][cnt]} />
       <S.Button>
         {cnt > 0 && cnt <= request.num - 1 && (
           <button type="button" onClick={cntMinus}>
