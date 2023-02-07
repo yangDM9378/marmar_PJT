@@ -1,16 +1,20 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 // import { useForm } from 'react-hook-form';
 import useDelete from '../../../hooks/queries/useDelete';
 
 export default function DeletePassword(prop) {
-  const status = prop;
+  const { status } = prop;
+  const [pw, setPw] = useState('');
   const { useDeleteAccount } = useDelete();
-  const handleDelete = async data => {
-    data.preventDefault();
-    useDeleteAccount.mutate({ password: data.password, status });
+  const handleChange = e => {
+    setPw(e.target.value);
+  };
+  const handleDelete = async e => {
+    e.preventDefault();
+    useDeleteAccount.mutate({ password: pw, status });
   };
 
   return (
@@ -20,7 +24,9 @@ export default function DeletePassword(prop) {
         <S.Input
           type="password"
           id="password"
+          name="password"
           placeholder="비밀번호를 입력해 주세요"
+          onChange={handleChange}
         />
       </S.InputBox>
       <S.Button type="submit">계정 삭제</S.Button>
