@@ -12,11 +12,13 @@ export default function Footer() {
           <span>개인정보보호책임자 : 윤명지</span>
           <span>IT 기획사 : 문여경</span>
         </S.TextBody>
-        <p>주소 : 광주광역시 하남산단6번로 100 G5 주차장</p>
-        <p className="mt-3">대표번호 : 010-8837-7192</p>
+        <p className="my-1 text-sm">
+          주소 : 광주광역시 하남산단6번로 100 G5 주차장
+        </p>
+        <p className="mt-3 text-sm">대표번호 : 010-8837-7192</p>
       </S.TextBox>
       <S.ImgBox>
-        <img src="logo.png" alt="logo.png" className="w-30 h-30" />
+        <img src="logo.png" alt="logo.png" />
       </S.ImgBox>
     </S.Section>
   );
@@ -24,16 +26,16 @@ export default function Footer() {
 
 const S = {
   Section: styled.div`
-    ${tw`bg-slate-200 h-[300px] flex justify-between px-5`}
+    ${tw`bg-gray-200 h-[180] flex justify-between px-5 py-5`}
   `,
   TextBox: styled.div`
     ${tw`justify-center flex flex-col`}
   `,
   TextHeader: styled.div`
-    ${tw`text-xl font-bold mb-3`}
+    ${tw`text-lg font-bold mb-3`}
   `,
   TextBody: styled.div`
-    ${tw`space-x-5`}
+    ${tw`text-sm space-x-5 `}
   `,
   ImgBox: styled.div`
     ${tw`flex justify-center align-middle items-center`}

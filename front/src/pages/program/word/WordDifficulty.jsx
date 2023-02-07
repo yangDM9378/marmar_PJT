@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
@@ -26,15 +27,11 @@ export default function ClockDifficulty() {
 
 const S = {
   ProgramSection: styled.div`
-    ${tw`bg-brand`}
-    padding: 50px
+    ${tw`bg-brand  mt-12`}
+    border: 4px solid red;
   `,
   ProgramBox: styled.div`
-    ${tw`bg-white`}
-    border-radius: 25px;
-    margin: 0px 200px;
-    padding: 50px;
-    min-width: 400px;
+    ${tw`bg-white rounded-3xl `}
     @media screen and (max-width: 1000px) {
       margin: 0px 100px;
     }
@@ -65,12 +62,12 @@ const S = {
       width: 250px;
       height: 100px;
     }
-    display: flex;
-    justify-content: center;
-    align-items: center;
     &:hover {
       border: 5px solid;
     }
+    display: flex;
+    justify-content: center;
+    align-items: center;
   `,
   DiffH1: styled.h1`
     ${tw`font-cafe24`}
