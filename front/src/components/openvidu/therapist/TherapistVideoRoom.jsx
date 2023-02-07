@@ -283,12 +283,13 @@ export default function TherapistVideoRoom() {
                 </S.UserVideo>
               )}
             </S.VideoSection>
-            <ClassSection
-              className="grid cols-2"
-              close={(closeModal, leaveSession)}
-              sessionId={mySessionId}
-              streamManager={publisher}
-            />
+            <div className="col-span-2">
+              <ClassSection
+                close={(closeModal, leaveSession)}
+                sessionId={mySessionId}
+                streamManager={publisher}
+              />
+            </div>
           </S.LiveContainer>
         </VideoModal>
       ) : null}

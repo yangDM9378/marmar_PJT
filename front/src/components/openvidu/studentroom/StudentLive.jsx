@@ -263,12 +263,13 @@ export default class StudentLive extends Component {
                   </div>
                 </S.UserVideo>
               </S.VideoSection>
-              <ClassSection
-                className="grid cols-2"
-                close={(this.closeModal, this.leaveSession)}
-                sessionId={this.state.mySessionId}
-                streamManager={this.state.publisher}
-              />
+              <div className="col-sapn-2">
+                <ClassSection
+                  close={(this.closeModal, this.leaveSession)}
+                  sessionId={this.state.mySessionId}
+                  streamManager={this.state.publisher}
+                />
+              </div>
             </S.LiveContainer>
           </VideoModal>
         ) : null}
@@ -320,7 +321,7 @@ const S = {
     ${tw`grid grid-cols-3 w-full max-h-full bg-cover`}
   `,
   VideoSection: styled.div`
-    ${tw`grid-cols-1 flex flex-col max-h-screen justify-around border-4 border-black m-5 p-5`}
+    ${tw`col-sapn-1 flex flex-col max-h-screen justify-around border-4 border-black m-5 p-5`}
   `,
   MyVideo: styled.div`
     ${tw`relative border-4 border-blue-600 h-[45%]`}
