@@ -2,6 +2,7 @@ package com.ssafy.marmar.db.repository;
 
 
 import com.ssafy.marmar.db.model.Student;
+import com.ssafy.marmar.db.model.Therapist;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -22,6 +23,14 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
 
     @Query("SELECT s from Student s where s.studentName like %:search% AND s.therapist is null")
     List<Student> findstudent(@Param("search")String search) throws Exception;
+
+    @Query("SELECT s from Student s where s.studentName like %:search% AND s.therapist = :therapist")
+    List<Student> findstudent(@Param("search")String search, @Param("therapist")Therapist therapist) throws Exception;
+
+//    @Query("SELECT s from Student s where s.studentName like %:search% AND s.therapist_num = :therapist_num")
+
+//    @Query(value = "SELECT * from student s where s.student_name like %:search% AND s.therapist_num = :therapist_num", nativeQuery = true)
+//    List<Student> findstudentList(@Param("search")String search, @Param("therapist_num")int therapist_num) throws Exception;
 
     List<Student> findByTherapistNum(int therapistNum);
     void delete(Student student);

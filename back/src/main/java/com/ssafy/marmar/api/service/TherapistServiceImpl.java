@@ -143,4 +143,22 @@ public class TherapistServiceImpl implements TherapistService {
         boolean res = passwordEncoder.matches(pwd, therapist.getTherapistPassword());
         return res;
     }
+
+    @Override
+    public List<StudentSearchRes> makeRoomStudentSearchList(String search, Therapist therapist) throws Exception {
+
+        List<Student> students = studentRepository.findstudent(search, therapist);
+        List<StudentSearchRes> studentList = new ArrayList<>();
+
+        for(Student student : students){
+            StudentSearchRes res = StudentSearchRes.builder()
+                    .num(student.getNum())
+                    .studentName(student.getStudentName())
+                    .studentId(student.getStudentId())
+                    .build();
+            studentList.add(res);
+        }
+
+        return studentList;
+    }
 }
