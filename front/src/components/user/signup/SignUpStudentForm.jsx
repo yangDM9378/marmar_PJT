@@ -1,14 +1,16 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import useSingUp from '../../../hooks/queries/useSingUp';
-import { idCheckStudentApi } from '../../../api/userApi';
+import { idCheckStudentApi, emailCheckStudentApi } from '../../../api/userApi';
 
 export default function SignUpStudentForm() {
   const { useSignUpStudent } = useSingUp();
+  const [registerdId, setRegisteredId] = useState(true);
+  const [registerdEmail, setRegisteredEmail] = useState(true);
 
   const {
     register,
@@ -28,6 +30,8 @@ export default function SignUpStudentForm() {
       phoneHelper: data.phone,
       email: data.email,
     });
+    setRegisteredId(true);
+    setRegisteredEmail(true);
   };
 
   const onCheckId = async id => {
@@ -38,17 +42,28 @@ export default function SignUpStudentForm() {
       alert('중복 아이디입니다.');
     } else {
       alert('사용가능한 아이디입니다.');
+      setRegisteredId(false);
+    }
+  };
+
+  const onCheckEmail = async email => {
+    console.log(email);
+    const response = await emailCheckStudentApi(email);
+    if (!response.data) {
+      alert('이미 사용중인 이메일입니다.');
+    } else {
+      alert('사용가능한 이메일입니다.');
+      setRegisteredEmail(false);
     }
   };
 
   return (
     <div>
       <S.Header>사용자 회원가입</S.Header>
-      <div>
-        마르마르와 연결된 기관의 <h3>치료사 정보를 기반</h3>으로 치료사의 정보를
-        입력 바랍니다.
-      </div>
-      <S.SignUpForm onSubmit={handleSubmit(onSubmit)}>
+
+      <S.SignUpForm
+        onSubmit={!registerdId && !registerdEmail && handleSubmit(onSubmit)}
+      >
         <S.Label htmlFor="name_helper">보호자 이름</S.Label>
         <S.Input
           {...register('name_helper', {
@@ -166,6 +181,12 @@ export default function SignUpStudentForm() {
           type="email"
         />
         {errors.email && errors.email.message}
+        <S.IdButton
+          type="button"
+          onClick={() => onCheckEmail(getValues('email'))}
+        >
+          중복Email
+        </S.IdButton>
         <br />
 
         <S.Label htmlFor="phone">휴대폰번호</S.Label>
@@ -184,7 +205,9 @@ export default function SignUpStudentForm() {
         />
         {errors.birth && errors.birth.message}
 
-        <S.SignUpButton type="submit">회원가입</S.SignUpButton>
+        {!registerdId && !registerdEmail && (
+          <S.SignUpButton type="submit">회원가입</S.SignUpButton>
+        )}
       </S.SignUpForm>
     </div>
   );

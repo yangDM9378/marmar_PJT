@@ -1,14 +1,19 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import useSingUp from '../../../hooks/queries/useSingUp';
-import { idCheckTherapistApi } from '../../../api/userApi';
+import {
+  idCheckTherapistApi,
+  emailCheckTherapistApi,
+} from '../../../api/userApi';
 
 export default function SignUpTherapistForm() {
   const { useSignUpTherapist } = useSingUp();
+  const [registerdId, setRegisteredId] = useState(true);
+  const [registerdEmail, setRegisteredEmail] = useState(true);
 
   const {
     register,
@@ -17,8 +22,7 @@ export default function SignUpTherapistForm() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = data => {
-    console.log(data);
+  const onRegister = data => {
     useSignUpTherapist.mutate({
       id: data.id,
       password: data.password,
@@ -27,6 +31,8 @@ export default function SignUpTherapistForm() {
       department: data.department,
       email: data.email,
     });
+    setRegisteredId(true);
+    setRegisteredEmail(true);
   };
 
   const onCheckId = async id => {
@@ -36,6 +42,18 @@ export default function SignUpTherapistForm() {
       alert('중복 아이디입니다.');
     } else {
       alert('사용가능한 아이디입니다.');
+      setRegisteredId(false);
+    }
+  };
+
+  const onCheckEmail = async email => {
+    console.log(email);
+    const response = await emailCheckTherapistApi(email);
+    if (!response.data) {
+      alert('이미 사용중인 이메일입니다.');
+    } else {
+      alert('사용가능한 이메일입니다.');
+      setRegisteredEmail(false);
     }
   };
 
@@ -43,7 +61,9 @@ export default function SignUpTherapistForm() {
     <div>
       <S.Header>치료사 회원가입</S.Header>
 
-      <S.SignUpForm onSubmit={handleSubmit(onSubmit)}>
+      <S.SignUpForm
+        onSubmit={!registerdId && !registerdEmail && handleSubmit(onRegister)}
+      >
         <S.Label htmlFor="name">치료사 이름</S.Label>
         <S.Input
           {...register('name', { required: '치료사 이름을 입력해주세요.' })}
@@ -137,6 +157,12 @@ export default function SignUpTherapistForm() {
           type="email"
         />
         {errors.email && errors.email.message}
+        <S.IdButton
+          type="button"
+          onClick={() => onCheckEmail(getValues('email'))}
+        >
+          중복Email
+        </S.IdButton>
         <br />
 
         <S.Label htmlFor="phone">휴대폰번호</S.Label>
