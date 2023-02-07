@@ -29,8 +29,10 @@ export default function ChangeName(props) {
     console.log(data);
     if (check === 'name') {
       useModName.mutate({ name: data.name, check: 'name' });
-    } else {
+    } else if (check === 'nameHelper') {
       useModName.mutate({ nameHelper: data.name, check: 'nameHelper' });
+    } else {
+      useModName.mutate({ name: data.name });
     }
   };
   return (

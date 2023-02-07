@@ -16,6 +16,7 @@ export default function MyInfoComponent() {
         label="이름"
         button="이름 변경"
         placeholder={therapist?.therapistName}
+        check="therapist"
       />
       <ChangeDepartment
         label="소속 기관"
