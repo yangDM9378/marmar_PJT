@@ -20,7 +20,6 @@ export default function SecondPassword(props) {
   const onSubmit = () => {
     if (student.studentPasswordHelper === pw) {
       setIsParent(true);
-      localStorage.setItem('secondPw', true);
       setPw('');
     } else {
       setPw('');

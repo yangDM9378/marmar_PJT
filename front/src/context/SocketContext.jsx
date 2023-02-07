@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import React, { createContext, useState } from 'react';
 import { io } from 'socket.io-client';
+import { getQuestionApi } from '../api/programApi';
 
 export const SocketContext = createContext();
 export const socket = io.connect('http://localhost:4000');
@@ -33,8 +34,10 @@ export default function SocketProvider({ children }) {
   };
 
   // 문제 시작 버튼
-  const clickStartButton = payload => {
-    socket.emit('startButton', payload);
+  const clickStartButton = async payload => {
+    const res = await getQuestionApi(payload);
+    const result = await { question: res.data, payload };
+    await socket.emit('startButton', result);
   };
 
   // 이전, 다음, 처음으로
