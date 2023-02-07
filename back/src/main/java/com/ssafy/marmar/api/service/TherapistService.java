@@ -31,4 +31,6 @@ public interface TherapistService {
     void deleteStudent(Therapist therapist) throws Exception;
 
     boolean checkPwd(String pwd, Therapist therapist);
+
+    List<StudentSearchRes> makeRoomStudentSearchList(String search, Therapist therapist) throws Exception;
 }
