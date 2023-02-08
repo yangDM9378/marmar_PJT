@@ -3,7 +3,7 @@
 // axiosConfig
 import axios from 'axios';
 
-const BASE_URL = 'api/v1';
+const BASE_URL = 'https://i8c204.p.ssafy.io/api/v1';
 
 axios.defaults.baseURL = BASE_URL;
 // // 리소스 접근 허용
