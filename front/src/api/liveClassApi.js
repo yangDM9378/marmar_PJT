@@ -11,4 +11,8 @@ const getTeacherApi = () => {
   return authApi.get('room/enter/student');
 };
 
-export { makeRoomApi, getTeacherApi, closeRoomApi };
+const evaluateApi = payload => {
+  return authApi.post(`student/evaluation/${payload.studentNum}`, payload);
+};
+
+export { makeRoomApi, getTeacherApi, closeRoomApi, evaluateApi };
