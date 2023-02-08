@@ -14,9 +14,9 @@ export default function SignUpStudent() {
 }
 const S = {
   SignUpSection: styled.div`
-    ${tw`px-10 bg-brand min-h-[1500px] flex justify-center items-center`}
+    ${tw`bg-brand p-[15vh] flex justify-center `}
   `,
   SignUpBox: styled.div`
-    ${tw`bg-white rounded-3xl w-[650px] h-[1300px] p-10`}
+    ${tw`bg-white rounded-3xl min-w-[70vh] p-10`}
   `,
 };

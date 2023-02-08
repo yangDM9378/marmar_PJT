@@ -19,7 +19,7 @@ export default function SignUpStudentForm() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = data => {
+  const onRegister = data => {
     useSignUpStudent.mutate({
       id: data.id,
       password: data.password,
@@ -58,11 +58,13 @@ export default function SignUpStudentForm() {
   };
 
   return (
-    <div>
+    <S.SignUpSection>
       <S.Header>사용자 회원가입</S.Header>
 
       <S.SignUpForm
-        onSubmit={!registerdId && !registerdEmail && handleSubmit(onSubmit)}
+        onSubmit={
+          !registerdId && !registerdEmail ? handleSubmit(onRegister) : undefined
+        }
       >
         <S.Label htmlFor="name_helper">보호자 이름</S.Label>
         <S.Input
@@ -73,7 +75,6 @@ export default function SignUpStudentForm() {
         />
         {errors.name_helper && errors.name_helper.message}
         <br />
-
         <S.Label htmlFor="name">아이 이름</S.Label>
         <S.Input
           {...register('name', {
@@ -83,28 +84,31 @@ export default function SignUpStudentForm() {
         />
         {errors.name && errors.name.message}
         <br />
-
         <S.Label htmlFor="id">아이디</S.Label>
-        <S.Input
-          {...register('id', {
-            required: '아이디를 입력해주세요',
-            minLength: {
-              value: 5,
-              message: '최소 5자 이상의 아이디를 입력해주세요.',
-            },
-            maxLength: {
-              value: 12,
-              message: '12자 이하의 아이디만 사용가능합니다.',
-            },
-          })}
-          id="id"
-        />
-        <S.IdButton type="button" onClick={() => onCheckId(getValues('id'))}>
-          중복ID
-        </S.IdButton>
+        <S.InputBox>
+          <S.Input
+            {...register('id', {
+              required: '아이디를 입력해주세요',
+              minLength: {
+                value: 5,
+                message: '최소 5자 이상의 아이디를 입력해주세요.',
+              },
+              maxLength: {
+                value: 12,
+                message: '12자 이하의 아이디만 사용가능합니다.',
+              },
+            })}
+            id="id"
+          />
+          <S.RegisteredButton
+            type="button"
+            onClick={() => onCheckId(getValues('id'))}
+          >
+            중복ID
+          </S.RegisteredButton>
+        </S.InputBox>
         {errors.id && errors.id.message}
         <br />
-
         <S.Label htmlFor="password">비밀번호</S.Label>
         <S.Input
           id="password"
@@ -129,7 +133,6 @@ export default function SignUpStudentForm() {
         />
         {errors.password && errors.password.message}
         <br />
-
         <S.Label htmlFor="confirm_password">비밀번호 확인</S.Label>
         <S.Input
           id="confirm_password"
@@ -147,7 +150,6 @@ export default function SignUpStudentForm() {
         />
         {errors.confirm_password && errors.confirm_password.message}
         <br />
-
         <S.Label htmlFor="password_helper">2차 비밀번호</S.Label>
         <S.Input
           id="password_helper"
@@ -167,28 +169,28 @@ export default function SignUpStudentForm() {
         />
         {errors.password_helper && errors.password_helper.message}
         <br />
-
         <S.Label htmlFor="emailId">이메일</S.Label>
-        <S.Input
-          {...register('email', {
-            required: true,
-            pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: '유효한 이메일이 아닙니다.',
-            },
-          })}
-          id="email"
-          type="email"
-        />
-        {errors.email && errors.email.message}
-        <S.IdButton
-          type="button"
-          onClick={() => onCheckEmail(getValues('email'))}
-        >
-          중복Email
-        </S.IdButton>
+        <S.InputBox>
+          <S.Input
+            {...register('email', {
+              required: true,
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: '유효한 이메일이 아닙니다.',
+              },
+            })}
+            id="email"
+            type="email"
+          />
+          <S.RegisteredButton
+            type="button"
+            onClick={() => onCheckEmail(getValues('email'))}
+          >
+            중복Email
+          </S.RegisteredButton>
+          {errors.email && errors.email.message}
+        </S.InputBox>
         <br />
-
         <S.Label htmlFor="phone">휴대폰번호</S.Label>
         <S.Input
           {...register('phone', { required: '휴대폰번호를 입력해주세요.' })}
@@ -196,7 +198,6 @@ export default function SignUpStudentForm() {
         />
         {errors.phone && errors.phone.message}
         <br />
-
         <S.Label htmlFor="birth">생년월일</S.Label>
         <S.Input
           {...register('birth', { required: '생년월일을 입력해주세요.' })}
@@ -204,18 +205,24 @@ export default function SignUpStudentForm() {
           type="date"
         />
         {errors.birth && errors.birth.message}
-
-        {!registerdId && !registerdEmail && (
-          <S.SignUpButton type="submit">회원가입</S.SignUpButton>
-        )}
+        <S.SignUpButton type="submit">회원가입</S.SignUpButton>
       </S.SignUpForm>
-    </div>
+    </S.SignUpSection>
   );
 }
 
 const S = {
+  SignUpSection: styled.div`
+    ${tw``}
+  `,
   SignUpForm: styled.form`
-    ${tw`py-10`}
+    ${tw`mt-8`}
+  `,
+  Header: styled.h1`
+    ${tw`font-extrabold text-2xl text-center pb-2 font-cafe24`}
+  `,
+  Label: styled.label`
+    ${tw`font-extrabold text-xl text-center p-2`}
   `,
   Input: styled.input`
     ${tw`block w-full bg-transparent outline-none border-2 rounded-md py-2 px-4 mt-2 mb-2 placeholder-slate-400 focus:border-brand`}
@@ -223,16 +230,13 @@ const S = {
   ErrorMsg: styled.p`
     ${tw`mb-3 text-red-400 text-xs font-bold`}
   `,
-  Label: styled.label`
-    ${tw`font-extrabold text-xl text-center p-2`}
+  InputBox: styled.div`
+    ${tw`flex`}
   `,
-  Header: styled.h1`
-    ${tw`font-extrabold text-2xl text-center pb-2 font-cafe24`}
+  RegisteredButton: styled.button`
+    ${tw`bg-brand text-white hover:bg-brandHover m-1 rounded`}
   `,
   SignUpButton: styled.button`
     ${tw`bg-brand w-full mt-10 py-2 px-4 rounded-md text-xl font-cafe24 text-white hover:bg-brandHover`}
-  `,
-  IdButton: styled.button`
-    ${tw`bg-brand text-white hover:bg-brandHover`}
   `,
 };

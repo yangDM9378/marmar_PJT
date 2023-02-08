@@ -14,9 +14,9 @@ export default function SignUpTherapist() {
 }
 const S = {
   SignUpSection: styled.div`
-    ${tw`px-10 bg-brand min-h-[1100px] flex justify-center items-center`}
+    ${tw`bg-brand p-[15vh] flex justify-center `}
   `,
   SignUpBox: styled.div`
-    ${tw`bg-white rounded-3xl w-[650px] h-[1000px] p-10`}
+    ${tw`bg-white rounded-3xl min-w-[70vh] p-10`}
   `,
 };
