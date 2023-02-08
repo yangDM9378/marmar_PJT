@@ -22,7 +22,6 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 
 @RestController
-@CrossOrigin(origins = "*")
 @RequestMapping("/api/v1/student")
 public class StudentController {
 
@@ -65,6 +64,7 @@ public class StudentController {
         return ResponseEntity.status(200).body(false);
     }
 
+    @CrossOrigin
     @PostMapping()
     public ResponseEntity<String> register(@RequestBody StudentRegisterPostReq registerInfo){
         studentService.createUser(registerInfo);
