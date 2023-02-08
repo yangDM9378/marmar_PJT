@@ -64,7 +64,6 @@ public class StudentController {
         return ResponseEntity.status(200).body(false);
     }
 
-    @CrossOrigin
     @PostMapping()
     public ResponseEntity<String> register(@RequestBody StudentRegisterPostReq registerInfo){
         studentService.createUser(registerInfo);
