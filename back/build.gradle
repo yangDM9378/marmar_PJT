@@ -34,6 +34,7 @@ dependencies {
     testImplementation 'org.springframework.security:spring-security-test:5.7.6'
     compileOnly 'com.querydsl:querydsl-apt:5.0.0'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '2.2.2.RELEASE'
+    implementation 'javax.xml.bind:jaxb-api:2.3.0'
 }
 
 
