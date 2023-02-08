@@ -19,7 +19,6 @@ const therapistCheckApi = () =>
     return res.data;
   });
 
-
 const signUpTherapistApi = payload => axios.post('therapist', payload);
 
 const signUpStudentApi = payload => authApi.post('student', payload);
