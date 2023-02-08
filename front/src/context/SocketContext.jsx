@@ -4,7 +4,7 @@ import { io } from 'socket.io-client';
 import { getQuestionApi } from '../api/programApi';
 
 export const SocketContext = createContext();
-export const socket = io.connect('https://15.164.244.54:4000');
+export const socket = io.connect('https://localhost:4000');
 export default function SocketProvider({ children }) {
   const [roomName, setRoomName] = useState('');
 
