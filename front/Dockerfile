@@ -13,5 +13,5 @@ RUN mkdir /etc/letsencrypt
 
 COPY --from=build-stage /var/jenkins_home/workspace/deploytest/front/build /usr/share/nginx/html
 COPY --from=build-stage /var/jenkins_home/workspace/deploytest/front/deploy_conf/nginx.conf /etc/nginx/conf.d/default.conf
-EXPOSE 3001
+EXPOSE 3000
 CMD ["nginx", "-g","daemon off;"]
