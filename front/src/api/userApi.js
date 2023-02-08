@@ -19,9 +19,14 @@ const therapistCheckApi = () =>
     return res.data;
   });
 
+const headers = {
+  contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+  Accept: '*/*'
+}
+
 const signUpTherapistApi = payload => axios.post('therapist', payload);
 
-const signUpStudentApi = payload => axios.post('student', payload);
+const signUpStudentApi = payload => authApi.post('student', payload);
 
 const idCheckTherapistApi = payload => axios.get(`therapist/${payload}`);
 
