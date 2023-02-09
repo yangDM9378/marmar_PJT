@@ -5,7 +5,7 @@ import tw from 'twin.macro';
 import { makeRoomApi } from '../../../api/liveClassApi';
 
 export default function StudentList(props) {
-  const { student, close, setStudent, join, getName } = props;
+  const { student, close } = props;
   const navigate = useNavigate();
   const recent = JSON.parse(localStorage.getItem('recentClass'));
   const handleClick = async () => {

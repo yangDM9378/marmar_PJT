@@ -9,7 +9,6 @@ import { OpenVidu } from 'openvidu-browser';
 import axios from 'axios';
 import styled from 'styled-components';
 import tw from 'twin.macro';
-// import { useNavigate } from 'react-router-dom';
 import { useLocation, useNavigate } from 'react-router-dom';
 import {
   BsFillMicFill,
@@ -18,7 +17,7 @@ import {
   BsCameraVideoOff,
 } from 'react-icons/bs';
 import { SlCallEnd } from 'react-icons/sl';
-import { closeRoomApi, makeRoomApi } from '../../../api/liveClassApi';
+import { closeRoomApi } from '../../../api/liveClassApi';
 import VideoModal from '../VideoModal';
 import UserVideoComponent from '../UserVideoComponent';
 import ClassSection from '../ClassSection';
@@ -30,6 +29,7 @@ import { SocketContext } from '../../../context/SocketContext';
 const APPLICATION_SERVER_URL = 'http://localhost:8080/api/v1/openvidu/';
 
 export default function TherapistVideoRoom() {
+  const navigate = useNavigate();
   const location = useLocation();
   const num = location.state.stunum;
   const { leaveRoom } = useContext(SocketContext);
@@ -37,7 +37,7 @@ export default function TherapistVideoRoom() {
   const { data: therapist } = useTherapistCheck();
   // const navigate = useNavigate();
 
-  const [studentName, setStudentName] = useState('');
+  // const [studentName, setStudentName] = useState('');
   const [mySessionId, setMySessionId] = useState('');
   const [myUserName, setMyUserName] = useState('');
   const [session, setSession] = useState(undefined);
@@ -140,9 +140,9 @@ export default function TherapistVideoRoom() {
     console.log('setStudent: ', data);
     setStudentNum(data);
   };
-  const getStudentName = data => {
-    setStudentName(data);
-  };
+  // const getStudentName = data => {
+  //   setStudentName(data);
+  // };
 
   // 세션 아이디 설정
   useEffect(() => {
@@ -199,10 +199,10 @@ export default function TherapistVideoRoom() {
       mySession
         .connect(token, { clientData: myUserName })
         .then(async () => {
-          let devices = await OV.getDevices();
-          let videoDevices = devices.filter(
-            device => device.kind === 'videoinput',
-          );
+          // let devices = await OV.getDevices();
+          // let videoDevices = devices.filter(
+          //   device => device.kind === 'videoinput',
+          // );
           // --- 5) Get your own camera stream ---(퍼블리셔)
           let publisher = OV.initPublisher(undefined, {
             audioSource: undefined, // The source of audio. If undefined default microphone
@@ -291,7 +291,7 @@ export default function TherapistVideoRoom() {
           <SelectStudent
             setStudent={setStudent}
             join={joinSession}
-            getName={getStudentName}
+            // getName={getStudentName}
           />
         </S.WaitRoom>
       ) : null}

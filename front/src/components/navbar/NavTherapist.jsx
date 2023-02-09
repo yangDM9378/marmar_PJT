@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import MakeRoomModal from '../openvidu/makeroom/MakeRoomModal';
@@ -7,13 +7,9 @@ import ClassDropDown from './ClassDropDown';
 import MyDropDown from './MyDropDown';
 
 export default function NavTherapist() {
-  const navigate = useNavigate();
   const [isOpen, setOpen] = useState(false);
   const handleModal = () => {
     setOpen(!isOpen);
-  };
-  const onClass = () => {
-    navigate('/OpenVidu');
   };
   return (
     <S.Box>
