@@ -12,7 +12,7 @@ export default function PictureDifficulty() {
           <S.DiffLink to="/PictureProgram" state={{ difficulty: 'high' }}>
             <S.DiffH1>상</S.DiffH1>
           </S.DiffLink>
-          <S.DiffLink to="/PictureProgram" state={{ difficulty: 'mid' }}>
+          <S.DiffLink to="/PictureProgram" state={{ difficulty: 'middle' }}>
             <S.DiffH1>중</S.DiffH1>
           </S.DiffLink>
           <S.DiffLink to="/PictureProgram" state={{ difficulty: 'low' }}>
@@ -26,43 +26,33 @@ export default function PictureDifficulty() {
 
 const S = {
   ProgramSection: styled.div`
-    ${tw`bg-brand`}
-    padding: 50px;
+    ${tw`flex bg-brand h-[650px] mt-[100px] justify-center items-center`}
   `,
   ProgramBox: styled.div`
-    ${tw`bg-white`}
-    border-radius: 25px;
-    margin: 0px 200px;
-    padding: 50px;
-    min-width: 400px;
-    @media screen and (max-width: 1000px) {
-      margin: 0px 100px;
+    ${tw` flex flex-col justify-center items-center h-[430px] w-[600px] bg-white rounded-3xl`}
+    @media screen and (max-width: 720px) {
+      ${tw`h-[80%] w-[60%]`}
+      margin: 70px;
     }
   `,
   ProgramHeader: styled.h1`
-    ${tw`font-cafe24`}
-    text-align: center;
-    font-size: 50px;
+    ${tw`font-cafe24 text-center text-[50px]`}
+    @media screen and (max-width: 720px) {
+      font-size: 40px;
+    }
   `,
   DiffSection: styled.div`
-    margin-top: 20px;
-    padding: 20px;
-    display: flex;
-    justify-content: space-evenly;
-    @media screen and (max-width: 1000px) {
-      min-height: 400px;
+    ${tw`flex mt-9 justify-evenly`}
+    @media screen and (max-width: 720px) {
+      min-height: 300px;
       flex-direction: column;
-      align-items: center;
+      margin: 0px;
     }
   `,
   DiffLink: styled(Link)`
-    ${tw`bg-yellow-300`}
-    border-radius: 25px;
-    margin: 10px;
-    width: 250px;
-    height: 250px;
-    @media screen and (max-width: 1000px) {
-      width: 250px;
+    ${tw`flex justify-center items-center bg-yellow-300 rounded-3xl mx-2 my-4 w-[150px] h-[150px]`}
+    @media screen and (max-width: 720px) {
+      width: 150px;
       height: 100px;
     }
     &:hover {
@@ -73,9 +63,8 @@ const S = {
     align-items: center;
   `,
   DiffH1: styled.h1`
-    ${tw`font-cafe24`}
-    font-size: 80px;
-    @media screen and (max-width: 1000px) {
+    ${tw`font-cafe24 text-[8vh]`}
+    @media screen and (max-width: 720px) {
       font-size: 50px;
     }
   `,

@@ -41,7 +41,7 @@ insert into marmar.watch (num, difficulty, image_path, answer) values (15, "midd
 
 
 -- 다른 하나를 찾아요 insert
-insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (1,2, "high", "img/picture/1.png", "img/picture/2.png","img/picture/3.png","img/picture/4.png");
+insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (1,3, "high", "img/picture/1.png", "img/picture/2.png","img/picture/3.png","img/picture/4.png");
 insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (2,4, "high", "img/picture/5.png", "img/picture/6.png","img/picture/7.png","img/picture/8.png");
 insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (3,2, "high", "img/picture/9.png", "img/picture/10.png","img/picture/11.png","img/picture/12.png");
 insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (4,4, "high", "img/picture/13.png", "img/picture/14.png","img/picture/15.png","img/picture/16.png");

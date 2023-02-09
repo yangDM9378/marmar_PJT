@@ -19,7 +19,7 @@ export default function WordProgram() {
     modalCorrect,
     setModalCorrect,
     modalWrong,
-    setmodalWrong,
+    setModalWrong,
   } = useContext(SttContext);
   const location = useLocation();
   const difficulty = location.state?.difficulty;
@@ -62,7 +62,7 @@ export default function WordProgram() {
       <WrongModal
         isOpen={modalWrong}
         close={() => {
-          setmodalWrong(false);
+          setModalWrong(false);
         }}
       />
 
@@ -76,6 +76,7 @@ export default function WordProgram() {
       <S.WordContext>
         [Q{cnt + 1}] 다음 그림과 단어를 보고 따라 읽어보세요.
       </S.WordContext>
+
       <S.WordBody>
         <S.WordBtnAndGame>
           <S.WordBtn>
@@ -105,7 +106,7 @@ const S = {
     ${tw` bg-brand mt-[100px]`}
   `,
   WordDifficulty: styled.div`
-    ${tw`flex text-[2rem] justify-end items-center mb-8 text-white`}
+    ${tw`flex text-[32px] justify-end items-center mb-8 text-white`}
   `,
   WordTitle: styled.div`
     ${tw` flex text-[50px] h-[80px] mb-5 justify-center items-center font-bold text-white`}

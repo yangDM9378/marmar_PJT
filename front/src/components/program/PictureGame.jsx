@@ -1,6 +1,8 @@
+/* eslint-disable consistent-return */
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable eqeqeq */
 /* eslint-disable no-else-return */
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import { FaCheck } from 'react-icons/fa';
@@ -15,8 +17,18 @@ export default function PictureGame({
   pictureThree,
   pictureFour,
 }) {
-  const { isCheckArr, setIsCheckArr } = useContext(SttContext);
+  const {
+    isCheckArr,
+    setIsCheckArr,
+    setModalCorrect,
+    setModalWrong,
+    setModalNo,
+  } = useContext(SttContext);
   const { pictureClickAnswer } = useContext(SocketContext);
+  // 체크된값 초기화 시키기
+  useEffect(() => {
+    setIsCheckArr([false, false, false, false]);
+  }, []);
 
   const check = e => {
     console.log(e);
@@ -31,15 +43,13 @@ export default function PictureGame({
     pictureClickAnswer(updateArr); // socket_emit
   };
   const correctCheck = e => {
-    console.log(isCheckArr);
+    console.log(answer);
     if (isCheckArr.toString() === [false, false, false, false].toString()) {
-      return alert('답을 눌러주세요');
-    } else if (isCheckArr[answer] === true) {
-      // setIsCheckArr([false, false, false, false]);
-      return alert('정답임');
+      setModalNo(true);
+    } else if (isCheckArr[answer - 1] === true) {
+      setModalCorrect(true);
     } else {
-      // setIsCheckArr([false, false, false, false]);
-      return alert('정답아님');
+      setModalWrong(true);
     }
   };
 
@@ -105,9 +115,7 @@ const S = {
     ${tw`relative  bg-white rounded-3xl m-5`}
   `,
   gameImg: styled.img`
-    ${tw`relative`}
-    width: 300px;
-    height: 300px;
+    ${tw`relative border-8 border-brand rounded-xl w-[300px] h-[300px]`}
   `,
   gameIcon: styled.div`
     ${tw`absolute`}
@@ -115,14 +123,14 @@ const S = {
     top: 50%;
     transform: translate(-50%, -50%);
     .Icon {
-      font-size: 5rem;
+      font-size: 180px;
       color: #ff385c;
     }
   `,
   correctBtn: styled.div`
-    ${tw`flex justify-center h-20 `}
+    ${tw`flex justify-center mt-[20px]`}
   `,
   Btn: styled.button`
-    ${tw`text-3xl text-white`}
+    ${tw`text-3xl text-white w-[170px] h-[100px] font-bold bg-brand rounded-2xl`}
   `,
 };

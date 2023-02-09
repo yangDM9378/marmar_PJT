@@ -20,8 +20,8 @@ export default function SttProvider({ children }) {
   const [playNext, { stopNext }] = useSound(next);
   // 모달관련
   const [modalCorrect, setModalCorrect] = useState(false);
-  const [modalWrong, setmodalWrong] = useState(false);
-
+  const [modalWrong, setModalWrong] = useState(false);
+  const [modalNo, setModalNo] = useState(false);
   // 녹음 관련
   const { transcript, resetTranscript } = useSpeechRecognition();
   const [start, setStart] = useState(false);
@@ -43,7 +43,7 @@ export default function SttProvider({ children }) {
       playCorrect();
       setModalCorrect(true);
     } else {
-      setmodalWrong(true);
+      setModalWrong(true);
       playWrong();
     }
   };
@@ -79,7 +79,9 @@ export default function SttProvider({ children }) {
         modalCorrect,
         setModalCorrect,
         modalWrong,
-        setmodalWrong,
+        setModalWrong,
+        modalNo,
+        setModalNo,
       }}
     >
       {children}

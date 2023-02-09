@@ -13,6 +13,7 @@ export default function WordGame({ imagePath, answer }) {
   useEffect(() => {
     getQuestion(answer);
   }, [answer]);
+
   return (
     <S.WordGameImg>
       <S.WordImgCard>
