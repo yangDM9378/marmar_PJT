@@ -22,6 +22,7 @@ export default function SocketProvider({ children }) {
   };
   // 방 입장
   const joinRoom = sessionId => {
+    console.log(socket.data);
     socket.emit('joinRoom', { roomName: sessionId });
   };
   const getRoom = () => {
