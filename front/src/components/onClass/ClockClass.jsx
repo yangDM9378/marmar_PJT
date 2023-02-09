@@ -107,7 +107,7 @@ export default function ClockProgram() {
 
 const S = {
   ClockProgramSection: styled.div`
-    ${tw` bg-brand min-h-[800px] flex-col`}
+    ${tw` bg-black flex-col`}
   `,
   ClockDifficulty: styled.h4`
     ${tw`flex text-xl justify-end `}

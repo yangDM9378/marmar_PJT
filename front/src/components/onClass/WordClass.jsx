@@ -81,7 +81,7 @@ export default function WordClass() {
 
 const S = {
   WordProgramSection: styled.div`
-    ${tw` bg-brand min-h-[800px] flex-col`}
+    ${tw`flex-col p-5`}
   `,
   WordDifficulty: styled.h4`
     ${tw`flex text-xl justify-end `}
@@ -94,6 +94,9 @@ const S = {
   `,
   WordBtnAndGame: styled.div`
     ${tw`flex justify-around`}
+    button {
+      ${tw`text-white`}
+    }
   `,
   ButtonDisable: styled.button`
     ${tw`cursor-not-allowed`}

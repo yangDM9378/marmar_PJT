@@ -7,7 +7,6 @@ import MyDropDown from './MyDropDown';
 
 export default function NavTherapist() {
   const navigate = useNavigate();
-  // const [temp, setTemp] = useState(false);
   const onClass = () => {
     navigate('/OpenVidu');
   };
