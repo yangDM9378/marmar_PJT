@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import tw from 'twin.macro';
+import MakeRoomModal from '../openvidu/makeroom/MakeRoomModal';
 import ClassDropDown from './ClassDropDown';
 import MyDropDown from './MyDropDown';
 
 export default function NavTherapist() {
   const navigate = useNavigate();
+  const [isOpen, setOpen] = useState(false);
+  const handleModal = () => {
+    setOpen(!isOpen);
+  };
   const onClass = () => {
     navigate('/OpenVidu');
   };
@@ -14,10 +19,11 @@ export default function NavTherapist() {
     <S.Box>
       <Link to="/Info">마르마르소개</Link>
       <ClassDropDown />
-      <S.Class type="button" onClick={onClass} className="bg-slate-200">
+      <S.Class type="button" onClick={handleModal} className="bg-slate-200">
         방생성
       </S.Class>
       <MyDropDown />
+      <MakeRoomModal isOpen={isOpen} close={handleModal} />
     </S.Box>
   );
 }

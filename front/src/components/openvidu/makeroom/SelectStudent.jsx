@@ -7,7 +7,7 @@ import { searchClassStudentApi } from '../../../api/programApi';
 import StudentList from './StudentList';
 
 export default function SelectStudent(props) {
-  const { setStudent, join, getName } = props;
+  const { setStudent, join, getName, close } = props;
   const recent = JSON.parse(localStorage.getItem('recentClass'));
   const [text, setText] = useState(
     '수업을 시작하기 위해 학생의 이름을 입력해주세요. 클릭하여 수업 시작',
@@ -46,7 +46,7 @@ export default function SelectStudent(props) {
         <p>{text}</p>
       </S.Header>
       <S.SeachDiv>
-        <AiOutlineSearch />
+        <AiOutlineSearch className="text-2xl" />
         <S.SeachInput type="text" onChange={onInput} />
       </S.SeachDiv>
       {!search && !students && <p className="font-bold">RECENT</p>}
@@ -60,6 +60,7 @@ export default function SelectStudent(props) {
               setStudent={setStudent}
               join={join}
               getName={getName}
+              close={close}
             />
           ))}
 
@@ -73,6 +74,7 @@ export default function SelectStudent(props) {
               setStudent={setStudent}
               join={join}
               getName={getName}
+              close={close}
             />
           ))}
       </S.ResultBox>
@@ -82,19 +84,19 @@ export default function SelectStudent(props) {
 
 const S = {
   SearchBox: styled.div`
-    ${tw`min-h-[30vh] max-h-[50vh] min-w-[500px] bg-white rounded-xl p-5`}
+    ${tw`min-h-[50vh] max-h-[50vh] min-w-[900px] bg-white rounded-xl p-10`}
   `,
   Header: styled.div`
-    ${tw`text-2xl font-semibold`}
+    ${tw`text-4xl font-semibold`}
     p {
-      ${tw`text-xs my-2`}
+      ${tw`text-xl my-7`}
     }
   `,
   SeachDiv: styled.div`
     ${tw`relative border-2 flex justify-center items-center px-3 mb-2`}
   `,
   SeachInput: styled.input`
-    ${tw`w-full focus:outline-0 h-10`}
+    ${tw`w-full focus:outline-0 text-xl h-16`}
   `,
   ResultBox: styled.div`
     ${tw`bg-slate-100 rounded max-h-[220px] overflow-y-scroll`}

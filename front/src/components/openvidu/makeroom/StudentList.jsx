@@ -1,10 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import { makeRoomApi } from '../../../api/liveClassApi';
 
 export default function StudentList(props) {
-  const { student, setStudent, join, getName } = props;
+  const { student, close, setStudent, join, getName } = props;
+  const navigate = useNavigate();
   const recent = JSON.parse(localStorage.getItem('recentClass'));
   const handleClick = async () => {
     if (recent) {
@@ -15,10 +17,12 @@ export default function StudentList(props) {
       });
     }
     await setRecent();
-    await makeRoomApi({ studentNum: student.num });
-    await getName(student.studentName);
-    await setStudent(student.num);
-    await join();
+    await makeRoomApi({ studentNum: student.num }); // 세션
+    await navigate('/OpenVidu', { state: { stunum: student.num } });
+    await close();
+    // await getName(student.studentName);
+    // await setStudent(student.num);
+    // await join();
   };
   const setRecent = () => {
     if (!recent) {
@@ -53,6 +57,6 @@ export default function StudentList(props) {
 
 const S = {
   StudentBox: styled.div`
-    ${tw`mt-[1vw] flex justify-between px-3 py-1 hover:bg-slate-300 rounded hover:cursor-pointer`}
+    ${tw`flex justify-between px-3 py-3 hover:bg-slate-300 rounded hover:cursor-pointer text-xl font-bold`}
   `,
 };
