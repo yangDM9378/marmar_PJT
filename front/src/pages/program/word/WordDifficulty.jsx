@@ -27,40 +27,24 @@ export default function ClockDifficulty() {
 
 const S = {
   ProgramSection: styled.div`
-    ${tw`flex bg-brand min-h-[100vh] mt-[8vh] p-[4vh] justify-center items-center`}  
+    ${tw`flex bg-brand h-[650px] mt-[100px] justify-center items-center`}  
     `,
   ProgramBox: styled.div`
-    ${tw`flex-col max-h-[80vh] max-w-[80vh] bg-white rounded-3xl p-12`}
-    @media screen and (max-width: 1000px) {
-      margin: 0px 100px;
-    }
+    ${tw` flex flex-col justify-center items-center h-[430px] w-[600px] bg-white rounded-3xl`}
   `,
   ProgramHeader: styled.h1`
-    ${tw`font-cafe24 text-center text-[6vh]`}
+    ${tw`font-cafe24 text-center text-[50px]`}
   `,
   DiffSection: styled.div`
-    ${tw`flex mt-[3vh] p-[3vh] justify-evenly`}
-
-    @media screen and (max-width: 1000px) {
-      min-height: 400px;
-      flex-direction: column;
-      align-items: center;
-    }
+    ${tw`flex mt-9 justify-evenly`}
   `,
   DiffLink: styled(Link)`
-    ${tw`flex justify-center items-center bg-yellow-300 rounded-[4vh] m-[1.2vh] w-[30vh] h-[25vh]`}
-    @media screen and (max-width: 1000px) {
-      width: 150px;
-      height: 80px;
-    }
+    ${tw`flex justify-center items-center bg-yellow-300 rounded-3xl mx-2 my-4 w-[150px] h-[150px]`}
     &:hover {
       border: 5px solid;
     }
   `,
   DiffH1: styled.h1`
     ${tw`font-cafe24 text-[8vh]`}
-    @media screen and (max-width: 1000px) {
-      font-size: 50px;
-    }
   `,
 };
