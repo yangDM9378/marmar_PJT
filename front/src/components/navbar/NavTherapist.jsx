@@ -12,7 +12,7 @@ export default function NavTherapist() {
   };
   return (
     <S.Box>
-      <Link to="/Info">마르마르 소개</Link>
+      <Link to="/Info">마르마르소개</Link>
       <ClassDropDown />
       <S.Class type="button" onClick={onClass} className="bg-slate-200">
         방생성
@@ -24,7 +24,7 @@ export default function NavTherapist() {
 
 const S = {
   Box: styled.div`
-    ${tw`flex justify-around items-center font-cafe24 space-x-6`}
+    ${tw`flex justify-around items-center font-cafe24 text-2xl space-x-10`}
   `,
   Class: styled.button`
     ${tw`p-2 rounded-xl`}
