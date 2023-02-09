@@ -4,7 +4,7 @@ import { io } from 'socket.io-client';
 import { getQuestionApi } from '../api/programApi';
 
 export const SocketContext = createContext();
-export const socket = io.connect('https://i8c204.p.ssafy.io/node'); //  http://localhost:4000
+export const socket = io.connect('https://i8c204.p.ssafy.io/node'); //  http://localhost:4000/
 export default function SocketProvider({ children }) {
   const [roomName, setRoomName] = useState('');
 
@@ -17,6 +17,7 @@ export default function SocketProvider({ children }) {
     });
   };
   const onConnect = () => {
+    console.log('현재');
     socket.emit('connecting');
   };
   // 방 입장

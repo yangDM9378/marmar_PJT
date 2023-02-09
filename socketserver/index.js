@@ -16,7 +16,7 @@ const io = new Server(server, {
 // 연결 시작
 io.on('connection', socket=>{
     let roomName = ''
-
+    console.log("노드들어옴~");
     socket.onAny((event) => {
         console.log(`Socket event: ${event}`);
     });
