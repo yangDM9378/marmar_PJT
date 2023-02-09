@@ -160,7 +160,7 @@ export default function StudentVideoRoom() {
           // --- 5) Get your own camera stream ---(퍼블리셔)
           let publisher = OV.initPublisher(undefined, {
             audioSource: undefined, // The source of audio. If undefined default microphone
-            videoSource: videoDevices[0].deviceId, // The source of video. If undefined default webcam
+            videoSource: undefined, // The source of video. If undefined default webcam
             publishAudio: true, // Whether you want to start publishing with your audio unmuted or not
             publishVideo: true, // Whether you want to start publishing with your video enabled or not
             resolution: '100%x100%', // The resolution of your video '450x720'
