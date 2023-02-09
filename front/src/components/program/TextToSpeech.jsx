@@ -42,7 +42,7 @@ export default function TextToSpeech({ answer }) {
 
 const S = {
   TTSSection: styled.div`
-    ${tw`flex justify-center min-h-[10rem]`}
+    ${tw`flex justify-center items-center min-h-[10rem]`}
   `,
   HiSpeakerphone: styled.div`
     ${tw`flex bg-brand justify-center items-center rounded-full m-3`}

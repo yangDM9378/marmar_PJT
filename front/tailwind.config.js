@@ -23,6 +23,8 @@ module.exports = {
         'logo-bg': "url('/public/logo.png')",
         'info-header': "url('/public/info/info-header.jpg')",
         'board-bg': "url('/public/img/background/board.png')",
+        'modal-1': "url('/public/modal/1.png')",
+        'modal-2': "url('/public/modal/2.png')",
       },
       backgroundSize: {
         auto: 'auto',

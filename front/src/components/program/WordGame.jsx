@@ -14,34 +14,26 @@ export default function WordGame({ imagePath, answer }) {
     getQuestion(answer);
   }, [answer]);
   return (
-    <S.WordGame>
-      <S.WordGameImg>
-        <S.WordImgCard>
-          <img className="img" src={imagePath} />
-          <div className="word">{answer}</div>
-        </S.WordImgCard>
-      </S.WordGameImg>
-    </S.WordGame>
+    <S.WordGameImg>
+      <S.WordImgCard>
+        <img className="img" src={imagePath} />
+        <div className="word">{answer}</div>
+      </S.WordImgCard>
+    </S.WordGameImg>
   );
 }
 
 const S = {
-  WordGame: styled.div`
-    ${tw`flex justify-center items-center min-h-[20rem]`}
-  `,
   WordGameImg: styled.div`
     ${tw`flex justify-center items-center`}
   `,
   WordImgCard: styled.div`
-    ${tw`flex-col rounded-xl text-center border-8 border-brand `}
+    ${tw`flex-col rounded-xl text-center border-8 border-brand  `}
     .img {
-      ${tw`bg-white rounded-xl p-3`}
-      width: 12rem;
-      height: 12rem;
+      ${tw`bg-white rounded-l p-3 w-[300px] h-[300px]`}
     }
-    ,
     .word {
-      ${tw`text-4xl bg-brand m-2 text-white`}
+      ${tw`text-[50px] bg-brand mt-2 text-white`}
     }
   `,
 };

@@ -31,7 +31,7 @@ export default function ReactSpeechRecognition({ answer }) {
 
 const S = {
   RecognitionSection: styled.div`
-    ${tw`flex justify-center min-h-[10rem]`}
+    ${tw`flex justify-center items-center min-h-[10rem]`}
   `,
   BsFillMicFill: styled.div`
     ${tw`flex bg-brand justify-center items-center rounded-full m-3`}
