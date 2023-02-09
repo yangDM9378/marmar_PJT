@@ -18,7 +18,7 @@ export default function SocketProvider({ children }) {
   };
   const onConnect = () => {
     console.log('현재');
-    socket.emit('connecting');
+    socket.emit('connection');
   };
   // 방 입장
   const joinRoom = sessionId => {
