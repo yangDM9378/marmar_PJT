@@ -20,7 +20,7 @@ import VideoModal from '../VideoModal';
 import { getTeacherApi } from '../../../api/liveClassApi';
 // eslint-disable-next-line react/prefer-stateless-function
 
-const APPLICATION_SERVER_URL = 'http://localhost:8080/api/v1/openvidu/';
+const APPLICATION_SERVER_URL = 'http://i8c204.p.ssafy.io/api/v1/openvidu/';
 
 export default class StudentLive extends Component {
   constructor(props) {

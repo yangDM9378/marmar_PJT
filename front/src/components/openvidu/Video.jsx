@@ -25,7 +25,7 @@ import SelectStudent from './makeroom/SelectStudent';
 import { therapistCheckApi } from '../../api/userApi';
 import { closeRoomApi, makeRoomApi } from '../../api/liveClassApi';
 
-const APPLICATION_SERVER_URL = 'http://localhost:8080/api/v1/openvidu/';
+const APPLICATION_SERVER_URL = 'http://i8c204.p.ssafy.io/api/v1/openvidu/';
 
 class Video extends Component {
   constructor(props) {
