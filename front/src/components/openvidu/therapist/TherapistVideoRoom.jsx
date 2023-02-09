@@ -17,7 +17,7 @@ import ClassSection from '../ClassSection';
 import SelectStudent from '../makeroom/SelectStudent';
 import useAuth from '../../../hooks/queries/useAuth';
 
-const APPLICATION_SERVER_URL = 'http://localhost:8080/api/v1/openvidu/';
+const APPLICATION_SERVER_URL = 'https://i8c204.p.ssafy.io';
 
 export default function TherapistVideoRoom() {
   const { useTherapistCheck } = useAuth();

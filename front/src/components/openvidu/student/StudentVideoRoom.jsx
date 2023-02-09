@@ -15,7 +15,7 @@ import VideoModal from '../VideoModal';
 import UserVideoComponent from '../UserVideoComponent';
 import ClassSection from '../ClassSection';
 
-const APPLICATION_SERVER_URL = 'http://localhost:8080/api/v1/openvidu/';
+const APPLICATION_SERVER_URL = 'https://i8c204.p.ssafy.io';
 
 export default function StudentVideoRoom() {
   const navigate = useNavigate();
