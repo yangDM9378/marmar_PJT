@@ -58,7 +58,7 @@ const S = {
     ${tw``}
   `,
   Form: styled.form`
-    ${tw`mt-[12vh] border-4 rounded-lg p-5 w-[550px] flex-col items-center`}
+    ${tw`mt-[12vh] border-4 rounded-lg p-5 w-[550px] flex flex-col items-center`}
   `,
   Title: styled.h1`
     ${tw`font-cafe24 m-5 text-3xl text-center`}

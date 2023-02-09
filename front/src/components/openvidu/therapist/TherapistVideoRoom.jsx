@@ -23,7 +23,7 @@ import UserVideoComponent from '../UserVideoComponent';
 import ClassSection from '../ClassSection';
 import SelectStudent from '../makeroom/SelectStudent';
 import useAuth from '../../../hooks/queries/useAuth';
-// import EvalModal from '../../onClass/evaluation/EvalModal';
+import EvalModal from '../../onClass/evaluation/EvalModal';
 import { SocketContext } from '../../../context/SocketContext';
 
 const APPLICATION_SERVER_URL = 'http://localhost:8080/api/v1/openvidu/';
@@ -47,10 +47,10 @@ export default function TherapistVideoRoom() {
   const [audio, setAudio] = useState(true);
   // 평가 모달
   // const [isFail, setIsFail] = useState(false);
-  // const [isOpen, setOpen] = useState(false);
-  // const handleModal = () => {
-  //   setOpen(!isOpen);
-  // };
+  const [isOpen, setOpen] = useState(false);
+  const handleModal = () => {
+    setOpen(!isOpen);
+  };
 
   // eslint-disable-next-line prefer-const, no-undef-init
   let OV = undefined;
@@ -222,9 +222,9 @@ export default function TherapistVideoRoom() {
     if (mySession) {
       mySession.disconnect();
       // 평가 모달
-      // <EvalModal isOpen={isOpen} close={handleModal} studentNum={studentNum} />;
       // 완료 시 메인페이지로 이동
-      navigate('/');
+      setOpen(true);
+      // navigate('/');
     }
     // 속성을 초기화함(필요한 속성은 초기화하면 안 됨)
     OV = null;
@@ -344,6 +344,7 @@ export default function TherapistVideoRoom() {
           </S.ModalContainer>
         </VideoModal>
       ) : null}
+      <EvalModal isOpen={isOpen} close={handleModal} studentNum={studentNum} />;
     </S.PageContainer>
   );
 }
