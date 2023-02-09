@@ -106,8 +106,8 @@ const S = {
   `,
   gameImg: styled.img`
     ${tw`relative`}
-    width: 10rem;
-    height: 10rem;
+    width: 300px;
+    height: 300px;
   `,
   gameIcon: styled.div`
     ${tw`absolute`}

@@ -27,8 +27,8 @@ const S = {
   `,
   ClockImg: styled.img`
     ${tw`rounded-sm `}
-    width:400px;
-    height: inherit;
+    width: 300px;
+    height: 300px;
   `,
   watchQuestion: styled.div`
     ${tw`flex justify-center items-center h-14 text-2xl`}

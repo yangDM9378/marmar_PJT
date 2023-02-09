@@ -9,6 +9,7 @@ import { OpenVidu } from 'openvidu-browser';
 import axios from 'axios';
 import styled from 'styled-components';
 import tw from 'twin.macro';
+// import { useNavigate } from 'react-router-dom';
 import {
   BsFillMicFill,
   BsCameraVideo,
@@ -31,6 +32,7 @@ export default function TherapistVideoRoom() {
   const { leaveRoom } = useContext(SocketContext);
   const { useTherapistCheck } = useAuth();
   const { data: therapist } = useTherapistCheck();
+  // const navigate = useNavigate();
 
   const [studentName, setStudentName] = useState('');
   const [mySessionId, setMySessionId] = useState('');
