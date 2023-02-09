@@ -9,7 +9,7 @@ import { OpenVidu } from 'openvidu-browser';
 import axios from 'axios';
 import styled from 'styled-components';
 import tw from 'twin.macro';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
   BsFillMicFill,
   BsCameraVideo,
@@ -29,6 +29,8 @@ import { SocketContext } from '../../../context/SocketContext';
 const APPLICATION_SERVER_URL = 'http://localhost:8080/api/v1/openvidu/';
 
 export default function TherapistVideoRoom() {
+  const location = useLocation();
+  const num = location.state.stunum;
   const { leaveRoom } = useContext(SocketContext);
   const { useTherapistCheck } = useAuth();
   const { data: therapist } = useTherapistCheck();
@@ -57,7 +59,10 @@ export default function TherapistVideoRoom() {
 
   // 토큰 받아오기
   const getToken = useCallback(() => {
-    return createSession(mySessionId).then(sessionId => createToken(sessionId));
+    console.log('mySessionId : ', therapist.therapistId);
+    return createSession(therapist?.therapistId).then(sessionId =>
+      createToken(sessionId),
+    );
   }, [mySessionId]);
 
   // 세션 생성
@@ -141,21 +146,29 @@ export default function TherapistVideoRoom() {
   useEffect(() => {
     async function fetch() {
       await leaveSession();
+      await setStudentNum(num);
       await setMySessionId(therapist?.therapistId);
       await setMyUserName(therapist?.therapistName);
     }
     fetch();
 
     // 테스트
-    // joinSession();
+    joinSession();
   }, []);
 
+  useEffect(() => {
+    console.log(subscribers);
+  }, [subscribers]);
+
   // 세션 참여
-  const joinSession = () => {
+  const joinSession = async () => {
     console.log('오픈비두 시작');
-    OV = new OpenVidu(); // --- 1) 오픈비두 오브젝트 생성 ---
+    console.log('therapistId : ', therapist.therapistId);
+    const a = await therapist.therapistId;
+    await console.log(a);
+    OV = await new OpenVidu(); // --- 1) 오픈비두 오브젝트 생성 ---
     OV.enableProdMode(); // 콘솔 막기
-    makeRoomApi({ studentNum });
+    // makeRoomApi({ studentNum });
     openModal();
     const mySession = OV.initSession(); // --- 2) 세션을 시작 --
     setSession(mySession);
@@ -191,7 +204,7 @@ export default function TherapistVideoRoom() {
           // --- 5) Get your own camera stream ---(퍼블리셔)
           let publisher = OV.initPublisher(undefined, {
             audioSource: undefined, // The source of audio. If undefined default microphone
-            videoSource: videoDevices[0].deviceId, // The source of video. If undefined default webcam
+            videoSource: undefined, // The source of video. If undefined default webcam
             publishAudio: true, // Whether you want to start publishing with your audio unmuted or not
             publishVideo: true, // Whether you want to start publishing with your video enabled or not
             resolution: '100%x100%', // The resolution of your video '450x720'
@@ -217,14 +230,13 @@ export default function TherapistVideoRoom() {
   // 세선 떠나기 --- 7) disconnect함수를 호출하여 세션을 떠남
   const leaveSession = () => {
     const mySession = session;
-    leaveRoom();
-    closeRoomApi(studentNum);
+    leaveRoom(); // 소켓 종료
+    closeRoomApi(studentNum); // 학생 수업중 종료
     if (mySession) {
       mySession.disconnect();
       // 평가 모달
       // 완료 시 메인페이지로 이동
       setOpen(true);
-      // navigate('/');
     }
     // 속성을 초기화함(필요한 속성은 초기화하면 안 됨)
     OV = null;
@@ -235,6 +247,8 @@ export default function TherapistVideoRoom() {
     setMainStreamManager(undefined);
     setPublisher(undefined);
     setModalOpen(false);
+    // session.streamDestroyed();
+    // mySession.streamDestroyed();
   };
 
   useEffect(() => {
@@ -254,7 +268,7 @@ export default function TherapistVideoRoom() {
       let index = tmpSubscribers.indexOf(streamManager, 0);
       if (index > -1) {
         tmpSubscribers.splice(index, 1);
-        setSubscribers(tmpSubscribers); // 이거 안 되면 구조분해할당으로 업데이트 할 것
+        setSubscribers(...tmpSubscribers); // 이거 안 되면 구조분해할당으로 업데이트 할 것
       }
     },
     [subscribers],
@@ -283,9 +297,9 @@ export default function TherapistVideoRoom() {
       {session !== undefined ? (
         <VideoModal open={modalOpen}>
           <S.ModalContainer>
-            <S.LiveContainer>
+            <S.LiveContainer className="min-h-screen bg-video-bg">
               <S.VideoSection>
-                {subscribers[0] && (
+                {subscribers && subscribers[0] && (
                   <S.UserVideo>
                     <div className="h-[100%]">
                       <UserVideoComponent streamManager={subscribers[0]} />
@@ -307,7 +321,8 @@ export default function TherapistVideoRoom() {
               </S.ClassBox>
             </S.LiveContainer>
             <S.Footer>
-              <S.RoomInfo>{studentName}님과의 수업</S.RoomInfo>
+              {/* <S.RoomInfo>{studentName}님과의 수업</S.RoomInfo> */}
+              <div />
               <S.HandleVideoBox>
                 <S.HandleVideoButton
                   type="button"
@@ -363,13 +378,13 @@ const S = {
     ${tw`h-[92vh]`}
   `,
   LiveContainer: styled.div`
-    ${tw`grid grid-cols-3 w-full max-h-[screen] min-h-[100%]`}
+    ${tw`grid grid-cols-3 w-full max-h-[92vh] min-h-[92vh]`}
   `,
   VideoSection: styled.div`
-    ${tw`grid-cols-1 flex flex-col max-h-[100%] justify-around px-3 py-3 space-y-1 bg-slate-300 rounded m-5`}
+    ${tw`grid-cols-1 flex flex-col max-h-[89vh] justify-around px-3 space-y-1 rounded m-5`}
   `,
   ClassBox: styled.div`
-    ${tw`col-span-2 p-3 h-[100%]`}
+    ${tw`col-span-2 p-3 max-h-[92vh]`}
   `,
   MyVideo: styled.div`
     ${tw`relative h-[50%]`}

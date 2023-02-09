@@ -113,6 +113,12 @@ export default function StudentVideoRoom() {
   const closeModal = () => {
     setModalOpen(false);
   };
+  useEffect(() => {
+    console.log(subscribers);
+    if (!subscribers) {
+      leaveSession();
+    }
+  }, [subscribers]);
 
   // 세션 아이디 설정
   useEffect(() => {
@@ -164,6 +170,7 @@ export default function StudentVideoRoom() {
           let videoDevices = devices.filter(
             device => device.kind === 'videoinput',
           );
+          console.log(videoDevices);
           // --- 5) Get your own camera stream ---(퍼블리셔)
           let publisher = OV.initPublisher(undefined, {
             audioSource: undefined, // The source of audio. If undefined default microphone
@@ -225,7 +232,7 @@ export default function StudentVideoRoom() {
       let index = tmpSubscribers.indexOf(streamManager, 0);
       if (index > -1) {
         tmpSubscribers.splice(index, 1);
-        setSubscribers(tmpSubscribers); // 이거 안 되면 구조분해할당으로 업데이트 할 것
+        setSubscribers(...tmpSubscribers); // 이거 안 되면 구조분해할당으로 업데이트 할 것
       }
     },
     [subscribers],
@@ -259,7 +266,7 @@ export default function StudentVideoRoom() {
           <S.ModalContainer>
             <S.LiveContainer className="min-h-screen bg-video-bg">
               <S.VideoSection>
-                {subscribers[0] && (
+                {subscribers && subscribers[0] && (
                   <S.UserVideo>
                     <div className="h-[100%]">
                       <UserVideoComponent streamManager={subscribers[0]} />
@@ -336,16 +343,16 @@ const S = {
     ${tw`h-[92vh]`}
   `,
   LiveContainer: styled.div`
-    ${tw`grid grid-cols-3 w-full max-h-[screen] min-h-[100%]`}
+    ${tw`grid grid-cols-3 w-full max-h-[92vh] min-h-[92vh]`}
   `,
   VideoSection: styled.div`
-    ${tw`grid-cols-1 flex flex-col max-h-[100%] justify-around space-y-1 rounded m-5`}
+    ${tw`grid-cols-1 flex flex-col max-h-[89vh] justify-around space-y-1 rounded m-5`}
   `,
   ClassBox: styled.div`
-    ${tw`col-span-2 py-7 px-3 h-[100%]`}
+    ${tw`col-span-2 py-7 px-3 max-h-[92vh]`}
   `,
   MyVideo: styled.div`
-    ${tw`relative h-[45%]`}
+    ${tw`relative h-[50%]`}
   `,
   HandleVideoBox: styled.div`
     ${tw`space-x-3 col-span-1 flex justify-center items-center`}
