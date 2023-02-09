@@ -143,9 +143,9 @@ public class StudentServiceImpl implements StudentService {
         try{
             Student student = studentRepository.findByNum(studentNum).get();
             Evaluation evaluation = new Evaluation();
-            evaluation.setEvalAchieve(evaluationPostReq.getEvalAchieve());
+            evaluation.setEvalAbility(evaluationPostReq.getEvalAbility());
+            evaluation.setEvalAttitude(evaluationPostReq.getEvalAttitude());
             evaluation.setEvalConcentration(evaluationPostReq.getEvalConcentration());
-            evaluation.setEvalEntire(evaluationPostReq.getEvalEntire());
             evaluation.setStudent(student);
             evaluation.setEvalDate(LocalDateTime.now());
             evaluationRepository.save(evaluation);
@@ -164,9 +164,9 @@ public class StudentServiceImpl implements StudentService {
         for(Evaluation evaluation : evaluations){
             EvaluationRes res = EvaluationRes.builder()
                     .num(evaluation.getNum())
-                    .evalAchieve(evaluation.getEvalAchieve())
+                    .evalAbility(evaluation.getEvalAbility())
+                    .evalAttitude(evaluation.getEvalAttitude())
                     .evalConcentration(evaluation.getEvalConcentration())
-                    .evalEntire(evaluation.getEvalEntire())
                     .evalDate(evaluation.getEvalDate())
                     .student(evaluation.getStudent())
                     .build();

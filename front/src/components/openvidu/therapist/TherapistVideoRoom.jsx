@@ -50,6 +50,7 @@ export default function TherapistVideoRoom() {
   const [isOpen, setOpen] = useState(false);
   const handleModal = () => {
     setOpen(!isOpen);
+    navigate('/');
   };
 
   // eslint-disable-next-line prefer-const, no-undef-init
@@ -222,9 +223,7 @@ export default function TherapistVideoRoom() {
     if (mySession) {
       mySession.disconnect();
       // 평가 모달
-      // 완료 시 메인페이지로 이동
       setOpen(true);
-      // navigate('/');
     }
     // 속성을 초기화함(필요한 속성은 초기화하면 안 됨)
     OV = null;

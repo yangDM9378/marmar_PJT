@@ -13,7 +13,11 @@ const getTeacherApi = () => {
 };
 
 const evaluateApi = payload => {
-  return authApi.post(`student/evaluation/${payload.studentNum}`, payload);
+  return authApi.put(`student/evaluation/${payload.studentNum}`, {
+    evalAbility: payload.evalAbility,
+    evalAttitude: payload.evalAttitude,
+    evalConcentration: payload.evalConcentration,
+  });
 };
 
 export { makeRoomApi, getTeacherApi, closeRoomApi, evaluateApi };

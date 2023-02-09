@@ -36,6 +36,7 @@ export default function ChangePhone(props) {
   const onChangePhone = async data => {
     console.log(data);
     useModPhone.mutate(data);
+    alert('전화번호가 변경되었습니다.');
   };
   return (
     <S.Form onSubmit={handleSubmit(onChangePhone)}>

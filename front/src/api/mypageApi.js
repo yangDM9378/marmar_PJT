@@ -14,10 +14,14 @@ const getRegisteredStudentApi = () => {
 const delRegisteredStudentApi = payload => {
   return authApi.put(`student/deleteTherapist/${payload}`);
 };
+const getResultApi = async payload => {
+  return authApi.get(`student/evaluation/result/${payload}`);
+};
 
 export {
   searchStudentApi,
   registerStudentApi,
   getRegisteredStudentApi,
   delRegisteredStudentApi,
+  getResultApi,
 };

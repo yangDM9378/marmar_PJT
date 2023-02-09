@@ -12,18 +12,18 @@ import java.time.LocalDateTime;
 public class EvaluationRes {
 
     int num;
+    int evalAbility;
+    int evalAttitude;
     int evalConcentration;
-    int evalAchieve;
-    int evalEntire;
     LocalDateTime evalDate;
     Student student;
 
     @Builder
-    public EvaluationRes(int num, int evalConcentration, int evalAchieve, int evalEntire, LocalDateTime evalDate, Student student){
+    public EvaluationRes(int num, int evalAbility, int evalAttitude, int evalConcentration, LocalDateTime evalDate, Student student){
         this.num = num;
+        this.evalAbility = evalAbility;
+        this.evalAttitude = evalAttitude;
         this.evalConcentration = evalConcentration;
-        this.evalAchieve = evalAchieve;
-        this.evalEntire = evalEntire;
         this.evalDate = evalDate;
         this.student = student;
     }

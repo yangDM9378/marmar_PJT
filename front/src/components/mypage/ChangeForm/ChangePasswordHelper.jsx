@@ -33,6 +33,7 @@ export default function ChangePasswordHelper() {
       nowPasswordHelper: data.nowPasswordHelper,
       modifyPasswordHelper: data.passwordHelper,
     });
+    alert('2차 비밀번호가 변경되었습니다.');
   };
   return (
     <S.Form onSubmit={handleSubmit(onChangePasswordHelper)}>
@@ -83,7 +84,7 @@ const S = {
     ${tw`p-3 border-2 rounded-xl mr-3 w-full min-w-[160px]  focus:outline-brand`}
   `,
   Button: styled.button`
-    ${tw`p-3 bg-brandHover text-white min-w-[200px] rounded-xl block`}
+    ${tw`p-3 bg-brandHover text-white min-w-[160px] rounded-xl block`}
   `,
   ErrorMsg: styled.p`
     ${tw`mb-3 text-red-400 text-xs font-bold`}

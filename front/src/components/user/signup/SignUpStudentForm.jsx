@@ -104,7 +104,7 @@ export default function SignUpStudentForm() {
             type="button"
             onClick={() => onCheckId(getValues('id'))}
           >
-            중복ID
+            중복확인
           </S.RegisteredButton>
         </S.InputBox>
         {errors.id && errors.id.message}
@@ -186,7 +186,7 @@ export default function SignUpStudentForm() {
             type="button"
             onClick={() => onCheckEmail(getValues('email'))}
           >
-            중복Email
+            중복확인
           </S.RegisteredButton>
           {errors.email && errors.email.message}
         </S.InputBox>
@@ -234,7 +234,7 @@ const S = {
     ${tw`flex`}
   `,
   RegisteredButton: styled.button`
-    ${tw`bg-brand text-white hover:bg-brandHover m-1 rounded`}
+    ${tw`ml-3 text-lg bg-brand text-white hover:bg-brandHover m-1 rounded min-w-[100px]`}
   `,
   SignUpButton: styled.button`
     ${tw`bg-brand w-full mt-10 py-2 px-4 rounded-md text-xl font-cafe24 text-white hover:bg-brandHover`}
