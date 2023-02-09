@@ -15,7 +15,7 @@ export default function NavStudent() {
   };
   return (
     <S.Box>
-      <Link to="/">마르마르 소개</Link>
+      <Link to="/Info">마르마르 소개</Link>
       <ClassDropDown />
       <S.Class
         type="button"

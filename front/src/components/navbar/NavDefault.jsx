@@ -7,7 +7,7 @@ import ClassDropDown from './ClassDropDown';
 export default function NavDefault() {
   return (
     <S.Box>
-      <Link to="/">마르마르 소개</Link>
+      <Link to="/Info">마르마르 소개</Link>
       <ClassDropDown />
       <Link to="/SignIn">로그인</Link>
       <Link to="/SignUp">회원가입</Link>

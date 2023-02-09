@@ -1,28 +1,39 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
 export default function HomeHeader() {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   return (
-    <S.Container>
-      <div>
-        <S.Container className="bg-main-bg bg-cover bg-no-repeat" />
-      </div>
-      <S.Box>
+    <S.Header>
+      <Slider {...settings}>
         <div>
-          <div>서비스를 소개합니다</div>
-          <p>차별없는 서비스</p>
+          <div className="bg-main-bg-1 bg-cover bg-no-repeat w-[100vw] h-[92vh]" />
         </div>
-      </S.Box>
-    </S.Container>
+        <div>
+          <div className="bg-main-bg-2 bg-cover bg-no-repeat w-[100vw] h-[92vh]" />
+        </div>
+        <div>
+          <div className="bg-main-bg-3 bg-cover bg-no-repeat w-[100vw] h-[92vh]" />
+        </div>
+      </Slider>
+    </S.Header>
   );
 }
 
 const S = {
-  Container: styled.div`
-    ${tw`h-96 md:h-[580px] lg:h-[670px] `}
-  `,
-  Box: styled.div`
-    ${tw`flex px-8 bg-blue-800 text-white md:h-[200px] lg:h-[500px]`}
+  Header: styled.div`
+    ${tw`mt-[8vh] w-[100%] h-[92%]`}
   `,
 };
