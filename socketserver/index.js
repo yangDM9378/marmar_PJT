@@ -2,20 +2,16 @@ import express from "express";
 import { Server } from "socket.io";
 import http from "http";
 
-// const app = express();
-// const port = 4000;
-// const server = http.createServer(app);
-// const io = new Server(server, {
-//     cors : {
-//         origin :"*",
-//         credentials :true
-//     }
-// });
-const express = require("express"); 
-const app = express(); 
-const socketIo = require("socket.io");
-var http = require("http").createServer(app);
-const io = socketIo(server);
+const app = express();
+const port = 4000;
+const server = http.createServer(app);
+const io = new Server(server, {
+    cors : {
+        origin :"*",
+        credentials :true
+    }
+});
+
 
 // 연결 시작
 io.on('connection', socket=>{
