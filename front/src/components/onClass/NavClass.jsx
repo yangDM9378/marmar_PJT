@@ -71,7 +71,7 @@ export default function NavClass() {
   });
 
   return (
-    <div className={`${student ? 'hidden' : ''}`}>
+    <S.Box className={`${student ? 'hidden' : ''}`}>
       <S.Setting>
         <S.Dropdown
           options={programOption}
@@ -95,14 +95,19 @@ export default function NavClass() {
           시작
         </S.Button>
       </S.Setting>
-    </div>
+    </S.Box>
   );
 }
 
 const S = {
+  Box: styled.div`
+    ${tw`absolute z-50 w-[600px] right-[4%] top-2`}
+    p {
+      ${tw`pl-3 font-bold`}
+    }
+  `,
   Setting: styled.section`
-    padding: 10px;
-    display: flex;
+    ${tw`rounded flex`}
   `,
   Dropdown: styled(Dropdown)`
     ${tw`font-cafe24`}
@@ -110,8 +115,7 @@ const S = {
     flex: 1;
   `,
   Button: styled.button`
-    ${tw`font-cafe24`}
-    color: black;
+    ${tw`font-cafe24 bg-white px-3 h-[41px] mt-[11px] rounded hover:bg-slate-200`}/* color: black;
     font-size: 15px;
     border: 2px solid;
     border-radius: 0.6em;
@@ -122,6 +126,6 @@ const S = {
       transform: translateY(-0px);
       background-color: yellow;
       color: #000000;
-    }
+    } */
   `,
 };

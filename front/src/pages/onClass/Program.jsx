@@ -15,7 +15,7 @@ export default function Program() {
   }, []);
 
   return (
-    <div>
+    <div className="h-full max-h-full">
       <OnClassProvider>
         <NavClass />
         <ProgramClass />

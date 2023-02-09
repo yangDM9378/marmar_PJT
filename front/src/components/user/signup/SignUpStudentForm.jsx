@@ -18,6 +18,14 @@ export default function SignUpStudentForm() {
   } = useForm();
 
   const onSubmit = data => {
+    console.log('id : ', typeof data.id);
+    console.log('password : ', typeof data.password);
+    console.log('passwordHelper : ', typeof data.password_helper);
+    console.log('name : ', typeof data.name);
+    console.log('nameHelper : ', typeof data.name_helper);
+    console.log('birth : ', typeof data.birth);
+    console.log('phone : ', typeof data.phone);
+    console.log('email : ', typeof data.email);
     useSignUpStudent.mutate({
       id: data.id,
       password: data.password,
