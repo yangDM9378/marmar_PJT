@@ -36,8 +36,8 @@ const S = {
     ${tw`flex-col rounded-xl text-center border-8 border-brand `}
     .img {
       ${tw`bg-white rounded-xl p-3`}
-      width: 12rem;
-      height: 12rem;
+      width: 300px;
+      height: 300px;
     }
     ,
     .word {
