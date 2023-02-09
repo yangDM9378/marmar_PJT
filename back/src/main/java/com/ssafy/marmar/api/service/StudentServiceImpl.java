@@ -5,6 +5,7 @@ import com.ssafy.marmar.api.request.EvaluationPostReq;
 import com.ssafy.marmar.api.request.StudentRegisterPostReq;
 import com.ssafy.marmar.api.request.UpdatePwdPostReq;
 import com.ssafy.marmar.api.response.EvaluationRes;
+import com.ssafy.marmar.api.response.StudentSearchRes;
 import com.ssafy.marmar.api.response.WordRes;
 import com.ssafy.marmar.db.model.Evaluation;
 import com.ssafy.marmar.db.model.Student;
@@ -122,6 +123,12 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void deleteStudent(Student student) {
+
+        List<Evaluation> evaluations = evaluationRepository.findAllByStudentNum(student.getNum());
+        for(Evaluation evaluation : evaluations){
+            evaluationRepository.delete(evaluation);
+        }
+
         studentRepository.delete(student);
     }
 

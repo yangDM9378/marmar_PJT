@@ -23,7 +23,7 @@ export default function MypageHeader() {
 
 const S = {
   MypageHeader: styled.div`
-    ${tw`h-[300px] bg-brand flex flex-col justify-center items-center space-y-3`}
+    ${tw`h-[300px] bg-brand flex flex-col mt-[8vh] justify-center items-center space-y-3`}
   `,
   HeaderInfo: styled.h1`
     ${tw`text-3xl text-white font-cafe24`}
