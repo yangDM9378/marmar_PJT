@@ -27,9 +27,8 @@ export default function ClockDifficulty() {
 
 const S = {
   ProgramSection: styled.div`
-    ${tw`flex bg-brand min-h-[100vh] mt-[8vh] p-[4vh] justify-center items-center`}
-
-  `,
+    ${tw`flex bg-brand min-h-[100vh] mt-[8vh] p-[4vh] justify-center items-center`}  
+    `,
   ProgramBox: styled.div`
     ${tw`flex-col max-h-[80vh] max-w-[80vh] bg-white rounded-3xl p-12`}
     @media screen and (max-width: 1000px) {

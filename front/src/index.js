@@ -29,7 +29,8 @@ import FindPw from './pages/user/FindPw';
 import Program from './pages/onClass/Program';
 import ProtectedRouteTherapist from './pages/common/ProtectedRouteTherapist';
 import ProtectedRouteStudent from './pages/common/ProtectedRouteStudent';
-import Evaluation from './components/onClass/evaluation/Evaluation';
+import Evaluation from './components/onClass/Evaluation';
+import Info from './pages/common/Info';
 
 const router = createBrowserRouter([
   {
@@ -40,7 +41,8 @@ const router = createBrowserRouter([
     children: [
       // Home
       { index: true, path: '/', element: <Home /> },
-
+      // Info
+      { path: '/Info', element: <Info /> },
       // Login
       {
         path: '/SignIn',

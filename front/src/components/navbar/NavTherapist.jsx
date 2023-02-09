@@ -13,7 +13,7 @@ export default function NavTherapist() {
   };
   return (
     <S.Box>
-      <Link to="/">마르마르 소개</Link>
+      <Link to="/Info">마르마르 소개</Link>
       <ClassDropDown />
       <S.Class type="button" onClick={onClass} className="bg-slate-200">
         방생성
