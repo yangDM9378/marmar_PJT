@@ -43,7 +43,7 @@ export default function ShowResult() {
     ],
   });
   return (
-    <div style={{ width: 900 }}>
+    <div style={{ width: 1000 }}>
       <BarChart chartData={userData} />
     </div>
   );
