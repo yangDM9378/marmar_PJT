@@ -17,6 +17,7 @@ const evaluateApi = payload => {
     evalAbility: payload.evalAbility,
     evalAttitude: payload.evalAttitude,
     evalConcentration: payload.evalConcentration,
+    comments: payload.comments,
   });
 };
 
