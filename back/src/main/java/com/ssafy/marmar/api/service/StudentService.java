@@ -6,6 +6,9 @@ import com.ssafy.marmar.api.request.UpdatePwdPostReq;
 import com.ssafy.marmar.api.response.EvaluationRes;
 import com.ssafy.marmar.db.model.Student;
 
+//import java.sql.Date;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public interface StudentService {
@@ -35,4 +38,6 @@ public interface StudentService {
     boolean insertEvaluation(int studentNum, EvaluationPostReq evaluationPostReq);
 
     List<EvaluationRes> selectList(int studentNum);
+
+    List<EvaluationRes> selectDateList(int studentNum, LocalDate date) throws Exception;
 }
