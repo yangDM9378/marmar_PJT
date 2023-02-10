@@ -24,6 +24,7 @@ export default function PictureProgram() {
     setModalWrong,
     modalNo,
     setModalNo,
+    soundNext,
   } = useContext(SttContext);
   const navigate = useNavigate();
 
@@ -41,10 +42,12 @@ export default function PictureProgram() {
   const [cnt, setCnt] = useState(0);
   const cntPlus = () => {
     cnt < 9 && setCnt(cnt + 1);
+    soundNext();
     setIsCheckArr([false, false, false, false]);
   };
   const cntMinus = () => {
     cnt > 0 && setCnt(cnt - 1);
+    soundNext();
     setIsCheckArr([false, false, false, false]);
   };
 
