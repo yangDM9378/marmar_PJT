@@ -9,7 +9,7 @@ insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (5,
 insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (6, "middle", "img/word/6.png", "피아노");
 insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (7, "middle", "img/word/7.png", "냉장고");
 insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (8, "middle", "img/word/8.png", "옷장");
-insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (9, "middle", "img/word/9.png", "구급차");
+insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (9, "middle", "img/word/9.png", "소방차");
 insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (10, "middle", "img/word/10.png", "비행기");
 
 insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (11, "low", "img/word/11.png", "바지");
@@ -33,28 +33,28 @@ insert into marmar.watch (num, difficulty, image_path, answer) values (8, "middl
 insert into marmar.watch (num, difficulty, image_path, answer) values (9, "middle", "img/clock/9.png", "2시 40분");
 insert into marmar.watch (num, difficulty, image_path, answer) values (10, "middle", "img/clock/10.png", "12시 10분");
 
-insert into marmar.watch (num, difficulty, image_path, answer) values (11, "middle", "img/clock/11.png", "3시");
-insert into marmar.watch (num, difficulty, image_path, answer) values (12, "middle", "img/clock/12.png", "2시");
-insert into marmar.watch (num, difficulty, image_path, answer) values (13, "middle", "img/clock/13.png", "1시");
-insert into marmar.watch (num, difficulty, image_path, answer) values (14, "middle", "img/clock/14.png", "6시");
-insert into marmar.watch (num, difficulty, image_path, answer) values (15, "middle", "img/clock/15.png", "8시");
+insert into marmar.watch (num, difficulty, image_path, answer) values (11, "middle", "img/clock/11.png", "4시");
+insert into marmar.watch (num, difficulty, image_path, answer) values (12, "middle", "img/clock/12.png", "7시");
+insert into marmar.watch (num, difficulty, image_path, answer) values (13, "middle", "img/clock/13.png", "9시");
+insert into marmar.watch (num, difficulty, image_path, answer) values (14, "middle", "img/clock/14.png", "11시");
+insert into marmar.watch (num, difficulty, image_path, answer) values (15, "middle", "img/clock/15.png", "2시");
 
 
 -- 다른 하나를 찾아요 insert
-insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (1,1, "high", "img/picture/1.png", "img/picture/2.png","img/picture/3.png","img/picture/4.png");
-insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (2,2, "high", "img/picture/5.png", "img/picture/6.png","img/picture/7.png","img/picture/8.png");
-insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (3,1, "high", "img/picture/9.png", "img/picture/10.png","img/picture/11.png","img/picture/12.png");
-insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (4,3, "high", "img/picture/13.png", "img/picture/14.png","img/picture/15.png","img/picture/16.png");
+insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (1,3, "high", "img/picture/1.png", "img/picture/2.png","img/picture/3.png","img/picture/4.png");
+insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (2,4, "high", "img/picture/5.png", "img/picture/6.png","img/picture/7.png","img/picture/8.png");
+insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (3,2, "high", "img/picture/9.png", "img/picture/10.png","img/picture/11.png","img/picture/12.png");
+insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (4,4, "high", "img/picture/13.png", "img/picture/14.png","img/picture/15.png","img/picture/16.png");
 insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (5,1, "high", "img/picture/17.png", "img/picture/18.png","img/picture/19.png","img/picture/20.png");
 
-insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (6,2, "middle", "img/picture/21.png", "img/picture/22.png","img/picture/23.png","img/picture/24.png");
-insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (7,1, "middle", "img/picture/25.png", "img/picture/26.png","img/picture/27.png","img/picture/28.png");
-insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (8,3, "middle", "img/picture/29.png", "img/picture/30.png","img/picture/31.png","img/picture/32.png");
+insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (6,4, "middle", "img/picture/21.png", "img/picture/22.png","img/picture/23.png","img/picture/24.png");
+insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (7,2, "middle", "img/picture/25.png", "img/picture/26.png","img/picture/27.png","img/picture/28.png");
+insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (8,4, "middle", "img/picture/29.png", "img/picture/30.png","img/picture/31.png","img/picture/32.png");
 insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (9,1, "middle", "img/picture/33.png", "img/picture/34.png","img/picture/35.png","img/picture/36.png");
-insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (10,2, "middle", "img/picture/37.png", "img/picture/38.png","img/picture/39.png","img/picture/40.png");
+insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (10,3, "middle", "img/picture/37.png", "img/picture/38.png","img/picture/39.png","img/picture/40.png");
 
-insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (11,1, "low", "img/picture/41.png", "img/picture/42.png","img/picture/43.png","img/picture/44.png");
+insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (11,4, "low", "img/picture/41.png", "img/picture/42.png","img/picture/43.png","img/picture/44.png");
 insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (12,3, "low", "img/picture/45.png", "img/picture/46.png","img/picture/47.png","img/picture/48.png");
-insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (13,1, "low", "img/picture/49.png", "img/picture/50.png","img/picture/51.png","img/picture/52.png");
-insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (14,2, "low", "img/picture/53.png", "img/picture/54.png","img/picture/55.png","img/picture/56.png");
+insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (13,2, "low", "img/picture/49.png", "img/picture/50.png","img/picture/51.png","img/picture/52.png");
+insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (14,4, "low", "img/picture/53.png", "img/picture/54.png","img/picture/55.png","img/picture/56.png");
 insert into marmar.picture (num, answer, difficulty, picture_one, picture_two, picture_three, picture_four) values (15,1, "low", "img/picture/57.png", "img/picture/58.png","img/picture/59.png","img/picture/60.png");

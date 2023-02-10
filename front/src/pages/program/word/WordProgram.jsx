@@ -19,7 +19,7 @@ export default function WordProgram() {
     modalCorrect,
     setModalCorrect,
     modalWrong,
-    setmodalWrong,
+    setModalWrong,
   } = useContext(SttContext);
   const location = useLocation();
   const difficulty = location.state?.difficulty;
@@ -62,11 +62,11 @@ export default function WordProgram() {
       <WrongModal
         isOpen={modalWrong}
         close={() => {
-          setmodalWrong(false);
+          setModalWrong(false);
         }}
       />
+
       <S.WordDifficulty>
-        {difficulty}
         <button type="button" onClick={goWordDifficulty}>
           처음으로
         </button>
@@ -76,6 +76,7 @@ export default function WordProgram() {
       <S.WordContext>
         [Q{cnt + 1}] 다음 그림과 단어를 보고 따라 읽어보세요.
       </S.WordContext>
+
       <S.WordBody>
         <S.WordBtnAndGame>
           <S.WordBtn>
@@ -102,20 +103,19 @@ export default function WordProgram() {
 
 const S = {
   WordProgramSection: styled.div`
-    ${tw`bg-brand min-h-[580px] flex-col`}
+    ${tw` bg-brand mt-[100px]`}
   `,
-
-  WordDifficulty: styled.h4`
-    ${tw`flex text-xl justify-end text-white`}
+  WordDifficulty: styled.div`
+    ${tw`flex text-[32px] justify-end items-center mb-8 text-white`}
   `,
-  WordTitle: styled.h1`
-    ${tw` flex text-4xl min-h-[60] justify-center items-center font-bold text-white`}
+  WordTitle: styled.div`
+    ${tw` flex text-[50px] h-[80px] mb-5 justify-center items-center font-bold text-white`}
   `,
-  WordContext: styled.p`
-    ${tw` flex text-xl min-h-[100] justify-center font-thin text-white`}
+  WordContext: styled.div`
+    ${tw` flex text-2xl mb-10 h-[500] justify-center font-thin text-white`}
   `,
   WordBody: styled.div`
-    ${tw`bg-white`}
+    ${tw`flex flex-col justify-center items-stretch p-[90px] bg-white`}
   `,
   WordBtnAndGame: styled.div`
     ${tw`flex justify-around`}
@@ -126,7 +126,7 @@ const S = {
       ${tw`border-2 rounded-full text-6xl text-brand`}
     }
     .disbtn {
-      ${tw`cursor-not-allowed border-2 rounded-full text-6xl text-gray-600`}
+      ${tw`cursor-not-allowed border-2 rounded-full text-6xl`}
     }
   `,
 

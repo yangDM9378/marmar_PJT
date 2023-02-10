@@ -8,12 +8,23 @@ import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md';
 import { getPictureApi } from '../../../api/programApi';
 import PictureGame from '../../../components/program/PictureGame';
 import { SttContext } from '../../../context/SttContext';
+import CorrectModal from '../../../components/program/CorrectModal';
+import WrongModal from '../../../components/program/WrongModal';
+import NoModal from '../../../components/program/NoModal';
 
 export default function PictureProgram() {
   const location = useLocation();
   const difficulty = location.state?.difficulty;
   const [PictureData, setPictureData] = useState([[]]);
-  const { setIsCheckArr } = useContext(SttContext);
+  const {
+    setIsCheckArr,
+    modalCorrect,
+    setModalCorrect,
+    modalWrong,
+    setModalWrong,
+    modalNo,
+    setModalNo,
+  } = useContext(SttContext);
   const navigate = useNavigate();
 
   // 데이터 가져오기
@@ -23,7 +34,6 @@ export default function PictureProgram() {
 
   const getPictureData = async () => {
     const response = await getPictureApi(difficulty);
-    console.log(response.data);
     setPictureData(response.data);
   };
 
@@ -44,45 +54,69 @@ export default function PictureProgram() {
 
   return (
     <S.PictureProgramSection>
+      <CorrectModal
+        isOpen={modalCorrect}
+        close={() => {
+          setModalCorrect(false);
+        }}
+      />
+      <WrongModal
+        isOpen={modalWrong}
+        close={() => {
+          setModalWrong(false);
+        }}
+      />
+      <NoModal
+        isOpen={modalNo}
+        close={() => {
+          setModalNo(false);
+        }}
+      />
+
       <S.PictureDifficulty>
-        {difficulty}
         <button type="button" onClick={goPictureDifficulty}>
           처음으로
         </button>
       </S.PictureDifficulty>
+
       <S.PictureTitle>그림 맞추기</S.PictureTitle>
       <S.PictureContext>
         [Q{cnt + 1}] 다음 그림 중 관련없는 하나를 고르세요.
       </S.PictureContext>
-      <S.PictureBtnAndGame>
-        <S.PictureBtn>
-          {(cnt > 0 && (
-            <MdNavigateBefore className="btn" onClick={cntMinus} />
-          )) || <MdNavigateBefore className="disbtn" />}
-        </S.PictureBtn>
-        <S.PictureBtn>
-          {(cnt < 4 && (
-            <MdNavigateNext className="btn" onClick={cntPlus} />
-          )) || <MdNavigateNext className="disbtn" />}
-        </S.PictureBtn>
-      </S.PictureBtnAndGame>
-      <PictureGame {...PictureData[0][cnt]} />
+      <S.PictureBody>
+        <S.PictureBtnAndGame>
+          <S.PictureBtn>
+            {(cnt > 0 && (
+              <MdNavigateBefore className="btn" onClick={cntMinus} />
+            )) || <MdNavigateBefore className="disbtn" />}
+          </S.PictureBtn>
+          <PictureGame {...PictureData[0][cnt]} />
+          <S.PictureBtn>
+            {(cnt < 4 && (
+              <MdNavigateNext className="btn" onClick={cntPlus} />
+            )) || <MdNavigateNext className="disbtn" />}
+          </S.PictureBtn>
+        </S.PictureBtnAndGame>
+      </S.PictureBody>
     </S.PictureProgramSection>
   );
 }
 
 const S = {
   PictureProgramSection: styled.div`
-    ${tw` bg-brand min-h-[800px] flex-col`}
+    ${tw` bg-brand mt-[100px]`}
   `,
   PictureDifficulty: styled.h4`
-    ${tw`flex text-xl justify-end `}
+    ${tw`flex text-[32px] justify-end items-center mb-8 text-white`}
   `,
-  PictureTitle: styled.h1`
-    ${tw` flex text-4xl min-h-[60px] justify-center items-center font-bold text-white`}
+  PictureTitle: styled.div`
+    ${tw` flex text-[50px] h-[80px] mb-5 justify-center items-center font-bold text-white`}
   `,
-  PictureContext: styled.p`
-    ${tw` flex text-xl min-h-[100px] justify-center font-thin text-white`}
+  PictureContext: styled.div`
+    ${tw` flex text-2xl mb-10 h-[500] justify-center font-thin text-white`}
+  `,
+  PictureBody: styled.div`
+    ${tw`flex flex-col justify-center items-stretch p-[90px] bg-white`}
   `,
   PictureBtnAndGame: styled.div`
     ${tw`flex justify-around`}
@@ -93,7 +127,7 @@ const S = {
       ${tw`border-2 rounded-full text-6xl text-brand`}
     }
     .disbtn {
-      ${tw`cursor-not-allowed border-2 rounded-full text-6xl text-gray-600`}
+      ${tw`cursor-not-allowed border-2 rounded-full text-6xl`}
     }
   `,
 };

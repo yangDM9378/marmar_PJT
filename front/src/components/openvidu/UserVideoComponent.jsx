@@ -15,12 +15,12 @@ export default class UserVideoComponent extends Component {
     return (
       <div className="h-[100%]">
         {this.props.streamManager !== undefined ? (
-          <div className="border-4 border-black h-[100%]">
+          <div className="h-[100%]">
             <OpenViduVideoComponent
               streamManager={this.props.streamManager}
               className=""
             />
-            <div className="absolute top-0 z-10 bg-red-200 pl-3">
+            <div className="absolute top-0 z-10 bg-red-200 pl-3 hidden">
               <p>{this.getNicknameTag()}</p>
             </div>
           </div>

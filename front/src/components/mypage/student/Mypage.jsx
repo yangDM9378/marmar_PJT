@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
@@ -24,7 +25,9 @@ export default function Mypage() {
           <ul>
             <S.TabList
               className={`${
-                activeTab === 0 ? 'bg-brand text-white' : 'bg-slate-300'
+                activeTab === 0
+                  ? 'bg-brandHover  text-white font-bold text-[20px]'
+                  : 'bg-gray-300 text-gray-60 text-[20px]'
               }`}
               onClick={() => changeTab(0)}
             >
@@ -32,7 +35,9 @@ export default function Mypage() {
             </S.TabList>
             <S.TabList
               className={`${
-                activeTab === 1 ? 'bg-brand text-white' : 'bg-slate-300'
+                activeTab === 1
+                  ? 'bg-brandHover  text-white font-bold text-[20px]'
+                  : 'bg-gray-300 text-gray-60 text-[20px]'
               }`}
               onClick={() => changeTab(1)}
             >
@@ -40,7 +45,9 @@ export default function Mypage() {
             </S.TabList>
             <S.TabList
               className={`${
-                activeTab === 2 ? 'bg-brand text-white' : 'bg-slate-300'
+                activeTab === 2
+                  ? 'bg-brandHover  text-white font-bold text-[20px]'
+                  : 'bg-gray-300 text-gray-60 text-[20px]'
               }`}
               onClick={() => changeTab(2)}
             >
@@ -54,16 +61,28 @@ export default function Mypage() {
   );
 }
 const S = {
+  // Body: styled.div`
+  //   ${tw`flex mt-10 max-w-7xl mx-auto`}
+  // `,
+  // TabBox: styled.div`
+  //   ${tw`flex justify-end w-96`}
+  // `,
+  // TabList: styled.li`
+  //   ${tw`hover:cursor-pointer m-5 p-3 w-32 rounded-xl font-cafe24 text-xl text-center`}
+  // `,
+  // ContentBox: styled.div`
+  //   ${tw`w-full mr-20 m-5`}
+  // `,
   Body: styled.div`
-    ${tw`flex mt-10 max-w-7xl mx-auto`}
+    ${tw`flex`}
   `,
   TabBox: styled.div`
-    ${tw`flex justify-end w-96`}
+    ${tw`ml-60 mt-20`}
   `,
   TabList: styled.li`
-    ${tw`hover:cursor-pointer m-5 p-3 w-32 rounded-xl font-cafe24 text-xl text-center`}
+    ${tw`hover:cursor-pointer  ml-5 mb-5 mt-5 m-5 p-3 w-48 text-center rounded-xl `}
   `,
   ContentBox: styled.div`
-    ${tw`w-full mr-20 m-5`}
+    ${tw`mr-96 w-full m-5 `}
   `,
 };

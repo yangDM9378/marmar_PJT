@@ -9,6 +9,9 @@ import axios from 'axios';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import { useNavigate } from 'react-router-dom';
+import { BsCameraVideo, BsCameraVideoOff } from 'react-icons/bs';
+import { HiOutlineSpeakerWave, HiOutlineSpeakerXMark } from 'react-icons/hi2';
+import { SlCallEnd } from 'react-icons/sl';
 import { studentCheckApi } from '../../../api/userApi';
 import { getTeacherApi } from '../../../api/liveClassApi';
 import VideoModal from '../VideoModal';
@@ -29,7 +32,9 @@ export default function StudentVideoRoom() {
   const [modalOpen, setModalOpen] = useState(false);
   const [video, setVideo] = useState(true);
   const [audio, setAudio] = useState(true);
-
+  const [videoText, setVideoText] = useState(false);
+  const [audioText, setAudioText] = useState(false);
+  const [endText, setEndText] = useState(false);
   // eslint-disable-next-line prefer-const, no-undef-init
   let OV = undefined;
 
@@ -106,6 +111,12 @@ export default function StudentVideoRoom() {
   const closeModal = () => {
     setModalOpen(false);
   };
+  useEffect(() => {
+    console.log(subscribers);
+    if (!subscribers) {
+      leaveSession();
+    }
+  }, [subscribers]);
 
   // 세션 아이디 설정
   useEffect(() => {
@@ -157,6 +168,7 @@ export default function StudentVideoRoom() {
           let videoDevices = devices.filter(
             device => device.kind === 'videoinput',
           );
+          console.log(videoDevices);
           // --- 5) Get your own camera stream ---(퍼블리셔)
           let publisher = OV.initPublisher(undefined, {
             audioSource: undefined, // The source of audio. If undefined default microphone
@@ -188,7 +200,7 @@ export default function StudentVideoRoom() {
     const mySession = session;
     if (mySession) {
       mySession.disconnect();
-      navigate('/'); // 메인페이지로 이동
+      navigate('/StudentClassEnd'); // 메인페이지로 이동
     }
     // 속성을 초기화함(필요한 속성은 초기화하면 안 됨)
     OV = null;
@@ -218,7 +230,7 @@ export default function StudentVideoRoom() {
       let index = tmpSubscribers.indexOf(streamManager, 0);
       if (index > -1) {
         tmpSubscribers.splice(index, 1);
-        setSubscribers(tmpSubscribers); // 이거 안 되면 구조분해할당으로 업데이트 할 것
+        setSubscribers(...tmpSubscribers); // 이거 안 되면 구조분해할당으로 업데이트 할 것
       }
     },
     [subscribers],
@@ -249,36 +261,102 @@ export default function StudentVideoRoom() {
       ) : null}
       {session !== undefined ? (
         <VideoModal open={modalOpen}>
-          <S.LiveContainer className="min-h-screen bg-video-bg">
-            <S.VideoSection>
-              {mainStreamManager !== undefined ? (
-                <S.MyVideo>
-                  <UserVideoComponent streamManager={mainStreamManager} />
-                  <S.HandleVideoBox>
-                    <S.HandleVideoButton type="button" onClick={handleAudio}>
-                      음소거
-                    </S.HandleVideoButton>
-                    <S.HandleVideoButton type="button" onClick={handleVideo}>
-                      비디오
-                    </S.HandleVideoButton>
-                  </S.HandleVideoBox>
-                </S.MyVideo>
-              ) : null}
-              {subscribers[0] && (
-                <S.UserVideo>
-                  <div className="h-[100%]">
-                    <UserVideoComponent streamManager={subscribers[0]} />
-                  </div>
-                </S.UserVideo>
-              )}
-            </S.VideoSection>
-            <ClassSection
-              className="grid cols-2"
-              close={(closeModal, leaveSession)}
-              sessionId={mySessionId}
-              streamManager={publisher}
-            />
-          </S.LiveContainer>
+          <S.ModalContainer>
+            <S.LiveContainer className="min-h-screen bg-video-bg">
+              <S.VideoSection>
+                {subscribers && subscribers[0] && (
+                  <S.UserVideo>
+                    <div className="h-[100%]">
+                      <UserVideoComponent streamManager={subscribers[0]} />
+                    </div>
+                  </S.UserVideo>
+                )}
+                {mainStreamManager !== undefined ? (
+                  <S.MyVideo>
+                    <UserVideoComponent streamManager={mainStreamManager} />
+                  </S.MyVideo>
+                ) : null}
+              </S.VideoSection>
+              <S.ClassBox>
+                <ClassSection
+                  close={(closeModal, leaveSession)}
+                  sessionId={mySessionId}
+                  streamManager={publisher}
+                />
+              </S.ClassBox>
+            </S.LiveContainer>
+            <S.Footer>
+              <div className="col-span-1" />
+              <S.HandleVideoBox>
+                <S.HandleVideoButton>
+                  {audioText && (
+                    <S.SoundText>
+                      {audio ? '마이크 끄기' : '마이크 켜기'}
+                    </S.SoundText>
+                  )}
+                </S.HandleVideoButton>
+                <S.HandleVideoButton
+                  type="button"
+                  onClick={handleAudio}
+                  className={`${audio ? 'bg-slate-600' : 'bg-red-600'}`}
+                >
+                  {audio ? (
+                    <HiOutlineSpeakerWave
+                      className="text-white text-[2vh]"
+                      onMouseEnter={() => setAudioText(true)}
+                      onMouseLeave={() => setAudioText(false)}
+                    />
+                  ) : (
+                    <HiOutlineSpeakerXMark
+                      className="text-white text-[2vh]"
+                      onMouseEnter={() => setAudioText(true)}
+                      onMouseLeave={() => setAudioText(false)}
+                    />
+                  )}
+                  {videoText && (
+                    <S.VideoText>
+                      {video ? '비디오 끄기' : '비디오 켜기'}
+                    </S.VideoText>
+                  )}
+                </S.HandleVideoButton>
+                <S.HandleVideoButton
+                  type="button"
+                  onClick={handleVideo}
+                  className={`${video ? 'bg-slate-600' : 'bg-red-600'}`}
+                >
+                  {video ? (
+                    <BsCameraVideo
+                      className="text-white text-[2vh]"
+                      onMouseEnter={() => setVideoText(true)}
+                      onMouseLeave={() => setVideoText(false)}
+                    />
+                  ) : (
+                    <BsCameraVideoOff
+                      className="text-white text-[2vh]"
+                      onMouseEnter={() => setVideoText(true)}
+                      onMouseLeave={() => setVideoText(false)}
+                    />
+                  )}
+                  {endText && <S.EndText>수업 종료하기</S.EndText>}
+                </S.HandleVideoButton>
+                <S.HandleVideoButton
+                  type="button"
+                  onClick={leaveSession}
+                  className="bg-red-600"
+                >
+                  <SlCallEnd
+                    className="text-white text-[2vh]"
+                    onMouseEnter={() => setEndText(true)}
+                    onMouseLeave={() => setEndText(false)}
+                  />
+                </S.HandleVideoButton>
+                <S.HandleVideoButton>
+                  <div className="invisible">d</div>
+                </S.HandleVideoButton>
+              </S.HandleVideoBox>
+              <div className="col-span-1" />
+            </S.Footer>
+          </S.ModalContainer>
         </VideoModal>
       ) : null}
     </S.PageContainer>
@@ -295,22 +373,40 @@ const S = {
   PageContainer: styled.div`
     ${tw`w-full bg-brand flex justify-center`}
   `,
+  ModalContainer: styled.div`
+    ${tw`h-[92vh]`}
+  `,
   LiveContainer: styled.div`
-    ${tw`grid grid-cols-3 w-full max-h-full bg-cover`}
+    ${tw`grid grid-cols-3 w-full max-h-[92vh] min-h-[92vh] h-full`}
   `,
   VideoSection: styled.div`
-    ${tw`grid-cols-1 flex flex-col max-h-screen justify-around border-4 border-black m-5 p-5`}
+    ${tw`grid-cols-1 flex flex-col max-h-[89vh] justify-around space-y-1 rounded m-5`}
+  `,
+  ClassBox: styled.div`
+    ${tw`col-span-2 py-7 px-3 max-h-[92vh]`}
   `,
   MyVideo: styled.div`
-    ${tw`relative border-4 border-blue-600 h-[45%]`}
+    ${tw`relative h-[50%]`}
   `,
   HandleVideoBox: styled.div`
-    ${tw`absolute top-0 right-0 space-x-3 pr-2`}
+    ${tw`space-x-4 col-span-1 flex justify-center items-center relative`}
+  `,
+  SoundText: styled.div`
+    ${tw`text-white absolute bg-slate-600 p-1 rounded bottom-[6vh]`}
+  `,
+  VideoText: styled.div`
+    ${tw`text-white absolute bg-slate-600 p-1 rounded bottom-[6vh] ml-[2vh]`}
+  `,
+  EndText: styled.div`
+    ${tw`text-white absolute bg-slate-600 p-1 rounded bottom-[6vh] ml-[1vh]`}
   `,
   HandleVideoButton: styled.button`
-    ${tw`bg-slate-300`}
+    ${tw`p-3 rounded-full opacity-100`}
   `,
   UserVideo: styled.div`
-    ${tw`relative border-4 border-red-400 h-[45%]`}
+    ${tw`relative h-[50%]`}
+  `,
+  Footer: styled.div`
+    ${tw`h-[8vh] grid grid-cols-3 bg-slate-200 opacity-90`}
   `,
 };

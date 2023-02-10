@@ -7,8 +7,8 @@ import lombok.Setter;
 @Setter
 public class EvaluationPostReq {
 
-    int evalAchieve;
+    int evalAbility;
+    int evalAttitude;
     int evalConcentration;
-    int evalEntire;
 
 }

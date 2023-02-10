@@ -1,14 +1,20 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable react/jsx-props-no-spreading */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import useSingUp from '../../../hooks/queries/useSingUp';
-import { idCheckTherapistApi } from '../../../api/userApi';
+import {
+  idCheckTherapistApi,
+  emailCheckTherapistApi,
+} from '../../../api/userApi';
 
 export default function SignUpTherapistForm() {
   const { useSignUpTherapist } = useSingUp();
+  const [registerdId, setRegisteredId] = useState(true);
+  const [registerdEmail, setRegisteredEmail] = useState(true);
 
   const {
     register,
@@ -17,8 +23,7 @@ export default function SignUpTherapistForm() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = data => {
-    console.log(data);
+  const onRegister = data => {
     useSignUpTherapist.mutate({
       id: data.id,
       password: data.password,
@@ -27,6 +32,8 @@ export default function SignUpTherapistForm() {
       department: data.department,
       email: data.email,
     });
+    setRegisteredId(true);
+    setRegisteredEmail(true);
   };
 
   const onCheckId = async id => {
@@ -36,14 +43,29 @@ export default function SignUpTherapistForm() {
       alert('중복 아이디입니다.');
     } else {
       alert('사용가능한 아이디입니다.');
+      setRegisteredId(false);
+    }
+  };
+
+  const onCheckEmail = async email => {
+    console.log(email);
+    const response = await emailCheckTherapistApi(email);
+    if (!response.data) {
+      alert('이미 사용중인 이메일입니다.');
+    } else {
+      alert('사용가능한 이메일입니다.');
+      setRegisteredEmail(false);
     }
   };
 
   return (
-    <div>
+    <S.SignUpSection>
       <S.Header>치료사 회원가입</S.Header>
-
-      <S.SignUpForm onSubmit={handleSubmit(onSubmit)}>
+      <S.SignUpForm
+        onSubmit={
+          !registerdId && !registerdEmail ? handleSubmit(onRegister) : undefined
+        }
+      >
         <S.Label htmlFor="name">치료사 이름</S.Label>
         <S.Input
           {...register('name', { required: '치료사 이름을 입력해주세요.' })}
@@ -61,23 +83,28 @@ export default function SignUpTherapistForm() {
         <br />
 
         <S.Label htmlFor="id">아이디</S.Label>
-        <S.Input
-          {...register('id', {
-            required: '아이디를 입력해주세요',
-            minLength: {
-              value: 5,
-              message: '최소 5자 이상의 아이디를 입력해주세요.',
-            },
-            maxLength: {
-              value: 12,
-              message: '12자 이하의 아이디만 사용가능합니다.',
-            },
-          })}
-          id="id"
-        />
-        <S.IdButton type="button" onClick={() => onCheckId(getValues('id'))}>
-          중복ID
-        </S.IdButton>
+        <S.InputBox>
+          <S.Input
+            {...register('id', {
+              required: '아이디를 입력해주세요',
+              minLength: {
+                value: 5,
+                message: '최소 5자 이상의 아이디를 입력해주세요.',
+              },
+              maxLength: {
+                value: 12,
+                message: '12자 이하의 아이디만 사용가능합니다.',
+              },
+            })}
+            id="id"
+          />
+          <S.RegisteredButton
+            type="button"
+            onClick={() => onCheckId(getValues('id'))}
+          >
+            중복확인
+          </S.RegisteredButton>
+        </S.InputBox>
         {errors.id && errors.id.message}
         <br />
 
@@ -125,18 +152,26 @@ export default function SignUpTherapistForm() {
         <br />
 
         <S.Label htmlFor="email">이메일</S.Label>
-        <S.Input
-          {...register('email', {
-            required: true,
-            pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: '유효한 이메일이 아닙니다.',
-            },
-          })}
-          id="email"
-          type="email"
-        />
-        {errors.email && errors.email.message}
+        <S.InputBox>
+          <S.Input
+            {...register('email', {
+              required: true,
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: '유효한 이메일이 아닙니다.',
+              },
+            })}
+            id="email"
+            type="email"
+          />
+          <S.RegisteredButton
+            type="button"
+            onClick={() => onCheckEmail(getValues('email'))}
+          >
+            중복확인
+          </S.RegisteredButton>
+        </S.InputBox>
+        {errors.id && errors.id.message}
         <br />
 
         <S.Label htmlFor="phone">휴대폰번호</S.Label>
@@ -149,13 +184,22 @@ export default function SignUpTherapistForm() {
 
         <S.SignUpButton type="submit">회원가입</S.SignUpButton>
       </S.SignUpForm>
-    </div>
+    </S.SignUpSection>
   );
 }
 
 const S = {
+  SignUpSection: styled.div`
+    ${tw`mt-8`}
+  `,
   SignUpForm: styled.form`
-    ${tw`py-10`}
+    ${tw`py-3`}
+  `,
+  Header: styled.h1`
+    ${tw`font-extrabold text-2xl text-center pb-2 font-cafe24`}
+  `,
+  Label: styled.label`
+    ${tw`font-extrabold text-xl text-center p-2`}
   `,
   Input: styled.input`
     ${tw`block w-full bg-transparent outline-none border-2 rounded-md py-2 px-4 mt-2 mb-2 placeholder-slate-400 focus:border-brand`}
@@ -163,16 +207,13 @@ const S = {
   ErrorMsg: styled.p`
     ${tw`mb-3 text-red-400 text-xs font-bold`}
   `,
-  Label: styled.label`
-    ${tw`font-extrabold text-xl text-center p-2`}
+  InputBox: styled.div`
+    ${tw`flex`}
   `,
-  Header: styled.h1`
-    ${tw`font-extrabold text-2xl text-center pb-2 font-cafe24`}
+  RegisteredButton: styled.button`
+    ${tw`ml-3 text-lg bg-brand text-white hover:bg-brandHover m-1 rounded min-w-[100px]`}
   `,
   SignUpButton: styled.button`
     ${tw`bg-brand w-full mt-10 py-2 px-4 rounded-md text-xl font-cafe24 text-white hover:bg-brandHover`}
-  `,
-  IdButton: styled.button`
-    ${tw`bg-brand text-white hover:bg-brandHover`}
   `,
 };

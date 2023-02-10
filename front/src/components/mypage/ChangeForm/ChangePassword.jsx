@@ -43,6 +43,7 @@ export default function ChangePassword() {
       nowPassword: data.nowPassword,
       modifyPassword: data.password,
     });
+    alert('비밀번호가 변경되었습니다.');
   };
 
   return (
@@ -96,10 +97,10 @@ export default function ChangePassword() {
 
 const S = {
   Form: styled.form`
-    ${tw`border-b-2 pb-3 space-y-5`}
+    ${tw`border-b-2 pb-3`}
   `,
   Label: styled.label`
-    ${tw`flex font-cafe24`}
+    ${tw`flex pb-2 font-bold`}
   `,
   InputBox: styled.div`
     ${tw`flex`}
@@ -108,7 +109,7 @@ const S = {
     ${tw`p-3 border-2 rounded-xl mr-3 w-full min-w-[160px]  focus:outline-brand`}
   `,
   Button: styled.button`
-    ${tw`p-3 bg-brandHover text-white min-w-[160px] rounded-xl block`}
+    ${tw`p-3 bg-brandHover text-white min-w-[200px] rounded-xl block`}
   `,
   ErrorMsg: styled.p`
     ${tw`mb-3 text-red-400 text-xs font-bold`}

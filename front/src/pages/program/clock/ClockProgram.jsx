@@ -10,9 +10,17 @@ import { SttContext } from '../../../context/SttContext';
 import ClockGame from '../../../components/program/ClockGame';
 import ReactSpeechRecognition from '../../../components/program/ReactSpeechRecognition';
 import TextToSpeech from '../../../components/program/TextToSpeech';
+import CorrectModal from '../../../components/program/CorrectModal';
+import WrongModal from '../../../components/program/WrongModal';
 
 export default function ClockProgram() {
-  const { stopForNext } = useContext(SttContext);
+  const {
+    stopForNext,
+    modalCorrect,
+    setModalCorrect,
+    modalWrong,
+    setModalWrong,
+  } = useContext(SttContext);
   const location = useLocation();
   const difficulty = location.state?.difficulty;
   const [Data, setData] = useState([[]]);
@@ -31,7 +39,7 @@ export default function ClockProgram() {
   // 문제 넘기기 관련
   const [cnt, setCnt] = useState(0);
   const cntPlus = () => {
-    cnt < 9 && setCnt(cnt + 1);
+    cnt < 4 && setCnt(cnt + 1);
     stopForNext();
   };
   const cntMinus = () => {
@@ -45,15 +53,29 @@ export default function ClockProgram() {
 
   return (
     <S.ClockProgramSection>
+      <CorrectModal
+        isOpen={modalCorrect}
+        close={() => {
+          setModalCorrect(false);
+        }}
+      />
+      <WrongModal
+        isOpen={modalWrong}
+        close={() => {
+          setModalWrong(false);
+        }}
+      />
+
       <S.ClockDifficulty>
-        {difficulty}
         <button type="button" onClick={goClockDifficulty}>
           처음으로
         </button>
       </S.ClockDifficulty>
 
-      <S.ClockTitle>시계읽기</S.ClockTitle>
-      <S.ClockContext>[Q{cnt + 1}] 다음 시간을 맞춰보세요^^</S.ClockContext>
+      <S.ClockTitle>단어 읽기</S.ClockTitle>
+      <S.ClockContext>
+        [Q{cnt + 1}] 다음 그림과 단어를 보고 따라 읽어보세요.
+      </S.ClockContext>
       <S.ClockBody>
         <S.ClockBtnAndGame>
           <S.ClockBtn>
@@ -80,20 +102,19 @@ export default function ClockProgram() {
 
 const S = {
   ClockProgramSection: styled.div`
-    ${tw`bg-brand min-h-[580px] max-h-[600px] flex-col`}
+    ${tw` bg-brand mt-[100px]`}
   `,
-
-  ClockDifficulty: styled.h4`
-    ${tw`flex text-xl justify-end text-white`}
+  ClockDifficulty: styled.div`
+    ${tw`flex text-[32px] justify-end items-center mb-8 text-white`}
   `,
-  ClockTitle: styled.h1`
-    ${tw` flex text-4xl min-h-[60] justify-center items-center font-bold text-white`}
+  ClockTitle: styled.div`
+    ${tw` flex text-[50px] h-[80px] mb-5 justify-center items-center font-bold text-white`}
   `,
-  ClockContext: styled.p`
-    ${tw` flex text-xl min-h-[100] justify-center font-thin text-white`}
+  ClockContext: styled.div`
+    ${tw` flex text-2xl mb-10 h-[500] justify-center font-thin text-white`}
   `,
   ClockBody: styled.div`
-    ${tw`bg-white`}
+    ${tw`flex flex-col justify-center items-stretch p-[90px] bg-white`}
   `,
   ClockBtnAndGame: styled.div`
     ${tw`flex justify-around`}
@@ -104,10 +125,9 @@ const S = {
       ${tw`border-2 rounded-full text-6xl text-brand`}
     }
     .disbtn {
-      ${tw`cursor-not-allowed border-2 rounded-full text-6xl text-gray-600`}
+      ${tw`cursor-not-allowed border-2 rounded-full text-6xl`}
     }
   `,
-
   STTAndTTS: styled.div`
     ${tw`flex justify-center`}
   `,

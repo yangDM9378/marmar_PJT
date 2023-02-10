@@ -1,31 +1,24 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-const-assign */
 /* eslint-disable react/destructuring-assignment */
-import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
+// import { useNavigate } from 'react-router-dom';
 import { SocketContext } from '../../context/SocketContext';
-import Game from './Game';
+import Program from '../../pages/onClass/Program';
+// import Game from './Game';
 
 export default function ClassSection(props) {
-  const { leaveRoom } = useContext(SocketContext);
-  const navigate = useNavigate();
-  const { close, sessionId } = props;
-  const closeNavigate = () => {
-    navigate('/');
-  };
+  const { sessionId } = props;
+  const { joinRoom, getRoom } = useContext(SocketContext);
+
+  useEffect(() => {
+    joinRoom(sessionId);
+    getRoom();
+  }, []);
+
   return (
-    <div>
-      <button
-        type="button"
-        className="border-2 m-3 p-3"
-        onClick={async () => {
-          await close();
-          await closeNavigate();
-          await leaveRoom();
-        }}
-      >
-        종료
-      </button>
-      <Game sessionId={sessionId} />
+    <div className="h-full">
+      <Program />
     </div>
   );
 }

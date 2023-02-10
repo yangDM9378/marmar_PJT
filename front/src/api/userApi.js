@@ -5,6 +5,7 @@
 import axios from 'axios';
 import { authApi } from '../libs/axiosCofing';
 
+// SignInAPI
 const signInApi = payload => authApi.post('auth/login', payload);
 
 const studentCheckApi = () =>
@@ -19,6 +20,7 @@ const therapistCheckApi = () =>
     return res.data;
   });
 
+// SignUpApi
 const signUpTherapistApi = payload => axios.post('therapist', payload);
 
 const signUpStudentApi = payload => authApi.post('student', payload);
@@ -27,6 +29,13 @@ const idCheckTherapistApi = payload => axios.get(`therapist/${payload}`);
 
 const idCheckStudentApi = payload => axios.get(`student/${payload}`);
 
+const emailCheckTherapistApi = payload =>
+  axios.get(`therapist/checkEmail/${payload}`);
+
+const emailCheckStudentApi = payload =>
+  axios.get(`student/checkEmail${payload}`);
+
+// FindInfoAPI
 const findIdApi = async payload => {
   const check = await authApi.post('auth/check/findId', payload);
   if (check.data === true) {
@@ -54,6 +63,8 @@ export {
   signUpStudentApi,
   idCheckTherapistApi,
   idCheckStudentApi,
+  emailCheckTherapistApi,
+  emailCheckStudentApi,
   findIdApi,
   findPwApi,
 };

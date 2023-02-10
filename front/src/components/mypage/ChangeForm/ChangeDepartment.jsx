@@ -28,6 +28,7 @@ export default function ChangeDepartment(props) {
   const onChangeDepartment = async data => {
     console.log(data);
     useTheModDepartment.mutate(data);
+    alert('소속기관 정보가 변경되었습니다.');
   };
 
   return (
@@ -52,7 +53,7 @@ const S = {
     ${tw`border-b-2 pb-3`}
   `,
   Label: styled.label`
-    ${tw`flex font-cafe24`}
+    ${tw`flex pb-2 font-bold`}
   `,
   InputBox: styled.div`
     ${tw`flex`}
@@ -61,7 +62,7 @@ const S = {
     ${tw`p-3 border-2 rounded-xl mr-3 w-full min-w-[160px]  focus:outline-brand`}
   `,
   Button: styled.button`
-    ${tw`p-3 bg-brandHover text-white min-w-[160px] rounded-xl block`}
+    ${tw`p-3 bg-brandHover text-white min-w-[200px] rounded-xl block`}
   `,
   ErrorMsg: styled.p`
     ${tw`mb-3 text-red-400 text-xs font-bold`}

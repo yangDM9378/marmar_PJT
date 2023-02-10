@@ -13,7 +13,7 @@ export default function ClockDifficulty() {
           <S.DiffLink to="/WordProgram" state={{ difficulty: 'high' }}>
             <S.DiffH1>상</S.DiffH1>
           </S.DiffLink>
-          <S.DiffLink to="/WordProgram" state={{ difficulty: 'mid' }}>
+          <S.DiffLink to="/WordProgram" state={{ difficulty: 'middle' }}>
             <S.DiffH1>중</S.DiffH1>
           </S.DiffLink>
           <S.DiffLink to="/WordProgram" state={{ difficulty: 'low' }}>
@@ -27,32 +27,34 @@ export default function ClockDifficulty() {
 
 const S = {
   ProgramSection: styled.div`
-    ${tw`flex bg-brand min-h-[100vh] mt-[8vh] p-[4vh] justify-center items-center`}
-
-  `,
+    ${tw`flex bg-brand h-[650px] mt-[100px] justify-center items-center`}  
+    `,
   ProgramBox: styled.div`
-    ${tw`flex-col max-h-[80vh] max-w-[80vh] bg-white rounded-3xl p-12`}
-    @media screen and (max-width: 1000px) {
-      margin: 0px 100px;
+    ${tw` flex flex-col justify-center items-center h-[430px] w-[600px] bg-white rounded-3xl`}
+    @media screen and (max-width: 720px) {
+      ${tw`h-[80%] w-[60%]`}
+      margin: 70px;
+    }
+ `,
+  ProgramHeader: styled.h1`
+    ${tw`font-cafe24 text-center text-[50px]`}
+    @media screen and (max-width: 720px) {
+      font-size: 40px;
     }
   `,
-  ProgramHeader: styled.h1`
-    ${tw`font-cafe24 text-center text-[6vh]`}
-  `,
   DiffSection: styled.div`
-    ${tw`flex mt-[3vh] p-[3vh] justify-evenly`}
-
-    @media screen and (max-width: 1000px) {
-      min-height: 400px;
+    ${tw`flex mt-9 justify-evenly`}
+    @media screen and (max-width: 720px) {
+      min-height: 300px;
       flex-direction: column;
-      align-items: center;
+      margin: 0px;
     }
   `,
   DiffLink: styled(Link)`
-    ${tw`flex justify-center items-center bg-yellow-300 rounded-[4vh] m-[1.2vh] w-[30vh] h-[25vh]`}
-    @media screen and (max-width: 1000px) {
+    ${tw`flex justify-center items-center bg-yellow-300 rounded-3xl mx-2 my-4 w-[150px] h-[150px]`}
+    @media screen and (max-width: 720px) {
       width: 150px;
-      height: 80px;
+      height: 100px;
     }
     &:hover {
       border: 5px solid;
@@ -60,7 +62,7 @@ const S = {
   `,
   DiffH1: styled.h1`
     ${tw`font-cafe24 text-[8vh]`}
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 720px) {
       font-size: 50px;
     }
   `,

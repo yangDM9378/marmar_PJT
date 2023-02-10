@@ -23,13 +23,13 @@ public class Evaluation {
     private int num;
 
     @Column(nullable = false)
+    private int evalAbility;
+
+    @Column(nullable = false)
+    private int evalAttitude;
+
+    @Column(nullable = false)
     private int evalConcentration;
-
-    @Column(nullable = false)
-    private int evalAchieve;
-
-    @Column(nullable = false)
-    private int evalEntire;
 
     @Column
     private LocalDateTime evalDate;

@@ -12,13 +12,13 @@ export default function SignUp() {
           <Link to="/SignUpStudent">
             <S.SignUpUserBox>
               <S.SignUpUserH1>사용자</S.SignUpUserH1>
-              <img src="" alt="" />
+              <S.Img src="student.png" alt="" />
             </S.SignUpUserBox>
           </Link>
           <Link to="/SignUpTherapist">
             <S.SignUpUserBox>
               <S.SignUpUserH1>치료사</S.SignUpUserH1>
-              <img src="" alt="" />
+              <S.Img src="therapist.png" alt="" />
             </S.SignUpUserBox>
           </Link>
         </S.SignUpMiniBox>
@@ -29,21 +29,27 @@ export default function SignUp() {
 
 const S = {
   SignUpSection: styled.div`
-    ${tw`px-10 bg-brand min-h-[800px] flex justify-center items-center`}
+    ${tw`p-[15vh 5vh] bg-brand min-h-[800px] flex justify-center items-center`}
   `,
   SignUpBox: styled.div`
-    ${tw`bg-white rounded-3xl w-[650px] h-[650px] p-10`}
+    ${tw`bg-white rounded-3xl w-[700px] p-10`}
   `,
   SignUpHeader: styled.h1`
     ${tw`font-extrabold text-2xl text-center p-2 font-cafe24`}
   `,
   SignUpMiniBox: styled.div`
-    ${tw`p-5 flex justify-around`}
+    ${tw`flex justify-around`}
   `,
   SignUpUserBox: styled.div`
-    ${tw`bg-yellow-300 rounded-3xl w-[250px] h-[450px] p-10`}
+    ${tw`bg-yellow-300 rounded-3xl pt-5 m-5 flex-col justify-center items-center`}
+    &:hover {
+      outline: 5px solid;
+    }
   `,
   SignUpUserH1: styled.h1`
-    ${tw`font-extrabold text-2xl text-center p-2 font-cafe24`}
+    ${tw`font-cafe24 font-extrabold text-3xl text-center mt-5`}
+  `,
+  Img: styled.img`
+    ${tw``}
   `,
 };

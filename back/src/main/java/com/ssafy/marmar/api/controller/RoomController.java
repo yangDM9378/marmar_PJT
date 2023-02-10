@@ -1,5 +1,6 @@
 package com.ssafy.marmar.api.controller;
 
+import com.ssafy.marmar.api.response.StudentSearchRes;
 import com.ssafy.marmar.api.service.RoomService;
 import com.ssafy.marmar.api.service.StudentService;
 import com.ssafy.marmar.api.service.TherapistService;
@@ -11,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/room")
@@ -57,6 +60,18 @@ public class RoomController {
         String userId = userDetails.getUsername();
         Therapist user = therapistService.getUserByUserId(userId);
         return user.getNum();
+    }
+
+    @GetMapping("/searchStudent/{search}")
+    public ResponseEntity<List<StudentSearchRes>> searchStudent(@PathVariable String search, Authentication authentication) throws Exception {
+
+        TherapistDetails userDetails = (TherapistDetails)authentication.getDetails();
+        String userId = userDetails.getUsername();
+        Therapist user = therapistService.getUserByUserId(userId);
+
+        List<StudentSearchRes> list = therapistService.makeRoomStudentSearchList(search, user);
+
+        return ResponseEntity.status(200).body(list);
     }
 
 

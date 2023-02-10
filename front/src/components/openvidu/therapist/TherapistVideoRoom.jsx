@@ -4,26 +4,36 @@
 /* eslint-disable no-shadow */
 /* eslint-disable prefer-const */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { OpenVidu } from 'openvidu-browser';
 import axios from 'axios';
 import styled from 'styled-components';
 import tw from 'twin.macro';
-import { useNavigate } from 'react-router-dom';
-import { closeRoomApi, makeRoomApi } from '../../../api/liveClassApi';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { HiOutlineSpeakerWave, HiOutlineSpeakerXMark } from 'react-icons/hi2';
+import { BsCameraVideo, BsCameraVideoOff } from 'react-icons/bs';
+import { SlCallEnd } from 'react-icons/sl';
+import { closeRoomApi } from '../../../api/liveClassApi';
 import VideoModal from '../VideoModal';
 import UserVideoComponent from '../UserVideoComponent';
 import ClassSection from '../ClassSection';
 import SelectStudent from '../makeroom/SelectStudent';
 import useAuth from '../../../hooks/queries/useAuth';
+import EvalModal from '../../onClass/evaluation/EvalModal';
+import { SocketContext } from '../../../context/SocketContext';
 
 const APPLICATION_SERVER_URL = 'https://i8c204.p.ssafy.io/api/v1/openvidu/';
 
 export default function TherapistVideoRoom() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const num = location.state.stunum;
+  const { leaveRoom } = useContext(SocketContext);
   const { useTherapistCheck } = useAuth();
   const { data: therapist } = useTherapistCheck();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
+  // const [studentName, setStudentName] = useState('');
   const [mySessionId, setMySessionId] = useState('');
   const [myUserName, setMyUserName] = useState('');
   const [session, setSession] = useState(undefined);
@@ -34,13 +44,26 @@ export default function TherapistVideoRoom() {
   const [modalOpen, setModalOpen] = useState(false);
   const [video, setVideo] = useState(true);
   const [audio, setAudio] = useState(true);
+  const [videoText, setVideoText] = useState(false);
+  const [audioText, setAudioText] = useState(false);
+  const [endText, setEndText] = useState(false);
+  // 평가 모달
+  // const [isFail, setIsFail] = useState(false);
+  const [isOpen, setOpen] = useState(false);
+  const handleModal = () => {
+    setOpen(!isOpen);
+    navigate('/');
+  };
 
   // eslint-disable-next-line prefer-const, no-undef-init
   let OV = undefined;
 
   // 토큰 받아오기
   const getToken = useCallback(() => {
-    return createSession(mySessionId).then(sessionId => createToken(sessionId));
+    console.log('mySessionId : ', therapist.therapistId);
+    return createSession(therapist?.therapistId).then(sessionId =>
+      createToken(sessionId),
+    );
   }, [mySessionId]);
 
   // 세션 생성
@@ -113,32 +136,40 @@ export default function TherapistVideoRoom() {
   };
 
   const setStudent = data => {
+    console.log('setStudent: ', data);
     setStudentNum(data);
   };
+  // const getStudentName = data => {
+  //   setStudentName(data);
+  // };
 
   // 세션 아이디 설정
   useEffect(() => {
     async function fetch() {
       await leaveSession();
+      await setStudentNum(num);
       await setMySessionId(therapist?.therapistId);
       await setMyUserName(therapist?.therapistName);
     }
-    // async function fetch() {
-    //   if (localStorage.getItem('therapist')) {
-    //     const res = await therapistCheckApi();
-    //     await setMySessionId(res.therapistId);
-    //     await setMyUserName(res.therapistName);
-    //   }
-    // }
     fetch();
+
+    // 테스트
+    joinSession();
   }, []);
 
+  useEffect(() => {
+    console.log(subscribers);
+  }, [subscribers]);
+
   // 세션 참여
-  const joinSession = () => {
+  const joinSession = async () => {
     console.log('오픈비두 시작');
-    OV = new OpenVidu(); // --- 1) 오픈비두 오브젝트 생성 ---
+    console.log('therapistId : ', therapist.therapistId);
+    const a = await therapist.therapistId;
+    await console.log(a);
+    OV = await new OpenVidu(); // --- 1) 오픈비두 오브젝트 생성 ---
     OV.enableProdMode(); // 콘솔 막기
-    makeRoomApi({ studentNum });
+    // makeRoomApi({ studentNum });
     openModal();
     const mySession = OV.initSession(); // --- 2) 세션을 시작 --
     setSession(mySession);
@@ -167,10 +198,10 @@ export default function TherapistVideoRoom() {
       mySession
         .connect(token, { clientData: myUserName })
         .then(async () => {
-          let devices = await OV.getDevices();
-          let videoDevices = devices.filter(
-            device => device.kind === 'videoinput',
-          );
+          // let devices = await OV.getDevices();
+          // let videoDevices = devices.filter(
+          //   device => device.kind === 'videoinput',
+          // );
           // --- 5) Get your own camera stream ---(퍼블리셔)
           let publisher = OV.initPublisher(undefined, {
             audioSource: undefined, // The source of audio. If undefined default microphone
@@ -200,10 +231,12 @@ export default function TherapistVideoRoom() {
   // 세선 떠나기 --- 7) disconnect함수를 호출하여 세션을 떠남
   const leaveSession = () => {
     const mySession = session;
-    closeRoomApi(studentNum);
+    leaveRoom(); // 소켓 종료
+    closeRoomApi(studentNum); // 학생 수업중 종료
     if (mySession) {
       mySession.disconnect();
-      navigate('/'); // 메인페이지로 이동
+      // 평가 모달
+      setOpen(true);
     }
     // 속성을 초기화함(필요한 속성은 초기화하면 안 됨)
     OV = null;
@@ -213,7 +246,9 @@ export default function TherapistVideoRoom() {
     setMyUserName('');
     setMainStreamManager(undefined);
     setPublisher(undefined);
-    setStudentNum(0);
+    setModalOpen(false);
+    // session.streamDestroyed();
+    // mySession.streamDestroyed();
   };
 
   useEffect(() => {
@@ -233,7 +268,7 @@ export default function TherapistVideoRoom() {
       let index = tmpSubscribers.indexOf(streamManager, 0);
       if (index > -1) {
         tmpSubscribers.splice(index, 1);
-        setSubscribers(tmpSubscribers); // 이거 안 되면 구조분해할당으로 업데이트 할 것
+        setSubscribers(...tmpSubscribers); // 이거 안 되면 구조분해할당으로 업데이트 할 것
       }
     },
     [subscribers],
@@ -252,47 +287,115 @@ export default function TherapistVideoRoom() {
     <S.PageContainer>
       {session === undefined ? (
         <S.WaitRoom>
-          <SelectStudent setStudent={setStudent} />
-          <S.StartBtn type="button" onClick={joinSession}>
-            입장하기
-          </S.StartBtn>
+          <SelectStudent
+            setStudent={setStudent}
+            join={joinSession}
+            // getName={getStudentName}
+          />
         </S.WaitRoom>
       ) : null}
       {session !== undefined ? (
         <VideoModal open={modalOpen}>
-          <S.LiveContainer className="min-h-screen bg-video-bg">
-            <S.VideoSection>
-              {mainStreamManager !== undefined ? (
-                <S.MyVideo>
-                  <UserVideoComponent streamManager={mainStreamManager} />
-                  <S.HandleVideoBox>
-                    <S.HandleVideoButton type="button" onClick={handleAudio}>
-                      음소거
-                    </S.HandleVideoButton>
-                    <S.HandleVideoButton type="button" onClick={handleVideo}>
-                      비디오
-                    </S.HandleVideoButton>
-                  </S.HandleVideoBox>
-                </S.MyVideo>
-              ) : null}
-              {subscribers[0] && (
-                <S.UserVideo>
-                  <div className="h-[100%]">
-                    <UserVideoComponent streamManager={subscribers[0]} />
-                  </div>
-                </S.UserVideo>
-              )}
-            </S.VideoSection>
-            <div className="col-span-2">
-              <ClassSection
-                close={(closeModal, leaveSession)}
-                sessionId={mySessionId}
-                streamManager={publisher}
-              />
-            </div>
-          </S.LiveContainer>
+          <S.ModalContainer>
+            <S.LiveContainer className="min-h-screen bg-video-bg">
+              <S.VideoSection>
+                {subscribers && subscribers[0] && (
+                  <S.UserVideo>
+                    <div className="h-[100%]">
+                      <UserVideoComponent streamManager={subscribers[0]} />
+                    </div>
+                  </S.UserVideo>
+                )}
+                {mainStreamManager !== undefined ? (
+                  <S.MyVideo>
+                    <UserVideoComponent streamManager={mainStreamManager} />
+                  </S.MyVideo>
+                ) : null}
+              </S.VideoSection>
+              <S.ClassBox>
+                <ClassSection
+                  close={(closeModal, leaveSession)}
+                  sessionId={mySessionId}
+                  streamManager={publisher}
+                />
+              </S.ClassBox>
+            </S.LiveContainer>
+            <S.Footer>
+              {/* <S.RoomInfo>{studentName}님과의 수업</S.RoomInfo> */}
+              <div />
+              <S.HandleVideoBox>
+                <S.HandleVideoButton>
+                  {audioText && (
+                    <S.SoundText>
+                      {audio ? '마이크 끄기' : '마이크 켜기'}
+                    </S.SoundText>
+                  )}
+                </S.HandleVideoButton>
+                <S.HandleVideoButton
+                  type="button"
+                  onClick={handleAudio}
+                  className={`${audio ? 'bg-slate-600' : 'bg-red-600'}`}
+                >
+                  {audio ? (
+                    <HiOutlineSpeakerWave
+                      className="text-white text-[2vh]"
+                      onMouseEnter={() => setAudioText(true)}
+                      onMouseLeave={() => setAudioText(false)}
+                    />
+                  ) : (
+                    <HiOutlineSpeakerXMark
+                      className="text-white text-[2vh]"
+                      onMouseEnter={() => setAudioText(true)}
+                      onMouseLeave={() => setAudioText(false)}
+                    />
+                  )}
+                  {videoText && (
+                    <S.VideoText>
+                      {video ? '비디오 끄기' : '비디오 켜기'}
+                    </S.VideoText>
+                  )}
+                </S.HandleVideoButton>
+                <S.HandleVideoButton
+                  type="button"
+                  onClick={handleVideo}
+                  className={`${video ? 'bg-slate-600' : 'bg-red-600'}`}
+                >
+                  {video ? (
+                    <BsCameraVideo
+                      className="text-white text-[2vh]"
+                      onMouseEnter={() => setVideoText(true)}
+                      onMouseLeave={() => setVideoText(false)}
+                    />
+                  ) : (
+                    <BsCameraVideoOff
+                      className="text-white text-[2vh]"
+                      onMouseEnter={() => setVideoText(true)}
+                      onMouseLeave={() => setVideoText(false)}
+                    />
+                  )}
+                  {endText && <S.EndText>수업 종료하기</S.EndText>}
+                </S.HandleVideoButton>
+                <S.HandleVideoButton
+                  type="button"
+                  onClick={leaveSession}
+                  className="bg-red-600"
+                >
+                  <SlCallEnd
+                    className="text-white text-[2vh]"
+                    onMouseEnter={() => setEndText(true)}
+                    onMouseLeave={() => setEndText(false)}
+                  />
+                </S.HandleVideoButton>
+                <S.HandleVideoButton>
+                  <div className="invisible">d</div>
+                </S.HandleVideoButton>
+              </S.HandleVideoBox>
+              <div className="col-span-1" />
+            </S.Footer>
+          </S.ModalContainer>
         </VideoModal>
       ) : null}
+      <EvalModal isOpen={isOpen} close={handleModal} studentNum={studentNum} />;
     </S.PageContainer>
   );
 }
@@ -305,24 +408,45 @@ const S = {
     ${tw`border-4 border-black p-5`}
   `,
   PageContainer: styled.div`
-    ${tw`w-full bg-brand flex justify-center`}
+    ${tw`w-full flex justify-center h-full`}
+  `,
+  ModalContainer: styled.div`
+    ${tw`h-[92vh]`}
   `,
   LiveContainer: styled.div`
-    ${tw`grid grid-cols-3 w-full max-h-full bg-cover`}
+    ${tw`grid grid-cols-3 w-full max-h-[92vh] min-h-[92vh]`}
   `,
   VideoSection: styled.div`
-    ${tw`grid-cols-1 flex flex-col max-h-screen justify-around border-4 border-black m-5 p-5`}
+    ${tw`grid-cols-1 flex flex-col max-h-[89vh] justify-around px-3 space-y-1 rounded m-5`}
+  `,
+  ClassBox: styled.div`
+    ${tw`col-span-2 p-3 max-h-[92vh]`}
   `,
   MyVideo: styled.div`
-    ${tw`relative border-4 border-blue-600 h-[45%]`}
+    ${tw`relative h-[50%]`}
   `,
   HandleVideoBox: styled.div`
-    ${tw`absolute top-0 right-0 space-x-3 pr-2`}
+    ${tw`space-x-4 col-span-1 flex justify-center items-center relative`}
+  `,
+  SoundText: styled.div`
+    ${tw`text-white absolute bg-slate-600 p-1 rounded bottom-[6vh]`}
+  `,
+  VideoText: styled.div`
+    ${tw`text-white absolute bg-slate-600 p-1 rounded bottom-[6vh] ml-[2vh]`}
+  `,
+  EndText: styled.div`
+    ${tw`text-white absolute bg-slate-600 p-1 rounded bottom-[6vh] ml-[1vh]`}
   `,
   HandleVideoButton: styled.button`
-    ${tw`bg-slate-300`}
+    ${tw`p-[1vh] rounded-full opacity-100`}
   `,
   UserVideo: styled.div`
-    ${tw`relative border-4 border-red-400 h-[45%]`}
+    ${tw`relative h-[50%]`}
+  `,
+  Footer: styled.div`
+    ${tw`h-[8vh] grid grid-cols-3 bg-slate-200 opacity-90`}
+  `,
+  RoomInfo: styled.div`
+    ${tw`px-3 col-span-1`}
   `,
 };

@@ -12,24 +12,18 @@ export default function SignIn() {
         <SignInForm />
         <SignInFooter />
       </S.SignInBox>
-      <S.Test>테스트</S.Test>
     </S.SignInSection>
   );
 }
 
 const S = {
   SignInSection: styled.div`
-    ${tw`px-10 min-h-[730px] bg-brand flex justify-center items-center`}
+    ${tw`px-10 mt-[100px] min-h-[71vh] bg-brand flex justify-center items-center`}
   `,
   SignInBox: styled.div`
     ${tw`bg-white rounded-3xl w-[550px] h-[450px] p-16`}
   `,
   SignInHeader: styled.h1`
     ${tw`font-extrabold text-2xl text-center pb-2 font-cafe24`}
-  `,
-  Test: styled.div`
-    background-color: aquamarine;
-    height: 500px;
-    width: 300px;
   `,
 };

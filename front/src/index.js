@@ -11,7 +11,7 @@ import SignIn from './pages/user/SignIn';
 import TherapistMypage from './pages/mypage/TherapistMypage';
 import StudentMypage from './pages/mypage/StudentMypage';
 import LoginRequiredPage from './pages/dev/LoginRequiredPage';
-import OpenVidu from './pages/dev/OpenVidu';
+import OpenVidu from './pages/onClass/OpenVidu';
 import ProtectedRoute from './pages/common/ProtectedRoute';
 import LoggedRoute from './pages/common/LoggedRoute';
 import SignUpStudent from './pages/user/SignUpStudent';
@@ -29,7 +29,9 @@ import FindPw from './pages/user/FindPw';
 import Program from './pages/onClass/Program';
 import ProtectedRouteTherapist from './pages/common/ProtectedRouteTherapist';
 import ProtectedRouteStudent from './pages/common/ProtectedRouteStudent';
-import Evaluation from './components/onClass/Evaluation';
+import Evaluation from './components/onClass/evaluation/Evaluation';
+import Info from './pages/common/Info';
+import StudentClassEnd from './pages/onClass/StudentClassEnd';
 
 const router = createBrowserRouter([
   {
@@ -40,7 +42,8 @@ const router = createBrowserRouter([
     children: [
       // Home
       { index: true, path: '/', element: <Home /> },
-
+      // Info
+      { path: '/Info', element: <Info /> },
       // Login
       {
         path: '/SignIn',
@@ -105,6 +108,14 @@ const router = createBrowserRouter([
           <ProtectedRoute>
             <OpenVidu />
           </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/StudentClassEnd',
+        element: (
+          <ProtectedRouteStudent>
+            <StudentClassEnd />
+          </ProtectedRouteStudent>
         ),
       },
 

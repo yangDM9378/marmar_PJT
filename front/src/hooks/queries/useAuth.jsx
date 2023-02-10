@@ -26,7 +26,9 @@ export default function useAuth() {
       console.log(error);
     },
     onSuccess: (data, variables) => {
-      localStorage.clear();
+      localStorage.removeItem('token');
+      localStorage.removeItem('student');
+      localStorage.removeItem('therapist');
       console.log('success', data, variables);
       localStorage.setItem('token', data.data.accessToken);
       client.invalidateQueries(['useStudentCheck']);
@@ -68,7 +70,9 @@ export default function useAuth() {
 
   const useLogOut = () => {
     // localStorage.removeItem('token');
-    localStorage.clear();
+    localStorage.removeItem('token');
+    localStorage.removeItem('student');
+    localStorage.removeItem('therapist');
     client.setQueryData(['useStudentCheck'], null);
     client.setQueryData(['useTherapistCheck'], null);
   };
@@ -86,7 +90,9 @@ export default function useAuth() {
       !localStorage.getItem('therapist') &&
       !localStorage.getItem('student')
     ) {
-      localStorage.clear();
+      localStorage.removeItem('token');
+      localStorage.removeItem('student');
+      localStorage.removeItem('therapist');
     }
   }, []);
 

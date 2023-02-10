@@ -9,9 +9,9 @@ export default function FindIdModal({ isOpen, close, id }) {
   const goSignIn = () => {
     navigate('/SignIn');
   };
-  const goFindPw = () => {
-    navigate('/Login/FindPw');
-  };
+  // const goFindPw = () => {
+  //   navigate('/Login/FindPw');
+  // };
   return (
     <ReactModal
       isOpen={isOpen}
