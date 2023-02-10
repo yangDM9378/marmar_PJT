@@ -17,7 +17,7 @@ import LoggedRoute from './pages/common/LoggedRoute';
 import SignUpStudent from './pages/user/SignUpStudent';
 import SignUpTherapist from './pages/user/SignUpTherapist';
 import SignUp from './pages/user/SignUp';
-import registerServiceWorker from '../public/registerServiceWorker';
+import registerServiceWorker from './registerServiceWorker';
 import ClockDifficulty from './pages/program/clock/ClockDifficulty';
 import ClockProgram from './pages/program/clock/ClockProgram';
 import WordDifficulty from './pages/program/word/WordDifficulty';
