@@ -20,20 +20,22 @@ export default function SignUpStudentForm() {
   } = useForm();
 
   const onRegister = data => {
-    !registerdId || !registerdEmail
-      ? alert('중복확인이 되지 않았습니다.')
-      : useSignUpStudent.mutate({
-          id: data.id,
-          password: data.password,
-          passwordHelper: data.password_helper,
-          name: data.name,
-          nameHelper: data.name_helper,
-          birth: data.birth,
-          phoneHelper: data.phone,
-          email: data.email,
-        });
-    setRegisteredId(true);
-    setRegisteredEmail(true);
+    if (registerdId || registerdEmail) {
+      alert('중복확인이 되지 않았습니다.');
+    } else {
+      useSignUpStudent.mutate({
+        id: data.id,
+        password: data.password,
+        passwordHelper: data.password_helper,
+        name: data.name,
+        nameHelper: data.name_helper,
+        birth: data.birth,
+        phoneHelper: data.phone,
+        email: data.email,
+      });
+      setRegisteredId(true);
+      setRegisteredEmail(true);
+    }
   };
 
   const onCheckId = async id => {
