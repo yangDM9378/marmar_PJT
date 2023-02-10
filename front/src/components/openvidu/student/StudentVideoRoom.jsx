@@ -39,8 +39,12 @@ export default function StudentVideoRoom() {
   let OV = undefined;
 
   // 토큰 받아오기
-  const getToken = useCallback(() => {
-    return createSession(mySessionId).then(sessionId => createToken(sessionId));
+  const getToken = useCallback(async () => {
+    const teacher = await getTeacherApi();
+    console.log('getToken', teacher);
+    return createSession(teacher.data).then(sessionId =>
+      createToken(sessionId),
+    );
   }, [mySessionId]);
 
   // 세션 생성
@@ -130,14 +134,18 @@ export default function StudentVideoRoom() {
       }
     }
     fetch();
+    joinSession();
   }, []);
 
   // 세션 참여
-  const joinSession = () => {
-    OV = new OpenVidu(); // --- 1) 오픈비두 오브젝트 생성 ---
+  const joinSession = async () => {
+    const teacher = await getTeacherApi();
+    console.log(teacher);
+    await setMySessionId(teacher.data);
+    OV = await new OpenVidu(); // --- 1) 오픈비두 오브젝트 생성 ---
     OV.enableProdMode(); // 콘솔 막기
     openModal();
-    const mySession = OV.initSession(); // --- 2) 세션을 시작 --
+    const mySession = await OV.initSession(); // --- 2) 세션을 시작 --
     setSession(mySession);
 
     mySession.on('streamCreated', event => {
@@ -160,7 +168,7 @@ export default function StudentVideoRoom() {
     });
 
     // --- 4) 유효한 토큰으로 세션에 접속하기 ---
-    getToken().then(token => {
+    await getToken().then(token => {
       mySession
         .connect(token, { clientData: myUserName })
         .then(async () => {
@@ -172,7 +180,7 @@ export default function StudentVideoRoom() {
           // --- 5) Get your own camera stream ---(퍼블리셔)
           let publisher = OV.initPublisher(undefined, {
             audioSource: undefined, // The source of audio. If undefined default microphone
-            videoSource: videoDevices[0].deviceId, // The source of video. If undefined default webcam
+            videoSource: undefined, // The source of video. If undefined default webcam
             publishAudio: true, // Whether you want to start publishing with your audio unmuted or not
             publishVideo: true, // Whether you want to start publishing with your video enabled or not
             resolution: '100%x100%', // The resolution of your video '450x720'

@@ -17,8 +17,12 @@ export default function ProgramClass() {
         {request.game === 'clock' && <ClockClass />}
         {request.game === 'picture' && <PictureClass />}
       </div>
-      <div className="absolute z-0 h-full">
-        <img src="img/background/board3.png" alt="" className="h-full z-0" />
+      <div className="absolute z-0 h-full w-full">
+        <img
+          src="img/background/board3.png"
+          alt=""
+          className="h-full w-full z-0"
+        />
       </div>
     </div>
   );

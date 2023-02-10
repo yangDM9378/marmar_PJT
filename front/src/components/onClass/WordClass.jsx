@@ -5,9 +5,10 @@ import tw from 'twin.macro';
 import React, { useContext } from 'react';
 import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md';
 import { OnClassContext } from '../../context/OnClassContext';
-import WordGame from '../program/WordGame';
+// import WordGame from '../program/WordGame';
 import { socket, SocketContext } from '../../context/SocketContext';
 import useAuth from '../../hooks/queries/useAuth';
+import ClassWordGame from './game/ClassWordGame';
 
 export default function WordClass() {
   const { useStudentCheck } = useAuth();
@@ -70,7 +71,8 @@ export default function WordClass() {
             <MdNavigateBefore className={`${student ? 'hidden' : ''} disbtn`} />
           )}
         </S.WordBtn>
-        <WordGame {...response[0][cnt]} />
+        {/* <WordGame {...response[0][cnt]} /> */}
+        <ClassWordGame {...response[0][cnt]} />
         <S.WordBtn type="button" className={`${student ? 'hidden' : ''}`}>
           {(cnt < 4 && (
             <MdNavigateNext

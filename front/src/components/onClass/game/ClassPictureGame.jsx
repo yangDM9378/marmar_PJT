@@ -85,16 +85,16 @@ export default function ClassPictureGame({
 
 const S = {
   gameSection: styled.div`
-    ${tw`flex-col `}
+    ${tw`flex-col max-h-full`}
   `,
   gameBody: styled.div`
-    ${tw`flex place-content-around `}
+    ${tw`flex place-content-around max-h-[30vh]`}
   `,
   gameCard: styled.div`
-    ${tw`relative  bg-white rounded-3xl m-5`}
+    ${tw`relative rounded-3xl m-5 max-h-[25%] bg-white`}
   `,
   gameImg: styled.img`
-    ${tw`relative border-8 border-brand rounded-xl w-[300px] h-[300px]`}
+    ${tw`relative border-8 border-brand rounded-xl w-full h-full`}
   `,
   gameIcon: styled.div`
     ${tw`absolute`}
