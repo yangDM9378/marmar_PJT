@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -15,12 +16,12 @@ public class EvaluationRes {
     int evalAbility;
     int evalAttitude;
     int evalConcentration;
-    LocalDateTime evalDate;
+    LocalDate evalDate;
     Student student;
     String comments;
 
     @Builder
-    public EvaluationRes(int num, int evalAbility, int evalAttitude, int evalConcentration, LocalDateTime evalDate, Student student, String comments){
+    public EvaluationRes(int num, int evalAbility, int evalAttitude, int evalConcentration, LocalDate evalDate, Student student, String comments){
         this.num = num;
         this.evalAbility = evalAbility;
         this.evalAttitude = evalAttitude;
