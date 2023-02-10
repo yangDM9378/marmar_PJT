@@ -20,6 +20,7 @@ export default function HomeInfo() {
       <Slider {...settings}>
         {/* <div className="bg-main-ft-1 bg-cover bg-no-repeat w-[100vw] h-[60vh]" /> */}
         <img src="./main/footer-1.png" alt="" />
+
         <img src="./main/footer-2.png" alt="" />
       </Slider>
     </div>

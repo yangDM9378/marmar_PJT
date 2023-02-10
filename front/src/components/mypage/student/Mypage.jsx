@@ -6,6 +6,7 @@ import MypageHeader from '../MypageHeader';
 import MyInfo from './myinfo/MyInfo';
 import Result from './result/Result';
 import DeletePage from '../deleteAccount/DeletePage';
+import MyCalender from './calender/MyCalender';
 
 export default function Mypage() {
   const tabList = {
@@ -49,7 +50,7 @@ export default function Mypage() {
                   ? 'bg-brandHover  text-white font-bold text-[20px]'
                   : 'bg-gray-300 text-gray-60 text-[20px]'
               }`}
-              onClick={() => changeTab(2)}
+              onClick={() => changeTab(3)}
             >
               회원 탈퇴
             </S.TabList>
