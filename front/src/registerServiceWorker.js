@@ -31,7 +31,7 @@ export default function register() {
     }
 
     window.addEventListener('load', () => {
-      const swUrl = `https://i8c204.p.ssafy.io/service-worker.js`;
+      const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
 
       if (isLocalhost) {
         // This is running on localhost. Lets check if a service worker still exists or not.
@@ -59,6 +59,7 @@ function registerValidSW(swUrl) {
     .then(registration => {
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
+        console.log('public_url은 ', registration.PUBLIC_URL);
         installingWorker.onstatechange = () => {
           if (installingWorker.state === 'installed') {
             if (navigator.serviceWorker.controller) {
@@ -78,6 +79,7 @@ function registerValidSW(swUrl) {
       };
     })
     .catch(error => {
+      console.log('에러 발생, swUrl:', swUrl);
       console.error('Error during service worker registration:', error);
     });
 }
