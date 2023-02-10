@@ -1,4 +1,6 @@
 /* eslint-disable no-unused-vars */
+import styled from 'styled-components';
+import tw from 'twin.macro';
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import BarChart from './BarChart';
@@ -17,7 +19,7 @@ export default function ShowResult() {
     onError: () => {},
   });
   const [userData, setUserData] = useState({
-    labels: evaluations?.data.map(e => e.evalDate.substr(0, 10)),
+    labels: evaluations?.data.map(e => e.evalDate.substr(2, 9)),
     datasets: [
       {
         label: '수행능력',
@@ -43,8 +45,16 @@ export default function ShowResult() {
     ],
   });
   return (
-    <div style={{ width: 1000 }}>
-      <BarChart chartData={userData} />
-    </div>
+    <S.Container>
+      <p className="font-cafe24 text-[40px] pb-10">상담결과</p>
+      <div style={{ width: 800 }}>
+        <BarChart chartData={userData} />
+      </div>
+    </S.Container>
   );
 }
+const S = {
+  Container: styled.div`
+    ${tw`h-fit w-full pb-20 pt-5  m-5 justify-center text-center`}
+  `,
+};

@@ -7,7 +7,7 @@ export default function PictureDifficulty() {
   return (
     <S.ProgramSection>
       <S.ProgramBox>
-        <S.ProgramHeader>그림 맞추기</S.ProgramHeader>
+        <S.ProgramHeader>💡그림 맞추기</S.ProgramHeader>
         <S.DiffSection>
           <S.DiffLink to="/PictureProgram" state={{ difficulty: 'high' }}>
             <S.DiffH1>상</S.DiffH1>
