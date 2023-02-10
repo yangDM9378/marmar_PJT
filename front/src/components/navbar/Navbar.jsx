@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import useAuth from '../../hooks/queries/useAuth';
-import DevDropDown from './DevDropDown';
 import NavDefault from './NavDefault';
 import NavStudent from './NavStudent';
 import NavTherapist from './NavTherapist';
@@ -18,7 +17,6 @@ export default function Navbar() {
       <S.LogoLink to="/">
         <S.LogoName>marmar</S.LogoName>
       </S.LogoLink>
-      <DevDropDown />
       {!student && !therapist && <NavDefault />}
       {student && <NavStudent />}
       {therapist && <NavTherapist />}

@@ -17,7 +17,7 @@ export default function ClassSection(props) {
   }, []);
 
   return (
-    <div className="h-full">
+    <div className="h-full w-full">
       <Program />
     </div>
   );

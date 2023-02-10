@@ -113,7 +113,7 @@ const S = {
     ${tw` flex text-2xl justify-center font-bold text-white`}
   `,
   Board: styled.div`
-    ${tw`flex justify-around items-center`}
+    ${tw`flex justify-around items-center max-h-full`}
     .btn {
       ${tw`border-2 rounded-full text-6xl text-brand hover:cursor-pointer bg-white`}
     }

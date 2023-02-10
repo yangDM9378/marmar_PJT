@@ -51,7 +51,7 @@ export default function useAuth() {
       onError: () => {
         localStorage.removeItem('student');
       },
-      retry: false,
+      // retry: false,
     });
 
   const useTherapistCheck = () =>
