@@ -148,6 +148,7 @@ public class StudentServiceImpl implements StudentService {
             evaluation.setEvalConcentration(evaluationPostReq.getEvalConcentration());
             evaluation.setStudent(student);
             evaluation.setEvalDate(LocalDateTime.now());
+            evaluation.setComments(evaluationPostReq.getComments());
             evaluationRepository.save(evaluation);
             return true;
         } catch (Exception e){
@@ -169,6 +170,7 @@ public class StudentServiceImpl implements StudentService {
                     .evalConcentration(evaluation.getEvalConcentration())
                     .evalDate(evaluation.getEvalDate())
                     .student(evaluation.getStudent())
+                    .comments(evaluation.getComments())
                     .build();
             EvaluationResList.add(res);
         }
