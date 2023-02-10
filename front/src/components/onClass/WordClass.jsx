@@ -54,7 +54,7 @@ export default function WordClass() {
 
   return (
     <S.WordProgramSection>
-      <S.WordDifficulty>{request.difficulty}</S.WordDifficulty>
+      {/* <S.WordDifficulty>{request.difficulty}</S.WordDifficulty> */}
       <S.WordTitle>단어 읽기</S.WordTitle>
       <S.WordContext>
         [Q{cnt + 1}] 다음 그림과 단어를 보고 따라 읽어보세요.
@@ -101,7 +101,7 @@ const S = {
     ${tw`flex text-xl justify-end `}
   `,
   WordTitle: styled.h1`
-    ${tw` flex text-4xl min-h-[60px] justify-center items-center font-bold text-white`}
+    ${tw` flex text-4xl min-h-[60px] justify-center items-center font-bold text-white mt-14`}
   `,
   WordContext: styled.p`
     ${tw` flex text-xl min-h-[100px] justify-center font-thin text-white`}
@@ -125,6 +125,6 @@ const S = {
     ${tw`cursor-not-allowed`}
   `,
   EndGame: styled.button`
-    ${tw`bg-white absolute bottom-[7vh] right-[5vh] p-3 rounded font-bold text-xl`}
+    ${tw`bg-white absolute bottom-[7vh] right-[6vh] p-3 rounded font-bold text-xl`}
   `,
 };

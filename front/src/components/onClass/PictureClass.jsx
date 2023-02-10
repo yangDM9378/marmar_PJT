@@ -5,10 +5,11 @@ import tw from 'twin.macro';
 import React, { useContext } from 'react';
 import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md';
 import { OnClassContext } from '../../context/OnClassContext';
-import PictureGame from '../program/PictureGame';
+// import PictureGame from '../program/PictureGame';
 import { SttContext } from '../../context/SttContext';
 import { socket, SocketContext } from '../../context/SocketContext';
 import useAuth from '../../hooks/queries/useAuth';
+import ClassPictureGame from './game/ClassPictureGame';
 
 export default function PictureClass() {
   const { useStudentCheck } = useAuth();
@@ -76,7 +77,8 @@ export default function PictureClass() {
         )) || (
           <MdNavigateBefore className={`${student ? 'hidden' : ''} disbtn`} />
         )}
-        <PictureGame {...response[0][cnt]} />
+        {/* <PictureGame {...response[0][cnt]} /> */}
+        <ClassPictureGame {...response[0][cnt]} />
         {(cnt < request.num - 1 && (
           <MdNavigateNext
             className={`${student ? 'hidden' : ''} btn`}
@@ -101,8 +103,8 @@ const S = {
   ProgramSection: styled.div`
     ${tw`max-h-full flex-col`}
   `,
-  CountinueBtn: styled.div`
-    ${tw`absolute bottom-[7vh] right-[5vh] p-3 rounded font-bold text-xl bg-white`}
+  CountinueBtn: styled.button`
+    ${tw`absolute bottom-[7vh] right-[6vh] p-3 rounded font-bold text-xl bg-white`}
   `,
   Title: styled.div`
     ${tw` flex text-3xl justify-between min-h-[40px] font-bold text-white mt-5 mx-6`}
