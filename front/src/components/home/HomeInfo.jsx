@@ -19,12 +19,8 @@ export default function HomeInfo() {
     <div>
       <Slider {...settings}>
         {/* <div className="bg-main-ft-1 bg-cover bg-no-repeat w-[100vw] h-[60vh]" /> */}
-        <div>
-          <img src="./main/footer-1.png" alt="" />
-        </div>
-        <div>
-          <img src="./main/footer-2.png" alt="" />
-        </div>
+        <img src="./main/footer-1.png" alt="" />
+        <img src="./main/footer-2.png" alt="" />
       </Slider>
     </div>
   );

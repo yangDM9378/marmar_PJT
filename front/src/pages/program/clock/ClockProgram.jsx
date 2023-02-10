@@ -72,9 +72,9 @@ export default function ClockProgram() {
         </button>
       </S.ClockDifficulty>
 
-      <S.ClockTitle>단어 읽기</S.ClockTitle>
+      <S.ClockTitle>시계읽기</S.ClockTitle>
       <S.ClockContext>
-        [Q{cnt + 1}] 다음 그림과 단어를 보고 따라 읽어보세요.
+        [Q{cnt + 1}] 다음 시계를 보고 시계를 따라 읽어보세요.
       </S.ClockContext>
       <S.ClockBody>
         <S.ClockBtnAndGame>
