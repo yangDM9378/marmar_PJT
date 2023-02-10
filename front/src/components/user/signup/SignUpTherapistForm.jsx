@@ -24,16 +24,20 @@ export default function SignUpTherapistForm() {
   } = useForm();
 
   const onRegister = data => {
-    useSignUpTherapist.mutate({
-      id: data.id,
-      password: data.password,
-      name: data.name,
-      phone: data.phone,
-      department: data.department,
-      email: data.email,
-    });
-    setRegisteredId(true);
-    setRegisteredEmail(true);
+    if (registerdId || registerdEmail) {
+      alert('중복확인이 되지 않았습니다.');
+    } else {
+      useSignUpTherapist.mutate({
+        id: data.id,
+        password: data.password,
+        name: data.name,
+        phone: data.phone,
+        department: data.department,
+        email: data.email,
+      });
+      setRegisteredId(true);
+      setRegisteredEmail(true);
+    }
   };
 
   const onCheckId = async id => {
@@ -61,12 +65,7 @@ export default function SignUpTherapistForm() {
   return (
     <S.SignUpSection>
       <S.Header>치료사 회원가입</S.Header>
-      <S.SignUpForm
-        onSubmit={
-          // handleSubmit(onRegister)
-          !registerdId && !registerdEmail ? handleSubmit(onRegister) : undefined
-        }
-      >
+      <S.SignUpForm onSubmit={handleSubmit(onRegister)}>
         <S.Label htmlFor="name">치료사 이름</S.Label>
         <S.Input
           {...register('name', { required: '치료사 이름을 입력해주세요.' })}

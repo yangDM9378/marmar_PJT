@@ -20,16 +20,18 @@ export default function SignUpStudentForm() {
   } = useForm();
 
   const onRegister = data => {
-    useSignUpStudent.mutate({
-      id: data.id,
-      password: data.password,
-      passwordHelper: data.password_helper,
-      name: data.name,
-      nameHelper: data.name_helper,
-      birth: data.birth,
-      phoneHelper: data.phone,
-      email: data.email,
-    });
+    !registerdId || !registerdEmail
+      ? alert('중복확인이 되지 않았습니다.')
+      : useSignUpStudent.mutate({
+          id: data.id,
+          password: data.password,
+          passwordHelper: data.password_helper,
+          name: data.name,
+          nameHelper: data.name_helper,
+          birth: data.birth,
+          phoneHelper: data.phone,
+          email: data.email,
+        });
     setRegisteredId(true);
     setRegisteredEmail(true);
   };
@@ -61,11 +63,7 @@ export default function SignUpStudentForm() {
     <S.SignUpSection>
       <S.Header>사용자 회원가입</S.Header>
 
-      <S.SignUpForm
-        onSubmit={
-          !registerdId && !registerdEmail ? handleSubmit(onRegister) : undefined
-        }
-      >
+      <S.SignUpForm onSubmit={handleSubmit(onRegister)}>
         <S.Label htmlFor="name_helper">보호자 이름</S.Label>
         <S.Input
           {...register('name_helper', {
