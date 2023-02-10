@@ -15,10 +15,10 @@ export default function FindId() {
     </S.FindSection>
   );
 }
-
+// ${tw`px-10 bg-brand min-h-[730px] flex justify-center items-center`}
 const S = {
   FindSection: styled.div`
-    ${tw`px-10 bg-brand min-h-[730px] flex justify-center items-center`}
+    ${tw`px-10 mt-[100px] min-h-[71vh] bg-brand flex justify-center items-center`}
   `,
   FindBox: styled.div`
     ${tw`bg-white rounded-3xl w-[550px] h-fit p-16`}

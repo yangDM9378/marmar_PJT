@@ -33,7 +33,7 @@ const emailCheckTherapistApi = payload =>
   axios.get(`therapist/checkEmail/${payload}`);
 
 const emailCheckStudentApi = payload =>
-  axios.get(`student/checkEmail${payload}`);
+  axios.get(`student/checkEmail/${payload}`);
 
 // FindInfoAPI
 const findIdApi = async payload => {

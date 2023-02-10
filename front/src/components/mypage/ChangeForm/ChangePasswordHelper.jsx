@@ -72,7 +72,7 @@ export default function ChangePasswordHelper() {
 
 const S = {
   Form: styled.form`
-    ${tw`border-b-2 pb-3`}
+    ${tw` pb-3`}
   `,
   Label: styled.label`
     ${tw`flex pb-2 font-bold`}

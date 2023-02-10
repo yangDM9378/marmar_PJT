@@ -25,7 +25,7 @@ export default function ClassDropDown() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 z-10 mt-4 w-28 text-center origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute z-10 mt-4 w-full text-center origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
             <Menu.Item>
               {({ active }) => (
@@ -33,7 +33,7 @@ export default function ClassDropDown() {
                   to="/WordDifficulty"
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm',
+                    'block px-4 py-1 text-[18px]',
                   )}
                 >
                   단어 읽기
@@ -47,27 +47,28 @@ export default function ClassDropDown() {
                   to="/ClockDifficulty"
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm',
+                    'block px-4 py-1 text-[18px]',
                   )}
                 >
                   시계 읽기
                 </Link>
               )}
             </Menu.Item>
+            <hr />
+            <Menu.Item>
+              {({ active }) => (
+                <Link
+                  to="/PictureDifficulty"
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 pt-1 text-[18px]',
+                  )}
+                >
+                  그림
+                </Link>
+              )}
+            </Menu.Item>
           </div>
-          <Menu.Item>
-            {({ active }) => (
-              <Link
-                to="/PictureDifficulty"
-                className={classNames(
-                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                  'block px-4 py-2 text-sm',
-                )}
-              >
-                그림
-              </Link>
-            )}
-          </Menu.Item>
         </Menu.Items>
       </Transition>
     </Menu>

@@ -23,7 +23,7 @@ export default function SecondPassword(props) {
       setPw('');
     } else {
       setPw('');
-      alert('틀림');
+      alert('2차 비밀번호가 틀렸습니다. 다시 입력해주세요.');
     }
   };
   return (
@@ -44,10 +44,11 @@ export default function SecondPassword(props) {
     </S.Container>
   );
 }
-
+// ${tw`px-10 mt-[100px] min-h-[71vh] bg-brand flex justify-center items-center`}
+// ${tw`h-[70vh] bg-brand flex justify-center items-center`}
 const S = {
   Container: styled.div`
-    ${tw`h-[70vh] bg-brand flex justify-center items-center`}
+    ${tw`px-10 mt-[100px] min-h-[71vh] bg-brand flex justify-center items-center`}
   `,
   Box: styled.div`
     ${tw`flex flex-col p-20 rounded-xl space-y-3 bg-white`}

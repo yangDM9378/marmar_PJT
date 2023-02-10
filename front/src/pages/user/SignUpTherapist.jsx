@@ -12,9 +12,10 @@ export default function SignUpTherapist() {
     </S.SignUpSection>
   );
 }
+//    ${tw`px-10 mt-[100px] min-h-[71vh] items-center`}
 const S = {
   SignUpSection: styled.div`
-    ${tw`bg-brand p-[15vh] flex justify-center `}
+    ${tw`flex bg-brand pt-[15vh] pb-[10vh] mt-[40px] justify-center`}}
   `,
   SignUpBox: styled.div`
     ${tw`bg-white rounded-3xl min-w-[70vh] p-10`}
