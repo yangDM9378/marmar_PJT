@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   // Slide,
   // Bounce,
@@ -10,19 +10,19 @@ import {
   // Roll,
   // Zoom,
   Fade,
-  Rotate,
+  // Rotate,
 } from 'react-awesome-reveal';
 
 export default function DefaultClass() {
-  const [time, setTime] = useState(false);
-  useEffect(() => {
-    setTimeout(() => {
-      setTime(true);
-    }, 3500);
-  });
+  // const [time, setTime] = useState(false);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setTime(true);
+  //   }, 3500);
+  // });
   return (
     <S.ClassGameSection>
-      {time && (
+      {/* {time && (
         <Rotate cascade damping={2e-1}>
           <div className="flex justify-center space-x-8">
             <S.SpanOne>단어 읽기</S.SpanOne>
@@ -30,7 +30,7 @@ export default function DefaultClass() {
             <S.SpanOne>그림 선택</S.SpanOne>
           </div>
         </Rotate>
-      )}
+      )} */}
       <S.Wrapper>
         {/* <S.Typding>마르마르 수업 시작</S.Typding> */}
         <Fade delay={0e3} cascade damping={2e-1}>

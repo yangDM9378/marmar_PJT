@@ -9,12 +9,8 @@ import axios from 'axios';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import { useNavigate } from 'react-router-dom';
-import {
-  BsCameraVideo,
-  BsCameraVideoOff,
-  BsFillMicFill,
-  BsFillMicMuteFill,
-} from 'react-icons/bs';
+import { BsCameraVideo, BsCameraVideoOff } from 'react-icons/bs';
+import { HiOutlineSpeakerWave, HiOutlineSpeakerXMark } from 'react-icons/hi2';
 import { SlCallEnd } from 'react-icons/sl';
 import { studentCheckApi } from '../../../api/userApi';
 import { getTeacherApi } from '../../../api/liveClassApi';
@@ -36,7 +32,9 @@ export default function StudentVideoRoom() {
   const [modalOpen, setModalOpen] = useState(false);
   const [video, setVideo] = useState(true);
   const [audio, setAudio] = useState(true);
-
+  const [videoText, setVideoText] = useState(false);
+  const [audioText, setAudioText] = useState(false);
+  const [endText, setEndText] = useState(false);
   // eslint-disable-next-line prefer-const, no-undef-init
   let OV = undefined;
 
@@ -202,7 +200,7 @@ export default function StudentVideoRoom() {
     const mySession = session;
     if (mySession) {
       mySession.disconnect();
-      navigate('/'); // 메인페이지로 이동
+      navigate('/StudentClassEnd'); // 메인페이지로 이동
     }
     // 속성을 초기화함(필요한 속성은 초기화하면 안 됨)
     OV = null;
@@ -290,15 +288,35 @@ export default function StudentVideoRoom() {
             <S.Footer>
               <div className="col-span-1" />
               <S.HandleVideoBox>
+                <S.HandleVideoButton>
+                  {audioText && (
+                    <S.SoundText>
+                      {audio ? '마이크 끄기' : '마이크 켜기'}
+                    </S.SoundText>
+                  )}
+                </S.HandleVideoButton>
                 <S.HandleVideoButton
                   type="button"
                   onClick={handleAudio}
                   className={`${audio ? 'bg-slate-600' : 'bg-red-600'}`}
                 >
                   {audio ? (
-                    <BsFillMicFill className="text-white" />
+                    <HiOutlineSpeakerWave
+                      className="text-white text-[2vh]"
+                      onMouseEnter={() => setAudioText(true)}
+                      onMouseLeave={() => setAudioText(false)}
+                    />
                   ) : (
-                    <BsFillMicMuteFill className="text-white" />
+                    <HiOutlineSpeakerXMark
+                      className="text-white text-[2vh]"
+                      onMouseEnter={() => setAudioText(true)}
+                      onMouseLeave={() => setAudioText(false)}
+                    />
+                  )}
+                  {videoText && (
+                    <S.VideoText>
+                      {video ? '비디오 끄기' : '비디오 켜기'}
+                    </S.VideoText>
                   )}
                 </S.HandleVideoButton>
                 <S.HandleVideoButton
@@ -307,17 +325,33 @@ export default function StudentVideoRoom() {
                   className={`${video ? 'bg-slate-600' : 'bg-red-600'}`}
                 >
                   {video ? (
-                    <BsCameraVideo className="text-white" />
+                    <BsCameraVideo
+                      className="text-white text-[2vh]"
+                      onMouseEnter={() => setVideoText(true)}
+                      onMouseLeave={() => setVideoText(false)}
+                    />
                   ) : (
-                    <BsCameraVideoOff className="text-white" />
+                    <BsCameraVideoOff
+                      className="text-white text-[2vh]"
+                      onMouseEnter={() => setVideoText(true)}
+                      onMouseLeave={() => setVideoText(false)}
+                    />
                   )}
+                  {endText && <S.EndText>수업 종료하기</S.EndText>}
                 </S.HandleVideoButton>
                 <S.HandleVideoButton
                   type="button"
                   onClick={leaveSession}
                   className="bg-red-600"
                 >
-                  <SlCallEnd className="text-white" />
+                  <SlCallEnd
+                    className="text-white text-[2vh]"
+                    onMouseEnter={() => setEndText(true)}
+                    onMouseLeave={() => setEndText(false)}
+                  />
+                </S.HandleVideoButton>
+                <S.HandleVideoButton>
+                  <div className="invisible">d</div>
                 </S.HandleVideoButton>
               </S.HandleVideoBox>
               <div className="col-span-1" />
@@ -343,7 +377,7 @@ const S = {
     ${tw`h-[92vh]`}
   `,
   LiveContainer: styled.div`
-    ${tw`grid grid-cols-3 w-full max-h-[92vh] min-h-[92vh]`}
+    ${tw`grid grid-cols-3 w-full max-h-[92vh] min-h-[92vh] h-full`}
   `,
   VideoSection: styled.div`
     ${tw`grid-cols-1 flex flex-col max-h-[89vh] justify-around space-y-1 rounded m-5`}
@@ -355,7 +389,16 @@ const S = {
     ${tw`relative h-[50%]`}
   `,
   HandleVideoBox: styled.div`
-    ${tw`space-x-3 col-span-1 flex justify-center items-center`}
+    ${tw`space-x-4 col-span-1 flex justify-center items-center relative`}
+  `,
+  SoundText: styled.div`
+    ${tw`text-white absolute bg-slate-600 p-1 rounded bottom-[6vh]`}
+  `,
+  VideoText: styled.div`
+    ${tw`text-white absolute bg-slate-600 p-1 rounded bottom-[6vh] ml-[2vh]`}
+  `,
+  EndText: styled.div`
+    ${tw`text-white absolute bg-slate-600 p-1 rounded bottom-[6vh] ml-[1vh]`}
   `,
   HandleVideoButton: styled.button`
     ${tw`p-3 rounded-full opacity-100`}

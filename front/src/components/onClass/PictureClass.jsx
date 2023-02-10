@@ -3,12 +3,16 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import React, { useContext } from 'react';
+import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md';
 import { OnClassContext } from '../../context/OnClassContext';
 import PictureGame from '../program/PictureGame';
 import { SttContext } from '../../context/SttContext';
 import { socket, SocketContext } from '../../context/SocketContext';
+import useAuth from '../../hooks/queries/useAuth';
 
 export default function PictureClass() {
+  const { useStudentCheck } = useAuth();
+  const { data: student } = useStudentCheck();
   // 데이터 가져오기
   const { request, setRequest, response, setResponse, cnt, setCnt } =
     useContext(OnClassContext);
@@ -56,46 +60,63 @@ export default function PictureClass() {
 
   return (
     <S.ProgramSection>
-      <S.CountinueBtn>
-        <button type="button" onClick={handleEndGame}>
-          처음으로
-        </button>
+      <S.Title>
+        <S.Context>
+          [Q{cnt + 1}] 다음 사진 중 관계없는 사진을 선택하세요.
+        </S.Context>
+        <div>그림 맞추기</div>
+      </S.Title>
+
+      <S.Board>
+        {(cnt > 0 && cnt <= request.num - 1 && (
+          <MdNavigateBefore
+            className={`${student ? 'hidden' : ''} btn`}
+            onClick={cntMinus}
+          />
+        )) || (
+          <MdNavigateBefore className={`${student ? 'hidden' : ''} disbtn`} />
+        )}
+        <PictureGame {...response[0][cnt]} />
+        {(cnt < request.num - 1 && (
+          <MdNavigateNext
+            className={`${student ? 'hidden' : ''} btn`}
+            onClick={cntPlus}
+          />
+        )) || (
+          <MdNavigateNext className={`${student ? 'hidden' : ''} disbtn`} />
+        )}
+      </S.Board>
+      <S.CountinueBtn
+        type="button"
+        className={`${student ? 'hidden' : ''}`}
+        onClick={handleEndGame}
+      >
+        클래스 종료
       </S.CountinueBtn>
-      <S.Title>Picture</S.Title>
-      <S.Context>
-        [Q{cnt + 1}] 다음 사진 중 관계없는 사진을 선택하세요.
-      </S.Context>
-      <PictureGame {...response[0][cnt]} />
-      <S.Button>
-        {cnt > 0 && cnt <= request.num - 1 && (
-          <button type="button" onClick={cntMinus}>
-            이전
-          </button>
-        )}
-        {cnt < request.num - 1 && (
-          <button type="button" onClick={cntPlus}>
-            다음
-          </button>
-        )}
-      </S.Button>
     </S.ProgramSection>
   );
 }
 
 const S = {
   ProgramSection: styled.div`
-    ${tw` bg-brand min-h-[800px] flex-col`}
+    ${tw`max-h-full flex-col`}
   `,
   CountinueBtn: styled.div`
-    ${tw`flex text-xl min-h-[60px] justify-end`}
+    ${tw`absolute bottom-[7vh] right-[5vh] p-3 rounded font-bold text-xl bg-white`}
   `,
-  Title: styled.h1`
-    ${tw` flex text-4xl min-h-[60px] justify-center items-center font-bold text-white`}
+  Title: styled.div`
+    ${tw` flex text-3xl justify-between min-h-[40px] font-bold text-white mt-5 mx-6`}
   `,
   Context: styled.p`
-    ${tw` flex text-xl justify-center font-thin text-white`}
+    ${tw` flex text-2xl justify-center font-bold text-white`}
   `,
-  Button: styled.div`
-    ${tw`flex justify-around`}
+  Board: styled.div`
+    ${tw`flex justify-around items-center`}
+    .btn {
+      ${tw`border-2 rounded-full text-6xl text-brand hover:cursor-pointer bg-white`}
+    }
+    .disbtn {
+      ${tw`cursor-not-allowed border-2 rounded-full text-6xl invisible`}
+    }
   `,
 };

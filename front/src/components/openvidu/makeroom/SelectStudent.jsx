@@ -84,7 +84,7 @@ export default function SelectStudent(props) {
 
 const S = {
   SearchBox: styled.div`
-    ${tw`min-h-[50vh] max-h-[50vh] min-w-[900px] bg-white rounded-xl p-10`}
+    ${tw`min-h-fit max-h-fit min-w-[900px] bg-white rounded-xl p-10`}
   `,
   Header: styled.div`
     ${tw`text-4xl font-semibold`}

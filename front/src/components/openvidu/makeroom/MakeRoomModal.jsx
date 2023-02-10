@@ -14,7 +14,7 @@ export default function MakeRoomModal({ isOpen, close }) {
       onRequestClose={() => close()}
       ariaHideApp={false}
       style={style}
-      className="h-fit w-fit bg-brandHover rounded-xl m-auto mt-[150px]"
+      className="w-fit bg-brandHover rounded-xl m-auto mt-[150px]"
     >
       <SelectStudent close={close} />
     </ReactModal>

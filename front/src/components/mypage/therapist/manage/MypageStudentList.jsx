@@ -40,7 +40,7 @@ export default function MypageStudentList() {
   });
   return (
     <S.RegisteredStudentsBox>
-      <p className="font-cafe24 text-[40px]">등록된 학생 리스트</p>
+      <p className="font-cafe24 text-[40px]">치료중인 학생 목록</p>
       <S.SearchButton type="button" onClick={handleModal}>
         학생 등록하기
       </S.SearchButton>
