@@ -24,6 +24,6 @@ const S = {
     ${tw`bg-white rounded-3xl w-[550px] h-[450px] p-16`}
   `,
   SignInHeader: styled.h1`
-    ${tw`font-extrabold text-2xl text-center pb-2 font-cafe24`}
+    ${tw`font-extrabold text-3xl text-center pb-2 font-cafe24`}
   `,
 };

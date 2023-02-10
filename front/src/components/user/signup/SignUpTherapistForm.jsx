@@ -63,6 +63,7 @@ export default function SignUpTherapistForm() {
       <S.Header>치료사 회원가입</S.Header>
       <S.SignUpForm
         onSubmit={
+          // handleSubmit(onRegister)
           !registerdId && !registerdEmail ? handleSubmit(onRegister) : undefined
         }
       >
@@ -180,7 +181,6 @@ export default function SignUpTherapistForm() {
           id="phone"
         />
         {errors.phone && errors.phone.message}
-        <br />
 
         <S.SignUpButton type="submit">회원가입</S.SignUpButton>
       </S.SignUpForm>
@@ -189,11 +189,17 @@ export default function SignUpTherapistForm() {
 }
 
 const S = {
+  // SignUpSection: styled.div`
+  //   ${tw`mt-8`}
+  // `,
+  // SignUpForm: styled.form`
+  //   ${tw`py-3`}
+  // `,
   SignUpSection: styled.div`
-    ${tw`mt-8`}
+    ${tw``}
   `,
   SignUpForm: styled.form`
-    ${tw`py-3`}
+    ${tw`mt-8`}
   `,
   Header: styled.h1`
     ${tw`font-extrabold text-2xl text-center pb-2 font-cafe24`}

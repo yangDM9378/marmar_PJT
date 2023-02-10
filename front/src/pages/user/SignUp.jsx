@@ -26,16 +26,16 @@ export default function SignUp() {
     </S.SignUpSection>
   );
 }
-
+// ${tw`p-[15vh 5vh] bg-brand min-h-[800px] flex justify-center items-center`}
 const S = {
   SignUpSection: styled.div`
-    ${tw`p-[15vh 5vh] bg-brand min-h-[800px] flex justify-center items-center`}
+    ${tw`flex bg-brand h-[670px] mt-[100px] justify-center items-center`}}
   `,
   SignUpBox: styled.div`
     ${tw`bg-white rounded-3xl w-[700px] p-10`}
   `,
   SignUpHeader: styled.h1`
-    ${tw`font-extrabold text-2xl text-center p-2 font-cafe24`}
+    ${tw`font-extrabold text-3xl text-center p-2 font-cafe24`}
   `,
   SignUpMiniBox: styled.div`
     ${tw`flex justify-around`}
