@@ -10,6 +10,7 @@ import useSound from 'use-sound';
 import correct from '../audio/correct.mp3';
 import wrong from '../audio/wrong.mp3';
 import next from '../audio/next.mp3';
+import empty from '../audio/empty.mp3';
 
 export const SttContext = createContext();
 
@@ -18,6 +19,20 @@ export default function SttProvider({ children }) {
   const [playCorrect, { stopCorrect }] = useSound(correct);
   const [playWrong, { stopWrong }] = useSound(wrong);
   const [playNext, { stopNext }] = useSound(next);
+  const [playEmpty, { stopEmpty }] = useSound(empty);
+
+  const soundCorrect = () => {
+    playCorrect();
+  };
+  const soundWrong = () => {
+    playWrong();
+  };
+  const soundEmpty = () => {
+    playEmpty();
+  };
+  const soundNext = () => {
+    playNext();
+  };
   // 모달관련
   const [modalCorrect, setModalCorrect] = useState(false);
   const [modalWrong, setModalWrong] = useState(false);
@@ -82,6 +97,10 @@ export default function SttProvider({ children }) {
         setModalWrong,
         modalNo,
         setModalNo,
+        soundCorrect,
+        soundWrong,
+        soundEmpty,
+        soundNext,
       }}
     >
       {children}

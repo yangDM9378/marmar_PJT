@@ -17,7 +17,6 @@ export default function useAuth() {
   const [isLogin, setIsLogin] = useState(false);
   const [student, setStudent] = useState(true);
   const [therapist, setTherapist] = useState(true);
-
   const useSignIn = useMutation(signInApi, {
     onMutate: variable => {
       console.log('onMutate', variable);
@@ -75,6 +74,7 @@ export default function useAuth() {
     localStorage.removeItem('therapist');
     client.setQueryData(['useStudentCheck'], null);
     client.setQueryData(['useTherapistCheck'], null);
+    navigate('/');
   };
 
   useEffect(() => {

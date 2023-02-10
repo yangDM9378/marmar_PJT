@@ -6,6 +6,7 @@ import Navbar from './components/navbar/Navbar';
 import Footer from './components/common/Footer';
 import SttProvider from './context/SttContext';
 import SocketProvider from './context/SocketContext';
+import ScrollToTop from './components/scroll/ScrollTop';
 
 const queryClient = new QueryClient();
 
@@ -14,6 +15,7 @@ function App() {
     <QueryClientProvider QueryClientProvider client={queryClient}>
       <SocketProvider>
         <SttProvider>
+          <ScrollToTop />
           <Navbar />
           <Outlet />
           <Footer />
