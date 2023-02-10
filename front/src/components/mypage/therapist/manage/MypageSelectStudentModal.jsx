@@ -3,27 +3,21 @@ import ReactModal from 'react-modal';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
-import {
-  searchStudentApi,
-  registerStudentApi,
-} from '../../../../api/mypageApi';
+import { useQuery } from '@tanstack/react-query';
+import { searchStudentApi } from '../../../../api/mypageApi';
+import SearchList from './SearchList';
 
 export default function MypageSelectStudentModal({ isOpen, close }) {
-  const [search, setSearch] = useState('');
-
-  const queryClient = useQueryClient();
-
-  const onRegister = async data => {
-    await registerStudentApi(data);
-    await queryClient.invalidateQueries({ queryKey: ['students'] });
-    await queryClient.invalidateQueries({ queryKey: ['registerdStudents'] });
+  const style = {
+    overlay: {
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    },
   };
+  const [search, setSearch] = useState('');
 
   const onInput = e => {
     setSearch(e.target.value);
   };
-  const onSearch = () => {};
   const {
     // isLoading,
     // error,
@@ -46,55 +40,32 @@ export default function MypageSelectStudentModal({ isOpen, close }) {
       isOpen={isOpen}
       onRequestClose={() => close()}
       ariaHideApp={false}
-      className="h-fit w-[700px] bg-brandHover rounded-xl m-auto mt-20 p-20"
+      style={style}
+      className="h-fit w-[700px] bg-brandHover rounded-xl m-auto mt-[150px] p-20"
     >
       <p className="font-cafe24 text-[40px] text-white text-center">
-        학생 검색
+        학생 등록
+      </p>
+      <p className="text-white font-cafe24 text-xl text-center">
+        이름을 검색하고 클릭하면 등록할 수 있습니다.
       </p>
       <br />
       <S.ModalSeachDiv>
-        <AiOutlineSearch
-          className="absolute right-1 top-3"
-          onClick={onSearch}
-        />
-        <S.ModalSeachInput type="text" onChange={onInput} />
-
-        {students &&
-          students.data.length > 0 &&
-          students.data.map(student => (
-            <S.Listtable className="items-center text-center">
-              <colgroup>
-                <col width="17%" />
-                <col width="30%" />
-                <col width="40%" />
-                <col width="13%" />
-              </colgroup>
-              <thead>
-                <tr>
-                  <th>번호</th>
-                  <th>이름</th>
-                  <th>아이디</th>
-                  <th>버튼</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr key={student.num}>
-                  <td>{student.num}</td>
-                  <td>{student.studentName}</td>
-                  <td>{student.studentId}</td>
-                  <td>
-                    <S.AddButton
-                      onClick={e => {
-                        onRegister(student.num, e);
-                      }}
-                    >
-                      등록
-                    </S.AddButton>
-                  </td>
-                </tr>
-              </tbody>
-            </S.Listtable>
-          ))}
+        <S.SeachDiv>
+          <AiOutlineSearch className="text-2xl" />
+          <S.ModalSeachInput
+            type="text"
+            onChange={onInput}
+            placeholder="이름을 입력해주세요"
+          />
+        </S.SeachDiv>
+        <S.ResultBox>
+          {students &&
+            students.data.length > 0 &&
+            students.data.map(student => (
+              <SearchList key={student.num} student={student} />
+            ))}
+        </S.ResultBox>
       </S.ModalSeachDiv>
       {/* <p className="pl-4">등록할 학생을 검색하세요.</p> */}
       <S.ModalButton type="button" onClick={close}>
@@ -109,10 +80,10 @@ const S = {
     ${tw`font-cafe24 rounded-xl text-[30px] bg-brandHover text-white m-auto block pl-10 pr-10 mt-20`}
   `,
   ModalSeachDiv: styled.div`
-    ${tw`relative `}
+    ${tw`relative`}
   `,
   ModalSeachInput: styled.input`
-    ${tw` w-full focus:outline-0 h-10`}
+    ${tw` w-full focus:outline-0 h-10 text-2xl`}
   `,
   Listtable: styled.table`
     ${tw`w-full text-[18px] bg-white`}
@@ -126,6 +97,12 @@ const S = {
     }
   `,
   AddButton: styled.button`
-    ${tw`pl-3 pr-3 `}
+    ${tw`pl-3 pr-3`}
+  `,
+  SeachDiv: styled.div`
+    ${tw`relative border-2 flex justify-center items-center px-3 mb-2 bg-white`}
+  `,
+  ResultBox: styled.div`
+    ${tw`bg-slate-100 rounded max-h-[220px] overflow-y-scroll`}
   `,
 };

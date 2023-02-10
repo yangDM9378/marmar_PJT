@@ -3,11 +3,15 @@
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import React, { useContext } from 'react';
+import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md';
 import { OnClassContext } from '../../context/OnClassContext';
 import WordGame from '../program/WordGame';
 import { socket, SocketContext } from '../../context/SocketContext';
+import useAuth from '../../hooks/queries/useAuth';
 
 export default function WordClass() {
+  const { useStudentCheck } = useAuth();
+  const { data: student } = useStudentCheck();
   // 데이터 가져오기
   const { request, setRequest, response, setResponse, cnt, setCnt } =
     useContext(OnClassContext);
@@ -53,28 +57,38 @@ export default function WordClass() {
       <S.WordDifficulty>{request.difficulty}</S.WordDifficulty>
       <S.WordTitle>단어 읽기</S.WordTitle>
       <S.WordContext>
-        [Q{cnt + 1}] 다음 단어와 그림을 보고 시간을 말해보세요.
+        [Q{cnt + 1}] 다음 그림과 단어를 보고 따라 읽어보세요.
       </S.WordContext>
       <S.WordBtnAndGame>
-        {cnt > 0 && cnt <= request.num - 1 && (
-          <button type="button" onClick={cntMinus}>
-            이전
-          </button>
-        )}
-
-        {cnt === request.num - 1 && (
-          <button type="button" onClick={handleEndGame}>
-            처음으로
-          </button>
-        )}
-
-        {cnt < request.num - 1 && (
-          <button type="button" onClick={cntPlus}>
-            다음
-          </button>
-        )}
+        <S.WordBtn type="button" className={`${student ? 'hidden' : ''}`}>
+          {(cnt > 0 && (
+            <MdNavigateBefore
+              className={`${student ? 'hidden' : ''} btn`}
+              onClick={cntMinus}
+            />
+          )) || (
+            <MdNavigateBefore className={`${student ? 'hidden' : ''} disbtn`} />
+          )}
+        </S.WordBtn>
+        <WordGame {...response[0][cnt]} />
+        <S.WordBtn type="button" className={`${student ? 'hidden' : ''}`}>
+          {(cnt < 4 && (
+            <MdNavigateNext
+              className={`${student ? 'hidden' : ''} btn`}
+              onClick={cntPlus}
+            />
+          )) || (
+            <MdNavigateNext className={`${student ? 'hidden' : ''} disbtn`} />
+          )}
+        </S.WordBtn>
       </S.WordBtnAndGame>
-      <WordGame {...response[0][cnt]} />
+      <S.EndGame
+        type="button"
+        onClick={handleEndGame}
+        className={`${student ? 'hidden' : ''}`}
+      >
+        클래스 종료
+      </S.EndGame>
     </S.WordProgramSection>
   );
 }
@@ -98,7 +112,19 @@ const S = {
       ${tw`text-white`}
     }
   `,
+  WordBtn: styled.button`
+    ${tw`flex justify-center items-center`}
+    .btn {
+      ${tw`border-2 rounded-full text-6xl text-brand hover:cursor-pointer bg-white`}
+    }
+    .disbtn {
+      ${tw`cursor-not-allowed border-2 rounded-full text-6xl invisible`}
+    }
+  `,
   ButtonDisable: styled.button`
     ${tw`cursor-not-allowed`}
+  `,
+  EndGame: styled.button`
+    ${tw`bg-white absolute bottom-[7vh] right-[5vh] p-3 rounded font-bold text-xl`}
   `,
 };

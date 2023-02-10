@@ -17,6 +17,6 @@ export default function NavDefault() {
 
 const S = {
   Box: styled.div`
-    ${tw`flex justify-around items-center font-cafe24 space-x-6`}
+    ${tw`flex justify-around items-center font-cafe24 text-2xl space-x-10`}
   `,
 };
