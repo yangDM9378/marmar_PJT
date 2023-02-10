@@ -31,6 +31,9 @@ public class Evaluation {
     @Column(nullable = false)
     private int evalConcentration;
 
+    @Column(columnDefinition = "LONGTEXT")
+    private String comments;
+
     @Column
     private LocalDateTime evalDate;
 

@@ -17,14 +17,16 @@ public class EvaluationRes {
     int evalConcentration;
     LocalDateTime evalDate;
     Student student;
+    String comments;
 
     @Builder
-    public EvaluationRes(int num, int evalAbility, int evalAttitude, int evalConcentration, LocalDateTime evalDate, Student student){
+    public EvaluationRes(int num, int evalAbility, int evalAttitude, int evalConcentration, LocalDateTime evalDate, Student student, String comments){
         this.num = num;
         this.evalAbility = evalAbility;
         this.evalAttitude = evalAttitude;
         this.evalConcentration = evalConcentration;
         this.evalDate = evalDate;
         this.student = student;
+        this.comments = comments;
     }
 }
