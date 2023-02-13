@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function ClockDifficulty() {
   return (
-    <S.ProgramSection>
+    <S.ProgramSection className="bg-suabg-1 bg-contain">
       <S.ProgramBox>
         <S.ProgramHeader>🕑시계 읽기</S.ProgramHeader>
         <S.DiffSection>
@@ -26,7 +26,7 @@ export default function ClockDifficulty() {
 
 const S = {
   ProgramSection: styled.div`
-    ${tw`flex bg-brand h-[650px] mt-[100px] justify-center items-center`}
+    ${tw`flex bg-brand h-[650px] mt-[90px] justify-center items-center`}
   `,
   ProgramBox: styled.div`
     ${tw` flex flex-col justify-center items-center h-[430px] w-[600px] bg-white rounded-3xl`}

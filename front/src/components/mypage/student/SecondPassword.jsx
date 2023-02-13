@@ -47,7 +47,7 @@ export default function SecondPassword(props) {
 // ${tw`h-[70vh] bg-brand flex justify-center items-center`}
 const S = {
   Container: styled.div`
-    ${tw`px-10 mt-[100px] min-h-[71vh] bg-brand flex justify-center items-center`}
+    ${tw`px-10 mt-[90px] min-h-[71vh] bg-brand flex justify-center items-center`}
   `,
   Box: styled.div`
     ${tw`flex flex-col p-20 rounded-xl space-y-3 bg-white`}

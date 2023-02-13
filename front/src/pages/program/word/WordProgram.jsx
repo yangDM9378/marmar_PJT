@@ -5,6 +5,7 @@ import tw from 'twin.macro';
 import React, { useState, useEffect, useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md';
+import { BsFillReplyAllFill } from 'react-icons/bs';
 import { getWordApi } from '../../../api/programApi';
 import { SttContext } from '../../../context/SttContext';
 import WordGame from '../../../components/program/WordGame';
@@ -68,7 +69,7 @@ export default function WordProgram() {
 
       <S.WordDifficulty>
         <button type="button" onClick={goWordDifficulty}>
-          처음으로
+          <BsFillReplyAllFill />
         </button>
       </S.WordDifficulty>
 
@@ -103,10 +104,10 @@ export default function WordProgram() {
 
 const S = {
   WordProgramSection: styled.div`
-    ${tw` bg-brand mt-[100px]`}
+    ${tw` bg-brand mt-[80px]`}
   `,
   WordDifficulty: styled.div`
-    ${tw`flex text-[32px] justify-end items-center mb-8 text-white`}
+    ${tw`flex text-[60px] justify-end items-center m-6 text-white`}
   `,
   WordTitle: styled.div`
     ${tw` flex text-[50px] h-[80px] mb-5 justify-center items-center font-bold text-white`}

@@ -61,10 +61,10 @@ export default function ClassDropDown() {
                   to="/PictureDifficulty"
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 pt-1 text-[18px]',
+                    'block pt-1 text-[18px]',
                   )}
                 >
-                  그림
+                  그림 맞히기
                 </Link>
               )}
             </Menu.Item>

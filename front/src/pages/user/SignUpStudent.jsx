@@ -5,7 +5,7 @@ import SignUpStudentForm from '../../components/user/signup/SignUpStudentForm';
 
 export default function SignUpStudent() {
   return (
-    <S.SignUpSection>
+    <S.SignUpSection className="bg-suabg-2 bg-contain">
       <S.SignUpBox>
         <SignUpStudentForm />
       </S.SignUpBox>

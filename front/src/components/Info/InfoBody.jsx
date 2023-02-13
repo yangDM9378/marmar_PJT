@@ -5,11 +5,11 @@ import tw from 'twin.macro';
 export default function InfoBody() {
   return (
     <S.Body>
-      <S.InfoMainText>
+      {/* <S.InfoMainText className="bg-suabg- bg-contain">
         <p>
           <q>최상의 언어치료를 제공을 위한 마르마르</q>
         </p>
-      </S.InfoMainText>
+      </S.InfoMainText> */}
       <S.InfoText>
         <S.InfoTextFlex>
           <S.InfoTextTitle>온/오프라인 병행 수업</S.InfoTextTitle>

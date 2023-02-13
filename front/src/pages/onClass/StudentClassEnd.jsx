@@ -32,7 +32,7 @@ export default function StudentClassEnd() {
             <S.ContentBox>
               그림
               <br />
-              맞추기
+              맞히기
             </S.ContentBox>
           </Link>
         </S.Main>
@@ -43,7 +43,7 @@ export default function StudentClassEnd() {
 
 const S = {
   Body: styled.div`
-    ${tw`mt-[100px] min-h-[71vh] bg-brand flex justify-center items-center`}
+    ${tw`mt-[80px] min-h-[71vh] bg-brand flex justify-center items-center`}
   `,
   Box: styled.div`
     ${tw`bg-white rounded-3xl w-[800px] h-[450px] p-10`}

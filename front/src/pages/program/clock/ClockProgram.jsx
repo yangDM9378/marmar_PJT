@@ -5,6 +5,7 @@ import tw from 'twin.macro';
 import React, { useState, useEffect, useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md';
+import { BsFillReplyAllFill } from 'react-icons/bs';
 import { getClockApi } from '../../../api/programApi';
 import { SttContext } from '../../../context/SttContext';
 import ClockGame from '../../../components/program/ClockGame';
@@ -68,7 +69,7 @@ export default function ClockProgram() {
 
       <S.ClockDifficulty>
         <button type="button" onClick={goClockDifficulty}>
-          처음으로
+          <BsFillReplyAllFill />
         </button>
       </S.ClockDifficulty>
 
@@ -102,10 +103,10 @@ export default function ClockProgram() {
 
 const S = {
   ClockProgramSection: styled.div`
-    ${tw` bg-brand mt-[100px]`}
+    ${tw` bg-brand mt-[80px]`}
   `,
   ClockDifficulty: styled.div`
-    ${tw`flex text-[32px] justify-end items-center mb-8 text-white`}
+    ${tw`flex text-[60px] justify-end items-center m-6 p-3 text-white`}
   `,
   ClockTitle: styled.div`
     ${tw` flex text-[50px] h-[80px] mb-5 justify-center items-center font-bold text-white`}

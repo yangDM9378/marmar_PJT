@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function SignUp() {
   return (
-    <S.SignUpSection>
+    <S.SignUpSection className="bg-suabg-1 bg-contain">
       <S.SignUpBox>
         <S.SignUpHeader>회원가입</S.SignUpHeader>
         <S.SignUpMiniBox>
@@ -29,7 +29,7 @@ export default function SignUp() {
 // ${tw`p-[15vh 5vh] bg-brand min-h-[800px] flex justify-center items-center`}
 const S = {
   SignUpSection: styled.div`
-    ${tw`flex bg-brand h-[670px] mt-[100px] justify-center items-center`}}
+    ${tw`flex bg-brand h-[670px] mt-[90px] justify-center items-center`}}
   `,
   SignUpBox: styled.div`
     ${tw`bg-white rounded-3xl w-[700px] p-10`}
