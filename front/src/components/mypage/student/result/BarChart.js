@@ -7,15 +7,23 @@ const options = {
   plugins: {
     legend: {
       labels: {
-        // This more specific font property overrides the global property
         font: {
           size: 20,
         },
       },
     },
   },
+  scales: {
+    y: {
+      min: 0,
+      max: 5,
+      ticks: {
+        stepSize: 1,
+      },
+    },
+  },
 };
 
 export default function BarChart({ chartData }) {
-  return <Line data={chartData} option={options} />;
+  return <Line data={chartData} options={options} />;
 }

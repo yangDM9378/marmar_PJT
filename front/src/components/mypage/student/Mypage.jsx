@@ -50,7 +50,7 @@ export default function Mypage() {
                   ? 'bg-brandHover  text-white font-bold text-[20px]'
                   : 'bg-gray-300 text-gray-60 text-[20px]'
               }`}
-              onClick={() => changeTab(3)}
+              onClick={() => changeTab(2)}
             >
               회원 탈퇴
             </S.TabList>

@@ -73,7 +73,9 @@ export default function SignUpStudentForm() {
           })}
           id="name_helper"
         />
-        {errors.name_helper && errors.name_helper.message}
+        <S.ErrorMsg>
+          {errors.name_helper && errors.name_helper.message}
+        </S.ErrorMsg>
         <br />
         <S.Label htmlFor="name">아이 이름</S.Label>
         <S.Input
@@ -82,7 +84,7 @@ export default function SignUpStudentForm() {
           })}
           id="name"
         />
-        {errors.name && errors.name.message}
+        <S.ErrorMsg>{errors.name && errors.name.message}</S.ErrorMsg>
         <br />
         <S.Label htmlFor="id">아이디</S.Label>
         <S.InputBox>
@@ -107,7 +109,7 @@ export default function SignUpStudentForm() {
             중복확인
           </S.RegisteredButton>
         </S.InputBox>
-        {errors.id && errors.id.message}
+        <S.ErrorMsg>{errors.id && errors.id.message}</S.ErrorMsg>
         <br />
         <S.Label htmlFor="password">비밀번호</S.Label>
         <S.Input
@@ -131,7 +133,7 @@ export default function SignUpStudentForm() {
             },
           })}
         />
-        {errors.password && errors.password.message}
+        <S.ErrorMsg>{errors.password && errors.password.message}</S.ErrorMsg>
         <br />
         <S.Label htmlFor="confirm_password">비밀번호 확인</S.Label>
         <S.Input
@@ -148,7 +150,9 @@ export default function SignUpStudentForm() {
             },
           })}
         />
-        {errors.confirm_password && errors.confirm_password.message}
+        <S.ErrorMsg>
+          {errors.confirm_password && errors.confirm_password.message}
+        </S.ErrorMsg>
         <br />
         <S.Label htmlFor="password_helper">2차 비밀번호</S.Label>
         <S.Input
@@ -167,7 +171,9 @@ export default function SignUpStudentForm() {
             },
           })}
         />
-        {errors.password_helper && errors.password_helper.message}
+        <S.ErrorMsg>
+          {errors.password_helper && errors.password_helper.message}
+        </S.ErrorMsg>
         <br />
         <S.Label htmlFor="emailId">이메일</S.Label>
         <S.InputBox>
@@ -188,7 +194,7 @@ export default function SignUpStudentForm() {
           >
             중복확인
           </S.RegisteredButton>
-          {errors.email && errors.email.message}
+          <S.ErrorMsg>{errors.email && errors.email.message}</S.ErrorMsg>
         </S.InputBox>
         <br />
         <S.Label htmlFor="phone">휴대폰번호</S.Label>
@@ -196,7 +202,7 @@ export default function SignUpStudentForm() {
           {...register('phone', { required: '휴대폰번호를 입력해주세요.' })}
           id="phone"
         />
-        {errors.phone && errors.phone.message}
+        <S.ErrorMsg>{errors.phone && errors.phone.message}</S.ErrorMsg>
         <br />
         <S.Label htmlFor="birth">생년월일</S.Label>
         <S.Input
@@ -204,7 +210,7 @@ export default function SignUpStudentForm() {
           id="birth"
           type="date"
         />
-        {errors.birth && errors.birth.message}
+        <S.ErrorMsg>{errors.birth && errors.birth.message}</S.ErrorMsg>
         <S.SignUpButton type="submit">회원가입</S.SignUpButton>
       </S.SignUpForm>
     </S.SignUpSection>
@@ -228,7 +234,7 @@ const S = {
     ${tw`block w-full bg-transparent outline-none border-2 rounded-md py-2 px-4 mt-2 mb-2 placeholder-slate-400 focus:border-brand`}
   `,
   ErrorMsg: styled.p`
-    ${tw`mb-3 text-red-400 text-xs font-bold`}
+    ${tw`mb-3 text-red-400 text-sm font-bold`}
   `,
   InputBox: styled.div`
     ${tw`flex`}

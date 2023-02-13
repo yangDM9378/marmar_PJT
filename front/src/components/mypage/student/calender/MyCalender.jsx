@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable consistent-return */
 import { useQuery } from '@tanstack/react-query';
 import moment from 'moment/moment';

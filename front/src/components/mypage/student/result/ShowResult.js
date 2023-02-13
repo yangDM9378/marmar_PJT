@@ -24,30 +24,34 @@ export default function ShowResult() {
       {
         label: '수행능력',
         data: evaluations?.data.map(e => e.evalAbility),
-        backgroundColor: ['blue'],
-        borderColor: 'blue',
-        borderWidth: 3,
+        backgroundColor: ['#42a5f4'],
+        borderColor: '#42a5f4',
+        borderWidth: 5,
+        // lineTension: 0.1,
+        pointRadius: 5,
       },
       {
         label: '수업태도',
         data: evaluations?.data.map(e => e.evalAttitude),
-        backgroundColor: ['red'],
-        borderColor: 'red',
-        borderWidth: 3,
+        backgroundColor: ['#ffca28'],
+        borderColor: '#ffca28',
+        borderWidth: 5,
+        pointRadius: 5,
       },
       {
         label: '수업집중도',
         data: evaluations?.data.map(e => e.evalConcentration),
-        backgroundColor: ['green'],
-        borderColor: 'green',
-        borderWidth: 3,
+        backgroundColor: ['#64dd17'],
+        borderColor: '#64dd17',
+        borderWidth: 5,
+        pointRadius: 5,
       },
     ],
   });
   return (
     <S.Container>
       <p className="font-cafe24 text-[40px] pb-10">상담결과</p>
-      <div style={{ width: 800 }}>
+      <div style={{ width: 1000 }}>
         <BarChart chartData={userData} />
       </div>
     </S.Container>
