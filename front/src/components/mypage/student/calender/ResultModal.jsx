@@ -49,7 +49,7 @@ export default function ResultModal({ isOpen, close, date, num, calender }) {
       <S.StyledSlider {...settings}>
         {orderedDate &&
           orderedDate.map((el, idx) => (
-            <div>
+            <div key={el.num}>
               <S.Title>{el.evalDate} 수업일지</S.Title>
               <S.MainSection>
                 <S.RatingSection>

@@ -26,6 +26,9 @@ module.exports = {
         'board-bg': "url('/public/img/background/board.png')",
         'modal-1': "url('/public/modal/1.png')",
         'modal-2': "url('/public/modal/2.png')",
+        'suabg-1': "url('/public/img/background/suabg1.png')",
+        'suabg-2': "url('/public/img/background/suabg2.png')",
+        'suabg-3': "url('/public/img/background/suabg4.png')",
       },
       backgroundSize: {
         auto: 'auto',

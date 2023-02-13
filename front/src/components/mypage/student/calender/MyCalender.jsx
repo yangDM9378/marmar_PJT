@@ -44,7 +44,9 @@ export default function MyCalender() {
   };
   return (
     <div>
-      <div className="mt-10 font-cafe24 text-3xl text-center">상담 내역</div>
+      <div className="mt-10 mb-5 font-cafe24 text-[40px] text-center">
+        상담 내역
+      </div>
       <Calendar
         onChange={onChange}
         value={value}

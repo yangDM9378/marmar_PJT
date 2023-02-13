@@ -6,7 +6,7 @@ import SignInForm from '../../components/user/signin/SignInForm';
 
 export default function SignIn() {
   return (
-    <S.SignInSection>
+    <S.SignInSection className="bg-suabg-2 bg-cover">
       <S.SignInBox>
         <S.SignInHeader>로그인</S.SignInHeader>
         <SignInForm />
@@ -18,7 +18,7 @@ export default function SignIn() {
 
 const S = {
   SignInSection: styled.div`
-    ${tw`px-10 mt-[100px] min-h-[71vh] bg-brand flex justify-center items-center`}
+    ${tw`px-10 mt-[100px] min-h-[71vh] flex justify-center items-center`}
   `,
   SignInBox: styled.div`
     ${tw`bg-white rounded-3xl w-[550px] h-[450px] p-16`}
