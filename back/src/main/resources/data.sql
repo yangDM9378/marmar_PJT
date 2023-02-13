@@ -33,11 +33,11 @@ insert into marmar.watch (num, difficulty, image_path, answer) values (8, "middl
 insert into marmar.watch (num, difficulty, image_path, answer) values (9, "middle", "img/clock/9.png", "2시 40분");
 insert into marmar.watch (num, difficulty, image_path, answer) values (10, "middle", "img/clock/10.png", "12시 10분");
 
-insert into marmar.watch (num, difficulty, image_path, answer) values (11, "middle", "img/clock/11.png", "4시");
-insert into marmar.watch (num, difficulty, image_path, answer) values (12, "middle", "img/clock/12.png", "7시");
-insert into marmar.watch (num, difficulty, image_path, answer) values (13, "middle", "img/clock/13.png", "9시");
-insert into marmar.watch (num, difficulty, image_path, answer) values (14, "middle", "img/clock/14.png", "11시");
-insert into marmar.watch (num, difficulty, image_path, answer) values (15, "middle", "img/clock/15.png", "2시");
+insert into marmar.watch (num, difficulty, image_path, answer) values (11, "low", "img/clock/11.png", "4시");
+insert into marmar.watch (num, difficulty, image_path, answer) values (12, "low", "img/clock/12.png", "7시");
+insert into marmar.watch (num, difficulty, image_path, answer) values (13, "low", "img/clock/13.png", "9시");
+insert into marmar.watch (num, difficulty, image_path, answer) values (14, "low", "img/clock/14.png", "11시");
+insert into marmar.watch (num, difficulty, image_path, answer) values (15, "low", "img/clock/15.png", "2시");
 
 
 -- 다른 하나를 찾아요 insert

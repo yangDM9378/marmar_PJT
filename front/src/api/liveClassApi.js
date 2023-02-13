@@ -1,7 +1,6 @@
 import { authApi } from '../libs/axiosCofing';
 
 const makeRoomApi = payload => {
-  console.log(payload);
   return authApi.put(`room/makeroom/${payload.studentNum}`);
 };
 const closeRoomApi = payload => {
@@ -17,6 +16,7 @@ const evaluateApi = payload => {
     evalAbility: payload.evalAbility,
     evalAttitude: payload.evalAttitude,
     evalConcentration: payload.evalConcentration,
+    comments: payload.comments,
   });
 };
 

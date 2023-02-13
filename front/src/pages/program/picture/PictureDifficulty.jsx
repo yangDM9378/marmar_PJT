@@ -7,7 +7,7 @@ export default function PictureDifficulty() {
   return (
     <S.ProgramSection>
       <S.ProgramBox>
-        <S.ProgramHeader>그림 맞추기</S.ProgramHeader>
+        <S.ProgramHeader>💡그림 맞추기</S.ProgramHeader>
         <S.DiffSection>
           <S.DiffLink to="/PictureProgram" state={{ difficulty: 'high' }}>
             <S.DiffH1>상</S.DiffH1>
@@ -26,7 +26,7 @@ export default function PictureDifficulty() {
 
 const S = {
   ProgramSection: styled.div`
-    ${tw`flex bg-brand h-[650px] mt-[100px] justify-center items-center`}
+    ${tw`flex bg-brand h-[650px] mt-[90px] justify-center items-center`}
   `,
   ProgramBox: styled.div`
     ${tw` flex flex-col justify-center items-center h-[430px] w-[600px] bg-white rounded-3xl`}

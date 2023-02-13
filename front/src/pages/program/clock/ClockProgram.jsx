@@ -5,6 +5,7 @@ import tw from 'twin.macro';
 import React, { useState, useEffect, useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md';
+import { BsFillReplyAllFill } from 'react-icons/bs';
 import { getClockApi } from '../../../api/programApi';
 import { SttContext } from '../../../context/SttContext';
 import ClockGame from '../../../components/program/ClockGame';
@@ -68,13 +69,13 @@ export default function ClockProgram() {
 
       <S.ClockDifficulty>
         <button type="button" onClick={goClockDifficulty}>
-          처음으로
+          <BsFillReplyAllFill />
         </button>
       </S.ClockDifficulty>
 
-      <S.ClockTitle>단어 읽기</S.ClockTitle>
+      <S.ClockTitle>시계읽기</S.ClockTitle>
       <S.ClockContext>
-        [Q{cnt + 1}] 다음 그림과 단어를 보고 따라 읽어보세요.
+        [Q{cnt + 1}] 다음 시계를 보고 시계를 따라 읽어보세요.
       </S.ClockContext>
       <S.ClockBody>
         <S.ClockBtnAndGame>
@@ -102,10 +103,10 @@ export default function ClockProgram() {
 
 const S = {
   ClockProgramSection: styled.div`
-    ${tw` bg-brand mt-[100px]`}
+    ${tw` bg-brand mt-[80px]`}
   `,
   ClockDifficulty: styled.div`
-    ${tw`flex text-[32px] justify-end items-center mb-8 text-white`}
+    ${tw`flex text-[60px] justify-end items-center m-6 p-3 text-white`}
   `,
   ClockTitle: styled.div`
     ${tw` flex text-[50px] h-[80px] mb-5 justify-center items-center font-bold text-white`}

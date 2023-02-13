@@ -51,6 +51,7 @@ export default function FindPwForm() {
             navigate('/SignIn');
           } else {
             setIsFail(true);
+            console.log('qwdq');
           }
         },
       },

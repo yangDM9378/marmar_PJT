@@ -14,26 +14,27 @@ export default function MyDropDown() {
   const { data: therapist } = useTherapistCheck();
   return (
     <Menu as="div" className="relative inline-block text-left">
-      <div>
-        <Menu.Button className="inline-flex w-full justify-center rounded-m text-gray-700 hover:bg-gray-50">
-          <img src="logo.png" className="w-12 h-10 pt-1" />
-        </Menu.Button>
+      <div className="border-2 rounded-full p-1 border-brand">
+        <div className="flex justify-center items-center ">
+          <Menu.Button className="inline-flex w-full justify-center rounded-m text-gray-700 hover:bg-gray-50">
+            <img src="logo.png" className="w-14 h-12" />
+          </Menu.Button>
+        </div>
       </div>
-
       <Transition
         as={Fragment}
         enter="transition ease-out duration-100"
-        enterFrom="transform opacity-0 scale-95"
+        enterFrom="transform opacity-0 scale-100"
         enterTo="transform opacity-100 scale-100"
         leave="transition ease-in duration-75"
         leaveFrom="transform opacity-100 scale-100"
-        leaveTo="transform opacity-0 scale-95"
+        leaveTo="transform opacity-0 scale-100"
       >
-        <Menu.Items className="absolute right-0 py-5 px-2 z-10 mt-2 w-36 origin-top-right rounded-md bg-[#8EB2FA] shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute right-0 py-5 px-2 z-10 mt-2 w-[180px] origin-top-right rounded-md bg-[#8EB2FA] shadow-lg ring-1 ring-black ring-opacity-5">
           <div>
             <Menu.Item>
               {({ active }) => (
-                <div className="text-gray-700 text-sm px-4 py-2">
+                <div className="text-gray-700 text-md px-2 py-2">
                   <span className="text-black font-extrabold">
                     {student ? student?.studentName : therapist?.therapistName}
                   </span>
@@ -48,8 +49,8 @@ export default function MyDropDown() {
                 <Link
                   to={student ? '/StudentMypage' : '/TherapistMypage'}
                   className={classNames(
-                    active ? 'text-base' : '',
-                    'block px-4 py-2 text-sm text-white',
+                    active ? '' : '',
+                    'block px-2 py-2 text-[20px] text-white',
                   )}
                 >
                   마이페이지
@@ -61,8 +62,8 @@ export default function MyDropDown() {
                 <button
                   type="button"
                   className={classNames(
-                    active ? 'text-base' : '',
-                    'block px-4 py-2 text-sm text-white rounded-md w-full text-left',
+                    active ? '' : '',
+                    'block px-2 py-2 text-[20px] text-white rounded-md w-full text-left',
                   )}
                   onClick={useLogOut}
                 >

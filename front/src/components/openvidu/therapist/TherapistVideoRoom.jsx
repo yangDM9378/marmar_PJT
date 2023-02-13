@@ -60,7 +60,7 @@ export default function TherapistVideoRoom() {
 
   // 토큰 받아오기
   const getToken = useCallback(() => {
-    console.log('mySessionId : ', therapist.therapistId);
+    // console.log('mySessionId : ', therapist.therapistId);
     return createSession(therapist?.therapistId).then(sessionId =>
       createToken(sessionId),
     );
@@ -77,7 +77,7 @@ export default function TherapistVideoRoom() {
           },
         })
         .then(response => {
-          console.log('CREATE SESSION', response);
+          // console.log('CREATE SESSION', response);
           resolve(response.data);
         })
         .catch(response => {
@@ -120,7 +120,7 @@ export default function TherapistVideoRoom() {
           },
         )
         .then(response => {
-          console.log('TOKEN', response.data);
+          // console.log('TOKEN', response.data);
           resolve(response.data);
         })
         .catch(error => reject(error));
@@ -136,7 +136,7 @@ export default function TherapistVideoRoom() {
   };
 
   const setStudent = data => {
-    console.log('setStudent: ', data);
+    // console.log('setStudent: ', data);
     setStudentNum(data);
   };
   // const getStudentName = data => {
@@ -158,13 +158,13 @@ export default function TherapistVideoRoom() {
   }, []);
 
   useEffect(() => {
-    console.log(subscribers);
+    // console.log(subscribers);
   }, [subscribers]);
 
   // 세션 참여
   const joinSession = async () => {
-    console.log('오픈비두 시작');
-    console.log('therapistId : ', therapist.therapistId);
+    // console.log('오픈비두 시작');
+    // console.log('therapistId : ', therapist.therapistId);
     const a = await therapist.therapistId;
     await console.log(a);
     OV = await new OpenVidu(); // --- 1) 오픈비두 오브젝트 생성 ---

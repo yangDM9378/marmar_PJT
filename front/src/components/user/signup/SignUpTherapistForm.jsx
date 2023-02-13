@@ -24,16 +24,20 @@ export default function SignUpTherapistForm() {
   } = useForm();
 
   const onRegister = data => {
-    useSignUpTherapist.mutate({
-      id: data.id,
-      password: data.password,
-      name: data.name,
-      phone: data.phone,
-      department: data.department,
-      email: data.email,
-    });
-    setRegisteredId(true);
-    setRegisteredEmail(true);
+    if (registerdId || registerdEmail) {
+      alert('중복확인이 되지 않았습니다.');
+    } else {
+      useSignUpTherapist.mutate({
+        id: data.id,
+        password: data.password,
+        name: data.name,
+        phone: data.phone,
+        department: data.department,
+        email: data.email,
+      });
+      setRegisteredId(true);
+      setRegisteredEmail(true);
+    }
   };
 
   const onCheckId = async id => {
@@ -61,17 +65,13 @@ export default function SignUpTherapistForm() {
   return (
     <S.SignUpSection>
       <S.Header>치료사 회원가입</S.Header>
-      <S.SignUpForm
-        onSubmit={
-          !registerdId && !registerdEmail ? handleSubmit(onRegister) : undefined
-        }
-      >
+      <S.SignUpForm onSubmit={handleSubmit(onRegister)}>
         <S.Label htmlFor="name">치료사 이름</S.Label>
         <S.Input
           {...register('name', { required: '치료사 이름을 입력해주세요.' })}
           id="name"
         />
-        {errors.name && errors.name.message}
+        <S.ErrorMsg>{errors.name && errors.name.message}</S.ErrorMsg>
         <br />
 
         <S.Label htmlFor="department">소속</S.Label>
@@ -79,7 +79,9 @@ export default function SignUpTherapistForm() {
           {...register('department', { required: '소속을 입력해주세요.' })}
           id="department"
         />
-        {errors.department && errors.department.message}
+        <S.ErrorMsg>
+          {errors.department && errors.department.message}
+        </S.ErrorMsg>
         <br />
 
         <S.Label htmlFor="id">아이디</S.Label>
@@ -105,7 +107,7 @@ export default function SignUpTherapistForm() {
             중복확인
           </S.RegisteredButton>
         </S.InputBox>
-        {errors.id && errors.id.message}
+        <S.ErrorMsg>{errors.id && errors.id.message}</S.ErrorMsg>
         <br />
 
         <S.Label htmlFor="password">비밀번호</S.Label>
@@ -130,7 +132,7 @@ export default function SignUpTherapistForm() {
             },
           })}
         />
-        {errors.password && errors.password.message}
+        <S.ErrorMsg>{errors.password && errors.password.message}</S.ErrorMsg>
         <br />
 
         <S.Label htmlFor="confirm_password">비밀번호 확인</S.Label>
@@ -148,7 +150,9 @@ export default function SignUpTherapistForm() {
             },
           })}
         />
-        {errors.confirm_password && errors.confirm_password.message}
+        <S.ErrorMsg>
+          {errors.confirm_password && errors.confirm_password.message}
+        </S.ErrorMsg>
         <br />
 
         <S.Label htmlFor="email">이메일</S.Label>
@@ -171,7 +175,7 @@ export default function SignUpTherapistForm() {
             중복확인
           </S.RegisteredButton>
         </S.InputBox>
-        {errors.id && errors.id.message}
+        <S.ErrorMsg>{errors.id && errors.id.message}</S.ErrorMsg>
         <br />
 
         <S.Label htmlFor="phone">휴대폰번호</S.Label>
@@ -179,9 +183,7 @@ export default function SignUpTherapistForm() {
           {...register('phone', { required: '휴대폰번호를 입력해주세요.' })}
           id="phone"
         />
-        {errors.phone && errors.phone.message}
-        <br />
-
+        <S.ErrorMsg>{errors.phone && errors.phone.message}</S.ErrorMsg>
         <S.SignUpButton type="submit">회원가입</S.SignUpButton>
       </S.SignUpForm>
     </S.SignUpSection>
@@ -189,11 +191,17 @@ export default function SignUpTherapistForm() {
 }
 
 const S = {
+  // SignUpSection: styled.div`
+  //   ${tw`mt-8`}
+  // `,
+  // SignUpForm: styled.form`
+  //   ${tw`py-3`}
+  // `,
   SignUpSection: styled.div`
-    ${tw`mt-8`}
+    ${tw``}
   `,
   SignUpForm: styled.form`
-    ${tw`py-3`}
+    ${tw`mt-8`}
   `,
   Header: styled.h1`
     ${tw`font-extrabold text-2xl text-center pb-2 font-cafe24`}
@@ -205,7 +213,7 @@ const S = {
     ${tw`block w-full bg-transparent outline-none border-2 rounded-md py-2 px-4 mt-2 mb-2 placeholder-slate-400 focus:border-brand`}
   `,
   ErrorMsg: styled.p`
-    ${tw`mb-3 text-red-400 text-xs font-bold`}
+    ${tw`mb-3 text-red-400 text-sm font-bold`}
   `,
   InputBox: styled.div`
     ${tw`flex`}

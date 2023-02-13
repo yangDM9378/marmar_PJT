@@ -7,7 +7,14 @@ export default function HomeBody() {
     <S.LogoAndContent>
       <S.LogoAndContentFlex>
         <S.Logo>
-          <S.Img className="bg-main-bg-1 bg-cover bg-no-repeat" />
+          {/* <S.Img className="bg-main-bg-1 bg-cover bg-no-repeat" /> */}
+          {/* <img src="logo.png" alt="" className="animate-bounceright" />
+          <img
+            src="/img/background/sualogo.png"
+            alt=""
+            className="w-full h-full animate-bounce"
+          /> */}
+          <img src="logo.png" alt="" className="w-[250px]" />
         </S.Logo>
         <S.Content>
           어린이 의사소통 플랫폼 <span> </span>
@@ -27,13 +34,13 @@ const S = {
     ${tw`flex-col text-center`}
   `,
   Logo: styled.div`
-    ${tw`flex justify-center items-center py-[5vh]`}
+    ${tw`flex justify-center items-center mb-10`}
   `,
   Img: styled.div`
     ${tw`w-[35vw] h-[20vh]`}
   `,
   Content: styled.p`
-    ${tw`text-[2.5vh]`}
+    ${tw`text-[28px] font-cafe24`}
   `,
   Name: styled.span`
     ${tw`text-brand`}

@@ -23,6 +23,9 @@ export default function PictureGame({
     setModalCorrect,
     setModalWrong,
     setModalNo,
+    soundCorrect,
+    soundWrong,
+    soundEmpty,
   } = useContext(SttContext);
   const { pictureClickAnswer } = useContext(SocketContext);
   // 체크된값 초기화 시키기
@@ -45,10 +48,13 @@ export default function PictureGame({
   const correctCheck = e => {
     console.log(answer);
     if (isCheckArr.toString() === [false, false, false, false].toString()) {
+      soundEmpty();
       setModalNo(true);
     } else if (isCheckArr[answer - 1] === true) {
+      soundCorrect();
       setModalCorrect(true);
     } else {
+      soundWrong();
       setModalWrong(true);
     }
   };

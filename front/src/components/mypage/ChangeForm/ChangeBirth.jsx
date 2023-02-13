@@ -26,7 +26,6 @@ export default function ChangeBirth(props) {
   const { useModBirth } = useModify();
 
   const onChangeBirth = async data => {
-    console.log(data);
     useModBirth.mutate(data);
     alert('생년월일 정보가 변경되었습니다.');
   };

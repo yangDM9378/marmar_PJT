@@ -17,8 +17,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+//import java.sql.Date;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -147,7 +150,8 @@ public class StudentServiceImpl implements StudentService {
             evaluation.setEvalAttitude(evaluationPostReq.getEvalAttitude());
             evaluation.setEvalConcentration(evaluationPostReq.getEvalConcentration());
             evaluation.setStudent(student);
-            evaluation.setEvalDate(LocalDateTime.now());
+            evaluation.setEvalDate(LocalDate.now());
+            evaluation.setComments(evaluationPostReq.getComments());
             evaluationRepository.save(evaluation);
             return true;
         } catch (Exception e){
@@ -169,6 +173,29 @@ public class StudentServiceImpl implements StudentService {
                     .evalConcentration(evaluation.getEvalConcentration())
                     .evalDate(evaluation.getEvalDate())
                     .student(evaluation.getStudent())
+                    .comments(evaluation.getComments())
+                    .build();
+            EvaluationResList.add(res);
+        }
+
+        return EvaluationResList;
+    }
+
+    @Override
+    public List<EvaluationRes> selectDateList(int studentNum, LocalDate date) throws Exception {
+        Student student = studentRepository.findByNum(studentNum).get();
+        List<Evaluation> evaluations = evaluationRepository.dateFindAllByStudentNum(student, date);
+        List<EvaluationRes> EvaluationResList = new ArrayList<>();
+
+        for(Evaluation evaluation : evaluations){
+            EvaluationRes res = EvaluationRes.builder()
+                    .num(evaluation.getNum())
+                    .evalAbility(evaluation.getEvalAbility())
+                    .evalAttitude(evaluation.getEvalAttitude())
+                    .evalConcentration(evaluation.getEvalConcentration())
+                    .evalDate(evaluation.getEvalDate())
+                    .student(evaluation.getStudent())
+                    .comments(evaluation.getComments())
                     .build();
             EvaluationResList.add(res);
         }

@@ -10,5 +10,6 @@ public class EvaluationPostReq {
     int evalAbility;
     int evalAttitude;
     int evalConcentration;
+    String comments;
 
 }

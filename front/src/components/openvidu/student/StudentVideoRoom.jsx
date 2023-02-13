@@ -39,8 +39,11 @@ export default function StudentVideoRoom() {
   let OV = undefined;
 
   // 토큰 받아오기
-  const getToken = useCallback(() => {
-    return createSession(mySessionId).then(sessionId => createToken(sessionId));
+  const getToken = useCallback(async () => {
+    const teacher = await getTeacherApi();
+    return createSession(teacher.data).then(sessionId =>
+      createToken(sessionId),
+    );
   }, [mySessionId]);
 
   // 세션 생성
@@ -54,7 +57,6 @@ export default function StudentVideoRoom() {
           },
         })
         .then(response => {
-          console.log('CREATE SESSION', response);
           resolve(response.data);
         })
         .catch(response => {
@@ -97,7 +99,6 @@ export default function StudentVideoRoom() {
           },
         )
         .then(response => {
-          console.log('TOKEN', response.data);
           resolve(response.data);
         })
         .catch(error => reject(error));
@@ -112,7 +113,6 @@ export default function StudentVideoRoom() {
     setModalOpen(false);
   };
   useEffect(() => {
-    console.log(subscribers);
     if (!subscribers) {
       leaveSession();
     }
@@ -130,14 +130,17 @@ export default function StudentVideoRoom() {
       }
     }
     fetch();
+    joinSession();
   }, []);
 
   // 세션 참여
-  const joinSession = () => {
-    OV = new OpenVidu(); // --- 1) 오픈비두 오브젝트 생성 ---
+  const joinSession = async () => {
+    const teacher = await getTeacherApi();
+    await setMySessionId(teacher.data);
+    OV = await new OpenVidu(); // --- 1) 오픈비두 오브젝트 생성 ---
     OV.enableProdMode(); // 콘솔 막기
     openModal();
-    const mySession = OV.initSession(); // --- 2) 세션을 시작 --
+    const mySession = await OV.initSession(); // --- 2) 세션을 시작 --
     setSession(mySession);
 
     mySession.on('streamCreated', event => {
@@ -160,15 +163,15 @@ export default function StudentVideoRoom() {
     });
 
     // --- 4) 유효한 토큰으로 세션에 접속하기 ---
-    getToken().then(token => {
+    await getToken().then(token => {
       mySession
         .connect(token, { clientData: myUserName })
         .then(async () => {
-          let devices = await OV.getDevices();
-          let videoDevices = devices.filter(
-            device => device.kind === 'videoinput',
-          );
-          console.log(videoDevices);
+          // let devices = await OV.getDevices();
+          // let videoDevices = devices.filter(
+          //   device => device.kind === 'videoinput',
+          // );
+          // console.log(videoDevices);
           // --- 5) Get your own camera stream ---(퍼블리셔)
           let publisher = OV.initPublisher(undefined, {
             audioSource: undefined, // The source of audio. If undefined default microphone

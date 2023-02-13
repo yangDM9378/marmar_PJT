@@ -33,7 +33,7 @@ const emailCheckTherapistApi = payload =>
   axios.get(`therapist/checkEmail/${payload}`);
 
 const emailCheckStudentApi = payload =>
-  axios.get(`student/checkEmail${payload}`);
+  axios.get(`student/checkEmail/${payload}`);
 
 // FindInfoAPI
 const findIdApi = async payload => {
@@ -48,7 +48,8 @@ const findIdApi = async payload => {
 
 const findPwApi = async payload => {
   const check = await authApi.post('auth/check/findPw', payload);
-  if (check.data === true) {
+  console.log(payload, check);
+  if (check.data.check === true) {
     return await axios.post('auth/check/findPw/sendEmail', payload);
   }
   return false;

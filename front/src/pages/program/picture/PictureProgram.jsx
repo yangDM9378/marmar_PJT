@@ -5,6 +5,7 @@ import tw from 'twin.macro';
 import React, { useState, useEffect, useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { MdNavigateNext, MdNavigateBefore } from 'react-icons/md';
+import { BsFillReplyAllFill } from 'react-icons/bs';
 import { getPictureApi } from '../../../api/programApi';
 import PictureGame from '../../../components/program/PictureGame';
 import { SttContext } from '../../../context/SttContext';
@@ -24,6 +25,7 @@ export default function PictureProgram() {
     setModalWrong,
     modalNo,
     setModalNo,
+    soundNext,
   } = useContext(SttContext);
   const navigate = useNavigate();
 
@@ -41,10 +43,12 @@ export default function PictureProgram() {
   const [cnt, setCnt] = useState(0);
   const cntPlus = () => {
     cnt < 9 && setCnt(cnt + 1);
+    soundNext();
     setIsCheckArr([false, false, false, false]);
   };
   const cntMinus = () => {
     cnt > 0 && setCnt(cnt - 1);
+    soundNext();
     setIsCheckArr([false, false, false, false]);
   };
 
@@ -75,11 +79,11 @@ export default function PictureProgram() {
 
       <S.PictureDifficulty>
         <button type="button" onClick={goPictureDifficulty}>
-          처음으로
+          <BsFillReplyAllFill />
         </button>
       </S.PictureDifficulty>
 
-      <S.PictureTitle>그림 맞추기</S.PictureTitle>
+      <S.PictureTitle>그림 맞히기</S.PictureTitle>
       <S.PictureContext>
         [Q{cnt + 1}] 다음 그림 중 관련없는 하나를 고르세요.
       </S.PictureContext>
@@ -104,10 +108,10 @@ export default function PictureProgram() {
 
 const S = {
   PictureProgramSection: styled.div`
-    ${tw` bg-brand mt-[100px]`}
+    ${tw` bg-brand mt-[80px]`}
   `,
   PictureDifficulty: styled.h4`
-    ${tw`flex text-[32px] justify-end items-center mb-8 text-white`}
+    ${tw`flex text-[60px] justify-end items-center m-6 text-white`}
   `,
   PictureTitle: styled.div`
     ${tw` flex text-[50px] h-[80px] mb-5 justify-center items-center font-bold text-white`}

@@ -27,18 +27,15 @@ export default function StudentList(props) {
   const setRecent = () => {
     if (!recent) {
       const arr = [student];
-      console.log(arr);
       localStorage.setItem('recentClass', JSON.stringify(arr));
     } else if (recent.length >= 6) {
       recent.pop();
       recent.unshift(student);
       const arr = recent;
-      console.log(arr);
       localStorage.setItem('recentClass', JSON.stringify(arr));
     } else {
       recent.unshift(student);
       const arr = recent;
-      console.log(arr);
       localStorage.setItem('recentClass', JSON.stringify(arr));
     }
   };

@@ -10,7 +10,7 @@ export default function EvalModal({ isOpen, close, studentNum }) {
     close();
   };
   return (
-    <S.Modal isOpen={isOpen}>
+    <S.Modal isOpen={isOpen} ariaHideApp={false}>
       <Evaluation studentNum={studentNum} onEvalSubmit={handleSubmit} />
     </S.Modal>
   );
@@ -18,6 +18,6 @@ export default function EvalModal({ isOpen, close, studentNum }) {
 
 const S = {
   Modal: styled(Modal)`
-    ${tw`w-[550px] bg-white`}
+    ${tw`w-[900px] bg-white mx-auto`}
   `,
 };

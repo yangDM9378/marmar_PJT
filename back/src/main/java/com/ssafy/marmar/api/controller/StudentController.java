@@ -16,10 +16,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
+//import java.sql.Date;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/v1/student")
@@ -182,6 +183,13 @@ public class StudentController {
     @GetMapping("/evaluation/result/{studentNum}")
     public ResponseEntity<List<EvaluationRes>> evaluationResult(@PathVariable int studentNum) {
         List<EvaluationRes> list = studentService.selectList(studentNum);
+        return ResponseEntity.status(200).body(list);
+    }
+
+    @PostMapping("/mypage/evaluation/result/{studentNum}")
+    public ResponseEntity<List<EvaluationRes>> dateEvaluationResult(@PathVariable int studentNum, @RequestBody Map<String, LocalDate> date) throws Exception {
+        List<EvaluationRes> list = studentService.selectDateList(studentNum, date.get("date"));
+
         return ResponseEntity.status(200).body(list);
     }
 

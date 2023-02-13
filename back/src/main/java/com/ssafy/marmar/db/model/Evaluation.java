@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -31,8 +32,11 @@ public class Evaluation {
     @Column(nullable = false)
     private int evalConcentration;
 
+    @Column(columnDefinition = "LONGTEXT")
+    private String comments;
+
     @Column
-    private LocalDateTime evalDate;
+    private LocalDate evalDate;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="studentNum")
