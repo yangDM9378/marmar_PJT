@@ -47,17 +47,17 @@ export default function MypageStudentList() {
       <MypageSelectStudentModal isOpen={isOpen} close={handleModal} />
       <S.Listtable className="items-center">
         <colgroup>
+          <col width="20%" />
+          <col width="28%" />
+          <col width="38%" />
           <col width="17%" />
-          <col width="30%" />
-          <col width="40%" />
-          <col width="13%" />
         </colgroup>
         <thead>
           <tr>
             <th>학생 고유 번호</th>
             <th>학생 이름</th>
             <th>학생 아이디</th>
-            <th>버튼</th>
+            <th>등록 해제</th>
           </tr>
         </thead>
         <tbody>
@@ -73,7 +73,7 @@ export default function MypageStudentList() {
                       onDeleteRegister(student.num, e);
                     }}
                   >
-                    등록 해제
+                    확인
                   </S.DeleteButton>
                 </td>
               </tr>

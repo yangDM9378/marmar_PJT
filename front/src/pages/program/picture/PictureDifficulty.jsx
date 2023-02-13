@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function PictureDifficulty() {
   return (
-    <S.ProgramSection>
+    <S.ProgramSection className="bg-suabg-1 bg-contain">
       <S.ProgramBox>
         <S.ProgramHeader>💡그림 맞추기</S.ProgramHeader>
         <S.DiffSection>

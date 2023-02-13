@@ -111,7 +111,7 @@ const S = {
     ${tw` bg-brand mt-[80px]`}
   `,
   PictureDifficulty: styled.h4`
-    ${tw`flex text-[60px] justify-end items-center m-6 text-white`}
+    ${tw`flex text-[60px] justify-end items-center m-4 p-6 text-white`}
   `,
   PictureTitle: styled.div`
     ${tw` flex text-[50px] h-[80px] mb-5 justify-center items-center font-bold text-white`}
