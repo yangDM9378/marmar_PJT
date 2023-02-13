@@ -17,6 +17,9 @@ const delRegisteredStudentApi = payload => {
 const getResultApi = async payload => {
   return authApi.get(`student/evaluation/result/${payload}`);
 };
+const getResultDailyApi = (num, date) => {
+  return authApi.post(`student/mypage/evaluation/result/${num}`, { date });
+};
 
 export {
   searchStudentApi,
@@ -24,4 +27,5 @@ export {
   getRegisteredStudentApi,
   delRegisteredStudentApi,
   getResultApi,
+  getResultDailyApi,
 };

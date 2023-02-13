@@ -4,7 +4,6 @@ import { authApi } from '../libs/axiosCofing';
 const S = 'student/modify';
 
 const stuModPasswordApi = payload => {
-  console.log(payload, 'student');
   return authApi.put(`${S}/Password`, payload);
 };
 

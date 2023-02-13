@@ -7,13 +7,13 @@ import useEvaluate from '../../../hooks/queries/useEvaluate';
 
 export default function Evaluation({ studentNum, onEvalSubmit }) {
   const { useEvaluation } = useEvaluate();
-  const [comments, setComments] = useState('');
+  const [comment, setComments] = useState('');
   const [evalAbility, setevalAbility] = useState(0);
   const [evalAttitude, setEvalAttitude] = useState(0);
   const [evalConcentration, setEvalConcentration] = useState(0);
   const handleTextArea = e => {
     setComments(e.target.value);
-    console.log(comments);
+    // console.log(comment);
   };
   const rateAbility = e => {
     setevalAbility(e.rating);
@@ -26,12 +26,16 @@ export default function Evaluation({ studentNum, onEvalSubmit }) {
   };
   const handleSubmit = e => {
     e.preventDefault();
+    const comments = () => {
+      return comment.replaceAll('<br>', '\r\n');
+    };
+
     useEvaluation.mutate({
       studentNum,
       evalAbility,
       evalAttitude,
       evalConcentration,
-      comments,
+      comments: comments(),
     });
     onEvalSubmit();
   };
@@ -72,12 +76,12 @@ export default function Evaluation({ studentNum, onEvalSubmit }) {
               </S.Label>
               <S.Input
                 type="text"
-                placeholder="500자에서 100자 이내로"
+                placeholder="최대 200자까지 작성할 수 있습니다."
                 maxLength={200}
                 onChange={handleTextArea}
               />
               <div className="absolute right-3 bottom-4 text-slate-400">
-                {comments.length}/200
+                {comment.length}/200
               </div>
             </S.InputBox>
           </S.RightBox>

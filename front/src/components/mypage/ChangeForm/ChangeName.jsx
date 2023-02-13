@@ -26,7 +26,6 @@ export default function ChangeName(props) {
   });
   const { useModName } = useModify();
   const onChangeName = async data => {
-    console.log(data);
     if (check === 'name') {
       useModName.mutate({ name: data.name, check: 'name' });
     } else if (check === 'nameHelper') {

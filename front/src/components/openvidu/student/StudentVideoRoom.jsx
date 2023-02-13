@@ -41,7 +41,6 @@ export default function StudentVideoRoom() {
   // 토큰 받아오기
   const getToken = useCallback(async () => {
     const teacher = await getTeacherApi();
-    console.log('getToken', teacher);
     return createSession(teacher.data).then(sessionId =>
       createToken(sessionId),
     );
@@ -58,7 +57,6 @@ export default function StudentVideoRoom() {
           },
         })
         .then(response => {
-          console.log('CREATE SESSION', response);
           resolve(response.data);
         })
         .catch(response => {
@@ -101,7 +99,6 @@ export default function StudentVideoRoom() {
           },
         )
         .then(response => {
-          console.log('TOKEN', response.data);
           resolve(response.data);
         })
         .catch(error => reject(error));
@@ -116,7 +113,6 @@ export default function StudentVideoRoom() {
     setModalOpen(false);
   };
   useEffect(() => {
-    console.log(subscribers);
     if (!subscribers) {
       leaveSession();
     }
@@ -140,7 +136,6 @@ export default function StudentVideoRoom() {
   // 세션 참여
   const joinSession = async () => {
     const teacher = await getTeacherApi();
-    console.log(teacher);
     await setMySessionId(teacher.data);
     OV = await new OpenVidu(); // --- 1) 오픈비두 오브젝트 생성 ---
     OV.enableProdMode(); // 콘솔 막기
@@ -172,11 +167,11 @@ export default function StudentVideoRoom() {
       mySession
         .connect(token, { clientData: myUserName })
         .then(async () => {
-          let devices = await OV.getDevices();
-          let videoDevices = devices.filter(
-            device => device.kind === 'videoinput',
-          );
-          console.log(videoDevices);
+          // let devices = await OV.getDevices();
+          // let videoDevices = devices.filter(
+          //   device => device.kind === 'videoinput',
+          // );
+          // console.log(videoDevices);
           // --- 5) Get your own camera stream ---(퍼블리셔)
           let publisher = OV.initPublisher(undefined, {
             audioSource: undefined, // The source of audio. If undefined default microphone

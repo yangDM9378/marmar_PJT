@@ -28,7 +28,6 @@ export default function ChangePasswordHelper() {
   });
   const { useModPasswordHelper } = useModify();
   const onChangePasswordHelper = data => {
-    console.log(data);
     useModPasswordHelper.mutate({
       nowPasswordHelper: data.nowPasswordHelper,
       modifyPasswordHelper: data.passwordHelper,
