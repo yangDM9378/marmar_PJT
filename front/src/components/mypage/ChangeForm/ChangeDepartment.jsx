@@ -26,7 +26,6 @@ export default function ChangeDepartment(props) {
   const { useTheModDepartment } = useModify();
 
   const onChangeDepartment = async data => {
-    console.log(data);
     useTheModDepartment.mutate(data);
     alert('소속기관 정보가 변경되었습니다.');
   };

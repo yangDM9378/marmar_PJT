@@ -38,7 +38,6 @@ export default function ChangePassword() {
   });
   const { useModPassword } = useModify();
   const onChangePassword = async data => {
-    console.log(data);
     useModPassword.mutate({
       nowPassword: data.nowPassword,
       modifyPassword: data.password,

@@ -186,7 +186,7 @@ public class StudentController {
         return ResponseEntity.status(200).body(list);
     }
 
-    @GetMapping("/mypage/evaluation/result/{studentNum}")
+    @PostMapping("/mypage/evaluation/result/{studentNum}")
     public ResponseEntity<List<EvaluationRes>> dateEvaluationResult(@PathVariable int studentNum, @RequestBody Map<String, LocalDate> date) throws Exception {
         List<EvaluationRes> list = studentService.selectDateList(studentNum, date.get("date"));
 

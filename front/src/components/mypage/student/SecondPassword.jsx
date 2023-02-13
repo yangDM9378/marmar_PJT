@@ -33,7 +33,6 @@ export default function SecondPassword(props) {
         <S.Input
           type="password"
           placeholder="2차 비밀번호 입력"
-          onEnt
           onChange={onPwChange}
           onKeyPress={handleOnKeyPress}
         />

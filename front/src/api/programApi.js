@@ -14,7 +14,6 @@ const getPictureApi = payload => {
   return axios.get(`program/practice/picture/${payload}`);
 };
 const getQuestionApi = payload => {
-  console.log(payload);
   return axios.post('program/game/select', payload);
 };
 const searchClassStudentApi = payload => {
