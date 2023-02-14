@@ -20,7 +20,7 @@ export default function HomeBody() {
           어린이 의사소통 플랫폼 <span> </span>
           <S.Name>마르마르</S.Name>를 통해
         </S.Content>
-        <S.Content>언어상담사와 1:1 맞춤 서비스를 제공받아보세요.</S.Content>
+        <S.Content>언어재활사와 1:1 맞춤 서비스를 제공받아보세요.</S.Content>
       </S.LogoAndContentFlex>
     </S.LogoAndContent>
   );

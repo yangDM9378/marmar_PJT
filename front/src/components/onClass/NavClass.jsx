@@ -27,7 +27,7 @@ export default function NavClass() {
     num: '',
   });
   // 프로그램
-  const programOption = ['단어 읽기', '시계 읽기', '그림 선택'];
+  const programOption = ['단어 읽기', '시계 읽기', '다른그림찾기'];
   const programParam = ['word', 'clock', 'picture'];
   const defaultProgram = '프로그램';
   const onSelectProgram = e => {

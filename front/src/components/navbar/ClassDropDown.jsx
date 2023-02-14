@@ -64,7 +64,7 @@ export default function ClassDropDown() {
                     'block pt-1 text-[18px]',
                   )}
                 >
-                  그림 맞히기
+                  다른그림찾기
                 </Link>
               )}
             </Menu.Item>
