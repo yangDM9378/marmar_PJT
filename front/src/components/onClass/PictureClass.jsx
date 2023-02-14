@@ -65,7 +65,7 @@ export default function PictureClass() {
         <S.Context>
           [Q{cnt + 1}] 다음 사진 중 관계없는 사진을 선택하세요.
         </S.Context>
-        <div>그림 맞추기</div>
+        <div>다른그림찾기</div>
       </S.Title>
 
       <S.Board>
