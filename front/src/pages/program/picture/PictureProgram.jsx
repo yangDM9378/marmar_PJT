@@ -83,7 +83,7 @@ export default function PictureProgram() {
         </button>
       </S.PictureDifficulty>
 
-      <S.PictureTitle>다른그림찾기</S.PictureTitle>
+      <S.PictureTitle>다른 그림 찾기</S.PictureTitle>
       <S.PictureContext>
         [Q{cnt + 1}] 다음 그림 중 관련없는 하나를 고르세요.
       </S.PictureContext>
@@ -111,10 +111,10 @@ const S = {
     ${tw` bg-brand mt-[80px]`}
   `,
   PictureDifficulty: styled.h4`
-    ${tw`flex text-[60px] justify-end items-center m-6 text-white`}
+    ${tw`flex text-[60px] justify-end items-center m-6 text-white pt-5`}
   `,
   PictureTitle: styled.div`
-    ${tw` flex text-[50px] h-[80px] mb-5 justify-center items-center font-bold text-white`}
+    ${tw` flex text-[50px] h-[40px] mb-5 justify-center items-center font-bold text-white`}
   `,
   PictureContext: styled.div`
     ${tw` flex text-2xl mb-10 h-[500] justify-center font-thin text-white`}

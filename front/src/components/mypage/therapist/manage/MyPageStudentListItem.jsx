@@ -50,7 +50,7 @@ export default function MyPageStudentListItem(props) {
 // ${tw`p-5 m-5 text-xl flex justify-between border-4 border-black`}
 const S = {
   StudentBox: styled.div`
-    ${tw`grid grid-cols-2 m-5 border-b-2 border-slate-300 pb-4`}
+    ${tw`grid grid-cols-2 m-5 border-b-2 border-slate-300 pb-4 min-w-[600px]`}
   `,
   NameBox: styled.div`
     ${tw`col-span-1 flex items-center justify-center font-cafe24 text-2xl`}

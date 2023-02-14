@@ -58,7 +58,7 @@ export default function StudentResultModal({ isOpen, close, num, name }) {
       )}
       <S.StyledSlider {...settings}>
         {studentResult &&
-          studentResult.data.length > 1 &&
+          studentResult.data.length > 0 &&
           studentResult.data.map((el, idx) => (
             <div key={el.num}>
               <S.Title>{el.evalDate}</S.Title>

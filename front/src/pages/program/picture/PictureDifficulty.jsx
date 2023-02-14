@@ -7,7 +7,7 @@ export default function PictureDifficulty() {
   return (
     <S.ProgramSection className="bg-suabg-1 bg-contain">
       <S.ProgramBox>
-        <S.ProgramHeader>💡다른그림찾기</S.ProgramHeader>
+        <S.ProgramHeader>💡다른 그림 찾기</S.ProgramHeader>
         <S.DiffSection>
           <S.DiffLink to="/PictureProgram" state={{ difficulty: 'high' }}>
             <S.DiffH1>상</S.DiffH1>

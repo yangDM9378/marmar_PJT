@@ -3,6 +3,9 @@ module.exports = {
   content: ['./src/**/*.{js,jsx}'],
   theme: {
     extend: {
+      cursor: {
+        fancy: "url('/public/cursor_hover.cur'), pointer",
+      },
       colors: {
         // text-brand는 앞으로 이 색으로 바뀜
         // '#6A79F8', '#427EF6'

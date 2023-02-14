@@ -8,7 +8,7 @@ export default function ClockDifficulty() {
   return (
     <S.ProgramSection className="bg-suabg-1 bg-contain">
       <S.ProgramBox>
-        <S.ProgramHeader>🐣단어 읽기</S.ProgramHeader>
+        <S.ProgramHeader>🐣바르게 말하기</S.ProgramHeader>
         <S.DiffSection>
           <S.DiffLink to="/WordProgram" state={{ difficulty: 'high' }}>
             <S.DiffH1>상</S.DiffH1>

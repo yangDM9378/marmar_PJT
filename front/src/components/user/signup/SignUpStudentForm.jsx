@@ -61,6 +61,16 @@ export default function SignUpStudentForm() {
     }
   };
 
+  const onInput = e => {
+    const data = e.target.value;
+    if (data.length === 3 && e.nativeEvent.data !== null) {
+      e.target.value = `${data}-`;
+    }
+    if (data.length === 8 && e.nativeEvent.data !== null) {
+      e.target.value = `${data}-`;
+    }
+  };
+
   return (
     <S.SignUpSection>
       <S.Header>사용자 회원가입</S.Header>
@@ -185,6 +195,7 @@ export default function SignUpStudentForm() {
                 message: '유효한 이메일이 아닙니다.',
               },
             })}
+            placeholder="example@example.com"
             id="email"
             type="email"
           />
@@ -201,6 +212,9 @@ export default function SignUpStudentForm() {
         <S.Input
           {...register('phone', { required: '휴대폰번호를 입력해주세요.' })}
           id="phone"
+          onChange={onInput}
+          maxLength={13}
+          placeholder="010-1234-5678"
         />
         <S.ErrorMsg>{errors.phone && errors.phone.message}</S.ErrorMsg>
         <br />

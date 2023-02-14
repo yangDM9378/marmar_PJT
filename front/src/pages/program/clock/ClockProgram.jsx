@@ -106,10 +106,10 @@ const S = {
     ${tw` bg-brand mt-[80px]`}
   `,
   ClockDifficulty: styled.div`
-    ${tw`flex text-[60px] justify-end items-center m-6 p-3 text-white`}
+    ${tw`flex text-[60px] justify-end items-center m-6 text-white pt-5`}
   `,
   ClockTitle: styled.div`
-    ${tw` flex text-[50px] h-[80px] mb-5 justify-center items-center font-bold text-white`}
+    ${tw` flex text-[50px] h-[40px] mb-5 justify-center items-center font-bold text-white`}
   `,
   ClockContext: styled.div`
     ${tw` flex text-2xl mb-10 h-[500] justify-center font-thin text-white`}
