@@ -61,6 +61,15 @@ export default function SignUpTherapistForm() {
       setRegisteredEmail(false);
     }
   };
+  const onInput = e => {
+    const data = e.target.value;
+    if (data.length === 3 && e.nativeEvent.data !== null) {
+      e.target.value = `${data}-`;
+    }
+    if (data.length === 8 && e.nativeEvent.data !== null) {
+      e.target.value = `${data}-`;
+    }
+  };
 
   return (
     <S.SignUpSection>
@@ -167,6 +176,7 @@ export default function SignUpTherapistForm() {
             })}
             id="email"
             type="email"
+            placeholder="example@example.com"
           />
           <S.RegisteredButton
             type="button"
@@ -182,6 +192,9 @@ export default function SignUpTherapistForm() {
         <S.Input
           {...register('phone', { required: '휴대폰번호를 입력해주세요.' })}
           id="phone"
+          onChange={onInput}
+          maxLength={13}
+          placeholder="010-1234-5678"
         />
         <S.ErrorMsg>{errors.phone && errors.phone.message}</S.ErrorMsg>
         <S.SignUpButton type="submit">회원가입</S.SignUpButton>

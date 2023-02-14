@@ -15,8 +15,11 @@ export default function Navbar() {
   return (
     <S.NavHeader>
       <S.LogoLink to="/">
-        <S.LogoName>
-          <img src="/img/background/sualogo.png" alt="" />
+        <S.LogoName className="">
+          <img
+            src="/img/background/sualogo.png"
+            alt="/img/background/sualogo.png"
+          />
         </S.LogoName>
       </S.LogoLink>
       {!student && !therapist && <NavDefault />}

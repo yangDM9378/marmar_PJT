@@ -22,15 +22,6 @@ export default function DefaultClass() {
   // });
   return (
     <S.ClassGameSection>
-      {/* {time && (
-        <Rotate cascade damping={2e-1}>
-          <div className="flex justify-center space-x-8">
-            <S.SpanOne>단어 읽기</S.SpanOne>
-            <S.SpanOne>시계 읽기</S.SpanOne>
-            <S.SpanOne>그림 선택</S.SpanOne>
-          </div>
-        </Rotate>
-      )} */}
       <S.Wrapper>
         {/* <S.Typding>마르마르 수업 시작</S.Typding> */}
         <Fade delay={0e3} cascade damping={2e-1}>

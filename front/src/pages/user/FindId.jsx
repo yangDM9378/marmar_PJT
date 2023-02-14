@@ -6,7 +6,7 @@ import FindIdForm from '../../components/user/findid/FindIdForm';
 
 export default function FindId() {
   return (
-    <S.FindSection>
+    <S.FindSection className="bg-suabg-2">
       <S.FindBox>
         <S.FindHeader>아이디 찾기</S.FindHeader>
         <FindIdForm />
@@ -18,7 +18,7 @@ export default function FindId() {
 // ${tw`px-10 bg-brand min-h-[730px] flex justify-center items-center`}
 const S = {
   FindSection: styled.div`
-    ${tw`px-10 mt-[100px] min-h-[71vh] bg-brand flex justify-center items-center`}
+    ${tw`px-10 min-h-screen bg-brand flex justify-center items-center`}
   `,
   FindBox: styled.div`
     ${tw`bg-white rounded-3xl w-[550px] h-fit p-16`}

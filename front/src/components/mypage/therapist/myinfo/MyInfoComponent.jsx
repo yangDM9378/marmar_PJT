@@ -45,7 +45,7 @@ export default function MyInfoComponent() {
 
 const S = {
   Container: styled.div`
-    ${tw`h-fit w-full pb-20 pt-5  m-5 justify-center text-center`}
+    ${tw`h-fit w-full pb-20 pt-5  m-5 justify-center text-center min-w-[600px]`}
   `,
   body: styled.div`
     ${tw`text-[20px] pl-10 pr-10`}

@@ -18,7 +18,7 @@ export default function SignIn() {
 
 const S = {
   SignInSection: styled.div`
-    ${tw`px-10 mt-[80px] h-[650px] flex justify-center items-center`}
+    ${tw`px-10 h-[650px] flex justify-center items-center min-h-screen`}
   `,
   SignInBox: styled.div`
     ${tw`bg-white rounded-3xl w-[550px] h-[450px] p-16`}

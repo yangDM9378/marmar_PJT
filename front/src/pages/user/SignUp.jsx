@@ -29,7 +29,7 @@ export default function SignUp() {
 // ${tw`p-[15vh 5vh] bg-brand min-h-[800px] flex justify-center items-center`}
 const S = {
   SignUpSection: styled.div`
-    ${tw`flex bg-brand h-[670px] mt-[90px] justify-center items-center`}}
+    ${tw`flex bg-brand h-[670px] min-h-screen justify-center items-center`}}
   `,
   SignUpBox: styled.div`
     ${tw`bg-white rounded-3xl w-[700px] p-10`}
