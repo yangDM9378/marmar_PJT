@@ -2,18 +2,18 @@
 
 insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (1, "high", "img/word/1.png", "시계");
 insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (2, "high", "img/word/2.png", "인형");
-insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (3, "high", "img/word/3.png", "우유");
-insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (4, "high", "img/word/4.png", "야자수");
+insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (3, "low", "img/word/3.png", "우유");
+insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (4, "middle", "img/word/4.png", "야자수");
 insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (5, "high", "img/word/5.png", "탬버린");
 
 insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (6, "middle", "img/word/6.png", "피아노");
 insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (7, "middle", "img/word/7.png", "냉장고");
 insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (8, "middle", "img/word/8.png", "옷장");
-insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (9, "middle", "img/word/9.png", "소방차");
+insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (9, "high", "img/word/9.png", "소방차");
 insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (10, "middle", "img/word/10.png", "비행기");
 
 insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (11, "low", "img/word/11.png", "바지");
-insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (12, "low", "img/word/12.png", "오리");
+insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (12, "high", "img/word/12.png", "오리");
 insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (13, "low", "img/word/13.png", "배추");
 insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (14, "low", "img/word/14.png", "토마토");
 insert into marmar.wordspeaking (num, difficulty, image_path, answer) values (15, "low", "img/word/15.png", "기차");
