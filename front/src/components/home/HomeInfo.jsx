@@ -14,14 +14,14 @@ export default function HomeInfo() {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 4000,
+    arrows: false,
   };
   return (
-    <div>
+    <div className="w-full">
       <Slider {...settings}>
-        {/* <div className="bg-main-ft-1 bg-cover bg-no-repeat w-[100vw] h-[60vh]" /> */}
-        <img src="./main/footer-1.png" alt="" />
+        <img src="./main/footer-1.png" alt="" className="w-full" />
 
-        <img src="./main/footer-2.png" alt="" />
+        <img src="./main/footer-2.png" alt="" className="w-full" />
       </Slider>
     </div>
   );

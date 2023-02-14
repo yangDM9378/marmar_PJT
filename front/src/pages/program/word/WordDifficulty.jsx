@@ -27,7 +27,7 @@ export default function ClockDifficulty() {
 
 const S = {
   ProgramSection: styled.div`
-    ${tw`flex bg-brand h-[650px] mt-[90px] justify-center items-center`}  
+    ${tw`flex bg-brand h-[650px] min-h-screen mt-[90px] justify-center items-center`}  
     `,
   ProgramBox: styled.div`
     ${tw` flex flex-col justify-center items-center h-[430px] w-[600px] bg-white rounded-3xl`}

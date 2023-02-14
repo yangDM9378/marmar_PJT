@@ -28,7 +28,7 @@ export default function HomeBody() {
 
 const S = {
   LogoAndContent: styled.div`
-    ${tw`flex justify-center items-center h-[60vh] `}
+    ${tw`flex justify-center items-center h-[60vh] w-full`}
   `,
   LogoAndContentFlex: styled.div`
     ${tw`flex-col text-center`}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import { Link, useNavigate } from 'react-router-dom';
@@ -8,7 +8,7 @@ import useAuth from '../../hooks/queries/useAuth';
 
 export default function NavStudent() {
   const navigate = useNavigate();
-  const { useStudentCheck } = useAuth();
+  const { useStudentCheck, go } = useAuth();
   const { data: student } = useStudentCheck();
   const onEnterRoom = () => {
     navigate('/OpenVidu');

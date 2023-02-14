@@ -15,9 +15,9 @@ export default function StudentClassEnd() {
           <Link to="/WordDifficulty">
             <S.ContentBox>
               <div>
-                단어
+                바르게
                 <br />
-                읽기
+                말하기
               </div>
             </S.ContentBox>
           </Link>
@@ -30,9 +30,9 @@ export default function StudentClassEnd() {
           </Link>
           <Link to="/PictureDifficulty">
             <S.ContentBox>
-              그림
+              다른 그림
               <br />
-              맞히기
+              찾기
             </S.ContentBox>
           </Link>
         </S.Main>
