@@ -83,7 +83,7 @@ export default function PictureProgram() {
         </button>
       </S.PictureDifficulty>
 
-      <S.PictureTitle>그림 맞히기</S.PictureTitle>
+      <S.PictureTitle>다른그림찾기</S.PictureTitle>
       <S.PictureContext>
         [Q{cnt + 1}] 다음 그림 중 관련없는 하나를 고르세요.
       </S.PictureContext>
