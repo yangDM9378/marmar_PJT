@@ -9,7 +9,7 @@ function classNames(...classes) {
 
 export default function ClassDropDown() {
   return (
-    <Menu as="div" className="relative inline-block text-left">
+    <Menu as="div" className="relative inline-block">
       <div>
         <Menu.Button className="inline-flex w-full justify-center rounded-m hover:bg-gray-50">
           교재컨텐츠
@@ -25,7 +25,7 @@ export default function ClassDropDown() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute z-10 mt-4 w-full text-center origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute z-10 mt-4 w-[145px] text-center origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
             <Menu.Item>
               {({ active }) => (
@@ -36,7 +36,7 @@ export default function ClassDropDown() {
                     'block px-4 py-1 text-[18px]',
                   )}
                 >
-                  단어 읽기
+                  바르게 말하기
                 </Link>
               )}
             </Menu.Item>
@@ -64,7 +64,7 @@ export default function ClassDropDown() {
                     'block pt-1 text-[18px]',
                   )}
                 >
-                  다른그림찾기
+                  다른 그림 찾기
                 </Link>
               )}
             </Menu.Item>

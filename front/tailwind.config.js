@@ -40,7 +40,7 @@ module.exports = {
       animation: {
         bounceleft: 'bounceleft 1s ease-in-out infinite',
         bounceright: 'bounceright 1s ease-in-out infinite',
-        text: 'text 5s ease-in-out infinite',
+        text: 'text s ease-in-out',
       },
       keyframes: {
         bounceleft: {

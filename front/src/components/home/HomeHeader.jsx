@@ -21,7 +21,7 @@ export default function HomeHeader() {
 
 const S = {
   Header: styled.div`
-    ${tw`mt-[8vh]`}
+    ${tw`mt-[8vh] w-full`}
   `,
   MainImgAndText: styled.div`
     ${tw`relative bg-black`}

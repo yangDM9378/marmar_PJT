@@ -26,7 +26,7 @@ export default function Footer() {
 
 const S = {
   Section: styled.div`
-    ${tw`bg-gray-200 h-[180] flex justify-between px-5 py-5`}
+    ${tw`bg-gray-200 h-[180px] flex justify-between px-5 py-5`}
   `,
   TextBox: styled.div`
     ${tw`justify-center flex flex-col`}

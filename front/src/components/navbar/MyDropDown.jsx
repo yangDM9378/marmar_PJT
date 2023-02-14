@@ -14,9 +14,9 @@ export default function MyDropDown() {
   const { data: therapist } = useTherapistCheck();
   return (
     <Menu as="div" className="relative inline-block text-left">
-      <div className="border-2 rounded-full p-1 border-brand">
+      <div className="border-2 rounded-full p-1 border-brand hover:scale-110">
         <div className="flex justify-center items-center ">
-          <Menu.Button className="inline-flex w-full justify-center rounded-m text-gray-700 hover:bg-gray-50">
+          <Menu.Button className="inline-flex w-full justify-center rounded-m text-gray-700">
             <img src="logo.png" className="w-14 h-12" />
           </Menu.Button>
         </div>

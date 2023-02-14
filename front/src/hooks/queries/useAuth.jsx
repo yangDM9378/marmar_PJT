@@ -14,6 +14,7 @@ import {
 export default function useAuth() {
   const navigate = useNavigate();
   const client = useQueryClient();
+  const [go, setGo] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [student, setStudent] = useState(true);
   const [therapist, setTherapist] = useState(true);
@@ -44,13 +45,23 @@ export default function useAuth() {
       queryKey: ['useStudentCheck'],
       queryFn: studentCheckApi,
       enabled: isLogin && student,
-      onSuccess: () => {
+      onSuccess: data => {
         localStorage.setItem('student', 'student');
+        // console.log(data);
+        if (data.ongoing) {
+          setGo(true);
+          // console.log(go);
+        } else if (!data.ongoing) {
+          // console.log(go);
+          setGo(false);
+        }
       },
       onError: () => {
         localStorage.removeItem('student');
       },
-      // retry: false,
+      refetchInterval: 2000,
+      refetchIntervalInBackground: true,
+      retry: false,
     });
 
   const useTherapistCheck = () =>
@@ -120,5 +131,6 @@ export default function useAuth() {
     useStudentCheck,
     useTherapistCheck,
     useLogOut,
+    go,
   };
 }
