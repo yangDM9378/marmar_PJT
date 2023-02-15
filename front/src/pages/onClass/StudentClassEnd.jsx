@@ -1,42 +1,47 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 
 export default function StudentClassEnd() {
+  const location = useLocation();
+
   return (
     <S.Body>
-      <S.Box>
-        <S.Header>
-          수업은 즐거우셨나요?
-          <p>오늘 선생님과 함께 한 게임 혼자서도 할 수 있어요!</p>
-        </S.Header>
-        <S.Main>
-          <Link to="/WordDifficulty">
-            <S.ContentBox>
-              <div>
-                바르게
+      {location && !location.state && <Navigate to="/" replace />}
+      {location && location.state && (
+        <S.Box>
+          <S.Header>
+            수업은 즐거우셨나요?
+            <p>오늘 선생님과 함께 한 게임 혼자서도 할 수 있어요!</p>
+          </S.Header>
+          <S.Main>
+            <Link to="/WordDifficulty">
+              <S.ContentBox>
+                <div>
+                  바르게
+                  <br />
+                  말하기
+                </div>
+              </S.ContentBox>
+            </Link>
+            <Link to="/ClockDifficulty">
+              <S.ContentBox>
+                시계
                 <br />
-                말하기
-              </div>
-            </S.ContentBox>
-          </Link>
-          <Link to="/ClockDifficulty">
-            <S.ContentBox>
-              시계
-              <br />
-              읽기
-            </S.ContentBox>
-          </Link>
-          <Link to="/PictureDifficulty">
-            <S.ContentBox>
-              다른 그림
-              <br />
-              찾기
-            </S.ContentBox>
-          </Link>
-        </S.Main>
-      </S.Box>
+                읽기
+              </S.ContentBox>
+            </Link>
+            <Link to="/PictureDifficulty">
+              <S.ContentBox>
+                다른 그림
+                <br />
+                찾기
+              </S.ContentBox>
+            </Link>
+          </S.Main>
+        </S.Box>
+      )}
     </S.Body>
   );
 }

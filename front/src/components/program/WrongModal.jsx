@@ -1,14 +1,17 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import Modal from 'react-modal';
 
 export default function CollectModal({ isOpen, close }) {
-  setTimeout(() => {
-    close();
-  }, 3000);
+  if (isOpen) {
+    setTimeout(() => {
+      close();
+    }, 2500);
+  }
   return (
     <Modal
       isOpen={isOpen}
-      onRequestClose={() => close()}
+      // onRequestClose={() => close()}
       ariaHideApp={false}
       className="h-[50vh] w-[50vh]  rounded-xl fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
     >
