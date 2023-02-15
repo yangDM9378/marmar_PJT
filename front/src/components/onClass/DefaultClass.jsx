@@ -49,7 +49,7 @@ const S = {
   `,
   Wrapper: styled.div`
     display: flex;
-    ${tw`absolute top-[7%] left-[5%] font-flower text-8xl`}
+    ${tw`absolute top-[7%] left-[5%] font-bera text-7xl`}
   `,
   Typding: styled.div`
     width: 19ch;

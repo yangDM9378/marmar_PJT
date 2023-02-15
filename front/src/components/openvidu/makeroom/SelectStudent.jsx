@@ -10,7 +10,7 @@ export default function SelectStudent(props) {
   const { setStudent, join, getName, close } = props;
   const recent = JSON.parse(localStorage.getItem('recentClass'));
   const [text, setText] = useState(
-    '수업을 시작하기 위해 학생의 이름을 입력해주세요. 클릭하여 수업 시작',
+    '수업을 시작하기 위해 학생의 이름을 입력해주세요.',
   );
 
   const [search, setSearch] = useState('');

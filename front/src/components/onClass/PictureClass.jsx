@@ -62,9 +62,7 @@ export default function PictureClass() {
   return (
     <S.ProgramSection>
       <S.Title>
-        <S.Context>
-          [Q{cnt + 1}] 다음 사진 중 관계없는 사진을 선택하세요.
-        </S.Context>
+        <S.Context>다음 사진 중 관계없는 사진을 선택하세요.</S.Context>
         <div>다른 그림 찾기</div>
       </S.Title>
 
@@ -107,10 +105,10 @@ const S = {
     ${tw`absolute bottom-[0.3vh] right-[2vh] p-3 rounded font-bold text-xl h-[200px]`}
   `,
   Title: styled.div`
-    ${tw` flex text-3xl justify-between min-h-[40px] font-bold text-white mt-5 mx-6`}
+    ${tw` flex text-3xl justify-between min-h-[40px] font-cafe24 text-white mt-10 px-5 mx-6 mb-10`}
   `,
   Context: styled.p`
-    ${tw` flex text-2xl justify-center font-bold text-white`}
+    ${tw` flex text-3xl justify-center text-white font-cafe24`}
   `,
   Board: styled.div`
     ${tw`flex justify-around items-center max-h-full`}

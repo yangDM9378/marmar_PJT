@@ -85,7 +85,7 @@ export default function PictureProgram() {
 
       <S.PictureTitle>다른 그림 찾기</S.PictureTitle>
       <S.PictureContext>
-        [Q{cnt + 1}] 다음 그림 중 관련없는 하나를 고르세요.
+        다음 그림 중 관련없는 하나를 고르세요.
       </S.PictureContext>
       <S.PictureBody>
         <S.PictureBtnAndGame>
@@ -114,10 +114,10 @@ const S = {
     ${tw`flex text-[60px] justify-end items-center m-6 text-white pt-5`}
   `,
   PictureTitle: styled.div`
-    ${tw` flex text-[50px] h-[40px] mb-5 justify-center items-center font-bold text-white`}
+    ${tw` flex text-[50px] h-[40px] mb-5 justify-center items-center font-cafe24 text-white`}
   `,
   PictureContext: styled.div`
-    ${tw` flex text-2xl mb-10 h-[500] justify-center font-thin text-white`}
+    ${tw` flex text-2xl mb-10 h-[500] justify-center font-tway text-white`}
   `,
   PictureBody: styled.div`
     ${tw`flex flex-col justify-center items-stretch p-[90px] bg-white`}

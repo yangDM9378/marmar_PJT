@@ -56,10 +56,8 @@ export default function WordClass() {
   return (
     <S.WordProgramSection>
       {/* <S.WordDifficulty>{request.difficulty}</S.WordDifficulty> */}
-      <S.WordTitle>단어 읽기</S.WordTitle>
-      <S.WordContext>
-        [Q{cnt + 1}] 다음 그림과 단어를 보고 따라 읽어보세요.
-      </S.WordContext>
+      <S.WordTitle>바르게 말하기</S.WordTitle>
+      <S.WordContext>다음 그림과 단어를 보고 따라 읽어보세요.</S.WordContext>
       <S.WordBtnAndGame>
         <S.WordBtn type="button" className={`${student ? 'hidden' : ''}`}>
           {(cnt > 0 && (
@@ -103,10 +101,10 @@ const S = {
     ${tw`flex text-xl justify-end `}
   `,
   WordTitle: styled.h1`
-    ${tw` flex text-4xl min-h-[60px] justify-center items-center font-bold text-white mt-14`}
+    ${tw` flex text-6xl min-h-[60px] justify-center items-center font-cafe24 text-white mt-14 mb-5`}
   `,
   WordContext: styled.p`
-    ${tw` flex text-xl min-h-[100px] justify-center font-thin text-white`}
+    ${tw` flex text-3xl min-h-[100px] justify-center font-cafe24 text-white`}
   `,
   WordBtnAndGame: styled.div`
     ${tw`flex justify-around`}

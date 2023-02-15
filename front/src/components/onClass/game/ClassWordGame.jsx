@@ -31,10 +31,13 @@ const S = {
   WordImgCard: styled.div`
     ${tw`flex-col rounded-xl text-center max-h-[30vh]`}
     .img {
-      ${tw`bg-white rounded-xl p-3 w-full max-h-[30vh] border-8 border-brand`}
+      ${tw`bg-white rounded-t-xl p-3 w-full max-h-[30vh] border-8 border-brand`}
     }
     .word {
-      ${tw`text-[50px] bg-brand mt-2 text-white`}
+      ${tw`text-[50px] bg-brand text-white rounded-b-xl`}
+    }
+    div {
+      ${tw`pb-3 font-cafe24`}
     }
   `,
 };
