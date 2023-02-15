@@ -5,7 +5,7 @@ export default function CorrectModal({ isOpen, close }) {
   if (isOpen) {
     setTimeout(() => {
       close();
-    }, 2500);
+    }, 1250);
   }
   return (
     <Modal

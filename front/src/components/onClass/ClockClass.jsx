@@ -55,9 +55,7 @@ export default function ClockProgram() {
     <S.ClockProgramSection>
       {/* <S.ClockDifficulty>{request.difficulty}</S.ClockDifficulty> */}
       <S.ClockTitle>시계 읽기</S.ClockTitle>
-      <S.ClockContext>
-        [Q{cnt + 1}] 다음 시계를 보고 시간을 말해보세요.
-      </S.ClockContext>
+      <S.ClockContext>다음 시계를 보고 시간을 말해보세요.</S.ClockContext>
       <S.Board>
         {(cnt > 0 && cnt <= request.num - 1 && (
           <MdNavigateBefore
@@ -96,10 +94,10 @@ const S = {
     ${tw`flex text-xl justify-end `}
   `,
   ClockTitle: styled.h1`
-    ${tw` flex text-4xl min-h-[60px] justify-center items-center font-bold text-white mt-20`}
+    ${tw` flex text-6xl min-h-[60px] justify-center items-center font-bold text-white mt-20 mb-5 font-cafe24`}
   `,
   ClockContext: styled.p`
-    ${tw` flex text-xl min-h-[100px] justify-center font-thin text-white`}
+    ${tw` flex text-3xl min-h-[100px] justify-center font-thin text-white font-cafe24`}
   `,
   ClockBtnAndGame: styled.div`
     ${tw`flex justify-around`}

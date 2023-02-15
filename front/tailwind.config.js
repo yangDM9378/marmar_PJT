@@ -16,6 +16,8 @@ module.exports = {
         cafe24: ['Cafe24Ssurround', 'sans-serif'],
         flower: ['FlowerSalt', 'sans-serif'],
         tway: ['twayair', 'sans-serif'],
+        bera: ['BRBA_B', 'sans-serif'],
+        jiae: ['ImcreSoojin', 'sans-serif'],
       },
       backgroundImage: {
         'video-bg': "url('/public/bg.jpg')",

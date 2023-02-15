@@ -74,9 +74,7 @@ export default function ClockProgram() {
       </S.ClockDifficulty>
 
       <S.ClockTitle>시계읽기</S.ClockTitle>
-      <S.ClockContext>
-        [Q{cnt + 1}] 다음 시계를 보고 시계를 따라 읽어보세요.
-      </S.ClockContext>
+      <S.ClockContext>다음 시계를 보고 시계를 따라 읽어보세요.</S.ClockContext>
       <S.ClockBody>
         <S.ClockBtnAndGame>
           <S.ClockBtn>
@@ -109,10 +107,10 @@ const S = {
     ${tw`flex text-[60px] justify-end items-center m-6 text-white pt-5`}
   `,
   ClockTitle: styled.div`
-    ${tw` flex text-[50px] h-[40px] mb-5 justify-center items-center font-bold text-white`}
+    ${tw` flex text-[50px] h-[40px] mb-5 justify-center items-center font-cafe24 text-white`}
   `,
   ClockContext: styled.div`
-    ${tw` flex text-2xl mb-10 h-[500] justify-center font-thin text-white`}
+    ${tw` flex text-2xl mb-10 h-[500] justify-center font-tway text-white`}
   `,
   ClockBody: styled.div`
     ${tw`flex flex-col justify-center items-stretch p-[90px] bg-white`}

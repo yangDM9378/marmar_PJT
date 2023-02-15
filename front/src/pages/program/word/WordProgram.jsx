@@ -74,9 +74,7 @@ export default function WordProgram() {
       </S.WordDifficulty>
 
       <S.WordTitle>바르게 말하기</S.WordTitle>
-      <S.WordContext>
-        [Q{cnt + 1}] 다음 그림과 단어를 보고 따라 읽어보세요.
-      </S.WordContext>
+      <S.WordContext>다음 그림과 단어를 보고 따라 읽어보세요.</S.WordContext>
 
       <S.WordBody>
         <S.WordBtnAndGame>
@@ -110,10 +108,10 @@ const S = {
     ${tw`flex text-[60px] justify-end items-center m-6 text-white pt-5`}
   `,
   WordTitle: styled.div`
-    ${tw` flex text-[50px] h-[40px] mb-5 justify-center items-center font-bold text-white`}
+    ${tw` flex text-[50px] h-[40px] mb-5 justify-center items-center font-cafe24 text-white`}
   `,
   WordContext: styled.div`
-    ${tw` flex text-2xl mb-10 h-[500] justify-center font-thin text-white`}
+    ${tw` flex text-2xl mb-10 h-[500] justify-center font-tway text-white`}
   `,
   WordBody: styled.div`
     ${tw`flex flex-col justify-center items-stretch p-[90px] bg-white`}
