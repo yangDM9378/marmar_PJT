@@ -36,6 +36,7 @@ export default function StudentVideoRoom() {
   const [videoText, setVideoText] = useState(false);
   const [audioText, setAudioText] = useState(false);
   const [endText, setEndText] = useState(false);
+
   // eslint-disable-next-line prefer-const, no-undef-init
   let OV = undefined;
 
@@ -204,7 +205,8 @@ export default function StudentVideoRoom() {
     const mySession = session;
     if (mySession) {
       mySession.disconnect();
-      navigate('/StudentClassEnd'); // 메인페이지로 이동
+      navigate('/StudentClassEnd', { state: 'correct' }); // 메인페이지로 이동
+      // setOpen(true);
     }
     // 속성을 초기화함(필요한 속성은 초기화하면 안 됨)
     OV = null;

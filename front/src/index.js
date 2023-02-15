@@ -10,7 +10,6 @@ import NotFound from './pages/common/NotFound';
 import SignIn from './pages/user/SignIn';
 import TherapistMypage from './pages/mypage/TherapistMypage';
 import StudentMypage from './pages/mypage/StudentMypage';
-import LoginRequiredPage from './pages/dev/LoginRequiredPage';
 import OpenVidu from './pages/onClass/OpenVidu';
 import ProtectedRoute from './pages/common/ProtectedRoute';
 import LoggedRoute from './pages/common/LoggedRoute';
@@ -25,10 +24,8 @@ import PictureDifficulty from './pages/program/picture/PictureDifficulty';
 import PictureProgram from './pages/program/picture/PictureProgram';
 import FindId from './pages/user/FindId';
 import FindPw from './pages/user/FindPw';
-import Program from './pages/onClass/Program';
 import ProtectedRouteTherapist from './pages/common/ProtectedRouteTherapist';
 import ProtectedRouteStudent from './pages/common/ProtectedRouteStudent';
-import Evaluation from './components/onClass/evaluation/Evaluation';
 import Info from './pages/common/Info';
 import StudentClassEnd from './pages/onClass/StudentClassEnd';
 
@@ -66,14 +63,6 @@ const router = createBrowserRouter([
           <LoggedRoute>
             <FindPw />
           </LoggedRoute>
-        ),
-      },
-      {
-        path: '/LoginRequiredPage',
-        element: (
-          <ProtectedRoute>
-            <LoginRequiredPage />
-          </ProtectedRoute>
         ),
       },
 
@@ -119,16 +108,12 @@ const router = createBrowserRouter([
       },
 
       // Program
-      { path: '/Program', element: <Program /> },
       { path: '/WordDifficulty', element: <WordDifficulty /> },
       { path: '/WordProgram', element: <WordProgram /> },
       { path: '/ClockDifficulty', element: <ClockDifficulty /> },
       { path: '/ClockProgram', element: <ClockProgram /> },
       { path: '/PictureDifficulty', element: <PictureDifficulty /> },
       { path: '/PictureProgram', element: <PictureProgram /> },
-
-      // Evaluation
-      { path: '/Evaluation', element: <Evaluation /> },
     ],
   },
 ]);

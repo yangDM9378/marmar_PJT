@@ -18,9 +18,8 @@ export default function NavStudent() {
       <Link to="/Info">마르마르 소개</Link>
       <ClassDropDown />
       <S.Class
-        type="button"
-        onClick={onEnterRoom}
         className={`${student.ongoing ? 'bg-yellow-300' : 'hidden'}`}
+        onClick={onEnterRoom}
       >
         방입장
       </S.Class>
