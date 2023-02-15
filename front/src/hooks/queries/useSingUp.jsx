@@ -7,33 +7,33 @@ export default function useSingUp() {
 
   const useSignUpTherapist = useMutation(signUpTherapistApi, {
     onMutate: variable => {
-      console.log('onMutate', variable);
+      // console.log('onMutate', variable);
     },
     onSuccess: async (data, variables) => {
-      console.log('success', data, variables);
+      // console.log('success', data, variables);
       navigate('/SignIn');
     },
     onError: (error, variable, context) => {
-      console.log(error);
+      // console.log(error);
     },
     onSettled: () => {
-      console.log('end');
+      // console.log('end');
     },
   });
 
   const useSignUpStudent = useMutation(signUpStudentApi, {
     onMutate: variable => {
-      console.log('onMutate', variable);
+      // console.log('onMutate', variable);
     },
     onSuccess: async (data, variables) => {
-      console.log('success', data, variables);
+      // console.log('success', data, variables);
       navigate('/SignIn');
     },
     onError: (error, variable, context) => {
-      console.log(error);
+      // console.log(error);
     },
     onSettled: () => {
-      console.log('end');
+      // console.log('end');
     },
   });
 

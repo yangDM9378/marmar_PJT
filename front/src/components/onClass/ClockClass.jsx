@@ -82,7 +82,7 @@ export default function ClockProgram() {
         onClick={handleEndGame}
         className={`${student ? 'hidden' : ''}`}
       >
-        클래스 종료
+        <img src="eraser.png" className="w-full h-full" alt="" />
       </S.EndGame>
     </S.ClockProgramSection>
   );
@@ -117,6 +117,6 @@ const S = {
     }
   `,
   EndGame: styled.button`
-    ${tw`bg-white absolute bottom-[7vh] right-[6vh] p-3 rounded font-bold text-xl`}
+    ${tw`absolute bottom-[0.3vh] right-[2vh] p-3 rounded font-bold text-xl h-[200px]`}
   `,
 };

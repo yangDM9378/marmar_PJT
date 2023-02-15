@@ -93,7 +93,7 @@ export default function PictureClass() {
         className={`${student ? 'hidden' : ''}`}
         onClick={handleEndGame}
       >
-        클래스 종료
+        <img src="eraser.png" className="w-full h-full" alt="" />
       </S.CountinueBtn>
     </S.ProgramSection>
   );
@@ -104,7 +104,7 @@ const S = {
     ${tw`max-h-full flex-col`}
   `,
   CountinueBtn: styled.button`
-    ${tw`absolute bottom-[7vh] right-[6vh] p-3 rounded font-bold text-xl bg-white`}
+    ${tw`absolute bottom-[0.3vh] right-[2vh] p-3 rounded font-bold text-xl h-[200px]`}
   `,
   Title: styled.div`
     ${tw` flex text-3xl justify-between min-h-[40px] font-bold text-white mt-5 mx-6`}

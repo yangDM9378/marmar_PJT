@@ -25,7 +25,7 @@ export default function ClassPictureGame({
   }, []);
 
   const check = e => {
-    console.log(e);
+    // console.log(e);
     const updateArr = isCheckArr?.map((item, idx) => {
       if (idx === Number(e)) {
         return !item;

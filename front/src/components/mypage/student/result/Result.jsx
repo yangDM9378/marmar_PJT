@@ -12,10 +12,10 @@ export default function Result() {
     queryKey: ['evaluations', student.num],
     queryFn: () => getResultApi(student.num),
     onSuccess: res => {
-      console.log(res.data);
+      // console.log(res.data);
     },
     onError: err => {
-      console.log(err);
+      // console.log(err);
     },
   });
   return (

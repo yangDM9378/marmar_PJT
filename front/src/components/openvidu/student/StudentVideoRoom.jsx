@@ -17,6 +17,7 @@ import { getTeacherApi } from '../../../api/liveClassApi';
 import VideoModal from '../VideoModal';
 import UserVideoComponent from '../UserVideoComponent';
 import ClassSection from '../ClassSection';
+import Loading from '../../common/Loading';
 
 const APPLICATION_SERVER_URL = 'https://i8c204.p.ssafy.io/api/v1/openvidu/';
 
@@ -252,14 +253,7 @@ export default function StudentVideoRoom() {
     <S.PageContainer>
       {session === undefined ? (
         <S.WaitRoom>
-          <S.StartBtn
-            type="button"
-            onClick={() => {
-              joinSession();
-            }}
-          >
-            입장하기
-          </S.StartBtn>
+          <Loading />
         </S.WaitRoom>
       ) : null}
       {session !== undefined ? (
@@ -374,7 +368,7 @@ const S = {
     ${tw`border-4 border-black p-5`}
   `,
   PageContainer: styled.div`
-    ${tw`w-full bg-brand flex justify-center`}
+    ${tw`w-full flex justify-center`}
   `,
   ModalContainer: styled.div`
     ${tw`h-[92vh]`}

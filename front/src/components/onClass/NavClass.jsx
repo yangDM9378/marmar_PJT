@@ -55,7 +55,6 @@ export default function NavClass() {
     await setRequest(makeRequest);
     const response = await getQuestionApi(makeRequest);
     await setResponse(response.data);
-    await console.log(response.data);
     setIsCheckArr([false, false, false, false]);
     setCnt(0);
 
@@ -65,7 +64,6 @@ export default function NavClass() {
   socket.on('startButton', async res => {
     await setRequest(res.payload);
     await setResponse(res.question);
-    await console.log(res.question);
     setIsCheckArr([false, false, false, false]);
     setCnt(0);
   });

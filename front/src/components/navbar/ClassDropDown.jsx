@@ -12,7 +12,7 @@ export default function ClassDropDown() {
     <Menu as="div" className="relative inline-block">
       <div>
         <Menu.Button className="inline-flex w-full justify-center rounded-m hover:bg-gray-50">
-          교재컨텐츠
+          놀이학습
         </Menu.Button>
       </div>
 
@@ -25,7 +25,7 @@ export default function ClassDropDown() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute z-10 mt-4 w-[145px] text-center origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute z-10 mt-4 w-[145px] rig text-center rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
             <Menu.Item>
               {({ active }) => (

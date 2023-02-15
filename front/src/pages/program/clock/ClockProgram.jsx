@@ -33,7 +33,7 @@ export default function ClockProgram() {
 
   const getData = async () => {
     const response = await getClockApi(difficulty);
-    console.log(response);
+    // console.log(response);
     setData(response.data);
   };
 

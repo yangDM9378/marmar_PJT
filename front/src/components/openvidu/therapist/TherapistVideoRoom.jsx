@@ -17,10 +17,10 @@ import { closeRoomApi } from '../../../api/liveClassApi';
 import VideoModal from '../VideoModal';
 import UserVideoComponent from '../UserVideoComponent';
 import ClassSection from '../ClassSection';
-import SelectStudent from '../makeroom/SelectStudent';
 import useAuth from '../../../hooks/queries/useAuth';
 import EvalModal from '../../onClass/evaluation/EvalModal';
 import { SocketContext } from '../../../context/SocketContext';
+import Loading from '../../common/Loading';
 
 const APPLICATION_SERVER_URL = 'https://i8c204.p.ssafy.io/api/v1/openvidu/';
 
@@ -135,10 +135,6 @@ export default function TherapistVideoRoom() {
     setModalOpen(false);
   };
 
-  const setStudent = data => {
-    // console.log('setStudent: ', data);
-    setStudentNum(data);
-  };
   // const getStudentName = data => {
   //   setStudentName(data);
   // };
@@ -287,11 +283,7 @@ export default function TherapistVideoRoom() {
     <S.PageContainer>
       {session === undefined ? (
         <S.WaitRoom>
-          <SelectStudent
-            setStudent={setStudent}
-            join={joinSession}
-            // getName={getStudentName}
-          />
+          <Loading />
         </S.WaitRoom>
       ) : null}
       {session !== undefined ? (

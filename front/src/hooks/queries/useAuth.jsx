@@ -20,23 +20,23 @@ export default function useAuth() {
   const [therapist, setTherapist] = useState(true);
   const useSignIn = useMutation(signInApi, {
     onMutate: variable => {
-      console.log('onMutate', variable);
+      // console.log('onMutate', variable);
     },
     onError: (error, variable, context) => {
-      console.log(error);
+      // console.log(error);
     },
     onSuccess: (data, variables) => {
       localStorage.removeItem('token');
       localStorage.removeItem('student');
       localStorage.removeItem('therapist');
-      console.log('success', data, variables);
+      // console.log('success', data, variables);
       localStorage.setItem('token', data.data.accessToken);
       client.invalidateQueries(['useStudentCheck']);
       client.invalidateQueries(['useTherapistCheck']);
       navigate('/');
     },
     onSettled: () => {
-      console.log('end');
+      // console.log('end');
     },
   });
 

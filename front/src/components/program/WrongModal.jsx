@@ -2,6 +2,9 @@ import React from 'react';
 import Modal from 'react-modal';
 
 export default function CollectModal({ isOpen, close }) {
+  setTimeout(() => {
+    close();
+  }, 3000);
   return (
     <Modal
       isOpen={isOpen}
