@@ -41,7 +41,7 @@ export default function SignUpTherapistForm() {
   };
 
   const onCheckId = async id => {
-    console.log(id);
+    // console.log(id);
     const response = await idCheckTherapistApi(id);
     if (!response.data) {
       alert('중복 아이디입니다.');
@@ -52,7 +52,7 @@ export default function SignUpTherapistForm() {
   };
 
   const onCheckEmail = async email => {
-    console.log(email);
+    // console.log(email);
     const response = await emailCheckTherapistApi(email);
     if (!response.data) {
       alert('이미 사용중인 이메일입니다.');

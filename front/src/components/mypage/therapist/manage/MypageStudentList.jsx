@@ -23,10 +23,10 @@ export default function MypageStudentList() {
     queryKey: ['registerdStudents'],
     queryFn: () => getRegisteredStudentApi(),
     onSuccess: () => {
-      console.log(students);
+      // console.log(students);
     },
     onError: () => {
-      console.log('QWDWQ');
+      // console.log('QWDWQ');
     },
   });
   return (

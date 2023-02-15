@@ -39,9 +39,9 @@ export default function SignUpStudentForm() {
   };
 
   const onCheckId = async id => {
-    console.log(id);
+    // console.log(id);
     const response = await idCheckStudentApi(id);
-    console.log(response.data);
+    // console.log(response.data);
     if (!response.data) {
       alert('중복 아이디입니다.');
     } else {
@@ -51,7 +51,7 @@ export default function SignUpStudentForm() {
   };
 
   const onCheckEmail = async email => {
-    console.log(email);
+    // console.log(email);
     const response = await emailCheckStudentApi(email);
     if (!response.data) {
       alert('이미 사용중인 이메일입니다.');

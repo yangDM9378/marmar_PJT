@@ -27,11 +27,11 @@ export default function MypageSelectStudentModal({ isOpen, close }) {
     queryFn: () => searchStudentApi(search),
     enabled: !!search,
     onSuccess: () => {
-      console.log(search);
-      console.log(students);
+      // console.log(search);
+      // console.log(students);
     },
     onError: () => {
-      console.log(search);
+      // console.log(search);
     },
   });
 

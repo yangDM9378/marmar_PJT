@@ -53,7 +53,7 @@ export default function SttProvider({ children }) {
       continuous: false,
     });
     setStart(false);
-    console.log(question, transcript);
+    // console.log(question, transcript);
     if (transcript === question) {
       playCorrect();
       setModalCorrect(true);

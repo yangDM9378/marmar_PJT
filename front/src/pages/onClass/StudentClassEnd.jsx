@@ -43,10 +43,10 @@ export default function StudentClassEnd() {
 
 const S = {
   Body: styled.div`
-    ${tw`mt-[80px] min-h-[71vh] bg-brand flex justify-center items-center`}
+    ${tw`mt-[80px] min-h-screen bg-brand flex justify-center items-center`}
   `,
   Box: styled.div`
-    ${tw`bg-white rounded-3xl w-[800px] h-[450px] p-10`}
+    ${tw`bg-white rounded-3xl w-[800px] h-[450px] p-10 mb-16`}
   `,
   Header: styled.div`
     ${tw`font-extrabold text-3xl text-center p-2 font-cafe24`}
@@ -55,7 +55,7 @@ const S = {
     }
   `,
   Main: styled.div`
-    ${tw`flex justify-around`}
+    ${tw`flex justify-around pt-6`}
   `,
   ContentBox: styled.div`
     ${tw`bg-yellow-300 h-[200px] w-[200px] rounded-3xl m-5 flex justify-center items-center text-center font-cafe24 text-4xl`}

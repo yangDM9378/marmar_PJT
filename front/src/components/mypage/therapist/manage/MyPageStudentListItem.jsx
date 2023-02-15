@@ -13,7 +13,6 @@ export default function MyPageStudentListItem(props) {
 
   const queryClient = useQueryClient();
   const { student } = props;
-  console.log(student);
 
   const onDeleteRegister = async () => {
     await delRegisteredStudentApi(student.num);

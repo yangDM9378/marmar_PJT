@@ -33,7 +33,7 @@ export default function WordProgram() {
 
   const getData = async () => {
     const response = await getWordApi(difficulty);
-    console.log(response);
+    // console.log(response);
     setData(response.data);
   };
 

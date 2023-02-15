@@ -9,11 +9,11 @@ export default function SocketProvider({ children }) {
   const [roomName, setRoomName] = useState('');
 
   const test = () => {
-    console.log('qwd');
+    // console.log('qwd');
   };
   const onAny = () => {
     socket.onAny(event => {
-      console.log(`Socket event: ${event}`);
+      // console.log(`Socket event: ${event}`);
     });
   };
   const onConnect = () => {

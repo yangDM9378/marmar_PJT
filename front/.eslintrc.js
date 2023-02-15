@@ -29,7 +29,7 @@ module.exports = {
         labelAttributes: ['htmlFor'],
       },
     ],
-    'no-console': 'off',
+    // 'no-console': 'off',
     'no-alert': 'off',
     'import/prefer-default-export': 'off',
     'react/prop-types': 'off',

@@ -21,107 +21,107 @@ export default function useModify() {
     student ? stuModPasswordApi : theModPasswordApi,
     {
       onMutate: variable => {
-        console.log('onMutate', variable);
+        // console.log('onMutate', variable);
       },
       onSuccess: async (data, variables) => {
-        console.log('success', data, variables);
+        // console.log('success', data, variables);
       },
       onError: (error, variable, context) => {
-        console.log(error);
+        // console.log(error);
       },
       onSettled: () => {
-        console.log('end');
+        // console.log('end');
       },
     },
   );
 
   const useModPasswordHelper = useMutation(stuModPasswordHelperApi, {
     onMutate: variable => {
-      console.log('onMutate', variable);
+      // console.log('onMutate', variable);
     },
     onSuccess: async (data, variables) => {
-      console.log('success', data, variables);
+      // console.log('success', data, variables);
     },
     onError: (error, variable, context) => {
-      console.log(error);
+      // console.log(error);
     },
     onSettled: () => {
-      console.log('end');
+      // console.log('end');
     },
   });
 
   const useModName = useMutation(student ? stuModNameApi : theModNameApi, {
     onMutate: variable => {
-      console.log('onMutate', variable);
+      // console.log('onMutate', variable);
     },
     onSuccess: async (data, variables) => {
-      console.log('success', data, variables);
+      // console.log('success', data, variables);
     },
     onError: (error, variable, context) => {
-      console.log(error);
+      // console.log(error);
     },
     onSettled: () => {
-      console.log('end');
+      // console.log('end');
     },
   });
 
   const useStuModNameHelper = useMutation(stuModNameHelperApi, {
     onMutate: variable => {
-      console.log('onMutate', variable);
+      // console.log('onMutate', variable);
     },
     onSuccess: async (data, variables) => {
-      console.log('success', data, variables);
+      // console.log('success', data, variables);
     },
     onError: (error, variable, context) => {
-      console.log(error);
+      // console.log(error);
     },
     onSettled: () => {
-      console.log('end');
+      // console.log('end');
     },
   });
 
   const useModPhone = useMutation(student ? stuModPhoneApi : theModPhoneApi, {
     onMutate: variable => {
-      console.log('onMutate', variable);
+      // console.log('onMutate', variable);
     },
     onSuccess: async (data, variables) => {
-      console.log('success', data, variables);
+      // console.log('success', data, variables);
     },
     onError: (error, variable, context) => {
-      console.log(error);
+      // console.log(error);
     },
     onSettled: () => {
-      console.log('end');
+      // console.log('end');
     },
   });
 
   const useModBirth = useMutation(stuModBirthApi, {
     onMutate: variable => {
-      console.log('onMutate', variable);
+      // console.log('onMutate', variable);
     },
     onSuccess: async (data, variables) => {
-      console.log('success', data, variables);
+      // console.log('success', data, variables);
     },
     onError: (error, variable, context) => {
-      console.log(error);
+      // console.log(error);
     },
     onSettled: () => {
-      console.log('end');
+      // console.log('end');
     },
   });
 
   const useTheModDepartment = useMutation(theModDepartmentApi, {
     onMutate: variable => {
-      console.log('onMutate', variable);
+      // console.log('onMutate', variable);
     },
     onSuccess: async (data, variables) => {
-      console.log('success', data, variables);
+      // console.log('success', data, variables);
     },
     onError: (error, variable, context) => {
-      console.log(error);
+      // console.log(error);
     },
     onSettled: () => {
-      console.log('end');
+      // console.log('end');
     },
   });
 

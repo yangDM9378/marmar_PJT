@@ -5,16 +5,16 @@ import { evaluateApi } from '../../api/liveClassApi';
 export default function useEvaluate() {
   const useEvaluation = useMutation(evaluateApi, {
     onMutate: variable => {
-      console.log('onMutate', variable);
+      // console.log('onMutate', variable);
     },
     onSuccess: async (data, variables) => {
-      console.log('success', data, variables);
+      // console.log('success', data, variables);
     },
     onError: (error, variable, context) => {
-      console.log('error', error, variable);
+      // console.log('error', error, variable);
     },
     onSettled: () => {
-      console.log('end');
+      // console.log('end');
     },
   });
 

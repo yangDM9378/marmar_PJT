@@ -34,7 +34,7 @@ export default function PictureGame({
   }, []);
 
   const check = e => {
-    console.log(e);
+    // console.log(e);
     const updateArr = isCheckArr?.map((item, idx) => {
       if (idx === Number(e)) {
         return !item;
@@ -46,7 +46,7 @@ export default function PictureGame({
     pictureClickAnswer(updateArr); // socket_emit
   };
   const correctCheck = e => {
-    console.log(answer);
+    // console.log(answer);
     if (isCheckArr.toString() === [false, false, false, false].toString()) {
       soundEmpty();
       setModalNo(true);
