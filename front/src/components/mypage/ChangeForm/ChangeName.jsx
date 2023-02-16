@@ -7,9 +7,15 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import useModify from '../../../hooks/queries/useModify';
 
+const nameRegExp = /^[가-힣a-zA-Z]+$/;
+
 const schema = yup
   .object({
-    name: yup.string().required('이름을 입력해주세요.'),
+    name: yup
+      .string()
+      .required('이름을 입력해주세요.')
+      .matches(nameRegExp, '정확한 이름을 입력해주세요')
+      .min(2, '정확한 이름을 입력해주세요'),
   })
   .required();
 
@@ -33,7 +39,7 @@ export default function ChangeName(props) {
     } else {
       useModName.mutate({ name: data.name });
     }
-    alert('이름이 변경되었습니다.');
+    // alert('이름이 변경되었습니다.');
   };
   return (
     <S.Form onSubmit={handleSubmit(onChangeName)}>
@@ -69,6 +75,6 @@ const S = {
     ${tw`p-3 bg-brandHover text-white min-w-[200px] rounded-xl block`}
   `,
   ErrorMsg: styled.p`
-    ${tw`mb-3 text-red-400 text-xs font-bold`}
+    ${tw`mb-3 text-red-400 text-xs font-bold text-left`}
   `,
 };

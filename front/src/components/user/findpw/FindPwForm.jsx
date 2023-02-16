@@ -7,6 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { findPwApi } from '../../../api/userApi';
 
 const schema = yup
@@ -47,7 +48,13 @@ export default function FindPwForm() {
         onSuccess: data => {
           if (data) {
             setIsFail(false);
-            alert('가입된 이메일로 임시비밀번호가 발급되었습니다.');
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: '가입된 이메일로 임시비밀번호가 발급되었습니다.',
+              showConfirmButton: false,
+              timer: 1500,
+            });
             navigate('/SignIn');
           } else {
             setIsFail(true);

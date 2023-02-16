@@ -1,9 +1,11 @@
+/* eslint-disable prefer-regex-literals */
 /* eslint-disable react/jsx-props-no-spreading */
 
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import tw from 'twin.macro';
+import Swal from 'sweetalert2';
 import useSingUp from '../../../hooks/queries/useSingUp';
 import { idCheckStudentApi, emailCheckStudentApi } from '../../../api/userApi';
 
@@ -21,7 +23,13 @@ export default function SignUpStudentForm() {
 
   const onRegister = data => {
     if (registerdId || registerdEmail) {
-      alert('중복확인이 되지 않았습니다.');
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: '중복확인이 되지 않았습니다..',
+        showConfirmButton: false,
+        timer: 1500,
+      });
     } else {
       useSignUpStudent.mutate({
         id: data.id,
@@ -39,24 +47,67 @@ export default function SignUpStudentForm() {
   };
 
   const onCheckId = async id => {
-    // console.log(id);
+    if (id.length < 5) {
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: '5글자 이상 입력해주세요.',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      return;
+    }
     const response = await idCheckStudentApi(id);
     // console.log(response.data);
     if (!response.data) {
-      alert('중복 아이디입니다.');
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: '중복 아이디입니다.',
+        showConfirmButton: false,
+        timer: 1500,
+      });
     } else {
-      alert('사용가능한 아이디입니다.');
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: '사용가능한 아이디입니다.',
+        showConfirmButton: false,
+        timer: 1500,
+      });
       setRegisteredId(false);
     }
   };
 
   const onCheckEmail = async email => {
-    // console.log(email);
+    const regex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}');
+    if (!regex.test(email)) {
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: '이메일 형식을 지켜주세요.',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      return;
+    }
     const response = await emailCheckStudentApi(email);
     if (!response.data) {
-      alert('이미 사용중인 이메일입니다.');
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: '이미 사용중인 이메일입니다.',
+        showConfirmButton: false,
+        timer: 1500,
+      });
     } else {
-      alert('사용가능한 이메일입니다.');
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: '사용가능한 이메일입니다.',
+        showConfirmButton: false,
+        timer: 1500,
+      });
       setRegisteredEmail(false);
     }
   };
@@ -80,6 +131,14 @@ export default function SignUpStudentForm() {
         <S.Input
           {...register('name_helper', {
             required: '보호자 이름을 입력해주세요.',
+            pattern: {
+              value: /^[가-힣a-zA-Z]+$/,
+              message: '정확한 이름을 입력해주세요.',
+            },
+            minLength: {
+              value: 2,
+              message: '정확한 이름을 입력해주세요.',
+            },
           })}
           id="name_helper"
         />
@@ -91,6 +150,14 @@ export default function SignUpStudentForm() {
         <S.Input
           {...register('name', {
             required: '아이 이름을 입력해주세요.',
+            pattern: {
+              value: /^[가-힣a-zA-Z]+$/,
+              message: '정확한 이름을 입력해주세요.',
+            },
+            minLength: {
+              value: 2,
+              message: '정확한 이름을 입력해주세요.',
+            },
           })}
           id="name"
         />

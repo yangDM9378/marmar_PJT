@@ -5,6 +5,7 @@ import tw from 'twin.macro';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import Swal from 'sweetalert2';
 import useModify from '../../../hooks/queries/useModify';
 
 const schema = yup
@@ -27,7 +28,6 @@ export default function ChangeBirth(props) {
 
   const onChangeBirth = async data => {
     useModBirth.mutate(data);
-    alert('생년월일 정보가 변경되었습니다.');
   };
 
   return (

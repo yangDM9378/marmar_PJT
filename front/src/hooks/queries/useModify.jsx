@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
+import Swal from 'sweetalert2';
 import {
   stuModPasswordApi,
   stuModPasswordHelperApi,
@@ -24,10 +25,22 @@ export default function useModify() {
         // console.log('onMutate', variable);
       },
       onSuccess: async (data, variables) => {
-        // console.log('success', data, variables);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: `비밀번호가 변경되었습니다.`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
       },
       onError: (error, variable, context) => {
-        // console.log(error);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: `비밀번호 변경에 실패했습니다.`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
       },
       onSettled: () => {
         // console.log('end');
@@ -40,10 +53,22 @@ export default function useModify() {
       // console.log('onMutate', variable);
     },
     onSuccess: async (data, variables) => {
-      // console.log('success', data, variables);
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: `2차 비밀번호가 변경되었습니다.`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
     },
     onError: (error, variable, context) => {
-      // console.log(error);
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: `2차 비밀번호 변경에 실패했습니다.`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
     },
     onSettled: () => {
       // console.log('end');
@@ -55,10 +80,22 @@ export default function useModify() {
       // console.log('onMutate', variable);
     },
     onSuccess: async (data, variables) => {
-      // console.log('success', data, variables);
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: `이름이 변경되었습니다.`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
     },
     onError: (error, variable, context) => {
-      // console.log(error);
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: `이름 변경에 실패했습니다.`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
     },
     onSettled: () => {
       // console.log('end');
@@ -70,10 +107,22 @@ export default function useModify() {
       // console.log('onMutate', variable);
     },
     onSuccess: async (data, variables) => {
-      // console.log('success', data, variables);
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: `전화번호 변경되었습니다.`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
     },
     onError: (error, variable, context) => {
-      // console.log(error);
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: `전화번호 변경에 실패했습니다.`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
     },
     onSettled: () => {
       // console.log('end');
@@ -85,10 +134,22 @@ export default function useModify() {
       // console.log('onMutate', variable);
     },
     onSuccess: async (data, variables) => {
-      // console.log('success', data, variables);
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: `전화번호 변경되었습니다.`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
     },
     onError: (error, variable, context) => {
-      // console.log(error);
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: `전화번호 변경에 실패했습니다.`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
     },
     onSettled: () => {
       // console.log('end');
@@ -100,10 +161,22 @@ export default function useModify() {
       // console.log('onMutate', variable);
     },
     onSuccess: async (data, variables) => {
-      // console.log('success', data, variables);
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: `생년월일 정보가 변경되었습니다.`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
     },
     onError: (error, variable, context) => {
-      // console.log(error);
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: `생년월일 정보가 변경에 실패했습니다.`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
     },
     onSettled: () => {
       // console.log('end');
@@ -115,10 +188,22 @@ export default function useModify() {
       // console.log('onMutate', variable);
     },
     onSuccess: async (data, variables) => {
-      // console.log('success', data, variables);
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: `소속 기관이 변경되었습니다.`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
     },
     onError: (error, variable, context) => {
-      // console.log(error);
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: `소속 기관 변경에 실패했습니다.`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
     },
     onSettled: () => {
       // console.log('end');
