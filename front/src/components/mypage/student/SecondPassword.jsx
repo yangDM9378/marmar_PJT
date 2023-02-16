@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Swal from 'sweetalert2';
 import tw from 'twin.macro';
 import useAuth from '../../../hooks/queries/useAuth';
 
@@ -23,7 +24,13 @@ export default function SecondPassword(props) {
       setPw('');
     } else {
       setPw('');
-      alert('2차 비밀번호가 틀렸습니다. 다시 입력해주세요.');
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: `2차 비밀번호가 틀렸습니다. 다시 입력해주세요.`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
   };
   return (

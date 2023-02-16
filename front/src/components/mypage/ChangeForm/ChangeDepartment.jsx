@@ -64,6 +64,6 @@ const S = {
     ${tw`p-3 bg-brandHover text-white min-w-[200px] rounded-xl block`}
   `,
   ErrorMsg: styled.p`
-    ${tw`mb-3 text-red-400 text-xs font-bold`}
+    ${tw`mb-3 text-red-400 text-xs font-bold text-left`}
   `,
 };

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useQuery } from '@tanstack/react-query';
+import Swal from 'sweetalert2';
 import { searchStudentApi } from '../../../../api/mypageApi';
 import SearchList from './SearchList';
 
@@ -26,10 +27,7 @@ export default function MypageSelectStudentModal({ isOpen, close }) {
     queryKey: ['students', search],
     queryFn: () => searchStudentApi(search),
     enabled: !!search,
-    onSuccess: () => {
-      // console.log(search);
-      // console.log(students);
-    },
+    onSuccess: () => {},
     onError: () => {
       // console.log(search);
     },

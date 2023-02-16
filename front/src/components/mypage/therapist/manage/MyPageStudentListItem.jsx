@@ -1,6 +1,7 @@
 import { useQueryClient } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Swal from 'sweetalert2';
 import tw from 'twin.macro';
 import { delRegisteredStudentApi } from '../../../../api/mypageApi';
 import StudentResultModal from './StudentResultModal';
@@ -17,6 +18,13 @@ export default function MyPageStudentListItem(props) {
   const onDeleteRegister = async () => {
     await delRegisteredStudentApi(student.num);
     await queryClient.invalidateQueries({ queryKey: ['registerdStudents'] });
+    await Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: `${student.studentId}님이 등록 해제되었습니다.`,
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
   return (
     <S.StudentBox>
