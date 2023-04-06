@@ -2,6 +2,7 @@
 
 # 마르마르
 
+![image.png](./image.png)
 
 <br />
 
@@ -59,7 +60,7 @@ Jira
 
 
 ## 💻 아키텍처
-
+![image-1.png](./image-1.png)
 
 <br />
 
@@ -67,7 +68,7 @@ Jira
 
 
 ## 📋 요구사항 명세서
-
+![image-2.png](./image-2.png)
 
 <br />
 
@@ -75,7 +76,7 @@ Jira
 
 
 ## ✔️ ERD
-
+![image-3.png](./image-3.png)
 
 
 <br />
@@ -83,16 +84,108 @@ Jira
 
 
 
-## 📁 프로젝트 파일 구조
+## 📁 프로젝트 폴더 구조
 
 #### BackEnd
 ```
+├─.gradle
+│  ├─7.6
+│  │  ├─checksums
+│  │  ├─dependencies-accessors
+│  │  ├─executionHistory
+│  │  ├─fileChanges
+│  │  ├─fileHashes
+│  │  └─vcsMetadata
+│  ├─buildOutputCleanup
+│  └─vcs-1
+├─.idea
+├─gradle
+│  └─wrapper
+└─src
+    ├─main
+    │  ├─java
+    │  │  └─com
+    │  │      └─ssafy
+    │  │          └─marmar
+    │  │              ├─api
+    │  │              │  ├─controller
+    │  │              │  ├─request
+    │  │              │  ├─response
+    │  │              │  └─service
+    │  │              ├─common
+    │  │              │  ├─auth
+    │  │              │  └─util
+    │  │              ├─config
+    │  │              ├─db
+    │  │              │  ├─model
+    │  │              │  └─repository
+    │  │              └─dto
+    │  └─resources
+    └─test
+        └─java
+            └─com
+                └─ssafy
+                    └─marmar
 
 ```
 
 #### FrontEnd
 ```
-
+├─deploy_conf
+├─public
+│  ├─img
+│  │  ├─background
+│  │  ├─clock
+│  │  ├─picture
+│  │  └─word
+│  ├─info
+│  ├─main
+│  └─modal
+└─src
+    ├─api
+    ├─audio
+    ├─components
+    │  ├─common
+    │  ├─home
+    │  ├─Info
+    │  ├─mypage
+    │  │  ├─ChangeForm
+    │  │  ├─deleteAccount
+    │  │  ├─student
+    │  │  │  ├─calender
+    │  │  │  ├─myinfo
+    │  │  │  └─result
+    │  │  └─therapist
+    │  │      ├─manage
+    │  │      └─myinfo
+    │  ├─navbar
+    │  ├─onClass
+    │  │  ├─evaluation
+    │  │  └─game
+    │  ├─openvidu
+    │  │  ├─makeroom
+    │  │  ├─student
+    │  │  └─therapist
+    │  ├─program
+    │  ├─scroll
+    │  └─user
+    │      ├─findid
+    │      ├─findpw
+    │      ├─signin
+    │      └─signup
+    ├─context
+    ├─hooks
+    │  └─queries
+    ├─libs
+    └─pages
+        ├─common
+        ├─mypage
+        ├─onClass
+        ├─program
+        │  ├─clock
+        │  ├─picture
+        │  └─word
+        └─user
 ```
 
 
@@ -106,16 +199,23 @@ Jira
 
 #### 1️⃣ 온라인 수업      
 - 마르마르 자체 프로그램으로 온라인 수업이 가능하며, 수업 중 교재 컨텐츠 사용이 가능합니다.
-
+![image-4.png](./image-4.png)
+![image-5.png](./image-5.png)
 
 #### 2️⃣ 수업 진척도 확인    
 - 보호자는 마이페이지에서 아이의 수업 진척도, 수업평가 등을 열람가능합니다.
-
+![image-14.png](./image-14.png)
+![image-13.png](./image-13.png)
 
 #### 3️⃣ 언어훈련컨텐츠  
 - 3가지의 종류와 3가지의 난이도로 나뉘어진 언어훈련 컨텐츠가 있습니다. 더불어, 음성 인식을 통한 학습이 가능합니다.
 
-
+![image-7.png](./image-7.png)
+![image-8.png](./image-8.png)
+![image-9.png](./image-9.png)
+![image-10.png](./image-10.png)
+![image-11.png](./image-11.png)
+![image-12.png](./image-12.png)
 
 
 
